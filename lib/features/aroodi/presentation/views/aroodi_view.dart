@@ -1,3 +1,4 @@
+import 'package:aroodi_app/features/aroodi/presentation/views/widgets/aroodi_view_body.dart';
 import 'package:flutter/material.dart';
 
 class AroodiView extends StatelessWidget {
@@ -6,8 +7,11 @@ class AroodiView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("Aroodi"),
+    return const DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        body: AroodiViewBody(),
+      ),
     );
   }
 }
