@@ -2,6 +2,7 @@ import 'package:aroodi_app/features/aroodi/presentation/views/widgets/card_items
 import 'package:aroodi_app/features/aroodi/presentation/views/widgets/custom_category_item_list_view.dart';
 import 'package:aroodi_app/features/aroodi/presentation/views/widgets/custom_marka_item_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AroodiViewBodyDetails extends StatelessWidget {
   const AroodiViewBodyDetails({super.key});

@@ -49,13 +49,16 @@ class CustomSearchAndRefreshWidget extends StatelessWidget {
           const SizedBox(
             width: 8,
           ),
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 2),
-                borderRadius: BorderRadius.circular(8)),
-            child: const Icon(
-              Icons.refresh_outlined,
-              color: AppColors.lightPrimaryColor,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white, width: 2),
+                  borderRadius: BorderRadius.circular(8)),
+              child: const Icon(
+                Icons.autorenew_outlined,
+                color: AppColors.lightPrimaryColor,
+              ),
             ),
           ),
         ],

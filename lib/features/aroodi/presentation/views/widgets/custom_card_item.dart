@@ -37,8 +37,11 @@ class CustomCardItem extends StatelessWidget {
           ),
           const Positioned(
             right: 4,
-            bottom: 40,
-            child: CustomMarkaItem(),
+            bottom: 35,
+            child: CustomMarkaItem(
+              radius1: 20,
+              radius2: 19,
+            ),
           ),
           Positioned(
             left: 4,
@@ -75,7 +78,7 @@ class CustomCardItem extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 4),
                       child: Icon(
-                        Icons.checklist_rounded,
+                        Icons.done_all_outlined,
                         color: AppColors.lightPrimaryColor,
                         size: 16,
                       ),

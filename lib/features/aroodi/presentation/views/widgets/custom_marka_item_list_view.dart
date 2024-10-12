@@ -16,7 +16,10 @@ class CustomMarkaItemListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.only(right: 8),
-            child: CustomMarkaItem(),
+            child: CustomMarkaItem(
+              radius1: 23,
+              radius2: 22,
+            ),
           );
         },
       ),

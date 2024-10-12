@@ -4,17 +4,21 @@ import 'package:flutter/material.dart';
 class CustomMarkaItem extends StatelessWidget {
   const CustomMarkaItem({
     super.key,
+    required this.radius1,
+    required this.radius2,
   });
+
+  final double radius1, radius2;
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      radius: 23,
+    return CircleAvatar(
+      radius: radius1,
       backgroundColor: Colors.white,
       child: CircleAvatar(
         backgroundColor: AppColors.primaryColor,
-        backgroundImage: AssetImage("assets/images/royal_house.jpeg"),
-        radius: 22,
+        backgroundImage: const AssetImage("assets/images/royal_house.jpeg"),
+        radius: radius2,
       ),
     );
   }

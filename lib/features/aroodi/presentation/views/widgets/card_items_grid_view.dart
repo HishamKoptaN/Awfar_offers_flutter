@@ -17,15 +17,14 @@ class CardItemsGridView extends StatelessWidget {
         mainAxisSpacing: 12,
         childAspectRatio: 0.58,
       ),
-      // delegate: SliverChildBuilderDelegate(
-      //   (BuildContext context, int index) {
-      //     return const CustomCardItem();
-      //   },
-      //   childCount: 10, // Number of grid items
-      // ),
       itemCount: 20,
       itemBuilder: (context, index) {
-        return const CustomCardItem();
+        return GestureDetector(
+          onTap: () {
+            print("index is $index");
+          },
+          child: const CustomCardItem(),
+        );
       },
     );
   }

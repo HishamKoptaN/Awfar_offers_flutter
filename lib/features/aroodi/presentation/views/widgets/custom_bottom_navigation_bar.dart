@@ -1,5 +1,9 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/features/aroodi/presentation/views/aroodi_view.dart';
+import 'package:aroodi_app/features/categories/presentation/views/categories_view.dart';
+import 'package:aroodi_app/features/profile/presentation/views/profile_view.dart';
+import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
+import 'package:aroodi_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -11,10 +15,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
     List<Widget> buildScreens() {
       return [
         const AroodiView(),
-        const Screen2(),
-        const Screen3(),
-        const Screen4(),
-        const Screen5(),
+        const CategoriesView(brandName: ''),
+        const SearchView(),
+        const SettingsView(),
+        const ProfileView(),
       ];
     }
 
@@ -89,68 +93,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
       confineToSafeArea: true,
       navBarHeight: 76,
       navBarStyle: NavBarStyle.style3,
-    );
-  }
-}
-
-class Screen1 extends StatelessWidget {
-  const Screen1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-        backgroundColor: AppColors.darkPrimaryColor, body: AroodiView());
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  const Screen2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Screen2"),
-      ),
-    );
-  }
-}
-
-class Screen3 extends StatelessWidget {
-  const Screen3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Screen3"),
-      ),
-    );
-  }
-}
-
-class Screen4 extends StatelessWidget {
-  const Screen4({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Screen4"),
-      ),
-    );
-  }
-}
-
-class Screen5 extends StatelessWidget {
-  const Screen5({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Screen5"),
-      ),
     );
   }
 }
