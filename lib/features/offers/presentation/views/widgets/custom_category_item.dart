@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 class CustomCategoryItem extends StatelessWidget {
   const CustomCategoryItem({
     super.key,
+    required this.selectedIndex,
+    required this.index,
   });
+
+  final int selectedIndex, index;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,9 @@ class CustomCategoryItem extends StatelessWidget {
       padding: const EdgeInsets.only(right: 8.0),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: selectedIndex == index
+              ? AppColors.lightPrimaryColor
+              : AppColors.primaryColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
