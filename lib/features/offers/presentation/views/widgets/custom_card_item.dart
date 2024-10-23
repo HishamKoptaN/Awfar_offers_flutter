@@ -2,11 +2,17 @@ import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 
-class CustomCardItem extends StatelessWidget {
+class CustomCardItem extends StatefulWidget {
   const CustomCardItem({
     super.key,
   });
 
+  @override
+  State<CustomCardItem> createState() => _CustomCardItemState();
+}
+
+class _CustomCardItemState extends State<CustomCardItem> {
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -109,9 +115,9 @@ class CustomCardItem extends StatelessWidget {
             left: 8,
             child: SizedBox(
               width: MediaQuery.of(context).size.width / 2,
-              child: const Row(
+              child: Row(
                 children: [
-                  Text(
+                  const Text(
                     "رويال هاوس",
                     style: TextStyle(
                       color: Colors.white,
@@ -119,13 +125,26 @@ class CustomCardItem extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(left: 4),
-                    child: Icon(
-                      Icons.favorite_border_outlined,
-                      color: AppColors.lightPrimaryColor,
-                      size: 18,
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isSelected = !isSelected;
+                      });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: isSelected
+                          ? const Icon(
+                              Icons.favorite_outlined,
+                              color: AppColors.lightPrimaryColor,
+                              size: 18,
+                            )
+                          : const Icon(
+                              Icons.favorite_border_outlined,
+                              color: AppColors.lightPrimaryColor,
+                              size: 18,
+                            ),
                     ),
                   )
                 ],

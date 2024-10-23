@@ -1,4 +1,4 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
+import 'package:aroodi_app/core/widgets/custom_back_button.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +14,7 @@ class AppBarInOfferDetails extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.lightPrimaryColor,
-          ),
+          CustomBackButton(),
           SizedBox(
             width: 8,
           ),
