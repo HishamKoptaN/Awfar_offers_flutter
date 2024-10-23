@@ -38,6 +38,14 @@ class _BannerAdsState extends State<BannerAds> {
   }
 
   @override
+  void dispose() {
+    if (isLoaded) {
+      bannerAd!.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: isLoaded
