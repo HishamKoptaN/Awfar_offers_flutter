@@ -1,3 +1,4 @@
+import 'package:aroodi_app/features/admobe/banner_ad.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/build_app_bar_widget.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_search_and_refresh_widget.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_tab_bar_view.dart';
@@ -23,6 +24,10 @@ class OfferViewBody extends StatelessWidget {
                 height: 8,
               ),
               Tab(),
+              SizedBox(
+                height: 8,
+              ),
+              BannerAds(),
             ],
           ),
         ),
