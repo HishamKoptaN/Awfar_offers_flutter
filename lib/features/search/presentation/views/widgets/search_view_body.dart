@@ -1,3 +1,4 @@
+import 'package:aroodi_app/core/widgets/custom_back_button.dart';
 import 'package:aroodi_app/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -64,67 +65,72 @@ class _SearchViewBodyState extends State<SearchViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            CustomTextFormField(
-              controller: searchController,
-              hintText: "بحث",
-              textInputType: TextInputType.text,
-            ),
-            const SizedBox(height: 16),
-            const Row(
-              children: [
-                Icon(
-                  Icons.local_fire_department_rounded,
-                  color: Colors.white,
-                  size: 20,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const CustomBackButton(),
+              Expanded(
+                child: CustomTextFormField(
+                  controller: searchController,
+                  hintText: "بحث",
+                  textInputType: TextInputType.text,
                 ),
-                SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  "البحث الشائع",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            // Displaying filtered search terms
-            Expanded(
-              child: ListView.builder(
-                itemCount: filteredSearchTerms.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      filteredSearchTerms[index],
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    onTap: () {
-                      // You can handle what happens when a search term is clicked here
-                      // For example, you can navigate to another screen
-                      print(
-                        'Selected: ${filteredSearchTerms[index]}',
-                      );
-                    },
-                  );
-                },
               ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          const Row(
+            children: [
+              Icon(
+                Icons.local_fire_department_rounded,
+                color: Colors.white,
+                size: 20,
+              ),
+              SizedBox(
+                width: 4,
+              ),
+              Text(
+                "البحث الشائع",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          // Displaying filtered search terms
+          Expanded(
+            child: ListView.builder(
+              itemCount: filteredSearchTerms.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(
+                    filteredSearchTerms[index],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  onTap: () {
+                    // You can handle what happens when a search term is clicked here
+                    // For example, you can navigate to another screen
+                    print(
+                      'Selected: ${filteredSearchTerms[index]}',
+                    );
+                  },
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

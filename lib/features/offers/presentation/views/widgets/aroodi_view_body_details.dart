@@ -1,6 +1,6 @@
-import 'package:aroodi_app/features/aroodi/presentation/views/widgets/card_items_grid_view.dart';
-import 'package:aroodi_app/features/aroodi/presentation/views/widgets/custom_category_item_list_view.dart';
-import 'package:aroodi_app/features/aroodi/presentation/views/widgets/custom_marka_item_list_view.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/card_items_grid_view.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_category_item_list_view.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_marka_item_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

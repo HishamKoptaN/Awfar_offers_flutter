@@ -15,7 +15,7 @@ class BuildAppBarWidget extends StatefulWidget {
 
 class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
   String selectedCountry = 'مصر';
-  String selectedCity = 'اختر المدينة';
+  String selectedCity = 'القاهرة';
   String? selectedCountryCode = 'EG';
 
   final Map<String, List<String>> countryCityMap = {
@@ -173,10 +173,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                 ),
                 const Text(
                   'إختر البلد',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyles.bold18,
                 ),
                 const SizedBox(
                   height: 16,
@@ -203,10 +200,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                               vertical: 16, horizontal: 8),
                           child: Text(
                             country,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
+                            style: TextStyles.normal14,
                           ),
                         ),
                       );
@@ -256,10 +250,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                 ),
                 const Text(
                   'إختر المنطقة',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyles.bold18,
                 ),
                 const SizedBox(
                   height: 16,
@@ -280,10 +271,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                               vertical: 16, horizontal: 8),
                           child: Text(
                             city,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
+                            style: TextStyles.normal14,
                           ),
                         ),
                       );

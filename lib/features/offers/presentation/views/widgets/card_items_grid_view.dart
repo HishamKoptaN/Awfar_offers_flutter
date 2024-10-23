@@ -1,4 +1,5 @@
-import 'package:aroodi_app/features/aroodi/presentation/views/widgets/custom_card_item.dart';
+import 'package:aroodi_app/features/offer_details/presentation/views/offer_deatails_view.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_card_item.dart';
 import 'package:flutter/material.dart';
 
 class CardItemsGridView extends StatelessWidget {
@@ -21,7 +22,7 @@ class CardItemsGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            print("index is $index");
+            Navigator.pushNamed(context, OfferDeatailsView.routeName);
           },
           child: const CustomCardItem(),
         );

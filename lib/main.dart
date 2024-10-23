@@ -1,6 +1,6 @@
 import 'package:aroodi_app/core/helper_functions/on_generate_routes.dart';
 import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/aroodi/presentation/views/home_view.dart';
+import 'package:aroodi_app/home_view.dart';
 import 'package:aroodi_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
