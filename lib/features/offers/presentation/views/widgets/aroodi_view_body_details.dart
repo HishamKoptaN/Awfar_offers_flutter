@@ -1,3 +1,4 @@
+import 'package:aroodi_app/features/admobe/banner_ad.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/card_items_grid_view.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_category_item_list_view.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_marka_item_list_view.dart';
@@ -20,7 +21,12 @@ class AroodiViewBodyDetails extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
+          BannerAds(),
           CardItemsGridView(),
+          SizedBox(
+            height: 16,
+          ),
+          BannerAds(),
           SizedBox(
             height: 16,
           ),
