@@ -1,105 +1,59 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/features/categories/presentation/views/widgets/active_and_in_active_category.dart';
 import 'package:flutter/material.dart';
+import '../../../data/models/categories_response_model.dart';
 
 class ListViewAndGridView extends StatefulWidget {
-  const ListViewAndGridView({
+  ListViewAndGridView({
     super.key,
+    required this.categories,
   });
-
+  List<CategoriesResponseModel> categories;
   @override
   State<ListViewAndGridView> createState() => _ListViewAndGridViewState();
 }
 
 class _ListViewAndGridViewState extends State<ListViewAndGridView> {
-  // Dummy data for ListView and GridView
-  final List<String> listItems = [
-    "إلكترونيات",
-    "طعام - بقالة",
-    "فواكة وخضروات",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-    "منتجات الألبان وبيض",
-  ];
-  final Map<String, List<String>> gridItems = {
-    'إلكترونيات': [
-      'جوالات',
-      'تلفزيون',
-      'أدوات المطبخ',
-      'جوالات',
-      'تلفزيون',
-      'أدوات المطبخ',
-      'جوالات',
-      'تلفزيون',
-      'أدوات المطبخ',
-      'جوالات',
-      'تلفزيون',
-      'أدوات المطبخ',
-      'جوالات',
-      'تلفزيون',
-      'أدوات المطبخ',
-      'جوالات',
-      'تلفزيون',
-      'أدوات المطبخ',
-      'جوالات',
-      'تلفزيون',
-      'أدوات المطبخ'
-    ],
-    'طعام - بقالة': ['Item 2A', 'Item 2B'],
-    'فواكة وخضروات': ['Item 3A', 'Item 3B', 'Item 3C', 'Item 3D'],
-    'منتجات الألبان وبيض': ['Item 4A', 'Item 4B', 'Item 4C'],
-  };
-
-  String selectedCategory = 'إلكترونيات';
+  int? selectedCategoryId = 0;
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(context) {
     return Expanded(
       child: Row(
         children: [
+          //! Categories
           SizedBox(
             width: MediaQuery.of(context).size.width *
                 0.30, // Fixed width for ListView in the Row
             child: ListView.builder(
-              itemCount: listItems.length,
+              itemCount: widget.categories.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
                     setState(
                       () {
-                        selectedCategory =
-                            listItems[index]; // Update selected category
+                        selectedCategoryId = widget
+                            .categories[index].id; // Update selected category
                       },
                     );
                   },
-                  child: selectedCategory == listItems[index]
+                  child: selectedCategoryId == widget.categories[index].id
                       ? ActiveCategory(
-                          categoryName: listItems[index],
+                          categoryName: widget.categories[index].name!,
                         )
                       : InActiveCategory(
-                          categoryName: listItems[index],
+                          categoryName: widget.categories[index].name!,
                         ),
                 );
               },
             ),
           ),
+          //! Offfers based on selected category
           Expanded(
             child: Container(
               color: AppColors.primaryColor,
@@ -109,7 +63,7 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      selectedCategory,
+                      selectedCategoryId.toString(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -127,9 +81,11 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                         crossAxisCount: 3, // Number of columns in the grid
                         childAspectRatio: 0.70,
                       ),
-                      itemCount: gridItems[selectedCategory]!
-                          .length, // Items based on selected category
+                      itemCount:
+                          widget.categories[selectedCategoryId!].offers!.length,
                       itemBuilder: (context, index) {
+                        final offer = widget
+                            .categories[selectedCategoryId!].offers![index];
                         return Column(
                           children: [
                             const SizedBox(
@@ -141,10 +97,10 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                               },
                               child: Stack(
                                 children: [
-                                  const CircleAvatar(
+                                  CircleAvatar(
                                     backgroundColor: AppColors.darkPrimaryColor,
-                                    backgroundImage: AssetImage(
-                                      "assets/images/royal_house.jpeg",
+                                    backgroundImage: NetworkImage(
+                                      offer.image!,
                                     ),
                                     radius: 34,
                                   ),
@@ -156,11 +112,11 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                         color: AppColors.yellowColor,
                                         borderRadius: BorderRadius.circular(16),
                                       ),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(4),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4),
                                         child: Text(
-                                          "87",
-                                          style: TextStyle(
+                                          offer.name!,
+                                          style: const TextStyle(
                                             fontSize: 9,
                                             color: Colors.black,
                                           ),
@@ -175,8 +131,8 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                               height: 2,
                             ),
                             Text(
-                              gridItems[selectedCategory]![index],
-                              style: const TextStyle(
+                              offer.name!,
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
                               ),

@@ -2,8 +2,10 @@ import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ActiveCategory extends StatelessWidget {
-  const ActiveCategory({super.key, required this.categoryName});
-
+  const ActiveCategory({
+    super.key,
+    required this.categoryName,
+  });
   final String categoryName;
 
   @override
@@ -44,7 +46,9 @@ class InActiveCategory extends StatelessWidget {
       child: Center(
         child: Text(
           categoryName,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
     );

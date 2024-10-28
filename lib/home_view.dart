@@ -8,15 +8,13 @@ import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
-
   static const routeName = 'home_screen';
-
   @override
   State<HomeView> createState() => _HomeView();
 }
 
 class _HomeView extends State<HomeView> {
-  int currentIndex = 0;
+  int currentIndex = 1;
   final List<Widget> screens = [
     const OfferView(),
     const CategoriesView(brandName: ''),

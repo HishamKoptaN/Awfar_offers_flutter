@@ -1,27 +1,40 @@
-import 'package:aroodi_app/features/offers/presentation/views/widgets/card_items_grid_view.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_category_item_list_view.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_marka_item_list_view.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/items/card_items_grid_view.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/category/custom_category_item_list_view.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class AroodiViewBodyDetails extends StatelessWidget {
-  const AroodiViewBodyDetails({super.key});
+import '../../../data/models/offers_response_model.dart';
 
+class AroodiViewBodyDetails extends StatelessWidget {
+  AroodiViewBodyDetails({
+    super.key,
+    required this.offers,
+    required this.categories,
+  });
+  List<Offer> offers;
+  List<Category> categories;
   @override
-  Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+  Widget build(context) {
+    return SingleChildScrollView(
       child: Column(
         children: [
-          CustomCategoryItemListView(),
-          SizedBox(
+          CustomCategoryItemListView(
+            categories: categories,
+          ),
+          const SizedBox(
             height: 12,
           ),
-          CustomMarkaItemListView(),
-          SizedBox(
+          CustomMarkaItemListView(
+            stores: null,
+          ),
+          const SizedBox(
             height: 8,
           ),
-          CardItemsGridView(),
-          SizedBox(
+          CardItemsGridView(
+            offers: offers,
+          ),
+          const SizedBox(
             height: 16,
           ),
         ],

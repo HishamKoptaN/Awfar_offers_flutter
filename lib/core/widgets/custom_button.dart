@@ -8,7 +8,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return SizedBox(
       width: double.infinity,
       height: 54,

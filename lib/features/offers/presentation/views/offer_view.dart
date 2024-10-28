@@ -1,15 +1,44 @@
 import 'package:aroodi_app/features/offers/presentation/views/widgets/aroodi_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/widgets/custom_circular_progress.dart';
+import '../bloc/offers_bloc.dart';
+import '../bloc/offers_event.dart';
+import '../bloc/offers_state.dart';
 
 class OfferView extends StatelessWidget {
-  const OfferView({super.key});
+  const OfferView({
+    super.key,
+  });
   static const routeName = 'aroodi';
-
   @override
-  Widget build(BuildContext context) {
-    return const SafeArea(
+  Widget build(context) {
+    return SafeArea(
       child: Scaffold(
-        body: OfferViewBody(),
+        body: BlocProvider(
+          create: (context) => getIt<OffersBloc>()
+            ..add(
+              const OffersEvent.getOffersEvent(),
+            ),
+          child: BlocConsumer<OffersBloc, OffersState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return state.maybeWhen(
+                offersLoaded: (
+                  offersResponseModel,
+                ) {
+                  return OfferViewBody(
+                    offersResponseModel: offersResponseModel,
+                  );
+                },
+                orElse: () {
+                  return const CustomCircularProgress();
+                },
+              );
+            },
+          ),
+        ),
       ),
     );
   }

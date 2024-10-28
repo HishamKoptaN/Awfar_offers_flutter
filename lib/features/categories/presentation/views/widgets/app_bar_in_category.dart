@@ -1,5 +1,5 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/custom_marka_item.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 
 class AppBarInCategory extends StatelessWidget {
@@ -30,6 +30,7 @@ class AppBarInCategory extends StatelessWidget {
                     const CustomMarkaItem(
                       radius1: 18,
                       radius2: 16,
+                      imageUrl: '',
                     ),
                     const SizedBox(
                       width: 8,
