@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:aroodi_app/core/helper_functions/on_generate_routes.dart';
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/generated/l10n.dart';
@@ -11,6 +12,8 @@ import 'core/app_observer.dart';
 import 'core/di/dependency_injection.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   await Injection.inject();
   Bloc.observer = AppBlocObserver();
   runApp(

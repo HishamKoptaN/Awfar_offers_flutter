@@ -24,11 +24,13 @@ class _HomeView extends State<HomeView> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     void onTapped(int index) {
-      setState(() {
-        currentIndex = index;
-      });
+      setState(
+        () {
+          currentIndex = index;
+        },
+      );
     }
 
     return Scaffold(

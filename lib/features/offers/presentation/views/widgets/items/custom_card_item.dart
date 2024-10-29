@@ -4,14 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../data/models/offers_response_model.dart';
 
-class CustomCardItem extends StatelessWidget {
-  CustomCardItem({
+class CustomCardItem extends StatefulWidget {
+  const CustomCardItem({
     super.key,
     required this.offer,
   });
-  Offer offer;
+
+  final Offer offer;
+
   @override
-  Widget build(context) {
+  State<CustomCardItem> createState() => _CustomCardItemState();
+}
+
+class _CustomCardItemState extends State<CustomCardItem> {
+  bool isSelected = false;
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
       color: AppColors.primaryColor,
       elevation: 4,
@@ -29,8 +38,8 @@ class CustomCardItem extends StatelessWidget {
                   topRight: Radius.circular(16),
                 ),
                 child: Image.network(
+                  widget.offer.image!,
                   height: 225.h,
-                  offer.image!,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -46,14 +55,13 @@ class CustomCardItem extends StatelessWidget {
                   ),
                 ),
               ),
-              // CircleAvatar partially overlapping the image
               Positioned(
-                bottom: -20, // Half outside the image
-                right: 4, // Center the avatar horizontally
+                bottom: -20,
+                right: 4,
                 child: CustomMarkaItem(
                   radius1: 20,
                   radius2: 19,
-                  imageUrl: offer.store!.image!,
+                  imageUrl: widget.offer.store!.image!,
                 ),
               ),
               Positioned(
@@ -61,12 +69,11 @@ class CustomCardItem extends StatelessWidget {
                 bottom: -20,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                      color: AppColors.yellowColor),
+                    borderRadius: BorderRadius.circular(6),
+                    color: AppColors.yellowColor,
+                  ),
                   child: const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       "11 أيام متبقية",
                       style: TextStyle(fontSize: 10),
@@ -76,7 +83,6 @@ class CustomCardItem extends StatelessWidget {
               ),
             ],
           ),
-          // Image in the Card
           Positioned(
             bottom: 24,
             left: 8,
@@ -86,7 +92,7 @@ class CustomCardItem extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    offer.name!,
+                    widget.offer.name!,
                     style: const TextStyle(
                       color: AppColors.yellowColor,
                       fontSize: 12,
@@ -100,7 +106,7 @@ class CustomCardItem extends StatelessWidget {
                       color: AppColors.lightPrimaryColor,
                       size: 14,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -113,23 +119,32 @@ class CustomCardItem extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 2,
               child: Row(
                 children: [
-                  Text(
-                    offer.name!,
-                    style: const TextStyle(
+                  const Text(
+                    "رويال هاوس",
+                    style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
                   ),
                   const Spacer(),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 4),
-                    child: Icon(
-                      Icons.favorite_border_outlined,
-                      color: AppColors.lightPrimaryColor,
-                      size: 18,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isSelected = !isSelected;
+                      });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: Icon(
+                        isSelected
+                            ? Icons.favorite_outlined
+                            : Icons.favorite_border_outlined,
+                        color: AppColors.lightPrimaryColor,
+                        size: 18,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

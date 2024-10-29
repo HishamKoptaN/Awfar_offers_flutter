@@ -30,6 +30,9 @@ class OfferViewBody extends StatelessWidget {
               Tab(
                 offers: [],
               ),
+              const SizedBox(
+                height: 8,
+              ),
             ],
           ),
         ),
