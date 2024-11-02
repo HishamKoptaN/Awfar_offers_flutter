@@ -7,11 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../data/models/offers_response_model.dart';
 
 class OfferViewBody extends StatelessWidget {
-  OfferViewBody({
+  const OfferViewBody({
     super.key,
     required this.offersResponseModel,
   });
-  OffersResponseModel offersResponseModel;
+  final OffersResponseModel offersResponseModel;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -28,7 +28,7 @@ class OfferViewBody extends StatelessWidget {
                 height: 8,
               ),
               Tab(
-                offers: [],
+                offersResponseModel: offersResponseModel,
               ),
               const SizedBox(
                 height: 8,
@@ -42,11 +42,11 @@ class OfferViewBody extends StatelessWidget {
 }
 
 class Tab extends StatelessWidget {
-  Tab({
+  const Tab({
     super.key,
-    required this.offers,
+    required this.offersResponseModel,
   });
-  List<Offer> offers;
+  final OffersResponseModel offersResponseModel;
 
   @override
   Widget build(context) {
@@ -59,8 +59,7 @@ class Tab extends StatelessWidget {
             height: 16,
           ),
           CustomTabBarView(
-            offers: offers,
-            categories: [],
+            offersResponseModel: offersResponseModel,
           ),
         ],
       ),

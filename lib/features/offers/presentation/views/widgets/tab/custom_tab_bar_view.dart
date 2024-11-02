@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../data/models/offers_response_model.dart';
 
 class CustomTabBarView extends StatelessWidget {
-  CustomTabBarView({
+  const CustomTabBarView({
     super.key,
-    required this.offers,
-    required this.categories,
+    required this.offersResponseModel,
   });
-  List<Offer> offers;
-  List<Category> categories;
+  final OffersResponseModel offersResponseModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +17,16 @@ class CustomTabBarView extends StatelessWidget {
       child: TabBarView(
         children: [
           AroodiViewBodyDetails(
-            offers: offers,
-            categories: [],
+            offersResponseModel: offersResponseModel,
           ),
           AroodiViewBodyDetails(
-            offers: offers,
-            categories: [],
+            offersResponseModel: offersResponseModel,
           ),
           AroodiViewBodyDetails(
-            offers: offers,
-            categories: [],
+            offersResponseModel: offersResponseModel,
           ),
           AroodiViewBodyDetails(
-            offers: offers,
-            categories: [],
+            offersResponseModel: offersResponseModel,
           ),
         ],
       ),

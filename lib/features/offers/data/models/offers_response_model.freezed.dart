@@ -20,8 +20,6 @@ OffersResponseModel _$OffersResponseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OffersResponseModel {
-  @JsonKey(name: "offers")
-  List<Offer> get offers => throw _privateConstructorUsedError;
   @JsonKey(name: "stores")
   List<Store> get stores => throw _privateConstructorUsedError;
   @JsonKey(name: "categories")
@@ -44,8 +42,7 @@ abstract class $OffersResponseModelCopyWith<$Res> {
       _$OffersResponseModelCopyWithImpl<$Res, OffersResponseModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: "offers") List<Offer> offers,
-      @JsonKey(name: "stores") List<Store> stores,
+      {@JsonKey(name: "stores") List<Store> stores,
       @JsonKey(name: "categories") List<Category> categories});
 }
 
@@ -64,15 +61,10 @@ class _$OffersResponseModelCopyWithImpl<$Res, $Val extends OffersResponseModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? offers = null,
     Object? stores = null,
     Object? categories = null,
   }) {
     return _then(_value.copyWith(
-      offers: null == offers
-          ? _value.offers
-          : offers // ignore: cast_nullable_to_non_nullable
-              as List<Offer>,
       stores: null == stores
           ? _value.stores
           : stores // ignore: cast_nullable_to_non_nullable
@@ -94,8 +86,7 @@ abstract class _$$OffersResponseModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "offers") List<Offer> offers,
-      @JsonKey(name: "stores") List<Store> stores,
+      {@JsonKey(name: "stores") List<Store> stores,
       @JsonKey(name: "categories") List<Category> categories});
 }
 
@@ -112,15 +103,10 @@ class __$$OffersResponseModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? offers = null,
     Object? stores = null,
     Object? categories = null,
   }) {
     return _then(_$OffersResponseModelImpl(
-      offers: null == offers
-          ? _value._offers
-          : offers // ignore: cast_nullable_to_non_nullable
-              as List<Offer>,
       stores: null == stores
           ? _value._stores
           : stores // ignore: cast_nullable_to_non_nullable
@@ -137,24 +123,13 @@ class __$$OffersResponseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OffersResponseModelImpl implements _OffersResponseModel {
   const _$OffersResponseModelImpl(
-      {@JsonKey(name: "offers") final List<Offer> offers = const [],
-      @JsonKey(name: "stores") final List<Store> stores = const [],
+      {@JsonKey(name: "stores") final List<Store> stores = const [],
       @JsonKey(name: "categories") final List<Category> categories = const []})
-      : _offers = offers,
-        _stores = stores,
+      : _stores = stores,
         _categories = categories;
 
   factory _$OffersResponseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OffersResponseModelImplFromJson(json);
-
-  final List<Offer> _offers;
-  @override
-  @JsonKey(name: "offers")
-  List<Offer> get offers {
-    if (_offers is EqualUnmodifiableListView) return _offers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_offers);
-  }
 
   final List<Store> _stores;
   @override
@@ -176,7 +151,7 @@ class _$OffersResponseModelImpl implements _OffersResponseModel {
 
   @override
   String toString() {
-    return 'OffersResponseModel(offers: $offers, stores: $stores, categories: $categories)';
+    return 'OffersResponseModel(stores: $stores, categories: $categories)';
   }
 
   @override
@@ -184,7 +159,6 @@ class _$OffersResponseModelImpl implements _OffersResponseModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OffersResponseModelImpl &&
-            const DeepCollectionEquality().equals(other._offers, _offers) &&
             const DeepCollectionEquality().equals(other._stores, _stores) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories));
@@ -194,7 +168,6 @@ class _$OffersResponseModelImpl implements _OffersResponseModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_offers),
       const DeepCollectionEquality().hash(_stores),
       const DeepCollectionEquality().hash(_categories));
 
@@ -217,17 +190,13 @@ class _$OffersResponseModelImpl implements _OffersResponseModel {
 
 abstract class _OffersResponseModel implements OffersResponseModel {
   const factory _OffersResponseModel(
-          {@JsonKey(name: "offers") final List<Offer> offers,
-          @JsonKey(name: "stores") final List<Store> stores,
+          {@JsonKey(name: "stores") final List<Store> stores,
           @JsonKey(name: "categories") final List<Category> categories}) =
       _$OffersResponseModelImpl;
 
   factory _OffersResponseModel.fromJson(Map<String, dynamic> json) =
       _$OffersResponseModelImpl.fromJson;
 
-  @override
-  @JsonKey(name: "offers")
-  List<Offer> get offers;
   @override
   @JsonKey(name: "stores")
   List<Store> get stores;
@@ -257,6 +226,10 @@ mixin _$Category {
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
   String get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "offers_count")
+  int get offersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: "offers")
+  List<Offer> get offers => throw _privateConstructorUsedError;
 
   /// Serializes this Category to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -277,7 +250,9 @@ abstract class $CategoryCopyWith<$Res> {
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt});
+      @JsonKey(name: "updated_at") String updatedAt,
+      @JsonKey(name: "offers_count") int offersCount,
+      @JsonKey(name: "offers") List<Offer> offers});
 }
 
 /// @nodoc
@@ -299,6 +274,8 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
     Object? name = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? offersCount = null,
+    Object? offers = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -317,6 +294,14 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      offersCount: null == offersCount
+          ? _value.offersCount
+          : offersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      offers: null == offers
+          ? _value.offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>,
     ) as $Val);
   }
 }
@@ -333,7 +318,9 @@ abstract class _$$CategoryImplCopyWith<$Res>
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "name") String name,
       @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt});
+      @JsonKey(name: "updated_at") String updatedAt,
+      @JsonKey(name: "offers_count") int offersCount,
+      @JsonKey(name: "offers") List<Offer> offers});
 }
 
 /// @nodoc
@@ -353,6 +340,8 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? name = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? offersCount = null,
+    Object? offers = null,
   }) {
     return _then(_$CategoryImpl(
       id: null == id
@@ -371,6 +360,14 @@ class __$$CategoryImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      offersCount: null == offersCount
+          ? _value.offersCount
+          : offersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      offers: null == offers
+          ? _value._offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>,
     ));
   }
 }
@@ -382,7 +379,10 @@ class _$CategoryImpl implements _Category {
       {@JsonKey(name: "id") this.id = 0,
       @JsonKey(name: "name") this.name = '',
       @JsonKey(name: "created_at") this.createdAt = '',
-      @JsonKey(name: "updated_at") this.updatedAt = ''});
+      @JsonKey(name: "updated_at") this.updatedAt = '',
+      @JsonKey(name: "offers_count") this.offersCount = 0,
+      @JsonKey(name: "offers") final List<Offer> offers = const []})
+      : _offers = offers;
 
   factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryImplFromJson(json);
@@ -399,10 +399,21 @@ class _$CategoryImpl implements _Category {
   @override
   @JsonKey(name: "updated_at")
   final String updatedAt;
+  @override
+  @JsonKey(name: "offers_count")
+  final int offersCount;
+  final List<Offer> _offers;
+  @override
+  @JsonKey(name: "offers")
+  List<Offer> get offers {
+    if (_offers is EqualUnmodifiableListView) return _offers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_offers);
+  }
 
   @override
   String toString() {
-    return 'Category(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Category(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, offersCount: $offersCount, offers: $offers)';
   }
 
   @override
@@ -415,12 +426,16 @@ class _$CategoryImpl implements _Category {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.offersCount, offersCount) ||
+                other.offersCount == offersCount) &&
+            const DeepCollectionEquality().equals(other._offers, _offers));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, name, createdAt, updatedAt,
+      offersCount, const DeepCollectionEquality().hash(_offers));
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -443,7 +458,9 @@ abstract class _Category implements Category {
       {@JsonKey(name: "id") final int id,
       @JsonKey(name: "name") final String name,
       @JsonKey(name: "created_at") final String createdAt,
-      @JsonKey(name: "updated_at") final String updatedAt}) = _$CategoryImpl;
+      @JsonKey(name: "updated_at") final String updatedAt,
+      @JsonKey(name: "offers_count") final int offersCount,
+      @JsonKey(name: "offers") final List<Offer> offers}) = _$CategoryImpl;
 
   factory _Category.fromJson(Map<String, dynamic> json) =
       _$CategoryImpl.fromJson;
@@ -460,6 +477,12 @@ abstract class _Category implements Category {
   @override
   @JsonKey(name: "updated_at")
   String get updatedAt;
+  @override
+  @JsonKey(name: "offers_count")
+  int get offersCount;
+  @override
+  @JsonKey(name: "offers")
+  List<Offer> get offers;
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -489,14 +512,12 @@ mixin _$Offer {
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
   String get image => throw _privateConstructorUsedError;
-  @JsonKey(name: "end_at")
-  dynamic get endAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "days_remaining")
+  int get daysRemaining => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
   String get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: "store")
-  Store? get store => throw _privateConstructorUsedError;
 
   /// Serializes this Offer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -520,12 +541,9 @@ abstract class $OfferCopyWith<$Res> {
       @JsonKey(name: "category_id") int categoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
-      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "days_remaining") int daysRemaining,
       @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt,
-      @JsonKey(name: "store") Store? store});
-
-  $StoreCopyWith<$Res>? get store;
+      @JsonKey(name: "updated_at") String updatedAt});
 }
 
 /// @nodoc
@@ -550,10 +568,9 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
     Object? categoryId = null,
     Object? description = null,
     Object? image = null,
-    Object? endAt = freezed,
+    Object? daysRemaining = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? store = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -584,10 +601,10 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      endAt: freezed == endAt
-          ? _value.endAt
-          : endAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -596,25 +613,7 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      store: freezed == store
-          ? _value.store
-          : store // ignore: cast_nullable_to_non_nullable
-              as Store?,
     ) as $Val);
-  }
-
-  /// Create a copy of Offer
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StoreCopyWith<$Res>? get store {
-    if (_value.store == null) {
-      return null;
-    }
-
-    return $StoreCopyWith<$Res>(_value.store!, (value) {
-      return _then(_value.copyWith(store: value) as $Val);
-    });
   }
 }
 
@@ -633,13 +632,9 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
       @JsonKey(name: "category_id") int categoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
-      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "days_remaining") int daysRemaining,
       @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt,
-      @JsonKey(name: "store") Store? store});
-
-  @override
-  $StoreCopyWith<$Res>? get store;
+      @JsonKey(name: "updated_at") String updatedAt});
 }
 
 /// @nodoc
@@ -662,10 +657,9 @@ class __$$OfferImplCopyWithImpl<$Res>
     Object? categoryId = null,
     Object? description = null,
     Object? image = null,
-    Object? endAt = freezed,
+    Object? daysRemaining = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? store = freezed,
   }) {
     return _then(_$OfferImpl(
       id: null == id
@@ -696,10 +690,10 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      endAt: freezed == endAt
-          ? _value.endAt
-          : endAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -708,10 +702,6 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      store: freezed == store
-          ? _value.store
-          : store // ignore: cast_nullable_to_non_nullable
-              as Store?,
     ));
   }
 }
@@ -727,10 +717,9 @@ class _$OfferImpl implements _Offer {
       @JsonKey(name: "category_id") this.categoryId = 0,
       @JsonKey(name: "description") this.description = '',
       @JsonKey(name: "image") this.image = '',
-      @JsonKey(name: "end_at") this.endAt,
+      @JsonKey(name: "days_remaining") this.daysRemaining = 0,
       @JsonKey(name: "created_at") this.createdAt = '',
-      @JsonKey(name: "updated_at") this.updatedAt = '',
-      @JsonKey(name: "store") this.store});
+      @JsonKey(name: "updated_at") this.updatedAt = ''});
 
   factory _$OfferImpl.fromJson(Map<String, dynamic> json) =>
       _$$OfferImplFromJson(json);
@@ -757,21 +746,18 @@ class _$OfferImpl implements _Offer {
   @JsonKey(name: "image")
   final String image;
   @override
-  @JsonKey(name: "end_at")
-  final dynamic endAt;
+  @JsonKey(name: "days_remaining")
+  final int daysRemaining;
   @override
   @JsonKey(name: "created_at")
   final String createdAt;
   @override
   @JsonKey(name: "updated_at")
   final String updatedAt;
-  @override
-  @JsonKey(name: "store")
-  final Store? store;
 
   @override
   String toString() {
-    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, categoryId: $categoryId, description: $description, image: $image, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt, store: $store)';
+    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, categoryId: $categoryId, description: $description, image: $image, daysRemaining: $daysRemaining, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -788,29 +774,18 @@ class _$OfferImpl implements _Offer {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
-            const DeepCollectionEquality().equals(other.endAt, endAt) &&
+            (identical(other.daysRemaining, daysRemaining) ||
+                other.daysRemaining == daysRemaining) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.store, store) || other.store == store));
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      status,
-      storeId,
-      categoryId,
-      description,
-      image,
-      const DeepCollectionEquality().hash(endAt),
-      createdAt,
-      updatedAt,
-      store);
+  int get hashCode => Object.hash(runtimeType, id, name, status, storeId,
+      categoryId, description, image, daysRemaining, createdAt, updatedAt);
 
   /// Create a copy of Offer
   /// with the given fields replaced by the non-null parameter values.
@@ -837,10 +812,9 @@ abstract class _Offer implements Offer {
       @JsonKey(name: "category_id") final int categoryId,
       @JsonKey(name: "description") final String description,
       @JsonKey(name: "image") final String image,
-      @JsonKey(name: "end_at") final dynamic endAt,
+      @JsonKey(name: "days_remaining") final int daysRemaining,
       @JsonKey(name: "created_at") final String createdAt,
-      @JsonKey(name: "updated_at") final String updatedAt,
-      @JsonKey(name: "store") final Store? store}) = _$OfferImpl;
+      @JsonKey(name: "updated_at") final String updatedAt}) = _$OfferImpl;
 
   factory _Offer.fromJson(Map<String, dynamic> json) = _$OfferImpl.fromJson;
 
@@ -866,17 +840,14 @@ abstract class _Offer implements Offer {
   @JsonKey(name: "image")
   String get image;
   @override
-  @JsonKey(name: "end_at")
-  dynamic get endAt;
+  @JsonKey(name: "days_remaining")
+  int get daysRemaining;
   @override
   @JsonKey(name: "created_at")
   String get createdAt;
   @override
   @JsonKey(name: "updated_at")
   String get updatedAt;
-  @override
-  @JsonKey(name: "store")
-  Store? get store;
 
   /// Create a copy of Offer
   /// with the given fields replaced by the non-null parameter values.
@@ -903,11 +874,11 @@ mixin _$Store {
   @JsonKey(name: "governorate_id")
   int get governorateId => throw _privateConstructorUsedError;
   @JsonKey(name: "place")
-  String get place => throw _privateConstructorUsedError;
-  @JsonKey(name: "created_at")
-  String get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: "updated_at")
-  String get updatedAt => throw _privateConstructorUsedError;
+  String? get place => throw _privateConstructorUsedError;
+  @JsonKey(name: "offers_count")
+  int get offersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: "offers")
+  List<Offer> get offers => throw _privateConstructorUsedError;
 
   /// Serializes this Store to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -929,9 +900,9 @@ abstract class $StoreCopyWith<$Res> {
       @JsonKey(name: "image") String image,
       @JsonKey(name: "country_id") int countryId,
       @JsonKey(name: "governorate_id") int governorateId,
-      @JsonKey(name: "place") String place,
-      @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt});
+      @JsonKey(name: "place") String? place,
+      @JsonKey(name: "offers_count") int offersCount,
+      @JsonKey(name: "offers") List<Offer> offers});
 }
 
 /// @nodoc
@@ -954,9 +925,9 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
     Object? image = null,
     Object? countryId = null,
     Object? governorateId = null,
-    Object? place = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? place = freezed,
+    Object? offersCount = null,
+    Object? offers = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -979,18 +950,18 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
           ? _value.governorateId
           : governorateId // ignore: cast_nullable_to_non_nullable
               as int,
-      place: null == place
+      place: freezed == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      offersCount: null == offersCount
+          ? _value.offersCount
+          : offersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      offers: null == offers
+          ? _value.offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>,
     ) as $Val);
   }
 }
@@ -1008,9 +979,9 @@ abstract class _$$StoreImplCopyWith<$Res> implements $StoreCopyWith<$Res> {
       @JsonKey(name: "image") String image,
       @JsonKey(name: "country_id") int countryId,
       @JsonKey(name: "governorate_id") int governorateId,
-      @JsonKey(name: "place") String place,
-      @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt});
+      @JsonKey(name: "place") String? place,
+      @JsonKey(name: "offers_count") int offersCount,
+      @JsonKey(name: "offers") List<Offer> offers});
 }
 
 /// @nodoc
@@ -1031,9 +1002,9 @@ class __$$StoreImplCopyWithImpl<$Res>
     Object? image = null,
     Object? countryId = null,
     Object? governorateId = null,
-    Object? place = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? place = freezed,
+    Object? offersCount = null,
+    Object? offers = null,
   }) {
     return _then(_$StoreImpl(
       id: null == id
@@ -1056,18 +1027,18 @@ class __$$StoreImplCopyWithImpl<$Res>
           ? _value.governorateId
           : governorateId // ignore: cast_nullable_to_non_nullable
               as int,
-      place: null == place
+      place: freezed == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      offersCount: null == offersCount
+          ? _value.offersCount
+          : offersCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      offers: null == offers
+          ? _value._offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>,
     ));
   }
 }
@@ -1081,9 +1052,10 @@ class _$StoreImpl implements _Store {
       @JsonKey(name: "image") this.image = '',
       @JsonKey(name: "country_id") this.countryId = 0,
       @JsonKey(name: "governorate_id") this.governorateId = 0,
-      @JsonKey(name: "place") this.place = '',
-      @JsonKey(name: "created_at") this.createdAt = '',
-      @JsonKey(name: "updated_at") this.updatedAt = ''});
+      @JsonKey(name: "place") this.place,
+      @JsonKey(name: "offers_count") this.offersCount = 0,
+      @JsonKey(name: "offers") final List<Offer> offers = const []})
+      : _offers = offers;
 
   factory _$StoreImpl.fromJson(Map<String, dynamic> json) =>
       _$$StoreImplFromJson(json);
@@ -1105,17 +1077,22 @@ class _$StoreImpl implements _Store {
   final int governorateId;
   @override
   @JsonKey(name: "place")
-  final String place;
+  final String? place;
   @override
-  @JsonKey(name: "created_at")
-  final String createdAt;
+  @JsonKey(name: "offers_count")
+  final int offersCount;
+  final List<Offer> _offers;
   @override
-  @JsonKey(name: "updated_at")
-  final String updatedAt;
+  @JsonKey(name: "offers")
+  List<Offer> get offers {
+    if (_offers is EqualUnmodifiableListView) return _offers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_offers);
+  }
 
   @override
   String toString() {
-    return 'Store(id: $id, name: $name, image: $image, countryId: $countryId, governorateId: $governorateId, place: $place, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Store(id: $id, name: $name, image: $image, countryId: $countryId, governorateId: $governorateId, place: $place, offersCount: $offersCount, offers: $offers)';
   }
 
   @override
@@ -1131,16 +1108,23 @@ class _$StoreImpl implements _Store {
             (identical(other.governorateId, governorateId) ||
                 other.governorateId == governorateId) &&
             (identical(other.place, place) || other.place == place) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(other.offersCount, offersCount) ||
+                other.offersCount == offersCount) &&
+            const DeepCollectionEquality().equals(other._offers, _offers));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, image, countryId,
-      governorateId, place, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      image,
+      countryId,
+      governorateId,
+      place,
+      offersCount,
+      const DeepCollectionEquality().hash(_offers));
 
   /// Create a copy of Store
   /// with the given fields replaced by the non-null parameter values.
@@ -1165,9 +1149,9 @@ abstract class _Store implements Store {
       @JsonKey(name: "image") final String image,
       @JsonKey(name: "country_id") final int countryId,
       @JsonKey(name: "governorate_id") final int governorateId,
-      @JsonKey(name: "place") final String place,
-      @JsonKey(name: "created_at") final String createdAt,
-      @JsonKey(name: "updated_at") final String updatedAt}) = _$StoreImpl;
+      @JsonKey(name: "place") final String? place,
+      @JsonKey(name: "offers_count") final int offersCount,
+      @JsonKey(name: "offers") final List<Offer> offers}) = _$StoreImpl;
 
   factory _Store.fromJson(Map<String, dynamic> json) = _$StoreImpl.fromJson;
 
@@ -1188,13 +1172,13 @@ abstract class _Store implements Store {
   int get governorateId;
   @override
   @JsonKey(name: "place")
-  String get place;
+  String? get place;
   @override
-  @JsonKey(name: "created_at")
-  String get createdAt;
+  @JsonKey(name: "offers_count")
+  int get offersCount;
   @override
-  @JsonKey(name: "updated_at")
-  String get updatedAt;
+  @JsonKey(name: "offers")
+  List<Offer> get offers;
 
   /// Create a copy of Store
   /// with the given fields replaced by the non-null parameter values.

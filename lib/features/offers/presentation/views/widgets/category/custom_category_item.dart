@@ -41,9 +41,12 @@ class CustomCategoryItem extends StatelessWidget {
                   color: AppColors.lightPrimaryColor,
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(2.0),
-                  child: Text("87"), // قم بتعديل الرقم هنا حسب المطلوب
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Text(
+                    category.offersCount.toString(),
+                    style: const TextStyle(color: Colors.white, fontSize: 12),
+                  ),
                 ),
               ),
             ],

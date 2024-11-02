@@ -1,3 +1,4 @@
+import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:aroodi_app/features/offers/presentation/views/offer_view.dart';
 import 'package:aroodi_app/features/categories/presentation/views/categories_view.dart';
 import 'package:aroodi_app/features/offer_details/presentation/views/offer_deatails_view.dart';
@@ -43,7 +44,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const ProfileView());
     case OfferDeatailsView.routeName:
-      return MaterialPageRoute(builder: (context) => const OfferDeatailsView());
+      final offers = settings.arguments as List<Offer>;
+      return MaterialPageRoute(
+        builder: (context) => OfferDeatailsView(
+          offers: offers,
+        ),
+      );
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

@@ -132,7 +132,7 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                             ),
                             Text(
                               offer.name!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
                               ),

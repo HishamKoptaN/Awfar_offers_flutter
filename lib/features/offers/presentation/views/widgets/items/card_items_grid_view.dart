@@ -5,13 +5,24 @@ import 'package:flutter/material.dart';
 import '../../../../data/models/offers_response_model.dart';
 
 class CardItemsGridView extends StatelessWidget {
-  CardItemsGridView({
+  const CardItemsGridView({
     super.key,
-    required this.offers,
+    required this.offersResponseModel,
+    required this.categories,
   });
-  List<Offer> offers;
+  final OffersResponseModel offersResponseModel;
+  final List<Category> categories;
+
   @override
   Widget build(context) {
+    List<Offer> offersList = [];
+
+    for (var category in categories) {
+      for (var offer in category.offers) {
+        offersList.add(offer);
+      }
+    }
+
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(), // Disable grid scroll
@@ -21,18 +32,24 @@ class CardItemsGridView extends StatelessWidget {
         mainAxisSpacing: 12,
         childAspectRatio: 0.58,
       ),
-      itemCount: offers.length,
+      itemCount: offersList.length,
       itemBuilder: (context, index) {
-        final offer = offers[index];
         return GestureDetector(
           onTap: () {
+            int storeId = offersList[index].storeId; // ضع هنا storeId المطلوب
+            final selectedStore = offersResponseModel.stores.firstWhere(
+              (store) => store.id == storeId,
+            );
             Navigator.pushNamed(
               context,
               OfferDeatailsView.routeName,
+              arguments: selectedStore.offers,
             );
           },
           child: CustomCardItem(
-            offer: offer,
+            offer: offersList[index],
+            stores: offersResponseModel.stores,
+            index: index,
           ),
         );
       },

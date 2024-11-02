@@ -8,9 +8,13 @@ class CustomCardItem extends StatefulWidget {
   const CustomCardItem({
     super.key,
     required this.offer,
+    required this.stores,
+    required this.index,
   });
 
   final Offer offer;
+  final List<Store> stores;
+  final int index;
 
   @override
   State<CustomCardItem> createState() => _CustomCardItemState();
@@ -21,6 +25,10 @@ class _CustomCardItemState extends State<CustomCardItem> {
 
   @override
   Widget build(BuildContext context) {
+    final store = widget.stores.firstWhere(
+      (store) => store.id == widget.offer.storeId,
+    );
+
     return Card(
       color: AppColors.primaryColor,
       elevation: 4,
@@ -38,17 +46,18 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   topRight: Radius.circular(16),
                 ),
                 child: Image.network(
-                  widget.offer.image!,
-                  height: 225.h,
+                  widget.offer.image,
+                  height: 260.h,
+                  width: double.infinity,
                   fit: BoxFit.fill,
                 ),
               ),
-              const Positioned(
+              Positioned(
                 top: 8,
                 right: 8,
                 child: Text(
-                  "+7",
-                  style: TextStyle(
+                  "+${widget.stores[widget.index].offersCount.toString()}",
+                  style: const TextStyle(
                     color: AppColors.lightPrimaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -61,7 +70,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 child: CustomMarkaItem(
                   radius1: 20,
                   radius2: 19,
-                  imageUrl: widget.offer.store!.image!,
+                  imageUrl: store.image,
                 ),
               ),
               Positioned(
@@ -72,11 +81,13 @@ class _CustomCardItemState extends State<CustomCardItem> {
                     borderRadius: BorderRadius.circular(6),
                     color: AppColors.yellowColor,
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      "11 أيام متبقية",
-                      style: TextStyle(fontSize: 10),
+                      widget.offer.daysRemaining == 0
+                          ? "ينتهي اليوم"
+                          : "${widget.offer.daysRemaining} أيام متبقية",
+                      style: const TextStyle(fontSize: 10),
                     ),
                   ),
                 ),
@@ -84,7 +95,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
             ],
           ),
           Positioned(
-            bottom: 24,
+            bottom: 28,
             left: 8,
             right: 8,
             child: SizedBox(
@@ -92,7 +103,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
               child: Row(
                 children: [
                   Text(
-                    widget.offer.name!,
+                    widget.offer.description,
                     style: const TextStyle(
                       color: AppColors.yellowColor,
                       fontSize: 12,
@@ -119,9 +130,9 @@ class _CustomCardItemState extends State<CustomCardItem> {
               width: MediaQuery.of(context).size.width / 2,
               child: Row(
                 children: [
-                  const Text(
-                    "رويال هاوس",
-                    style: TextStyle(
+                  Text(
+                    store.name,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
@@ -141,7 +152,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                             ? Icons.favorite_outlined
                             : Icons.favorite_border_outlined,
                         color: AppColors.lightPrimaryColor,
-                        size: 18,
+                        size: 22,
                       ),
                     ),
                   ),

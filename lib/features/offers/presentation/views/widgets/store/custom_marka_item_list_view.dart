@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 import '../../../../data/models/offers_response_model.dart';
 
 class CustomMarkaItemListView extends StatelessWidget {
-  CustomMarkaItemListView({
+  const CustomMarkaItemListView({
     super.key,
     required this.stores,
   });
-  List<Store>? stores;
+  final List<Store>? stores;
   @override
   Widget build(context) {
     return SizedBox(
       height: 46,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 1,
+        itemCount: stores?.length,
         itemBuilder: (context, index) {
           final store = stores![index];
           return Padding(

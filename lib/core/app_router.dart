@@ -12,5 +12,6 @@ class AppRouter {
       case 'settings':
       // return MaterialPageRoute(builder: (context) => AppLayout());
     }
+    return null;
   }
 }

@@ -14,7 +14,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeView extends State<HomeView> {
-  int currentIndex = 1;
+  int currentIndex = 0;
   final List<Widget> screens = [
     const OfferView(),
     const CategoriesView(brandName: ''),

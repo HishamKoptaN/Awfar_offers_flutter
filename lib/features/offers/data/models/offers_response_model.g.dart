@@ -9,10 +9,6 @@ part of 'offers_response_model.dart';
 _$OffersResponseModelImpl _$$OffersResponseModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OffersResponseModelImpl(
-      offers: (json['offers'] as List<dynamic>?)
-              ?.map((e) => Offer.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
       stores: (json['stores'] as List<dynamic>?)
               ?.map((e) => Store.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -26,7 +22,6 @@ _$OffersResponseModelImpl _$$OffersResponseModelImplFromJson(
 Map<String, dynamic> _$$OffersResponseModelImplToJson(
         _$OffersResponseModelImpl instance) =>
     <String, dynamic>{
-      'offers': instance.offers,
       'stores': instance.stores,
       'categories': instance.categories,
     };
@@ -37,6 +32,11 @@ _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String? ?? '',
       createdAt: json['created_at'] as String? ?? '',
       updatedAt: json['updated_at'] as String? ?? '',
+      offersCount: (json['offers_count'] as num?)?.toInt() ?? 0,
+      offers: (json['offers'] as List<dynamic>?)
+              ?.map((e) => Offer.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
@@ -45,6 +45,8 @@ Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
       'name': instance.name,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'offers_count': instance.offersCount,
+      'offers': instance.offers,
     };
 
 _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
@@ -55,12 +57,9 @@ _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
       categoryId: (json['category_id'] as num?)?.toInt() ?? 0,
       description: json['description'] as String? ?? '',
       image: json['image'] as String? ?? '',
-      endAt: json['end_at'],
+      daysRemaining: (json['days_remaining'] as num?)?.toInt() ?? 0,
       createdAt: json['created_at'] as String? ?? '',
       updatedAt: json['updated_at'] as String? ?? '',
-      store: json['store'] == null
-          ? null
-          : Store.fromJson(json['store'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
@@ -72,10 +71,9 @@ Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
       'category_id': instance.categoryId,
       'description': instance.description,
       'image': instance.image,
-      'end_at': instance.endAt,
+      'days_remaining': instance.daysRemaining,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
-      'store': instance.store,
     };
 
 _$StoreImpl _$$StoreImplFromJson(Map<String, dynamic> json) => _$StoreImpl(
@@ -84,9 +82,12 @@ _$StoreImpl _$$StoreImplFromJson(Map<String, dynamic> json) => _$StoreImpl(
       image: json['image'] as String? ?? '',
       countryId: (json['country_id'] as num?)?.toInt() ?? 0,
       governorateId: (json['governorate_id'] as num?)?.toInt() ?? 0,
-      place: json['place'] as String? ?? '',
-      createdAt: json['created_at'] as String? ?? '',
-      updatedAt: json['updated_at'] as String? ?? '',
+      place: json['place'] as String?,
+      offersCount: (json['offers_count'] as num?)?.toInt() ?? 0,
+      offers: (json['offers'] as List<dynamic>?)
+              ?.map((e) => Offer.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$StoreImplToJson(_$StoreImpl instance) =>
@@ -97,6 +98,6 @@ Map<String, dynamic> _$$StoreImplToJson(_$StoreImpl instance) =>
       'country_id': instance.countryId,
       'governorate_id': instance.governorateId,
       'place': instance.place,
-      'created_at': instance.createdAt,
-      'updated_at': instance.updatedAt,
+      'offers_count': instance.offersCount,
+      'offers': instance.offers,
     };

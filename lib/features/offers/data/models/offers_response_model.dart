@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
+
 part 'offers_response_model.freezed.dart';
 part 'offers_response_model.g.dart';
 
@@ -12,7 +13,6 @@ String offersResponseModelToJson(OffersResponseModel data) =>
 @freezed
 class OffersResponseModel with _$OffersResponseModel {
   const factory OffersResponseModel({
-    @JsonKey(name: "offers") @Default([]) List<Offer> offers,
     @JsonKey(name: "stores") @Default([]) List<Store> stores,
     @JsonKey(name: "categories") @Default([]) List<Category> categories,
   }) = _OffersResponseModel;
@@ -28,6 +28,8 @@ class Category with _$Category {
     @JsonKey(name: "name") @Default('') String name,
     @JsonKey(name: "created_at") @Default('') String createdAt,
     @JsonKey(name: "updated_at") @Default('') String updatedAt,
+    @JsonKey(name: "offers_count") @Default(0) int offersCount,
+    @JsonKey(name: "offers") @Default([]) List<Offer> offers,
   }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
@@ -44,10 +46,9 @@ class Offer with _$Offer {
     @JsonKey(name: "category_id") @Default(0) int categoryId,
     @JsonKey(name: "description") @Default('') String description,
     @JsonKey(name: "image") @Default('') String image,
-    @JsonKey(name: "end_at") dynamic endAt,
+    @JsonKey(name: "days_remaining") @Default(0) int daysRemaining,
     @JsonKey(name: "created_at") @Default('') String createdAt,
     @JsonKey(name: "updated_at") @Default('') String updatedAt,
-    @JsonKey(name: "store") Store? store,
   }) = _Offer;
 
   factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
@@ -61,9 +62,9 @@ class Store with _$Store {
     @JsonKey(name: "image") @Default('') String image,
     @JsonKey(name: "country_id") @Default(0) int countryId,
     @JsonKey(name: "governorate_id") @Default(0) int governorateId,
-    @JsonKey(name: "place") @Default('') String place,
-    @JsonKey(name: "created_at") @Default('') String createdAt,
-    @JsonKey(name: "updated_at") @Default('') String updatedAt,
+    @JsonKey(name: "place") String? place,
+    @JsonKey(name: "offers_count") @Default(0) int offersCount,
+    @JsonKey(name: "offers") @Default([]) List<Offer> offers,
   }) = _Store;
 
   factory Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);

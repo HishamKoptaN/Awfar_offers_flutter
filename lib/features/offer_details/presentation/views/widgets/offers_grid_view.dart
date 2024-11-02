@@ -1,11 +1,15 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
+import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:flutter/material.dart';
 
 class OffersGridView extends StatelessWidget {
   const OffersGridView({
     super.key,
+    required this.offers,
   });
+
+  final List<Offer> offers;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class OffersGridView extends StatelessWidget {
         mainAxisSpacing: 8,
         childAspectRatio: 2 / 3,
       ),
-      itemCount: 10,
+      itemCount: offers.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -26,28 +30,17 @@ class OffersGridView extends StatelessWidget {
               context,
               FullScreenOfOfferImage.routeName,
               arguments: {
-                'imageUrls': [
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                  'assets/images/royal_house.jpeg',
-                ], // List of image URLs
+                'imageUrls': offers, // List of image URLs
                 'initialIndex': index, // The initial index
               },
             );
           },
           child: Stack(children: [
-            const Card(
+            Card(
               child: Center(
                 child: Image(
-                  image: AssetImage(
-                    "assets/images/royal_house.jpeg",
+                  image: NetworkImage(
+                    offers[index].image,
                   ),
                 ),
               ),

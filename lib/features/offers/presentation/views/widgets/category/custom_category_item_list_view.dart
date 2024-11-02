@@ -7,8 +7,11 @@ class CustomCategoryItemListView extends StatefulWidget {
   const CustomCategoryItemListView({
     super.key,
     required this.categories,
+    required this.onCategorySelected,
   });
   final List<Category>? categories;
+  final Function(int) onCategorySelected; // وظيفة لإرجاع الـ ID المحدد
+
   @override
   State<CustomCategoryItemListView> createState() =>
       _CustomCategoryItemListViewState();
@@ -29,6 +32,7 @@ class _CustomCategoryItemListViewState
               setState(() {
                 _selectedIndex = -1;
               });
+              widget.onCategorySelected(-1);
             },
             child: Container(
               height: 40,
@@ -61,6 +65,7 @@ class _CustomCategoryItemListViewState
                       setState(() {
                         _selectedIndex = index;
                       });
+                      widget.onCategorySelected(category.id);
                     },
                     child: CustomCategoryItem(
                       category: category,
