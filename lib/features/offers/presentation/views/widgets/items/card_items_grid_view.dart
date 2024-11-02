@@ -43,7 +43,7 @@ class CardItemsGridView extends StatelessWidget {
             Navigator.pushNamed(
               context,
               OfferDeatailsView.routeName,
-              arguments: selectedStore.offers,
+              arguments: selectedStore,
             );
           },
           child: CustomCardItem(

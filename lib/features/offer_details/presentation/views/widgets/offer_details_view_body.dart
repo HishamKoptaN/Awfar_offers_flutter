@@ -6,9 +6,12 @@ import 'package:aroodi_app/features/offers/data/models/offers_response_model.dar
 import 'package:flutter/material.dart';
 
 class OfferDetailsViewBody extends StatelessWidget {
-  const OfferDetailsViewBody({super.key, required this.offers});
+  const OfferDetailsViewBody({
+    super.key,
+    required this.store,
+  });
 
-  final List<Offer> offers;
+  final Store store;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +21,16 @@ class OfferDetailsViewBody extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          const AppBarInOfferDetails(),
+          AppBarInOfferDetails(
+            title: store.name,
+            urlImage: store.image,
+          ),
           const ViewProductsWidgetButton(),
           const TextAndShareAndNotificationIcon(),
           const SizedBox(
             height: 24,
           ),
-          OffersGridView(offers: offers),
+          OffersGridView(offers: store.offers),
           const SizedBox(
             height: 24,
           ),

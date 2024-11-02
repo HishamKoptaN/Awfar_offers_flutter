@@ -5,37 +5,41 @@ import 'package:flutter/material.dart';
 class AppBarInOfferDetails extends StatelessWidget {
   const AppBarInOfferDetails({
     super.key,
+    required this.title,
+    required this.urlImage,
   });
+
+  final String title, urlImage;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CustomBackButton(),
-          SizedBox(
+          const CustomBackButton(),
+          const SizedBox(
             width: 8,
           ),
           CustomMarkaItem(
             radius1: 18,
             radius2: 16,
-            imageUrl: '',
+            imageUrl: urlImage,
           ),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           Text(
-            "رويال هاوس",
-            style: TextStyle(
+            title,
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
           ),
-          Spacer(),
-          Icon(
+          const Spacer(),
+          const Icon(
             Icons.search_outlined,
             size: 24,
             color: Colors.white,

@@ -44,10 +44,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const ProfileView());
     case OfferDeatailsView.routeName:
-      final offers = settings.arguments as List<Offer>;
+      final store = settings.arguments as Store;
       return MaterialPageRoute(
         builder: (context) => OfferDeatailsView(
-          offers: offers,
+          store: store,
         ),
       );
     default:
