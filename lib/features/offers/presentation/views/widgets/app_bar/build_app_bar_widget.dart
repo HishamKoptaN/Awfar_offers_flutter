@@ -201,7 +201,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                               vertical: 16, horizontal: 8),
                           child: Text(
                             country,
-                            style: TextStyles.normal14,
+                            style: TextStyles.bold14,
                           ),
                         ),
                       );
@@ -272,7 +272,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                               vertical: 16, horizontal: 8),
                           child: Text(
                             city,
-                            style: TextStyles.normal14,
+                            style: TextStyles.bold14,
                           ),
                         ),
                       );

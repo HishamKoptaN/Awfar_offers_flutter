@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import '../../../data/models/categories_response_model.dart';
 
 class ListViewAndGridView extends StatefulWidget {
-  ListViewAndGridView({
+  const ListViewAndGridView({
     super.key,
     required this.categories,
   });
-  List<CategoriesResponseModel> categories;
+  final List<CategoriesResponseModel> categories;
   @override
   State<ListViewAndGridView> createState() => _ListViewAndGridViewState();
 }
 
 class _ListViewAndGridViewState extends State<ListViewAndGridView> {
-  int? selectedCategoryId = 0;
+  int? selectedCategoryIndex = 0;
 
   @override
   void initState() {
@@ -37,12 +37,12 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                   onTap: () {
                     setState(
                       () {
-                        selectedCategoryId = widget
-                            .categories[index].id; // Update selected category
+                        selectedCategoryIndex =
+                            index; // Update selected category
                       },
                     );
                   },
-                  child: selectedCategoryId == widget.categories[index].id
+                  child: selectedCategoryIndex == index
                       ? ActiveCategory(
                           categoryName: widget.categories[index].name!,
                         )
@@ -63,7 +63,7 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      selectedCategoryId.toString(),
+                      widget.categories[selectedCategoryIndex!].name.toString(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -81,26 +81,25 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                         crossAxisCount: 3, // Number of columns in the grid
                         childAspectRatio: 0.70,
                       ),
-                      itemCount:
-                          widget.categories[selectedCategoryId!].offers!.length,
+                      itemCount: widget.categories[selectedCategoryIndex!]
+                          .subCategories?.length,
                       itemBuilder: (context, index) {
-                        final offer = widget
-                            .categories[selectedCategoryId!].offers![index];
+                        final subCategories = widget
+                            .categories[selectedCategoryIndex!]
+                            .subCategories![index];
                         return Column(
                           children: [
                             const SizedBox(
                               height: 8,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                print(index);
-                              },
+                              onTap: () {},
                               child: Stack(
                                 children: [
                                   CircleAvatar(
                                     backgroundColor: AppColors.darkPrimaryColor,
                                     backgroundImage: NetworkImage(
-                                      offer.image!,
+                                      subCategories.image!,
                                     ),
                                     radius: 34,
                                   ),
@@ -115,7 +114,8 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(4),
                                         child: Text(
-                                          offer.name!,
+                                          subCategories.offers!.length
+                                              .toString(),
                                           style: const TextStyle(
                                             fontSize: 9,
                                             color: Colors.black,
@@ -131,7 +131,7 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                               height: 2,
                             ),
                             Text(
-                              offer.name!,
+                              subCategories.name!,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,

@@ -13,8 +13,8 @@ _$CategoriesResponseModelImpl _$$CategoriesResponseModelImplFromJson(
       name: json['name'] as String?,
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,
-      offers: (json['offers'] as List<dynamic>?)
-          ?.map((e) => Offer.fromJson(e as Map<String, dynamic>))
+      subCategories: (json['sub_categories'] as List<dynamic>?)
+          ?.map((e) => SubCategories.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -25,7 +25,7 @@ Map<String, dynamic> _$$CategoriesResponseModelImplToJson(
       'name': instance.name,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
-      'offers': instance.offers,
+      'sub_categories': instance.subCategories,
     };
 
 _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
@@ -33,12 +33,13 @@ _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
       name: json['name'] as String?,
       status: json['status'] as String?,
       storeId: (json['store_id'] as num?)?.toInt(),
-      categoryId: (json['category_id'] as num?)?.toInt(),
+      subCategoryId: (json['sub_category_id'] as num?)?.toInt(),
       description: json['description'] as String?,
       image: json['image'] as String?,
-      endAt: json['end_at'],
+      endAt: (json['end_at'] as num?)?.toInt(),
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,
+      daysRemaining: (json['days_remaining'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
@@ -47,10 +48,35 @@ Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
       'name': instance.name,
       'status': instance.status,
       'store_id': instance.storeId,
-      'category_id': instance.categoryId,
+      'sub_category_id': instance.subCategoryId,
       'description': instance.description,
       'image': instance.image,
       'end_at': instance.endAt,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'days_remaining': instance.daysRemaining,
+    };
+
+_$SubCategoriesImpl _$$SubCategoriesImplFromJson(Map<String, dynamic> json) =>
+    _$SubCategoriesImpl(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      image: json['image'] as String?,
+      categoryId: (json['category_id'] as num?)?.toInt(),
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      offers: (json['offers'] as List<dynamic>?)
+          ?.map((e) => Offer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$SubCategoriesImplToJson(_$SubCategoriesImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'image': instance.image,
+      'category_id': instance.categoryId,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'offers': instance.offers,
     };

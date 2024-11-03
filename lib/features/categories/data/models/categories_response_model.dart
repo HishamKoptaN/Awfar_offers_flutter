@@ -22,7 +22,7 @@ class CategoriesResponseModel with _$CategoriesResponseModel {
     @JsonKey(name: "name") String? name,
     @JsonKey(name: "created_at") String? createdAt,
     @JsonKey(name: "updated_at") String? updatedAt,
-    @JsonKey(name: "offers") List<Offer>? offers,
+    @JsonKey(name: "sub_categories") List<SubCategories>? subCategories,
   }) = _CategoriesResponseModel;
 
   factory CategoriesResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -36,13 +36,30 @@ class Offer with _$Offer {
     @JsonKey(name: "name") String? name,
     @JsonKey(name: "status") String? status,
     @JsonKey(name: "store_id") int? storeId,
-    @JsonKey(name: "category_id") int? categoryId,
+    @JsonKey(name: "sub_category_id") int? subCategoryId,
     @JsonKey(name: "description") String? description,
     @JsonKey(name: "image") String? image,
-    @JsonKey(name: "end_at") dynamic endAt,
+    @JsonKey(name: "end_at") int? endAt,
     @JsonKey(name: "created_at") String? createdAt,
     @JsonKey(name: "updated_at") String? updatedAt,
+    @JsonKey(name: "days_remaining") int? daysRemaining,
   }) = _Offer;
 
   factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
+}
+
+@freezed
+class SubCategories with _$SubCategories {
+  const factory SubCategories({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "image") String? image,
+    @JsonKey(name: "category_id") int? categoryId,
+    @JsonKey(name: "created_at") String? createdAt,
+    @JsonKey(name: "updated_at") String? updatedAt,
+    @JsonKey(name: "offers") List<Offer>? offers,
+  }) = _SubCategories;
+
+  factory SubCategories.fromJson(Map<String, dynamic> json) =>
+      _$SubCategoriesFromJson(json);
 }
