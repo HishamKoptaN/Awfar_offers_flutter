@@ -30,6 +30,8 @@ _$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
     _$CategoryImpl(
       id: (json['id'] as num?)?.toInt() ?? 0,
       name: json['name'] as String? ?? '',
+      image: json['image'] as String? ?? '',
+      categoryId: (json['category_id'] as num?)?.toInt() ?? 0,
       createdAt: json['created_at'] as String? ?? '',
       updatedAt: json['updated_at'] as String? ?? '',
       offersCount: (json['offers_count'] as num?)?.toInt() ?? 0,
@@ -43,6 +45,8 @@ Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'image': instance.image,
+      'category_id': instance.categoryId,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'offers_count': instance.offersCount,
@@ -54,12 +58,13 @@ _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
       name: json['name'] as String? ?? '',
       status: json['status'] as String? ?? '',
       storeId: (json['store_id'] as num?)?.toInt() ?? 0,
-      categoryId: (json['category_id'] as num?)?.toInt() ?? 0,
+      subCategoryId: (json['sub_category_id'] as num?)?.toInt() ?? 0,
       description: json['description'] as String? ?? '',
       image: json['image'] as String? ?? '',
-      daysRemaining: (json['days_remaining'] as num?)?.toInt() ?? 0,
+      endAt: (json['end_at'] as num?)?.toInt() ?? 0,
       createdAt: json['created_at'] as String? ?? '',
       updatedAt: json['updated_at'] as String? ?? '',
+      daysRemaining: (json['days_remaining'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
@@ -68,12 +73,31 @@ Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>
       'name': instance.name,
       'status': instance.status,
       'store_id': instance.storeId,
-      'category_id': instance.categoryId,
+      'sub_category_id': instance.subCategoryId,
+      'description': instance.description,
+      'image': instance.image,
+      'end_at': instance.endAt,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'days_remaining': instance.daysRemaining,
+    };
+
+_$OfferStoreImpl _$$OfferStoreImplFromJson(Map<String, dynamic> json) =>
+    _$OfferStoreImpl(
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      name: json['name'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      image: json['image'] as String? ?? '',
+      daysRemaining: (json['days_remaining'] as num?)?.toInt() ?? 0,
+    );
+
+Map<String, dynamic> _$$OfferStoreImplToJson(_$OfferStoreImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
       'description': instance.description,
       'image': instance.image,
       'days_remaining': instance.daysRemaining,
-      'created_at': instance.createdAt,
-      'updated_at': instance.updatedAt,
     };
 
 _$StoreImpl _$$StoreImplFromJson(Map<String, dynamic> json) => _$StoreImpl(
@@ -85,7 +109,7 @@ _$StoreImpl _$$StoreImplFromJson(Map<String, dynamic> json) => _$StoreImpl(
       place: json['place'] as String?,
       offersCount: (json['offers_count'] as num?)?.toInt() ?? 0,
       offers: (json['offers'] as List<dynamic>?)
-              ?.map((e) => Offer.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => OfferStore.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );

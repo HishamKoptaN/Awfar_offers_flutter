@@ -222,6 +222,10 @@ mixin _$Category {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String get image => throw _privateConstructorUsedError;
+  @JsonKey(name: "category_id")
+  int get categoryId => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
@@ -249,6 +253,8 @@ abstract class $CategoryCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "name") String name,
+      @JsonKey(name: "image") String image,
+      @JsonKey(name: "category_id") int categoryId,
       @JsonKey(name: "created_at") String createdAt,
       @JsonKey(name: "updated_at") String updatedAt,
       @JsonKey(name: "offers_count") int offersCount,
@@ -272,6 +278,8 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? image = null,
+    Object? categoryId = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? offersCount = null,
@@ -286,6 +294,14 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryId: null == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -317,6 +333,8 @@ abstract class _$$CategoryImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "name") String name,
+      @JsonKey(name: "image") String image,
+      @JsonKey(name: "category_id") int categoryId,
       @JsonKey(name: "created_at") String createdAt,
       @JsonKey(name: "updated_at") String updatedAt,
       @JsonKey(name: "offers_count") int offersCount,
@@ -338,6 +356,8 @@ class __$$CategoryImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? image = null,
+    Object? categoryId = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? offersCount = null,
@@ -352,6 +372,14 @@ class __$$CategoryImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryId: null == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -378,6 +406,8 @@ class _$CategoryImpl implements _Category {
   const _$CategoryImpl(
       {@JsonKey(name: "id") this.id = 0,
       @JsonKey(name: "name") this.name = '',
+      @JsonKey(name: "image") this.image = '',
+      @JsonKey(name: "category_id") this.categoryId = 0,
       @JsonKey(name: "created_at") this.createdAt = '',
       @JsonKey(name: "updated_at") this.updatedAt = '',
       @JsonKey(name: "offers_count") this.offersCount = 0,
@@ -393,6 +423,12 @@ class _$CategoryImpl implements _Category {
   @override
   @JsonKey(name: "name")
   final String name;
+  @override
+  @JsonKey(name: "image")
+  final String image;
+  @override
+  @JsonKey(name: "category_id")
+  final int categoryId;
   @override
   @JsonKey(name: "created_at")
   final String createdAt;
@@ -413,7 +449,7 @@ class _$CategoryImpl implements _Category {
 
   @override
   String toString() {
-    return 'Category(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, offersCount: $offersCount, offers: $offers)';
+    return 'Category(id: $id, name: $name, image: $image, categoryId: $categoryId, createdAt: $createdAt, updatedAt: $updatedAt, offersCount: $offersCount, offers: $offers)';
   }
 
   @override
@@ -423,6 +459,9 @@ class _$CategoryImpl implements _Category {
             other is _$CategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -434,8 +473,16 @@ class _$CategoryImpl implements _Category {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, createdAt, updatedAt,
-      offersCount, const DeepCollectionEquality().hash(_offers));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      image,
+      categoryId,
+      createdAt,
+      updatedAt,
+      offersCount,
+      const DeepCollectionEquality().hash(_offers));
 
   /// Create a copy of Category
   /// with the given fields replaced by the non-null parameter values.
@@ -457,6 +504,8 @@ abstract class _Category implements Category {
   const factory _Category(
       {@JsonKey(name: "id") final int id,
       @JsonKey(name: "name") final String name,
+      @JsonKey(name: "image") final String image,
+      @JsonKey(name: "category_id") final int categoryId,
       @JsonKey(name: "created_at") final String createdAt,
       @JsonKey(name: "updated_at") final String updatedAt,
       @JsonKey(name: "offers_count") final int offersCount,
@@ -471,6 +520,12 @@ abstract class _Category implements Category {
   @override
   @JsonKey(name: "name")
   String get name;
+  @override
+  @JsonKey(name: "image")
+  String get image;
+  @override
+  @JsonKey(name: "category_id")
+  int get categoryId;
   @override
   @JsonKey(name: "created_at")
   String get createdAt;
@@ -506,18 +561,20 @@ mixin _$Offer {
   String get status => throw _privateConstructorUsedError;
   @JsonKey(name: "store_id")
   int get storeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "category_id")
-  int get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "sub_category_id")
+  int get subCategoryId => throw _privateConstructorUsedError;
   @JsonKey(name: "description")
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
   String get image => throw _privateConstructorUsedError;
-  @JsonKey(name: "days_remaining")
-  int get daysRemaining => throw _privateConstructorUsedError;
+  @JsonKey(name: "end_at")
+  int get endAt => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
   String get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "days_remaining")
+  int get daysRemaining => throw _privateConstructorUsedError;
 
   /// Serializes this Offer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -538,12 +595,13 @@ abstract class $OfferCopyWith<$Res> {
       @JsonKey(name: "name") String name,
       @JsonKey(name: "status") String status,
       @JsonKey(name: "store_id") int storeId,
-      @JsonKey(name: "category_id") int categoryId,
+      @JsonKey(name: "sub_category_id") int subCategoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
-      @JsonKey(name: "days_remaining") int daysRemaining,
+      @JsonKey(name: "end_at") int endAt,
       @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt});
+      @JsonKey(name: "updated_at") String updatedAt,
+      @JsonKey(name: "days_remaining") int daysRemaining});
 }
 
 /// @nodoc
@@ -565,12 +623,13 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
     Object? name = null,
     Object? status = null,
     Object? storeId = null,
-    Object? categoryId = null,
+    Object? subCategoryId = null,
     Object? description = null,
     Object? image = null,
-    Object? daysRemaining = null,
+    Object? endAt = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? daysRemaining = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -589,9 +648,9 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.storeId
           : storeId // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
+      subCategoryId: null == subCategoryId
+          ? _value.subCategoryId
+          : subCategoryId // ignore: cast_nullable_to_non_nullable
               as int,
       description: null == description
           ? _value.description
@@ -601,9 +660,9 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      daysRemaining: null == daysRemaining
-          ? _value.daysRemaining
-          : daysRemaining // ignore: cast_nullable_to_non_nullable
+      endAt: null == endAt
+          ? _value.endAt
+          : endAt // ignore: cast_nullable_to_non_nullable
               as int,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -613,6 +672,10 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -629,12 +692,13 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
       @JsonKey(name: "name") String name,
       @JsonKey(name: "status") String status,
       @JsonKey(name: "store_id") int storeId,
-      @JsonKey(name: "category_id") int categoryId,
+      @JsonKey(name: "sub_category_id") int subCategoryId,
       @JsonKey(name: "description") String description,
       @JsonKey(name: "image") String image,
-      @JsonKey(name: "days_remaining") int daysRemaining,
+      @JsonKey(name: "end_at") int endAt,
       @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "updated_at") String updatedAt});
+      @JsonKey(name: "updated_at") String updatedAt,
+      @JsonKey(name: "days_remaining") int daysRemaining});
 }
 
 /// @nodoc
@@ -654,12 +718,13 @@ class __$$OfferImplCopyWithImpl<$Res>
     Object? name = null,
     Object? status = null,
     Object? storeId = null,
-    Object? categoryId = null,
+    Object? subCategoryId = null,
     Object? description = null,
     Object? image = null,
-    Object? daysRemaining = null,
+    Object? endAt = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? daysRemaining = null,
   }) {
     return _then(_$OfferImpl(
       id: null == id
@@ -678,9 +743,9 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.storeId
           : storeId // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: null == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
+      subCategoryId: null == subCategoryId
+          ? _value.subCategoryId
+          : subCategoryId // ignore: cast_nullable_to_non_nullable
               as int,
       description: null == description
           ? _value.description
@@ -690,9 +755,9 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      daysRemaining: null == daysRemaining
-          ? _value.daysRemaining
-          : daysRemaining // ignore: cast_nullable_to_non_nullable
+      endAt: null == endAt
+          ? _value.endAt
+          : endAt // ignore: cast_nullable_to_non_nullable
               as int,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -702,6 +767,10 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -714,12 +783,13 @@ class _$OfferImpl implements _Offer {
       @JsonKey(name: "name") this.name = '',
       @JsonKey(name: "status") this.status = '',
       @JsonKey(name: "store_id") this.storeId = 0,
-      @JsonKey(name: "category_id") this.categoryId = 0,
+      @JsonKey(name: "sub_category_id") this.subCategoryId = 0,
       @JsonKey(name: "description") this.description = '',
       @JsonKey(name: "image") this.image = '',
-      @JsonKey(name: "days_remaining") this.daysRemaining = 0,
+      @JsonKey(name: "end_at") this.endAt = 0,
       @JsonKey(name: "created_at") this.createdAt = '',
-      @JsonKey(name: "updated_at") this.updatedAt = ''});
+      @JsonKey(name: "updated_at") this.updatedAt = '',
+      @JsonKey(name: "days_remaining") this.daysRemaining = 0});
 
   factory _$OfferImpl.fromJson(Map<String, dynamic> json) =>
       _$$OfferImplFromJson(json);
@@ -737,8 +807,8 @@ class _$OfferImpl implements _Offer {
   @JsonKey(name: "store_id")
   final int storeId;
   @override
-  @JsonKey(name: "category_id")
-  final int categoryId;
+  @JsonKey(name: "sub_category_id")
+  final int subCategoryId;
   @override
   @JsonKey(name: "description")
   final String description;
@@ -746,18 +816,21 @@ class _$OfferImpl implements _Offer {
   @JsonKey(name: "image")
   final String image;
   @override
-  @JsonKey(name: "days_remaining")
-  final int daysRemaining;
+  @JsonKey(name: "end_at")
+  final int endAt;
   @override
   @JsonKey(name: "created_at")
   final String createdAt;
   @override
   @JsonKey(name: "updated_at")
   final String updatedAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  final int daysRemaining;
 
   @override
   String toString() {
-    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, categoryId: $categoryId, description: $description, image: $image, daysRemaining: $daysRemaining, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Offer(id: $id, name: $name, status: $status, storeId: $storeId, subCategoryId: $subCategoryId, description: $description, image: $image, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt, daysRemaining: $daysRemaining)';
   }
 
   @override
@@ -769,23 +842,35 @@ class _$OfferImpl implements _Offer {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.storeId, storeId) || other.storeId == storeId) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
+            (identical(other.subCategoryId, subCategoryId) ||
+                other.subCategoryId == subCategoryId) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.daysRemaining, daysRemaining) ||
-                other.daysRemaining == daysRemaining) &&
+            (identical(other.endAt, endAt) || other.endAt == endAt) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.daysRemaining, daysRemaining) ||
+                other.daysRemaining == daysRemaining));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, status, storeId,
-      categoryId, description, image, daysRemaining, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      status,
+      storeId,
+      subCategoryId,
+      description,
+      image,
+      endAt,
+      createdAt,
+      updatedAt,
+      daysRemaining);
 
   /// Create a copy of Offer
   /// with the given fields replaced by the non-null parameter values.
@@ -809,12 +894,13 @@ abstract class _Offer implements Offer {
       @JsonKey(name: "name") final String name,
       @JsonKey(name: "status") final String status,
       @JsonKey(name: "store_id") final int storeId,
-      @JsonKey(name: "category_id") final int categoryId,
+      @JsonKey(name: "sub_category_id") final int subCategoryId,
       @JsonKey(name: "description") final String description,
       @JsonKey(name: "image") final String image,
-      @JsonKey(name: "days_remaining") final int daysRemaining,
+      @JsonKey(name: "end_at") final int endAt,
       @JsonKey(name: "created_at") final String createdAt,
-      @JsonKey(name: "updated_at") final String updatedAt}) = _$OfferImpl;
+      @JsonKey(name: "updated_at") final String updatedAt,
+      @JsonKey(name: "days_remaining") final int daysRemaining}) = _$OfferImpl;
 
   factory _Offer.fromJson(Map<String, dynamic> json) = _$OfferImpl.fromJson;
 
@@ -831,8 +917,269 @@ abstract class _Offer implements Offer {
   @JsonKey(name: "store_id")
   int get storeId;
   @override
-  @JsonKey(name: "category_id")
-  int get categoryId;
+  @JsonKey(name: "sub_category_id")
+  int get subCategoryId;
+  @override
+  @JsonKey(name: "description")
+  String get description;
+  @override
+  @JsonKey(name: "image")
+  String get image;
+  @override
+  @JsonKey(name: "end_at")
+  int get endAt;
+  @override
+  @JsonKey(name: "created_at")
+  String get createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  String get updatedAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  int get daysRemaining;
+
+  /// Create a copy of Offer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OfferImplCopyWith<_$OfferImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OfferStore _$OfferStoreFromJson(Map<String, dynamic> json) {
+  return _OfferStore.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OfferStore {
+  @JsonKey(name: "id")
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "name")
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "description")
+  String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String get image => throw _privateConstructorUsedError;
+  @JsonKey(name: "days_remaining")
+  int get daysRemaining => throw _privateConstructorUsedError;
+
+  /// Serializes this OfferStore to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OfferStore
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OfferStoreCopyWith<OfferStore> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OfferStoreCopyWith<$Res> {
+  factory $OfferStoreCopyWith(
+          OfferStore value, $Res Function(OfferStore) then) =
+      _$OfferStoreCopyWithImpl<$Res, OfferStore>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int id,
+      @JsonKey(name: "name") String name,
+      @JsonKey(name: "description") String description,
+      @JsonKey(name: "image") String image,
+      @JsonKey(name: "days_remaining") int daysRemaining});
+}
+
+/// @nodoc
+class _$OfferStoreCopyWithImpl<$Res, $Val extends OfferStore>
+    implements $OfferStoreCopyWith<$Res> {
+  _$OfferStoreCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OfferStore
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? description = null,
+    Object? image = null,
+    Object? daysRemaining = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OfferStoreImplCopyWith<$Res>
+    implements $OfferStoreCopyWith<$Res> {
+  factory _$$OfferStoreImplCopyWith(
+          _$OfferStoreImpl value, $Res Function(_$OfferStoreImpl) then) =
+      __$$OfferStoreImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int id,
+      @JsonKey(name: "name") String name,
+      @JsonKey(name: "description") String description,
+      @JsonKey(name: "image") String image,
+      @JsonKey(name: "days_remaining") int daysRemaining});
+}
+
+/// @nodoc
+class __$$OfferStoreImplCopyWithImpl<$Res>
+    extends _$OfferStoreCopyWithImpl<$Res, _$OfferStoreImpl>
+    implements _$$OfferStoreImplCopyWith<$Res> {
+  __$$OfferStoreImplCopyWithImpl(
+      _$OfferStoreImpl _value, $Res Function(_$OfferStoreImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OfferStore
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? description = null,
+    Object? image = null,
+    Object? daysRemaining = null,
+  }) {
+    return _then(_$OfferStoreImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      daysRemaining: null == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OfferStoreImpl implements _OfferStore {
+  const _$OfferStoreImpl(
+      {@JsonKey(name: "id") this.id = 0,
+      @JsonKey(name: "name") this.name = '',
+      @JsonKey(name: "description") this.description = '',
+      @JsonKey(name: "image") this.image = '',
+      @JsonKey(name: "days_remaining") this.daysRemaining = 0});
+
+  factory _$OfferStoreImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OfferStoreImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final int id;
+  @override
+  @JsonKey(name: "name")
+  final String name;
+  @override
+  @JsonKey(name: "description")
+  final String description;
+  @override
+  @JsonKey(name: "image")
+  final String image;
+  @override
+  @JsonKey(name: "days_remaining")
+  final int daysRemaining;
+
+  @override
+  String toString() {
+    return 'OfferStore(id: $id, name: $name, description: $description, image: $image, daysRemaining: $daysRemaining)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OfferStoreImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.daysRemaining, daysRemaining) ||
+                other.daysRemaining == daysRemaining));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, description, image, daysRemaining);
+
+  /// Create a copy of OfferStore
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OfferStoreImplCopyWith<_$OfferStoreImpl> get copyWith =>
+      __$$OfferStoreImplCopyWithImpl<_$OfferStoreImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfferStoreImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OfferStore implements OfferStore {
+  const factory _OfferStore(
+          {@JsonKey(name: "id") final int id,
+          @JsonKey(name: "name") final String name,
+          @JsonKey(name: "description") final String description,
+          @JsonKey(name: "image") final String image,
+          @JsonKey(name: "days_remaining") final int daysRemaining}) =
+      _$OfferStoreImpl;
+
+  factory _OfferStore.fromJson(Map<String, dynamic> json) =
+      _$OfferStoreImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  int get id;
+  @override
+  @JsonKey(name: "name")
+  String get name;
   @override
   @JsonKey(name: "description")
   String get description;
@@ -842,18 +1189,12 @@ abstract class _Offer implements Offer {
   @override
   @JsonKey(name: "days_remaining")
   int get daysRemaining;
-  @override
-  @JsonKey(name: "created_at")
-  String get createdAt;
-  @override
-  @JsonKey(name: "updated_at")
-  String get updatedAt;
 
-  /// Create a copy of Offer
+  /// Create a copy of OfferStore
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OfferImplCopyWith<_$OfferImpl> get copyWith =>
+  _$$OfferStoreImplCopyWith<_$OfferStoreImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -878,7 +1219,7 @@ mixin _$Store {
   @JsonKey(name: "offers_count")
   int get offersCount => throw _privateConstructorUsedError;
   @JsonKey(name: "offers")
-  List<Offer> get offers => throw _privateConstructorUsedError;
+  List<OfferStore> get offers => throw _privateConstructorUsedError;
 
   /// Serializes this Store to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -902,7 +1243,7 @@ abstract class $StoreCopyWith<$Res> {
       @JsonKey(name: "governorate_id") int governorateId,
       @JsonKey(name: "place") String? place,
       @JsonKey(name: "offers_count") int offersCount,
-      @JsonKey(name: "offers") List<Offer> offers});
+      @JsonKey(name: "offers") List<OfferStore> offers});
 }
 
 /// @nodoc
@@ -961,7 +1302,7 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
       offers: null == offers
           ? _value.offers
           : offers // ignore: cast_nullable_to_non_nullable
-              as List<Offer>,
+              as List<OfferStore>,
     ) as $Val);
   }
 }
@@ -981,7 +1322,7 @@ abstract class _$$StoreImplCopyWith<$Res> implements $StoreCopyWith<$Res> {
       @JsonKey(name: "governorate_id") int governorateId,
       @JsonKey(name: "place") String? place,
       @JsonKey(name: "offers_count") int offersCount,
-      @JsonKey(name: "offers") List<Offer> offers});
+      @JsonKey(name: "offers") List<OfferStore> offers});
 }
 
 /// @nodoc
@@ -1038,7 +1379,7 @@ class __$$StoreImplCopyWithImpl<$Res>
       offers: null == offers
           ? _value._offers
           : offers // ignore: cast_nullable_to_non_nullable
-              as List<Offer>,
+              as List<OfferStore>,
     ));
   }
 }
@@ -1054,7 +1395,7 @@ class _$StoreImpl implements _Store {
       @JsonKey(name: "governorate_id") this.governorateId = 0,
       @JsonKey(name: "place") this.place,
       @JsonKey(name: "offers_count") this.offersCount = 0,
-      @JsonKey(name: "offers") final List<Offer> offers = const []})
+      @JsonKey(name: "offers") final List<OfferStore> offers = const []})
       : _offers = offers;
 
   factory _$StoreImpl.fromJson(Map<String, dynamic> json) =>
@@ -1081,10 +1422,10 @@ class _$StoreImpl implements _Store {
   @override
   @JsonKey(name: "offers_count")
   final int offersCount;
-  final List<Offer> _offers;
+  final List<OfferStore> _offers;
   @override
   @JsonKey(name: "offers")
-  List<Offer> get offers {
+  List<OfferStore> get offers {
     if (_offers is EqualUnmodifiableListView) return _offers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_offers);
@@ -1151,7 +1492,7 @@ abstract class _Store implements Store {
       @JsonKey(name: "governorate_id") final int governorateId,
       @JsonKey(name: "place") final String? place,
       @JsonKey(name: "offers_count") final int offersCount,
-      @JsonKey(name: "offers") final List<Offer> offers}) = _$StoreImpl;
+      @JsonKey(name: "offers") final List<OfferStore> offers}) = _$StoreImpl;
 
   factory _Store.fromJson(Map<String, dynamic> json) = _$StoreImpl.fromJson;
 
@@ -1178,7 +1519,7 @@ abstract class _Store implements Store {
   int get offersCount;
   @override
   @JsonKey(name: "offers")
-  List<Offer> get offers;
+  List<OfferStore> get offers;
 
   /// Create a copy of Store
   /// with the given fields replaced by the non-null parameter values.

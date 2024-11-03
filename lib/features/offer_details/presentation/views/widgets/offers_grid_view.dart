@@ -9,7 +9,7 @@ class OffersGridView extends StatelessWidget {
     required this.offers,
   });
 
-  final List<Offer> offers;
+  final List<OfferStore> offers;
 
   @override
   Widget build(BuildContext context) {
