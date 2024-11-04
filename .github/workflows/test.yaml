@@ -35,38 +35,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with: 
           flutter-version: '3.24.4'
-      
-      - name: Increment versionCode and versionName
-        id: version
-        run: |
-          # قراءة المعلومات من ملف version_info.txt أو تعيين القيم الافتراضية
-          if [ -f version_info.txt ]; then
-              read -r version_name version_code < version_info.txt
-          else
-              version_name="1.0.0"
-              version_code="1"
-          fi
-          
-          # زيادة versionCode
-          new_version_code=$((version_code + 1))
-          
-          # زيادة versionName (patch)
-          major_version=$(echo "$version_name" | cut -d. -f1)
-          minor_version=$(echo "$version_name" | cut -d. -f2)
-          patch_version=$(echo "$version_name" | cut -d. -f3)
-          new_patch_version=$((patch_version + 1))
-          new_version_name="${major_version}.${minor_version}.${new_patch_version}"
-          
-          # تحديث pubspec.yaml بإصدار جديد
-          sed -i "s/^version: .*/version: ${new_version_name}+${new_version_code}/" pubspec.yaml
-          
-          # حفظ الأرقام الجديدة في ملف version_info.txt
-          echo "$new_version_name $new_version_code" > version_info.txt
-          
-          # تعيين المتغيرات البيئية لتكون متاحة للمراحل الأخرى
-          echo "versionName=$new_version_name" >> $GITHUB_ENV
-          echo "versionCode=$new_version_code" >> $GITHUB_ENV    
-
+     
       - name: Cache Pub Packages
         uses: actions/cache@v2
         with:
