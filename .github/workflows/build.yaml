@@ -51,71 +51,65 @@ jobs:
       - name: Upload Release APK to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: 1:630596450299:android:1eab30b838ee19393ffd5e
-          serviceCredentialsFileContent: '{
-            "type": "service_account",
-            "project_id": "awfar-offers",
-            "private_key_id": "e8baca782102c6f3d93c8f356a0c46f1b2079dee",
-            "private_key": "-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqBEsrAUYZAgJY\\n6WzefahzRIyp3O0+VxZhtlzT8tVojNvvhA0svNGHtFcx280K5sghtTQsXwJ/k3LV\\ne0vvgnswL4st8jtwoObguDgniXGuL+iMd6F4GPMIUtkvIGLXB4AxBEp38rMmuibP\\nQPpQbr1cFznu4XlE0roHDjomL2sCC28FC6SBnKoETfhYVUY6PkcO9Q2npLIPj/A2\\n6qeGlxJoUlFL9anU+cwZBbxV8u8MpatghQJ+mbLuEDtZZPH1rNODrU8rH5qhyqWl\\n4omZUPCTlMaWYK5lkX3mcMTbONLyV89kJvKe1RHwTBHrACWATqPJITEhLu/43lB+\\nZpE95o21AgMBAAECggEABNLtXRGCryf28BXjcGapVmfuA83Qb3HiITCe7qaXtok0\\nnlWlWA0ddte/l5sQdMw6hnZRPicN95ez7Om8LFYL78CRluKmHBp8ooinkzubnaEf\\nXIjybGlsz+Il5mfpVgeQ9BMWl9OrkKA8hKnn0EtsFQZVrvj3y2OdQqD9NmMnCp5D\\nicWQeekm7A0A4V67LUeu8nwThkiQ4tktJzSTy2v6KHEepgCpgC8CjA4EdlMjnyE7\\n+Cc9f7M5yxsXjrSaIj8RKv+Tq/qu+5IHEooyk99VE2njHkvl16pmHWlt/1E1noX2\\nsiOqm3KW6HM77MW1oT0YKwRez2i974vKX31od+Cm+wKBgQDlwHJx1SsTUjsoWixv\\nEhvMAdaLYMkFbv7UfpJ+RcTGkkZiQcFcaLPlwRkTtmVyUm3fkstX2nYKlcXcA8eF\\nnxoFrXbj4ePuYq2KDiyBkeOYo3NzWS31GkMY0mp9392tJvMJSjicG+x3Y9d2tkQz\\nl0lT7mn0x8cqJi/LRMJaVQcuSwKBgQC9cMbe52sSgMwgr4inPt6lbk/c4kbUA1Zk\\nJstBI6qiyWlU1L67B9ccghyihML63cHMTQrfK8iWvwJZB4iE7vK0OIuLoZG5A9hA\\nnfAczsmoyT47U+llB9BjCgmGahWQQFWH7bBIdANU80bHZcunKWuLueA3fgTO8D/7\\nPWODwoOz/wKBgDhSfzvMqCyqYfo4cOAhrlLKuI+egGkmlq39AWiXLfAH990qhX5j\\n5IYUWlNsyV3HO0wtrk+xLHLX2JNhEc59/GEb7yNaQwgzhJttchepbgQDPdAvMob9\\nkylIm/aTpMJH5BiI62vJpKR4A2AEup9zHPTIY40wVHDOv7Sy/HoskgAVAoGAKMrA\\nB/+M7s8NJXym0FyZVMYMLGQNHFoboDU6Tyx+8c6s/7dP2rY1e84InHY6Bgr6UCPG\\n04d6CfvXZZRZsUZCvMvwQIDqAAzz4/YeXhWpFs8+t0e6Wib0mF7w7iCpxAYWZM6p\\nxvA0R3abJxSkZbpljhDYVxqrrmPNYyw04YphEcECgYEA3IWnaKJ4/hoHjDLxl4w+\\nbjWBhMCl1MGD9VFfRHxYJapow41W9BvCNqxn6ZQtClBzgnYuwbSK+oEX1CHp6MPK\\nPRtbX2NswUbkqaioBS97K4TfWCZSOWEXcjIM5Q0UFHq2O85T/MC1Xnv6N/Cj1uHG\\nhFlmyZ5BscHTugiGct9Wf6o=\\n-----END PRIVATE KEY-----\\n",
-            "client_email": "firebase-adminsdk-httdp@awfar-offers.iam.gserviceaccount.com",
-            "client_id": "100716014264651739940",
-            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-            "token_uri": "https://oauth2.googleapis.com/token",
-            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-httdp%40awfar-offers.iam.gserviceaccount.com",
-            "universe_domain": "googleapis.com"
-           }'
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: app-release.apk
           file: build/app/outputs/flutter-apk/app-release.apk
           debug: false
           releaseNotes: "app-release.apk"
-
-    
       #! app-armeabi-v7a-release.apk
-      # - name: Upload app-armeabi-v7a-release.apk to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: app-armeabi-v7a-release.apk                           
-      #     file: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
-      #     releaseNotes: "app-armeabi-v7a-release.apk"
-      # #! app-arm64-v8a-release.apk
-      # - name: Upload app-arm64-v8a-release.apk to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: app-arm64-v8a-release.apk                   
-      #     file: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-      #     releaseNotes: "app-arm64-v8a-release.apk"
-      # #! app-profile.apk  
-      # - name: Upload app-profile.apk to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: app-profile.apk
-      #     file: build/app/outputs/flutter-apk/app-profile.apk
-      #     debug: false
-      #     releaseNotes: "app-profile.apk"
-      # #! app-x86_64-release.apk
-      # - name: Upload app-x86_64-release.apk to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{ secrets.FIREBASE_APP_ID }}
-      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-      #     groups: app-x86_64-release.apk
-      #     file: build/app/outputs/flutter-apk/app-x86_64-release.apk          
-      #     releaseNotes: "app-x86_64-release.apk"
-      # #! 8. إرسال إشارة لتوزيع النسخ
-      # - name: Trigger Distribution Workflow
-      #   run: |
-      #    curl -X POST \
-      #      -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-      #      -H "Accept: application/vnd.github.v3+json" \
-      #      https://api.github.com/repos/${{ github.repository }}/dispatches \
-      #      -d '{"event_type": "distribute"}'    
+      - name: Upload app-armeabi-v7a-release.apk to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: app-armeabi-v7a-release.apk                           
+          file: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          releaseNotes: "app-armeabi-v7a-release.apk"
+      #! app-arm64-v8a-release.apk
+      - name: Upload app-arm64-v8a-release.apk to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: app-arm64-v8a-release.apk                   
+          file: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          releaseNotes: "app-arm64-v8a-release.apk"
+      #! app-profile.apk  
+      - name: Upload app-profile.apk to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: app-profile.apk
+          file: build/app/outputs/flutter-apk/app-profile.apk
+          debug: false
+          releaseNotes: "app-profile.apk"
+      #! app-x86_64-release.apk
+      - name: Upload app-x86_64-release.apk to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: app-x86_64-release.apk
+          file: build/app/outputs/flutter-apk/app-x86_64-release.apk          
+          releaseNotes: "app-x86_64-release.apk"
+   
+   
+   
+   
+   
+   
+   
+   
+          #   # #! 8. إرسال إشارة لتوزيع النسخ
+    #   - name: Trigger Distribution Workflow
+    #     run: |
+    #      curl -X POST \
+    #        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+    #        -H "Accept: application/vnd.github.v3+json" \
+    #        https://api.github.com/repos/${{ github.repository }}/dispatches \
+    #        -d '{"event_type": "distribute"}'    
 
 # name: Upload to Firebase App Distribution
 
