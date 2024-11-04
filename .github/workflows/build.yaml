@@ -23,6 +23,12 @@ jobs:
         with:
           path: ~/.flutter
           key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
+      #!
+      - name: Cache Pub Packages
+        uses: actions/cache@v2
+        with:
+            path: ~/.pub-cache
+            key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.yaml') }}    
       #! 4. تثبيت Flutter
       - name: Install Flutter
         run: |
@@ -48,6 +54,15 @@ jobs:
           flutter build apk --split-per-abi
       # ! 8. توزيع نسخ التطبيق 
       # ! app-release.apk
+      - name: Upload app-release.aab to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: app-release.aab
+          file: build/app/outputs/bundle/release/app-release.aab
+          debug: false
+          releaseNotes: "app-release.aab"
       - name: Upload Release APK to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
