@@ -1,4 +1,4 @@
-# aroodi_app
+# awfar_offers
 
 A new Flutter project.
 
