@@ -122,9 +122,6 @@ class _SearchViewBodyState extends State<SearchViewBody> {
                   onTap: () {
                     // You can handle what happens when a search term is clicked here
                     // For example, you can navigate to another screen
-                    print(
-                      'Selected: ${filteredSearchTerms[index]}',
-                    );
                   },
                 );
               },

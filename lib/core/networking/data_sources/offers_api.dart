@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import '../../../../../core/networking/api_constants.dart';
-import '../models/offers_response_model.dart';
+import '../../../../core/networking/api_constants.dart';
+import '../../../features/offers/data/models/offers_response_model.dart';
 part 'offers_api.g.dart';
 
 @RestApi(

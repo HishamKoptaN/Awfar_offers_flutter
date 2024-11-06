@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OffersEvent {
+  String get governorateId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOffersEvent,
+    required TResult Function(String governorateId) getOffersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOffersEvent,
+    TResult? Function(String governorateId)? getOffersEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOffersEvent,
+    TResult Function(String governorateId)? getOffersEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,12 @@ mixin _$OffersEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OffersEventCopyWith<OffersEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ abstract class $OffersEventCopyWith<$Res> {
   factory $OffersEventCopyWith(
           OffersEvent value, $Res Function(OffersEvent) then) =
       _$OffersEventCopyWithImpl<$Res, OffersEvent>;
+  @useResult
+  $Res call({String governorateId});
 }
 
 /// @nodoc
@@ -69,13 +78,29 @@ class _$OffersEventCopyWithImpl<$Res, $Val extends OffersEvent>
 
   /// Create a copy of OffersEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? governorateId = null,
+  }) {
+    return _then(_value.copyWith(
+      governorateId: null == governorateId
+          ? _value.governorateId
+          : governorateId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetOffersImplCopyWith<$Res> {
+abstract class _$$GetOffersImplCopyWith<$Res>
+    implements $OffersEventCopyWith<$Res> {
   factory _$$GetOffersImplCopyWith(
           _$GetOffersImpl value, $Res Function(_$GetOffersImpl) then) =
       __$$GetOffersImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String governorateId});
 }
 
 /// @nodoc
@@ -88,51 +113,77 @@ class __$$GetOffersImplCopyWithImpl<$Res>
 
   /// Create a copy of OffersEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? governorateId = null,
+  }) {
+    return _then(_$GetOffersImpl(
+      governorateId: null == governorateId
+          ? _value.governorateId
+          : governorateId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetOffersImpl implements _GetOffers {
-  const _$GetOffersImpl();
+  const _$GetOffersImpl({required this.governorateId});
+
+  @override
+  final String governorateId;
 
   @override
   String toString() {
-    return 'OffersEvent.getOffersEvent()';
+    return 'OffersEvent.getOffersEvent(governorateId: $governorateId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetOffersImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetOffersImpl &&
+            (identical(other.governorateId, governorateId) ||
+                other.governorateId == governorateId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, governorateId);
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetOffersImplCopyWith<_$GetOffersImpl> get copyWith =>
+      __$$GetOffersImplCopyWithImpl<_$GetOffersImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getOffersEvent,
+    required TResult Function(String governorateId) getOffersEvent,
   }) {
-    return getOffersEvent();
+    return getOffersEvent(governorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getOffersEvent,
+    TResult? Function(String governorateId)? getOffersEvent,
   }) {
-    return getOffersEvent?.call();
+    return getOffersEvent?.call(governorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getOffersEvent,
+    TResult Function(String governorateId)? getOffersEvent,
     required TResult orElse(),
   }) {
     if (getOffersEvent != null) {
-      return getOffersEvent();
+      return getOffersEvent(governorateId);
     }
     return orElse();
   }
@@ -167,5 +218,16 @@ class _$GetOffersImpl implements _GetOffers {
 }
 
 abstract class _GetOffers implements OffersEvent {
-  const factory _GetOffers() = _$GetOffersImpl;
+  const factory _GetOffers({required final String governorateId}) =
+      _$GetOffersImpl;
+
+  @override
+  String get governorateId;
+
+  /// Create a copy of OffersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetOffersImplCopyWith<_$GetOffersImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
