@@ -30,7 +30,7 @@ class OfferDetailsViewBody extends StatelessWidget {
           const SizedBox(
             height: 24,
           ),
-          OffersGridView(offers: store.offers),
+          OffersGridView(store: store),
           const SizedBox(
             height: 24,
           ),
