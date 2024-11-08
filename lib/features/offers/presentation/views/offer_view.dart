@@ -1,3 +1,4 @@
+import 'package:aroodi_app/core/networking/shared_pref.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/aroodi_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,9 @@ class OfferView extends StatelessWidget {
         body: BlocProvider(
           create: (context) => getIt<OffersBloc>()
             ..add(
-              const OffersEvent.getOffersEvent(),
+              OffersEvent.getOffersEvent(
+                governorateId: Prefs.getInt("countryId").toString(),
+              ),
             ),
           child: BlocConsumer<OffersBloc, OffersState>(
             listener: (context, state) {},

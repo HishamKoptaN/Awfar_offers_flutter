@@ -1,5 +1,6 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/core/widgets/custom_back_button.dart';
+import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -7,11 +8,11 @@ import 'package:photo_view/photo_view_gallery.dart';
 class FullScreenOfOfferImage extends StatefulWidget {
   const FullScreenOfOfferImage({
     super.key,
-    required this.imageUrls,
+    required this.store,
     required this.initialIndex,
   });
 
-  final List<String> imageUrls;
+  final Store store;
   final int initialIndex;
 
   static const String routeName = 'full_screen_of_offer_image';
@@ -38,30 +39,30 @@ class _FullScreenOfOfferImageState extends State<FullScreenOfOfferImage> {
             const SizedBox(
               height: 8,
             ),
-            const Row(
+            Row(
               children: [
-                CustomBackButton(),
-                SizedBox(
+                const CustomBackButton(),
+                const SizedBox(
                   width: 8,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "رويال هاوس",
-                      style: TextStyle(
+                      widget.store.name,
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
                     Text(
-                      "عروض خاصة",
-                      style: TextStyle(
+                      widget.store.offers[0].description,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 10,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "26 سبتمبر 2024 - 20 أكتوبر 2024",
                       style: TextStyle(
                         color: Colors.white,
@@ -79,10 +80,10 @@ class _FullScreenOfOfferImageState extends State<FullScreenOfOfferImage> {
               height: MediaQuery.of(context).size.height * 0.75,
               child: PhotoViewGallery.builder(
                 pageController: _pageController,
-                itemCount: widget.imageUrls.length,
+                itemCount: widget.store.offers.length,
                 builder: (context, index) {
                   return PhotoViewGalleryPageOptions(
-                    imageProvider: AssetImage(widget.imageUrls[index]),
+                    imageProvider: AssetImage(widget.store.offers[index].image),
                     minScale: PhotoViewComputedScale.contained * 0.8,
                     maxScale: PhotoViewComputedScale.covered * 2,
                   );

@@ -44,7 +44,7 @@ class CustomCategoryItem extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: Text(
-                    category.offersCount.toString(),
+                    category.offers.length.toString(),
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),

@@ -1,3 +1,6 @@
+import 'package:aroodi_app/core/networking/shared_pref.dart';
+import 'package:aroodi_app/features/get_countries_and_cities/logic/get_cit_cubit.dart';
+import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +19,7 @@ void main() async {
   MobileAds.instance.initialize();
   await Injection.inject();
   Bloc.observer = AppBlocObserver();
+  await Prefs.init();
   runApp(
     const AroodiApp(),
   );
@@ -32,28 +36,39 @@ class AroodiApp extends StatelessWidget {
   Widget build(context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return ScreenUtilInit(
-      designSize: Size(
-        width,
-        height,
-      ),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      child: MaterialApp(
-        theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.darkPrimaryColor,
+    return MultiBlocProvider(
+      providers: [
+        // Add all the blocs you want to provide
+        BlocProvider(
+          create: (context) => getIt<GetCountriesCubit>()..getCountries(),
         ),
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        locale: const Locale('ar'),
-        supportedLocales: S.delegate.supportedLocales,
-        onGenerateRoute: onGenerateRoute,
-        initialRoute: HomeView.routeName,
+        BlocProvider(
+          create: (context) => getIt<GetCityCubit>()..getCity(),
+        ),
+      ],
+      child: ScreenUtilInit(
+        designSize: Size(
+          width,
+          height,
+        ),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: MaterialApp(
+          theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.darkPrimaryColor,
+          ),
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          locale: const Locale('ar'),
+          supportedLocales: S.delegate.supportedLocales,
+          onGenerateRoute: onGenerateRoute,
+          initialRoute: HomeView.routeName,
+        ),
       ),
     );
   }

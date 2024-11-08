@@ -5,16 +5,15 @@ import 'offers_state.dart';
 
 class OffersBloc extends Bloc<OffersEvent, OffersState> {
   final GetOffersUseCase getOffersUseCase;
-  OffersBloc(
-    this.getOffersUseCase,
-  ) : super(const OffersState.initialState()) {
+
+  OffersBloc(this.getOffersUseCase) : super(const OffersState.initialState()) {
     on<OffersEvent>(
       (event, emit) async {
+        // Mark the event handler as async
         await event.when(
-          getOffersEvent: () async {
-            final result = await getOffersUseCase.getOffers(
-              governorateId: '1',
-            );
+          getOffersEvent: (governorateId) async {
+            final result =
+                await getOffersUseCase.getOffers(governorateId: governorateId);
             await result.when(
               success: (offersResponseModel) async {
                 emit(
@@ -23,7 +22,7 @@ class OffersBloc extends Bloc<OffersEvent, OffersState> {
                   ),
                 );
               },
-              failure: (error) async {
+              failure: (error) {
                 emit(
                   OffersState.failure(
                     error: error.error!,

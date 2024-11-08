@@ -25,12 +25,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case FullScreenOfOfferImage.routeName:
       final args = settings.arguments as Map<String, dynamic>;
-      final imageUrls = args['imageUrls'] as List<String>;
+      final store = args['store'] as Store;
       final initialIndex = args['initialIndex'] as int;
 
       return MaterialPageRoute(
         builder: (context) => FullScreenOfOfferImage(
-          imageUrls: imageUrls,
+          store: store,
           initialIndex: initialIndex,
         ),
       );

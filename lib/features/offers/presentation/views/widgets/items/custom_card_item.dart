@@ -56,7 +56,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 top: 8,
                 right: 8,
                 child: Text(
-                  "+${widget.stores[widget.index].offersCount.toString()}",
+                  "+${store.offers.length.toString()}",
                   style: const TextStyle(
                     color: AppColors.lightPrimaryColor,
                     fontWeight: FontWeight.bold,
