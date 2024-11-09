@@ -5,13 +5,15 @@ class IconAndTextWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.iconData,
+    required this.onTap,
   });
   final String title;
   final IconData iconData;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Column(
         children: [
           Icon(

@@ -36,10 +36,23 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
 
     case SearchView.routeName:
-      return MaterialPageRoute(builder: (context) => const SearchView());
+      final args = settings.arguments as Map<String, dynamic>;
+      final isBack = args['isBack'] as bool;
+      final searchLabel = args['searchLabel'] as String;
+
+      return MaterialPageRoute(
+        builder: (context) => SearchView(
+          isBack: isBack,
+          searchLabel: searchLabel,
+        ),
+      );
 
     case SettingsView.routeName:
-      return MaterialPageRoute(builder: (context) => const SettingsView());
+      return MaterialPageRoute(
+        builder: (context) => SettingsView(
+          isBack: settings.arguments as bool,
+        ),
+      );
 
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const ProfileView());

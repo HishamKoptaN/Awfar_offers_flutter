@@ -83,7 +83,8 @@ class _FullScreenOfOfferImageState extends State<FullScreenOfOfferImage> {
                 itemCount: widget.store.offers.length,
                 builder: (context, index) {
                   return PhotoViewGalleryPageOptions(
-                    imageProvider: AssetImage(widget.store.offers[index].image),
+                    imageProvider:
+                        NetworkImage(widget.store.offers[index].image),
                     minScale: PhotoViewComputedScale.contained * 0.8,
                     maxScale: PhotoViewComputedScale.covered * 2,
                   );
