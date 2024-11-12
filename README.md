@@ -1,7 +1,7 @@
-# aroodi_app
+# awfar_offers
 
 A new Flutter project.
-
+version 1.1
 ## Getting Started
 
 This project is a starting point for a Flutter application.

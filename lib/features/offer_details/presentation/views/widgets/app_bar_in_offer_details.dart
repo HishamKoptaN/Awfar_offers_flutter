@@ -1,5 +1,6 @@
 import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
 import 'package:aroodi_app/core/widgets/custom_back_button.dart';
+import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 
 class AppBarInOfferDetails extends StatelessWidget {
@@ -39,10 +40,22 @@ class AppBarInOfferDetails extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          const Icon(
-            Icons.search_outlined,
-            size: 24,
-            color: Colors.white,
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                SearchView.routeName,
+                arguments: {
+                  "isBack": true,
+                  "searchLabel": "بحث في $title",
+                },
+              );
+            },
+            icon: const Icon(
+              Icons.search_outlined,
+              size: 24,
+              color: Colors.white,
+            ),
           ),
         ],
       ),

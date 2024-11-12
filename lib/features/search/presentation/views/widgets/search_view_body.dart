@@ -3,7 +3,13 @@ import 'package:aroodi_app/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class SearchViewBody extends StatefulWidget {
-  const SearchViewBody({super.key});
+  const SearchViewBody({
+    super.key,
+    required this.isBack,
+    required this.searchLabel,
+  });
+  final bool isBack;
+  final String searchLabel;
 
   @override
   State<SearchViewBody> createState() => _SearchViewBodyState();
@@ -71,11 +77,11 @@ class _SearchViewBodyState extends State<SearchViewBody> {
         children: [
           Row(
             children: [
-              const CustomBackButton(),
+              widget.isBack ? const CustomBackButton() : const SizedBox(),
               Expanded(
                 child: CustomTextFormField(
                   controller: searchController,
-                  hintText: "بحث",
+                  hintText: widget.searchLabel,
                   textInputType: TextInputType.text,
                 ),
               ),

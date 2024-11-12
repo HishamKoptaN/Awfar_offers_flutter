@@ -18,8 +18,13 @@ class _HomeView extends State<HomeView> {
   final List<Widget> screens = [
     const OfferView(),
     const CategoriesView(brandName: ''),
-    const SearchView(),
-    const SettingsView(),
+    const SearchView(
+      isBack: false,
+      searchLabel: "بحث",
+    ),
+    const SettingsView(
+      isBack: false,
+    ),
     const ProfileView(),
   ];
 

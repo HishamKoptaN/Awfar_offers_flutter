@@ -43,7 +43,11 @@ class ProfileViewBody extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, SettingsView.routeName);
+                    Navigator.pushNamed(
+                      context,
+                      SettingsView.routeName,
+                      arguments: true,
+                    );
                   },
                   icon: const Icon(
                     Icons.settings,
@@ -56,24 +60,34 @@ class ProfileViewBody extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconAndTextWidget(
                   iconData: Icons.login_outlined,
                   title: "تسجيل الدخول",
+                  onTap: () {},
                 ),
                 IconAndTextWidget(
                   iconData: Icons.notifications_none_outlined,
                   title: "إشعار",
+                  onTap: () {},
                 ),
                 IconAndTextWidget(
                   iconData: Icons.bookmark_outline_outlined,
                   title: "الإشارات المرجعية",
+                  onTap: () {},
                 ),
                 IconAndTextWidget(
                   iconData: Icons.settings_outlined,
                   title: "الإعدادات",
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      SettingsView.routeName,
+                      arguments: true,
+                    );
+                  },
                 ),
               ],
             ),

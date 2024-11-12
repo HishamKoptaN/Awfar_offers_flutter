@@ -1,3 +1,4 @@
+import 'package:aroodi_app/core/widgets/custom_back_button.dart';
 import 'package:aroodi_app/core/widgets/custom_divider_widget.dart';
 import 'package:aroodi_app/features/settings/presentation/views/widgets/card_in_settings.dart';
 import 'package:aroodi_app/features/settings/presentation/views/widgets/custom_setting_widget.dart';
@@ -5,30 +6,40 @@ import 'package:aroodi_app/features/settings/presentation/views/widgets/default_
 import 'package:flutter/material.dart';
 
 class SettingsViewBody extends StatelessWidget {
-  const SettingsViewBody({super.key});
+  const SettingsViewBody({super.key, required this.isBack});
+
+  final bool isBack;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(
-                "الإعدادات",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                children: [
+                  isBack ? const CustomBackButton() : const SizedBox(),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text(
+                    "الإعدادات",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: CardInSettings(
                 title: "المظهر",
@@ -36,7 +47,7 @@ class SettingsViewBody extends StatelessWidget {
                 iconWidget: DefaultModeIconsWidget(),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: CardInSettings(
                 title: "بلد",
@@ -47,7 +58,7 @@ class SettingsViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: CardInSettings(
                 title: "لغة / Language",
@@ -55,38 +66,38 @@ class SettingsViewBody extends StatelessWidget {
                 iconWidget: SizedBox(),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            CustomSettingWidget(
+            const CustomSettingWidget(
               title: "شارك التطبيق",
             ),
-            CustomDividerWidget(),
-            CustomSettingWidget(
+            const CustomDividerWidget(),
+            const CustomSettingWidget(
               title: "قيم",
             ),
-            CustomDividerWidget(),
-            CustomSettingWidget(
+            const CustomDividerWidget(),
+            const CustomSettingWidget(
               title: "إعدادات الإشعارات",
             ),
-            CustomDividerWidget(),
-            CustomSettingWidget(
+            const CustomDividerWidget(),
+            const CustomSettingWidget(
               title: "إتصل بنا",
             ),
-            CustomDividerWidget(),
-            CustomSettingWidget(
+            const CustomDividerWidget(),
+            const CustomSettingWidget(
               title: "اقتراحات",
             ),
-            CustomDividerWidget(),
-            CustomSettingWidget(
+            const CustomDividerWidget(),
+            const CustomSettingWidget(
               title: "الشروط والأحكام",
             ),
-            CustomDividerWidget(),
-            CustomSettingWidget(
+            const CustomDividerWidget(),
+            const CustomSettingWidget(
               title: "السياسة والخصوصية",
             ),
-            CustomDividerWidget(),
-            Padding(
+            const CustomDividerWidget(),
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Row(
                 children: [
@@ -110,8 +121,8 @@ class SettingsViewBody extends StatelessWidget {
                 ],
               ),
             ),
-            CustomDividerWidget(),
-            SizedBox(
+            const CustomDividerWidget(),
+            const SizedBox(
               height: 8,
             ),
           ],
