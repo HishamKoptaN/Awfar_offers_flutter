@@ -4,7 +4,8 @@ on:
   # workflow_dispatch:
     push:
       branches:
-        - main  # استبدل 'main' بالفرع الذي ترغب في تفعيله
+        - master 
+         # استبدل 'main' بالفرع الذي ترغب في تفعيله
 jobs:
   build:
     runs-on: ubuntu-latest
