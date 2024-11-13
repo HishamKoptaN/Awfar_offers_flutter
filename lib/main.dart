@@ -26,7 +26,8 @@ void main() async {
 }
 
 Future<bool> hasInternetConnection() async {
-  var connectivityResult = (Connectivity().checkConnectivity(),);
+  var connectivityResult = (Connectivity().checkConnectivity(),
+  );
   return connectivityResult != ConnectivityResult.none;
 }
 
