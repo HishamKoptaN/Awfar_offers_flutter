@@ -11,8 +11,10 @@ class FullScreenOfOfferImage extends StatefulWidget {
     required this.store,
     required this.initialIndex,
   });
+
   final Store store;
   final int initialIndex;
+
   static const String routeName = 'full_screen_of_offer_image';
   @override
   State<FullScreenOfOfferImage> createState() => _FullScreenOfOfferImageState();
