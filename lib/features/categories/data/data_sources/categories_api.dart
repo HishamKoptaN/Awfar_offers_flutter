@@ -12,6 +12,7 @@ abstract class CategoriesApi {
     Dio dio, {
     String baseUrl,
   }) = _CategoriesApi;
+  // ! get getCategories
   @GET(
     ApiConstants.categories,
   )

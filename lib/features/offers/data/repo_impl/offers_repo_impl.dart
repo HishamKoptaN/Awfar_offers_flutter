@@ -11,7 +11,7 @@ class OffersRepoImpl implements OffersRepo {
   );
   @override
   Future<ApiResult<OffersResponseModel>> getOffers({
-    required String governorateId,
+    required int governorateId,
   }) async {
     try {
       final response = await offersApi.getOffers(

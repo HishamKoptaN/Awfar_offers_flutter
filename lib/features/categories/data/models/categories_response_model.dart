@@ -22,11 +22,27 @@ class CategoriesResponseModel with _$CategoriesResponseModel {
     @JsonKey(name: "name") String? name,
     @JsonKey(name: "created_at") String? createdAt,
     @JsonKey(name: "updated_at") String? updatedAt,
-    @JsonKey(name: "sub_categories") List<SubCategories>? subCategories,
+    @JsonKey(name: "sub_categories") List<SubCategory>? subCategories,
   }) = _CategoriesResponseModel;
 
   factory CategoriesResponseModel.fromJson(Map<String, dynamic> json) =>
       _$CategoriesResponseModelFromJson(json);
+}
+
+@freezed
+class SubCategory with _$SubCategory {
+  const factory SubCategory({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "image") String? image,
+    @JsonKey(name: "category_id") int? categoryId,
+    @JsonKey(name: "created_at") dynamic createdAt,
+    @JsonKey(name: "updated_at") String? updatedAt,
+    @JsonKey(name: "offers") List<Offer>? offers,
+  }) = _SubCategory;
+
+  factory SubCategory.fromJson(Map<String, dynamic> json) =>
+      _$SubCategoryFromJson(json);
 }
 
 @freezed
@@ -39,27 +55,11 @@ class Offer with _$Offer {
     @JsonKey(name: "sub_category_id") int? subCategoryId,
     @JsonKey(name: "description") String? description,
     @JsonKey(name: "image") String? image,
-    @JsonKey(name: "end_at") int? endAt,
+    @JsonKey(name: "end_at") DateTime? endAt,
     @JsonKey(name: "created_at") String? createdAt,
     @JsonKey(name: "updated_at") String? updatedAt,
     @JsonKey(name: "days_remaining") int? daysRemaining,
   }) = _Offer;
 
   factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
-}
-
-@freezed
-class SubCategories with _$SubCategories {
-  const factory SubCategories({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name") String? name,
-    @JsonKey(name: "image") String? image,
-    @JsonKey(name: "category_id") int? categoryId,
-    @JsonKey(name: "created_at") String? createdAt,
-    @JsonKey(name: "updated_at") String? updatedAt,
-    @JsonKey(name: "offers") List<Offer>? offers,
-  }) = _SubCategories;
-
-  factory SubCategories.fromJson(Map<String, dynamic> json) =>
-      _$SubCategoriesFromJson(json);
 }

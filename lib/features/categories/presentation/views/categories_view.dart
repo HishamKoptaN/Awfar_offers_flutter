@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
 import '../bloc/categories_bloc.dart';
-import '../bloc/categories_event.dart';
 import '../bloc/categories_state.dart';
 
 class CategoriesView extends StatelessWidget {
@@ -21,18 +20,15 @@ class CategoriesView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: BlocProvider(
-          create: (context) => getIt<CategoriesBloc>()
-            ..add(
-              const CategoriesEvent.getCategoriesEvent(),
-            ),
+          create: (context) => getIt<CategoriesBloc>(),
           child: BlocConsumer<CategoriesBloc, CategoriesState>(
             listener: (context, state) {},
             builder: (context, state) {
               return state.maybeWhen(
-                categoriesloaded: (categoriesResponseModel) {
+                categoriesloaded: (categories) {
                   return CategoryViewBody(
                     brandName: brandName,
-                    categoriesResponseModel: categoriesResponseModel,
+                    categories: categories,
                   );
                 },
                 orElse: () {

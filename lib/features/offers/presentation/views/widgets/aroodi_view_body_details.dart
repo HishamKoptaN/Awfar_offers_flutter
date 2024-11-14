@@ -2,41 +2,42 @@ import 'package:aroodi_app/features/offers/presentation/views/widgets/category/c
 import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import '../../../../admobe/banner_ad.dart';
 import '../../../data/models/offers_response_model.dart';
-import 'items/card_items_grid_view.dart';
+import 'items/offers_card_items_grid_view.dart';
 
 class AroodiViewBodyDetails extends StatefulWidget {
-  const AroodiViewBodyDetails({
+  AroodiViewBodyDetails({
     super.key,
     required this.offersResponseModel,
   });
-  final OffersResponseModel offersResponseModel;
-
+  OffersResponseModel offersResponseModel;
   @override
   State<AroodiViewBodyDetails> createState() => _AroodiViewBodyDetailsState();
 }
 
 class _AroodiViewBodyDetailsState extends State<AroodiViewBodyDetails> {
-  int _selectedCategoryId = -1;
+  int? _selectedCategoryId;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedCategoryId = widget.offersResponseModel.categories!.first.id;
+  }
+
   @override
   Widget build(context) {
-    final filteredCategories = _selectedCategoryId == -1
-        ? widget.offersResponseModel.categories // إظهار جميع الفئات
-        : widget.offersResponseModel.categories
-            .where((category) => category.id == _selectedCategoryId)
-            .toList(); // إظهار العروض المتوافقة
-
     return SingleChildScrollView(
       child: Column(
         children: [
           CustomCategoryItemListView(
             categories: widget.offersResponseModel.categories,
             onCategorySelected: (id) {
-              setState(() {
-                _selectedCategoryId = id;
-              });
+              setState(
+                () {
+                  _selectedCategoryId = id;
+                },
+              );
             },
           ),
           const SizedBox(
@@ -48,9 +49,16 @@ class _AroodiViewBodyDetailsState extends State<AroodiViewBodyDetails> {
           const SizedBox(
             height: 8,
           ),
-          CardItemsGridView(
+          OffersItemsGridView(
             offersResponseModel: widget.offersResponseModel,
-            categories: filteredCategories,
+            offers: _selectedCategoryId != null
+                ? widget.offersResponseModel.offers!
+                    .where(
+                      (offer) =>
+                          offer.subCategory!.categoryId == _selectedCategoryId,
+                    )
+                    .toList()
+                : widget.offersResponseModel.offers!,
           ),
           const SizedBox(
             height: 16,

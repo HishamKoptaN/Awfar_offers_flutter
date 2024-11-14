@@ -9,6 +9,8 @@ class OffersState with _$OffersState {
     required OffersResponseModel offersResponseModel,
   }) = _OffersLoaded;
   const factory OffersState.loading() = _Loading;
-  const factory OffersState.failure({required String error}) = _Failure;
+  const factory OffersState.failure({
+    required String error,
+  }) = _Failure;
   const factory OffersState.success() = _Success;
 }

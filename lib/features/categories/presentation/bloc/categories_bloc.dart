@@ -14,12 +14,12 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
       (event, emit) async {
         await event.when(
           getCategoriesEvent: () async {
-            final result = await getCategoriesUseCase.getCategoriesApi();
+            final result = await getCategoriesUseCase.getCategories();
             await result.when(
               success: (response) async {
                 emit(
                   CategoriesState.categoriesloaded(
-                    categoriesResponseModel: response,
+                    categories: response,
                   ),
                 );
               },

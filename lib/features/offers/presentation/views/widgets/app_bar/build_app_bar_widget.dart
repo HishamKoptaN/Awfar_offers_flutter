@@ -16,6 +16,8 @@ import 'package:aroodi_app/features/get_countries_and_cities/logic/get_city_stat
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_state.dart';
 
+import '../../../../../../core/database/cache/shared_pref_keys.dart';
+
 class BuildAppBarWidget extends StatefulWidget {
   const BuildAppBarWidget({super.key});
 
@@ -24,20 +26,25 @@ class BuildAppBarWidget extends StatefulWidget {
 }
 
 class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
-  String selectedCountry = 'مصر';
-  String selectedCity = Prefs.getString("cityName");
-  String? selectedCountryCode = Prefs.getString("countryCode");
-  int selectedCountryId = Prefs.getInt("countryId");
+  String selectedCountry = 'EG';
+  String selectedCity = Prefs.getString(
+    SharedPrefKeys.cityName,
+  );
+  String? selectedCountryCode = Prefs.getString(
+    SharedPrefKeys.countryCode,
+  );
+  int selectedCountryId = Prefs.getInt(
+    SharedPrefKeys.countryId,
+  );
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<OffersBloc, OffersState>(
-      listener: (context, state) {
-        // if (state is loading) {
-        //   // Handle new data loaded if necessary, or just trigger a rebuild
-        //   setState(() {});
-        // }
-      },
+      listener: (context, state) {},
       child: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
         child: Row(
@@ -84,7 +91,9 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
         } else if (state is GetCountriesSuccess) {
           return GestureDetector(
             onTap: () {
-              _showCountrySelection(state.getCountriesModel);
+              _showCountrySelection(
+                state.getCountriesModel,
+              );
             },
             child: selectedCountryCode != null
                 ? CountryFlag.fromCountryCode(
@@ -118,7 +127,9 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
         } else if (state is GetCitySuccess) {
           return GestureDetector(
             onTap: () {
-              _showCitySelection(state.getCityModel);
+              _showCitySelection(
+                state.getCityModel,
+              );
             },
             child: Text(
               selectedCity,
@@ -160,13 +171,21 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        setState(() {
-                          selectedCity = 'اختر المدينة';
-                          selectedCountryCode = countries[index].code;
-                          selectedCountryId = countries[index].id;
-                          Prefs.setInt("countryId", selectedCountryId);
-                          Prefs.setString("countryCode", selectedCountryCode!);
-                        });
+                        setState(
+                          () {
+                            selectedCity = 'اختر المدينة';
+                            selectedCountryCode = countries[index].code;
+                            selectedCountryId = countries[index].id;
+                            Prefs.setInt(
+                              SharedPrefKeys.countryId,
+                              selectedCountryId,
+                            );
+                            Prefs.setString(
+                              SharedPrefKeys.countryCode,
+                              selectedCountryCode!,
+                            );
+                          },
+                        );
                         Navigator.pop(context);
                       },
                       child: Padding(
@@ -190,12 +209,15 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
 
   void _showCitySelection(List<GetCityModel> cities) {
     List<GetCityModel> filteredCities = cities
-        .where((city) => city.countryId == Prefs.getInt("countryId"))
+        .where((city) =>
+            city.countryId ==
+            Prefs.getInt(
+              SharedPrefKeys.countryId,
+            ))
         .toList();
-
     showModalBottomSheet(
       context: context,
-      builder: (BuildContext context) {
+      builder: (context) {
         return Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -215,14 +237,21 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () async {
-                        setState(() {
-                          selectedCity = filteredCities[index].name;
-                          Prefs.setString("cityName", selectedCity);
-                        });
+                        setState(
+                          () {
+                            selectedCity = filteredCities[index].name;
+                            Prefs.setString(
+                              SharedPrefKeys.cityName,
+                              selectedCity,
+                            );
+                          },
+                        );
                         Navigator.pop(context);
                         getIt<OffersBloc>().add(
-                          OffersEvent.getOffersEvent(
-                            governorateId: Prefs.getInt("countryId").toString(),
+                          OffersEvent.getOffers(
+                            governorateId: Prefs.getInt(
+                              SharedPrefKeys.countryId,
+                            ),
                           ),
                         );
                       },

@@ -8,7 +8,7 @@ class GetOffersUseCase {
     this.offersRepo,
   );
   Future<ApiResult<OffersResponseModel>> getOffers({
-    required String governorateId,
+    required int governorateId,
   }) async {
     return await offersRepo.getOffers(
       governorateId: governorateId,

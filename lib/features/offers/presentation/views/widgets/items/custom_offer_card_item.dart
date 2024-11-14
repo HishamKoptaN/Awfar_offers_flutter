@@ -1,20 +1,16 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
+import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../data/models/offers_response_model.dart';
 
 class CustomCardItem extends StatefulWidget {
   const CustomCardItem({
     super.key,
-    required this.offer,
-    required this.stores,
-    required this.index,
+    required this.offersResponseModelOffer,
   });
 
-  final Offer offer;
-  final List<Store> stores;
-  final int index;
+  final OffersResponseModelOffer offersResponseModelOffer;
 
   @override
   State<CustomCardItem> createState() => _CustomCardItemState();
@@ -25,10 +21,6 @@ class _CustomCardItemState extends State<CustomCardItem> {
 
   @override
   Widget build(BuildContext context) {
-    final store = widget.stores.firstWhere(
-      (store) => store.id == widget.offer.storeId,
-    );
-
     return Card(
       color: AppColors.primaryColor,
       elevation: 4,
@@ -46,7 +38,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   topRight: Radius.circular(16),
                 ),
                 child: Image.network(
-                  widget.offer.image,
+                  widget.offersResponseModelOffer.image!,
                   height: 260.h,
                   width: double.infinity,
                   fit: BoxFit.fill,
@@ -56,7 +48,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 top: 8,
                 right: 8,
                 child: Text(
-                  "+${store.offers.length.toString()}",
+                  "+${widget.offersResponseModelOffer.store!.offersCount!}",
                   style: const TextStyle(
                     color: AppColors.lightPrimaryColor,
                     fontWeight: FontWeight.bold,
@@ -70,7 +62,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 child: CustomMarkaItem(
                   radius1: 20,
                   radius2: 19,
-                  imageUrl: store.image,
+                  imageUrl: widget.offersResponseModelOffer.store!.name!,
                 ),
               ),
               Positioned(
@@ -84,9 +76,9 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      widget.offer.daysRemaining == 0
+                      widget.offersResponseModelOffer.daysRemaining == 0
                           ? "ينتهي اليوم"
-                          : "${widget.offer.daysRemaining} أيام متبقية",
+                          : "${widget.offersResponseModelOffer.daysRemaining} أيام متبقية",
                       style: const TextStyle(fontSize: 10),
                     ),
                   ),
@@ -103,7 +95,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
               child: Row(
                 children: [
                   Text(
-                    widget.offer.description,
+                    widget.offersResponseModelOffer.description!,
                     style: const TextStyle(
                       color: AppColors.yellowColor,
                       fontSize: 12,
@@ -131,7 +123,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
               child: Row(
                 children: [
                   Text(
-                    store.name,
+                    widget.offersResponseModelOffer.store!.name!,
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

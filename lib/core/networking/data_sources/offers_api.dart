@@ -19,6 +19,6 @@ abstract class OffersApi {
     @Path(
       'governorateId',
     )
-    required String governorateId,
+    required int governorateId,
   });
 }

@@ -1,5 +1,5 @@
+import 'package:aroodi_app/features/categories/data/models/categories_response_model.dart';
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/categories_response_model.dart';
 import '../repo/categories_repo.dart';
 
 class GetCategoriesUseCase {
@@ -7,7 +7,7 @@ class GetCategoriesUseCase {
   GetCategoriesUseCase(
     this.categoriesRepo,
   );
-  Future<ApiResult<List<CategoriesResponseModel>>> getCategoriesApi() async {
+  Future<ApiResult<List<CategoriesResponseModel>>> getCategories() async {
     return await categoriesRepo.getCategories();
   }
 }

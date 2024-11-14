@@ -16,36 +16,36 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OffersEvent {
-  String get governorateId => throw _privateConstructorUsedError;
+  int get governorateId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String governorateId) getOffersEvent,
+    required TResult Function(int governorateId) getOffers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String governorateId)? getOffersEvent,
+    TResult? Function(int governorateId)? getOffers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String governorateId)? getOffersEvent,
+    TResult Function(int governorateId)? getOffers,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetOffers value) getOffersEvent,
+    required TResult Function(_GetOffers value) getOffers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetOffers value)? getOffersEvent,
+    TResult? Function(_GetOffers value)? getOffers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetOffers value)? getOffersEvent,
+    TResult Function(_GetOffers value)? getOffers,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ abstract class $OffersEventCopyWith<$Res> {
           OffersEvent value, $Res Function(OffersEvent) then) =
       _$OffersEventCopyWithImpl<$Res, OffersEvent>;
   @useResult
-  $Res call({String governorateId});
+  $Res call({int governorateId});
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class _$OffersEventCopyWithImpl<$Res, $Val extends OffersEvent>
       governorateId: null == governorateId
           ? _value.governorateId
           : governorateId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ) as $Val);
   }
 }
@@ -100,7 +100,7 @@ abstract class _$$GetOffersImplCopyWith<$Res>
       __$$GetOffersImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String governorateId});
+  $Res call({int governorateId});
 }
 
 /// @nodoc
@@ -122,7 +122,7 @@ class __$$GetOffersImplCopyWithImpl<$Res>
       governorateId: null == governorateId
           ? _value.governorateId
           : governorateId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -133,11 +133,11 @@ class _$GetOffersImpl implements _GetOffers {
   const _$GetOffersImpl({required this.governorateId});
 
   @override
-  final String governorateId;
+  final int governorateId;
 
   @override
   String toString() {
-    return 'OffersEvent.getOffersEvent(governorateId: $governorateId)';
+    return 'OffersEvent.getOffers(governorateId: $governorateId)';
   }
 
   @override
@@ -163,27 +163,27 @@ class _$GetOffersImpl implements _GetOffers {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String governorateId) getOffersEvent,
+    required TResult Function(int governorateId) getOffers,
   }) {
-    return getOffersEvent(governorateId);
+    return getOffers(governorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String governorateId)? getOffersEvent,
+    TResult? Function(int governorateId)? getOffers,
   }) {
-    return getOffersEvent?.call(governorateId);
+    return getOffers?.call(governorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String governorateId)? getOffersEvent,
+    TResult Function(int governorateId)? getOffers,
     required TResult orElse(),
   }) {
-    if (getOffersEvent != null) {
-      return getOffersEvent(governorateId);
+    if (getOffers != null) {
+      return getOffers(governorateId);
     }
     return orElse();
   }
@@ -191,38 +191,38 @@ class _$GetOffersImpl implements _GetOffers {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetOffers value) getOffersEvent,
+    required TResult Function(_GetOffers value) getOffers,
   }) {
-    return getOffersEvent(this);
+    return getOffers(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetOffers value)? getOffersEvent,
+    TResult? Function(_GetOffers value)? getOffers,
   }) {
-    return getOffersEvent?.call(this);
+    return getOffers?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetOffers value)? getOffersEvent,
+    TResult Function(_GetOffers value)? getOffers,
     required TResult orElse(),
   }) {
-    if (getOffersEvent != null) {
-      return getOffersEvent(this);
+    if (getOffers != null) {
+      return getOffers(this);
     }
     return orElse();
   }
 }
 
 abstract class _GetOffers implements OffersEvent {
-  const factory _GetOffers({required final String governorateId}) =
+  const factory _GetOffers({required final int governorateId}) =
       _$GetOffersImpl;
 
   @override
-  String get governorateId;
+  int get governorateId;
 
   /// Create a copy of OffersEvent
   /// with the given fields replaced by the non-null parameter values.

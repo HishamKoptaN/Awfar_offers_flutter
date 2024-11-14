@@ -10,8 +10,7 @@ class CustomCategoryItemListView extends StatefulWidget {
     required this.onCategorySelected,
   });
   final List<Category>? categories;
-  final Function(int) onCategorySelected; // وظيفة لإرجاع الـ ID المحدد
-
+  final Function(int) onCategorySelected;
   @override
   State<CustomCategoryItemListView> createState() =>
       _CustomCategoryItemListViewState();
@@ -65,7 +64,7 @@ class _CustomCategoryItemListViewState
                       setState(() {
                         _selectedIndex = index;
                       });
-                      widget.onCategorySelected(category.id);
+                      widget.onCategorySelected(category.id!);
                     },
                     child: CustomCategoryItem(
                       category: category,

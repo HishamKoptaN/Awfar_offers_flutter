@@ -4,16 +4,19 @@ import 'package:aroodi_app/features/offers/presentation/views/widgets/tab/custom
 import 'package:aroodi_app/features/offers/presentation/views/widgets/tab/custom_tab_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../data/models/offers_response_model.dart';
 
 class OfferViewBody extends StatelessWidget {
-  const OfferViewBody({
+  OfferViewBody({
     super.key,
     required this.offersResponseModel,
   });
-  final OffersResponseModel offersResponseModel;
+  OffersResponseModel offersResponseModel;
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    context,
+  ) {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
@@ -23,7 +26,9 @@ class OfferViewBody extends StatelessWidget {
               SizedBox(
                 height: 6.h,
               ),
-              const CustomSearchAndRefreshWidget(),
+              CustomSearchAndRefreshWidget(
+                offersResponseModel: offersResponseModel,
+              ),
               const SizedBox(
                 height: 8,
               ),
@@ -42,12 +47,11 @@ class OfferViewBody extends StatelessWidget {
 }
 
 class Tab extends StatelessWidget {
-  const Tab({
+  Tab({
     super.key,
     required this.offersResponseModel,
   });
-  final OffersResponseModel offersResponseModel;
-
+  OffersResponseModel offersResponseModel;
   @override
   Widget build(context) {
     return DefaultTabController(

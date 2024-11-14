@@ -3,6 +3,7 @@ part 'offers_event.freezed.dart';
 
 @freezed
 class OffersEvent with _$OffersEvent {
-  const factory OffersEvent.getOffersEvent({required String governorateId}) =
-      _GetOffers;
+  const factory OffersEvent.getOffers({
+    required int governorateId,
+  }) = _GetOffers;
 }

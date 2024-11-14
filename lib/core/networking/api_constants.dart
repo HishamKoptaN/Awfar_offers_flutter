@@ -8,6 +8,7 @@ class ApiConstants {
   static const String stores = "stores";
   static const String offers = "offers";
   static const String categories = "categories";
+  static const String subCategories = "sub-categories";
 }
 
 class ApiErrors {

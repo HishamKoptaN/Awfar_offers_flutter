@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 class OfferDetailsViewBody extends StatelessWidget {
   const OfferDetailsViewBody({
     super.key,
-    required this.store,
+    required this.storeElement,
   });
 
-  final Store store;
+  final StoreElement storeElement;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +21,15 @@ class OfferDetailsViewBody extends StatelessWidget {
             height: 8,
           ),
           AppBarInOfferDetails(
-            title: store.name,
-            urlImage: store.image,
+            title: storeElement.name!,
+            urlImage: storeElement.image!,
           ),
           // const ViewProductsWidgetButton(),
           const TextAndShareAndNotificationIcon(),
           const SizedBox(
             height: 24,
           ),
-          OffersGridView(store: store),
+          OffersGridView(storeElement: storeElement),
           const SizedBox(
             height: 24,
           ),

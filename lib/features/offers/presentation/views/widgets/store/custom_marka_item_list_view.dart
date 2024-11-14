@@ -1,6 +1,5 @@
 import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../data/models/offers_response_model.dart';
 
 class CustomMarkaItemListView extends StatelessWidget {
@@ -8,7 +7,7 @@ class CustomMarkaItemListView extends StatelessWidget {
     super.key,
     required this.stores,
   });
-  final List<Store>? stores;
+  final List<StoreElement>? stores;
   @override
   Widget build(context) {
     return SizedBox(
@@ -23,7 +22,7 @@ class CustomMarkaItemListView extends StatelessWidget {
             child: CustomMarkaItem(
               radius1: 23,
               radius2: 22,
-              imageUrl: store.image,
+              imageUrl: store.image!,
             ),
           );
         },

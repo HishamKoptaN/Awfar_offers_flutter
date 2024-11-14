@@ -1,28 +1,18 @@
-import 'package:aroodi_app/features/offer_details/presentation/views/offer_deatails_view.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/items/custom_card_item.dart';
+import 'package:aroodi_app/features/offers/presentation/views/widgets/items/custom_offer_card_item.dart';
 import 'package:flutter/material.dart';
-
+import '../../../../../offer_details/presentation/views/offer_deatails_view.dart';
 import '../../../../data/models/offers_response_model.dart';
 
-class CardItemsGridView extends StatelessWidget {
-  const CardItemsGridView({
+class OffersItemsGridView extends StatelessWidget {
+  const OffersItemsGridView({
     super.key,
     required this.offersResponseModel,
-    required this.categories,
+    required this.offers,
   });
   final OffersResponseModel offersResponseModel;
-  final List<Category> categories;
-
+  final List<OffersResponseModelOffer> offers;
   @override
   Widget build(context) {
-    List<Offer> offersList = [];
-
-    for (var category in categories) {
-      for (var offer in category.offers) {
-        offersList.add(offer);
-      }
-    }
-
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(), // Disable grid scroll
@@ -32,13 +22,13 @@ class CardItemsGridView extends StatelessWidget {
         mainAxisSpacing: 12,
         childAspectRatio: 0.58,
       ),
-      itemCount: offersList.length,
+      itemCount: offers.length,
       itemBuilder: (context, index) {
+        final offer = offersResponseModel.offers![index];
         return GestureDetector(
           onTap: () {
-            int storeId = offersList[index].storeId; // ضع هنا storeId المطلوب
-            final selectedStore = offersResponseModel.stores.firstWhere(
-              (store) => store.id == storeId,
+            StoreElement selectedStore = offersResponseModel.stores!.firstWhere(
+              (store) => store.id == offer.store!.id,
             );
             Navigator.pushNamed(
               context,
@@ -47,9 +37,7 @@ class CardItemsGridView extends StatelessWidget {
             );
           },
           child: CustomCardItem(
-            offer: offersList[index],
-            stores: offersResponseModel.stores,
-            index: index,
+            offersResponseModelOffer: offer,
           ),
         );
       },

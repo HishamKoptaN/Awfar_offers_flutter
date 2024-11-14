@@ -25,12 +25,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case FullScreenOfOfferImage.routeName:
       final args = settings.arguments as Map<String, dynamic>;
-      final store = args['store'] as Store;
+      final storeElement = args['store'] as StoreElement;
       final initialIndex = args['initialIndex'] as int;
 
       return MaterialPageRoute(
         builder: (context) => FullScreenOfOfferImage(
-          store: store,
+          storeElement: storeElement,
           initialIndex: initialIndex,
         ),
       );
@@ -57,10 +57,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const ProfileView());
     case OfferDeatailsView.routeName:
-      final store = settings.arguments as Store;
+      final storeElement = settings.arguments as StoreElement;
       return MaterialPageRoute(
         builder: (context) => OfferDeatailsView(
-          store: store,
+          storeElement: storeElement,
         ),
       );
     default:

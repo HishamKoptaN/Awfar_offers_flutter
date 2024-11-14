@@ -5,15 +5,17 @@ import 'package:flutter/material.dart';
 class OfferDeatailsView extends StatelessWidget {
   const OfferDeatailsView({
     super.key,
-    required this.store,
+    required this.storeElement,
   });
   static const String routeName = 'offer_details';
-  final Store store;
+  final StoreElement storeElement;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: OfferDetailsViewBody(store: store),
+        body: OfferDetailsViewBody(
+          storeElement: storeElement,
+        ),
       ),
     );
   }

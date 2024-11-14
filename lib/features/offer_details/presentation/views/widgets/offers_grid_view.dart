@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 class OffersGridView extends StatelessWidget {
   const OffersGridView({
     super.key,
-    required this.store,
+    required this.storeElement,
   });
 
-  final Store store;
+  final StoreElement storeElement;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class OffersGridView extends StatelessWidget {
         mainAxisSpacing: 8,
         childAspectRatio: 2 / 3,
       ),
-      itemCount: store.offers.length,
+      itemCount: storeElement.offers!.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -30,7 +30,7 @@ class OffersGridView extends StatelessWidget {
               context,
               FullScreenOfOfferImage.routeName,
               arguments: {
-                'store': store,
+                'store': storeElement,
                 'initialIndex': index, // The initial index
               },
             );
@@ -40,7 +40,7 @@ class OffersGridView extends StatelessWidget {
               child: Center(
                 child: Image(
                   image: NetworkImage(
-                    store.offers[index].image,
+                    storeElement.offers![index].image!,
                   ),
                 ),
               ),

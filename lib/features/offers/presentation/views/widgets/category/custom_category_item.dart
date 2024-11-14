@@ -1,5 +1,6 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../data/models/offers_response_model.dart';
 
 class CustomCategoryItem extends StatelessWidget {
@@ -30,7 +31,7 @@ class CustomCategoryItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                category.name,
+                category.name!,
                 style: const TextStyle(color: Colors.white),
               ),
               const SizedBox(
@@ -44,7 +45,7 @@ class CustomCategoryItem extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: Text(
-                    category.offers.length.toString(),
+                    category.offersCount.toString(),
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),

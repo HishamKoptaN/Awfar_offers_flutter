@@ -13,15 +13,26 @@ class GetCityCubit extends Cubit<GetCityState> {
       final result = await getCityRepo.getCity();
       result.when(
         failure: (error) {
-          emit(GetCityFailure(message: error.error!.toString()));
+          emit(
+            GetCityFailure(
+              message: error.error!.toString(),
+            ),
+          );
         },
         success: (countriesModel) {
-          emit(GetCitySuccess(getCityModel: countriesModel));
+          emit(
+            GetCitySuccess(
+              getCityModel: countriesModel,
+            ),
+          );
         },
       );
     } catch (e) {
-      emit(GetCityFailure(
-          message: 'An unexpected error occurred: ${e.toString()}'));
+      emit(
+        GetCityFailure(
+          message: 'An unexpected error occurred: ${e.toString()}',
+        ),
+      );
     }
   }
 }

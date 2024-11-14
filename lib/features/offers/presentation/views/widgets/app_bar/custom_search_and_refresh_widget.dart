@@ -3,11 +3,14 @@ import 'package:aroodi_app/core/utils/app_text_styles.dart';
 import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 
-class CustomSearchAndRefreshWidget extends StatelessWidget {
-  const CustomSearchAndRefreshWidget({
-    super.key,
-  });
+import '../../../../data/models/offers_response_model.dart';
 
+class CustomSearchAndRefreshWidget extends StatelessWidget {
+  CustomSearchAndRefreshWidget({
+    super.key,
+    required this.offersResponseModel,
+  });
+  OffersResponseModel offersResponseModel;
   @override
   Widget build(context) {
     return Padding(

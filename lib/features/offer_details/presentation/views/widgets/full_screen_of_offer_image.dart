@@ -8,11 +8,11 @@ import 'package:photo_view/photo_view_gallery.dart';
 class FullScreenOfOfferImage extends StatefulWidget {
   const FullScreenOfOfferImage({
     super.key,
-    required this.store,
+    required this.storeElement,
     required this.initialIndex,
   });
 
-  final Store store;
+  final StoreElement storeElement;
   final int initialIndex;
 
   static const String routeName = 'full_screen_of_offer_image';
@@ -49,14 +49,14 @@ class _FullScreenOfOfferImageState extends State<FullScreenOfOfferImage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.store.name,
+                      widget.storeElement.name!,
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
                     Text(
-                      widget.store.offers[0].description,
+                      widget.storeElement.offers![0].description!,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 10,
@@ -80,11 +80,11 @@ class _FullScreenOfOfferImageState extends State<FullScreenOfOfferImage> {
               height: MediaQuery.of(context).size.height * 0.75,
               child: PhotoViewGallery.builder(
                 pageController: _pageController,
-                itemCount: widget.store.offers.length,
+                itemCount: widget.storeElement.offers!.length,
                 builder: (context, index) {
                   return PhotoViewGalleryPageOptions(
                     imageProvider:
-                        NetworkImage(widget.store.offers[index].image),
+                        NetworkImage(widget.storeElement.offers![index].image!),
                     minScale: PhotoViewComputedScale.contained * 0.8,
                     maxScale: PhotoViewComputedScale.covered * 2,
                   );

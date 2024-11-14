@@ -30,7 +30,7 @@ mixin _$CategoriesResponseModel {
   @JsonKey(name: "updated_at")
   String? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: "sub_categories")
-  List<SubCategories>? get subCategories => throw _privateConstructorUsedError;
+  List<SubCategory>? get subCategories => throw _privateConstructorUsedError;
 
   /// Serializes this CategoriesResponseModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $CategoriesResponseModelCopyWith<$Res> {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
-      @JsonKey(name: "sub_categories") List<SubCategories>? subCategories});
+      @JsonKey(name: "sub_categories") List<SubCategory>? subCategories});
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class _$CategoriesResponseModelCopyWithImpl<$Res,
       subCategories: freezed == subCategories
           ? _value.subCategories
           : subCategories // ignore: cast_nullable_to_non_nullable
-              as List<SubCategories>?,
+              as List<SubCategory>?,
     ) as $Val);
   }
 }
@@ -117,7 +117,7 @@ abstract class _$$CategoriesResponseModelImplCopyWith<$Res>
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
-      @JsonKey(name: "sub_categories") List<SubCategories>? subCategories});
+      @JsonKey(name: "sub_categories") List<SubCategory>? subCategories});
 }
 
 /// @nodoc
@@ -161,7 +161,7 @@ class __$$CategoriesResponseModelImplCopyWithImpl<$Res>
       subCategories: freezed == subCategories
           ? _value._subCategories
           : subCategories // ignore: cast_nullable_to_non_nullable
-              as List<SubCategories>?,
+              as List<SubCategory>?,
     ));
   }
 }
@@ -174,8 +174,7 @@ class _$CategoriesResponseModelImpl implements _CategoriesResponseModel {
       @JsonKey(name: "name") this.name,
       @JsonKey(name: "created_at") this.createdAt,
       @JsonKey(name: "updated_at") this.updatedAt,
-      @JsonKey(name: "sub_categories")
-      final List<SubCategories>? subCategories})
+      @JsonKey(name: "sub_categories") final List<SubCategory>? subCategories})
       : _subCategories = subCategories;
 
   factory _$CategoriesResponseModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -193,10 +192,10 @@ class _$CategoriesResponseModelImpl implements _CategoriesResponseModel {
   @override
   @JsonKey(name: "updated_at")
   final String? updatedAt;
-  final List<SubCategories>? _subCategories;
+  final List<SubCategory>? _subCategories;
   @override
   @JsonKey(name: "sub_categories")
-  List<SubCategories>? get subCategories {
+  List<SubCategory>? get subCategories {
     final value = _subCategories;
     if (value == null) return null;
     if (_subCategories is EqualUnmodifiableListView) return _subCategories;
@@ -248,13 +247,12 @@ class _$CategoriesResponseModelImpl implements _CategoriesResponseModel {
 
 abstract class _CategoriesResponseModel implements CategoriesResponseModel {
   const factory _CategoriesResponseModel(
-          {@JsonKey(name: "id") final int? id,
-          @JsonKey(name: "name") final String? name,
-          @JsonKey(name: "created_at") final String? createdAt,
-          @JsonKey(name: "updated_at") final String? updatedAt,
-          @JsonKey(name: "sub_categories")
-          final List<SubCategories>? subCategories}) =
-      _$CategoriesResponseModelImpl;
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "name") final String? name,
+      @JsonKey(name: "created_at") final String? createdAt,
+      @JsonKey(name: "updated_at") final String? updatedAt,
+      @JsonKey(name: "sub_categories")
+      final List<SubCategory>? subCategories}) = _$CategoriesResponseModelImpl;
 
   factory _CategoriesResponseModel.fromJson(Map<String, dynamic> json) =
       _$CategoriesResponseModelImpl.fromJson;
@@ -273,7 +271,7 @@ abstract class _CategoriesResponseModel implements CategoriesResponseModel {
   String? get updatedAt;
   @override
   @JsonKey(name: "sub_categories")
-  List<SubCategories>? get subCategories;
+  List<SubCategory>? get subCategories;
 
   /// Create a copy of CategoriesResponseModel
   /// with the given fields replaced by the non-null parameter values.
@@ -281,6 +279,318 @@ abstract class _CategoriesResponseModel implements CategoriesResponseModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CategoriesResponseModelImplCopyWith<_$CategoriesResponseModelImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+SubCategory _$SubCategoryFromJson(Map<String, dynamic> json) {
+  return _SubCategory.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SubCategory {
+  @JsonKey(name: "id")
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "name")
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: "category_id")
+  int? get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "created_at")
+  dynamic get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated_at")
+  String? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "offers")
+  List<Offer>? get offers => throw _privateConstructorUsedError;
+
+  /// Serializes this SubCategory to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SubCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SubCategoryCopyWith<SubCategory> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SubCategoryCopyWith<$Res> {
+  factory $SubCategoryCopyWith(
+          SubCategory value, $Res Function(SubCategory) then) =
+      _$SubCategoryCopyWithImpl<$Res, SubCategory>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "category_id") int? categoryId,
+      @JsonKey(name: "created_at") dynamic createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "offers") List<Offer>? offers});
+}
+
+/// @nodoc
+class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
+    implements $SubCategoryCopyWith<$Res> {
+  _$SubCategoryCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SubCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+    Object? categoryId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? offers = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offers: freezed == offers
+          ? _value.offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SubCategoryImplCopyWith<$Res>
+    implements $SubCategoryCopyWith<$Res> {
+  factory _$$SubCategoryImplCopyWith(
+          _$SubCategoryImpl value, $Res Function(_$SubCategoryImpl) then) =
+      __$$SubCategoryImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "category_id") int? categoryId,
+      @JsonKey(name: "created_at") dynamic createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "offers") List<Offer>? offers});
+}
+
+/// @nodoc
+class __$$SubCategoryImplCopyWithImpl<$Res>
+    extends _$SubCategoryCopyWithImpl<$Res, _$SubCategoryImpl>
+    implements _$$SubCategoryImplCopyWith<$Res> {
+  __$$SubCategoryImplCopyWithImpl(
+      _$SubCategoryImpl _value, $Res Function(_$SubCategoryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SubCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+    Object? categoryId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? offers = freezed,
+  }) {
+    return _then(_$SubCategoryImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offers: freezed == offers
+          ? _value._offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SubCategoryImpl implements _SubCategory {
+  const _$SubCategoryImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "image") this.image,
+      @JsonKey(name: "category_id") this.categoryId,
+      @JsonKey(name: "created_at") this.createdAt,
+      @JsonKey(name: "updated_at") this.updatedAt,
+      @JsonKey(name: "offers") final List<Offer>? offers})
+      : _offers = offers;
+
+  factory _$SubCategoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubCategoryImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final int? id;
+  @override
+  @JsonKey(name: "name")
+  final String? name;
+  @override
+  @JsonKey(name: "image")
+  final String? image;
+  @override
+  @JsonKey(name: "category_id")
+  final int? categoryId;
+  @override
+  @JsonKey(name: "created_at")
+  final dynamic createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  final String? updatedAt;
+  final List<Offer>? _offers;
+  @override
+  @JsonKey(name: "offers")
+  List<Offer>? get offers {
+    final value = _offers;
+    if (value == null) return null;
+    if (_offers is EqualUnmodifiableListView) return _offers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'SubCategory(id: $id, name: $name, image: $image, categoryId: $categoryId, createdAt: $createdAt, updatedAt: $updatedAt, offers: $offers)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubCategoryImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            const DeepCollectionEquality().equals(other._offers, _offers));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      image,
+      categoryId,
+      const DeepCollectionEquality().hash(createdAt),
+      updatedAt,
+      const DeepCollectionEquality().hash(_offers));
+
+  /// Create a copy of SubCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubCategoryImplCopyWith<_$SubCategoryImpl> get copyWith =>
+      __$$SubCategoryImplCopyWithImpl<_$SubCategoryImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SubCategoryImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SubCategory implements SubCategory {
+  const factory _SubCategory(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "name") final String? name,
+      @JsonKey(name: "image") final String? image,
+      @JsonKey(name: "category_id") final int? categoryId,
+      @JsonKey(name: "created_at") final dynamic createdAt,
+      @JsonKey(name: "updated_at") final String? updatedAt,
+      @JsonKey(name: "offers") final List<Offer>? offers}) = _$SubCategoryImpl;
+
+  factory _SubCategory.fromJson(Map<String, dynamic> json) =
+      _$SubCategoryImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  int? get id;
+  @override
+  @JsonKey(name: "name")
+  String? get name;
+  @override
+  @JsonKey(name: "image")
+  String? get image;
+  @override
+  @JsonKey(name: "category_id")
+  int? get categoryId;
+  @override
+  @JsonKey(name: "created_at")
+  dynamic get createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  String? get updatedAt;
+  @override
+  @JsonKey(name: "offers")
+  List<Offer>? get offers;
+
+  /// Create a copy of SubCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SubCategoryImplCopyWith<_$SubCategoryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Offer _$OfferFromJson(Map<String, dynamic> json) {
@@ -304,7 +614,7 @@ mixin _$Offer {
   @JsonKey(name: "image")
   String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: "end_at")
-  int? get endAt => throw _privateConstructorUsedError;
+  DateTime? get endAt => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
@@ -334,7 +644,7 @@ abstract class $OfferCopyWith<$Res> {
       @JsonKey(name: "sub_category_id") int? subCategoryId,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "end_at") int? endAt,
+      @JsonKey(name: "end_at") DateTime? endAt,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "days_remaining") int? daysRemaining});
@@ -399,7 +709,7 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
       endAt: freezed == endAt
           ? _value.endAt
           : endAt // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -431,7 +741,7 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
       @JsonKey(name: "sub_category_id") int? subCategoryId,
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "end_at") int? endAt,
+      @JsonKey(name: "end_at") DateTime? endAt,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "days_remaining") int? daysRemaining});
@@ -494,7 +804,7 @@ class __$$OfferImplCopyWithImpl<$Res>
       endAt: freezed == endAt
           ? _value.endAt
           : endAt // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -553,7 +863,7 @@ class _$OfferImpl implements _Offer {
   final String? image;
   @override
   @JsonKey(name: "end_at")
-  final int? endAt;
+  final DateTime? endAt;
   @override
   @JsonKey(name: "created_at")
   final String? createdAt;
@@ -633,7 +943,7 @@ abstract class _Offer implements Offer {
       @JsonKey(name: "sub_category_id") final int? subCategoryId,
       @JsonKey(name: "description") final String? description,
       @JsonKey(name: "image") final String? image,
-      @JsonKey(name: "end_at") final int? endAt,
+      @JsonKey(name: "end_at") final DateTime? endAt,
       @JsonKey(name: "created_at") final String? createdAt,
       @JsonKey(name: "updated_at") final String? updatedAt,
       @JsonKey(name: "days_remaining") final int? daysRemaining}) = _$OfferImpl;
@@ -663,7 +973,7 @@ abstract class _Offer implements Offer {
   String? get image;
   @override
   @JsonKey(name: "end_at")
-  int? get endAt;
+  DateTime? get endAt;
   @override
   @JsonKey(name: "created_at")
   String? get createdAt;
@@ -679,312 +989,5 @@ abstract class _Offer implements Offer {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OfferImplCopyWith<_$OfferImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SubCategories _$SubCategoriesFromJson(Map<String, dynamic> json) {
-  return _SubCategories.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SubCategories {
-  @JsonKey(name: "id")
-  int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: "image")
-  String? get image => throw _privateConstructorUsedError;
-  @JsonKey(name: "category_id")
-  int? get categoryId => throw _privateConstructorUsedError;
-  @JsonKey(name: "created_at")
-  String? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: "updated_at")
-  String? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: "offers")
-  List<Offer>? get offers => throw _privateConstructorUsedError;
-
-  /// Serializes this SubCategories to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SubCategories
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SubCategoriesCopyWith<SubCategories> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SubCategoriesCopyWith<$Res> {
-  factory $SubCategoriesCopyWith(
-          SubCategories value, $Res Function(SubCategories) then) =
-      _$SubCategoriesCopyWithImpl<$Res, SubCategories>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "name") String? name,
-      @JsonKey(name: "image") String? image,
-      @JsonKey(name: "category_id") int? categoryId,
-      @JsonKey(name: "created_at") String? createdAt,
-      @JsonKey(name: "updated_at") String? updatedAt,
-      @JsonKey(name: "offers") List<Offer>? offers});
-}
-
-/// @nodoc
-class _$SubCategoriesCopyWithImpl<$Res, $Val extends SubCategories>
-    implements $SubCategoriesCopyWith<$Res> {
-  _$SubCategoriesCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SubCategories
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image = freezed,
-    Object? categoryId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? offers = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      offers: freezed == offers
-          ? _value.offers
-          : offers // ignore: cast_nullable_to_non_nullable
-              as List<Offer>?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SubCategoriesImplCopyWith<$Res>
-    implements $SubCategoriesCopyWith<$Res> {
-  factory _$$SubCategoriesImplCopyWith(
-          _$SubCategoriesImpl value, $Res Function(_$SubCategoriesImpl) then) =
-      __$$SubCategoriesImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "name") String? name,
-      @JsonKey(name: "image") String? image,
-      @JsonKey(name: "category_id") int? categoryId,
-      @JsonKey(name: "created_at") String? createdAt,
-      @JsonKey(name: "updated_at") String? updatedAt,
-      @JsonKey(name: "offers") List<Offer>? offers});
-}
-
-/// @nodoc
-class __$$SubCategoriesImplCopyWithImpl<$Res>
-    extends _$SubCategoriesCopyWithImpl<$Res, _$SubCategoriesImpl>
-    implements _$$SubCategoriesImplCopyWith<$Res> {
-  __$$SubCategoriesImplCopyWithImpl(
-      _$SubCategoriesImpl _value, $Res Function(_$SubCategoriesImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SubCategories
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? image = freezed,
-    Object? categoryId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? offers = freezed,
-  }) {
-    return _then(_$SubCategoriesImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      offers: freezed == offers
-          ? _value._offers
-          : offers // ignore: cast_nullable_to_non_nullable
-              as List<Offer>?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$SubCategoriesImpl implements _SubCategories {
-  const _$SubCategoriesImpl(
-      {@JsonKey(name: "id") this.id,
-      @JsonKey(name: "name") this.name,
-      @JsonKey(name: "image") this.image,
-      @JsonKey(name: "category_id") this.categoryId,
-      @JsonKey(name: "created_at") this.createdAt,
-      @JsonKey(name: "updated_at") this.updatedAt,
-      @JsonKey(name: "offers") final List<Offer>? offers})
-      : _offers = offers;
-
-  factory _$SubCategoriesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SubCategoriesImplFromJson(json);
-
-  @override
-  @JsonKey(name: "id")
-  final int? id;
-  @override
-  @JsonKey(name: "name")
-  final String? name;
-  @override
-  @JsonKey(name: "image")
-  final String? image;
-  @override
-  @JsonKey(name: "category_id")
-  final int? categoryId;
-  @override
-  @JsonKey(name: "created_at")
-  final String? createdAt;
-  @override
-  @JsonKey(name: "updated_at")
-  final String? updatedAt;
-  final List<Offer>? _offers;
-  @override
-  @JsonKey(name: "offers")
-  List<Offer>? get offers {
-    final value = _offers;
-    if (value == null) return null;
-    if (_offers is EqualUnmodifiableListView) return _offers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'SubCategories(id: $id, name: $name, image: $image, categoryId: $categoryId, createdAt: $createdAt, updatedAt: $updatedAt, offers: $offers)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SubCategoriesImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality().equals(other._offers, _offers));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, image, categoryId,
-      createdAt, updatedAt, const DeepCollectionEquality().hash(_offers));
-
-  /// Create a copy of SubCategories
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SubCategoriesImplCopyWith<_$SubCategoriesImpl> get copyWith =>
-      __$$SubCategoriesImplCopyWithImpl<_$SubCategoriesImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SubCategoriesImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SubCategories implements SubCategories {
-  const factory _SubCategories(
-          {@JsonKey(name: "id") final int? id,
-          @JsonKey(name: "name") final String? name,
-          @JsonKey(name: "image") final String? image,
-          @JsonKey(name: "category_id") final int? categoryId,
-          @JsonKey(name: "created_at") final String? createdAt,
-          @JsonKey(name: "updated_at") final String? updatedAt,
-          @JsonKey(name: "offers") final List<Offer>? offers}) =
-      _$SubCategoriesImpl;
-
-  factory _SubCategories.fromJson(Map<String, dynamic> json) =
-      _$SubCategoriesImpl.fromJson;
-
-  @override
-  @JsonKey(name: "id")
-  int? get id;
-  @override
-  @JsonKey(name: "name")
-  String? get name;
-  @override
-  @JsonKey(name: "image")
-  String? get image;
-  @override
-  @JsonKey(name: "category_id")
-  int? get categoryId;
-  @override
-  @JsonKey(name: "created_at")
-  String? get createdAt;
-  @override
-  @JsonKey(name: "updated_at")
-  String? get updatedAt;
-  @override
-  @JsonKey(name: "offers")
-  List<Offer>? get offers;
-
-  /// Create a copy of SubCategories
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SubCategoriesImplCopyWith<_$SubCategoriesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

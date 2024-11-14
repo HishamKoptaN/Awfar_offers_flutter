@@ -1,6 +1,9 @@
+// To parse this JSON data, do
+//
+//     final offersResponseModel = offersResponseModelFromJson(jsonString);
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
-
 part 'offers_response_model.freezed.dart';
 part 'offers_response_model.g.dart';
 
@@ -13,8 +16,9 @@ String offersResponseModelToJson(OffersResponseModel data) =>
 @freezed
 class OffersResponseModel with _$OffersResponseModel {
   const factory OffersResponseModel({
-    @JsonKey(name: "stores") @Default([]) List<Store> stores,
-    @JsonKey(name: "categories") @Default([]) List<Category> categories,
+    @JsonKey(name: "categories") List<Category>? categories,
+    @JsonKey(name: "stores") List<StoreElement>? stores,
+    @JsonKey(name: "offers") List<OffersResponseModelOffer>? offers,
   }) = _OffersResponseModel;
 
   factory OffersResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -24,14 +28,11 @@ class OffersResponseModel with _$OffersResponseModel {
 @freezed
 class Category with _$Category {
   const factory Category({
-    @JsonKey(name: "id") @Default(0) int id,
-    @JsonKey(name: "name") @Default('') String name,
-    @JsonKey(name: "image") @Default('') String image,
-    @JsonKey(name: "category_id") @Default(0) int categoryId,
-    @JsonKey(name: "created_at") @Default('') String createdAt,
-    @JsonKey(name: "updated_at") @Default('') String updatedAt,
-    @JsonKey(name: "offers_count") @Default(0) int offersCount,
-    @JsonKey(name: "offers") @Default([]) List<Offer> offers,
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "created_at") String? createdAt,
+    @JsonKey(name: "updated_at") String? updatedAt,
+    @JsonKey(name: "offers_count") int? offersCount,
   }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
@@ -39,32 +40,28 @@ class Category with _$Category {
 }
 
 @freezed
-class Offer with _$Offer {
-  const factory Offer({
-    @JsonKey(name: "id") @Default(0) int id,
-    @JsonKey(name: "name") @Default('') String name,
-    @JsonKey(name: "status") @Default('') String status,
-    @JsonKey(name: "store_id") @Default(0) int storeId,
-    @JsonKey(name: "sub_category_id") @Default(0) int subCategoryId,
-    @JsonKey(name: "description") @Default('') String description,
-    @JsonKey(name: "image") @Default('') String image,
-    @JsonKey(name: "end_at") @Default(0) int endAt,
-    @JsonKey(name: "created_at") @Default('') String createdAt,
-    @JsonKey(name: "updated_at") @Default('') String updatedAt,
-    @JsonKey(name: "days_remaining") @Default(0) int daysRemaining,
-  }) = _Offer;
+class OffersResponseModelOffer with _$OffersResponseModelOffer {
+  const factory OffersResponseModelOffer({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "description") String? description,
+    @JsonKey(name: "image") String? image,
+    @JsonKey(name: "days_remaining") int? daysRemaining,
+    @JsonKey(name: "sub_category") SubCategory? subCategory,
+    @JsonKey(name: "store") OfferStore? store,
+  }) = _OffersResponseModelOffer;
 
-  factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
+  factory OffersResponseModelOffer.fromJson(Map<String, dynamic> json) =>
+      _$OffersResponseModelOfferFromJson(json);
 }
 
 @freezed
 class OfferStore with _$OfferStore {
   const factory OfferStore({
-    @JsonKey(name: "id") @Default(0) int id,
-    @JsonKey(name: "name") @Default('') String name,
-    @JsonKey(name: "description") @Default('') String description,
-    @JsonKey(name: "image") @Default('') String image,
-    @JsonKey(name: "days_remaining") @Default(0) int daysRemaining,
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "image") String? image,
+    @JsonKey(name: "offers_count") int? offersCount,
   }) = _OfferStore;
 
   factory OfferStore.fromJson(Map<String, dynamic> json) =>
@@ -72,17 +69,43 @@ class OfferStore with _$OfferStore {
 }
 
 @freezed
-class Store with _$Store {
-  const factory Store({
-    @JsonKey(name: "id") @Default(0) int id,
-    @JsonKey(name: "name") @Default('') String name,
-    @JsonKey(name: "image") @Default('') String image,
-    @JsonKey(name: "country_id") @Default(0) int countryId,
-    @JsonKey(name: "governorate_id") @Default(0) int governorateId,
-    @JsonKey(name: "place") String? place,
-    @JsonKey(name: "offers_count") @Default(0) int offersCount,
-    @JsonKey(name: "offers") @Default([]) List<OfferStore> offers,
-  }) = _Store;
+class SubCategory with _$SubCategory {
+  const factory SubCategory({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "category_id") int? categoryId,
+  }) = _SubCategory;
 
-  factory Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);
+  factory SubCategory.fromJson(Map<String, dynamic> json) =>
+      _$SubCategoryFromJson(json);
+}
+
+@freezed
+class StoreElement with _$StoreElement {
+  const factory StoreElement({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "image") String? image,
+    @JsonKey(name: "country_id") int? countryId,
+    @JsonKey(name: "governorate_id") int? governorateId,
+    @JsonKey(name: "place") String? place,
+    @JsonKey(name: "offers_count") int? offersCount,
+    @JsonKey(name: "offers") List<StoreOffer>? offers,
+  }) = _StoreElement;
+
+  factory StoreElement.fromJson(Map<String, dynamic> json) =>
+      _$StoreElementFromJson(json);
+}
+
+@freezed
+class StoreOffer with _$StoreOffer {
+  const factory StoreOffer({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "description") String? description,
+    @JsonKey(name: "image") String? image,
+    @JsonKey(name: "days_remaining") int? daysRemaining,
+  }) = _StoreOffer;
+
+  factory StoreOffer.fromJson(Map<String, dynamic> json) =>
+      _$StoreOfferFromJson(json);
 }

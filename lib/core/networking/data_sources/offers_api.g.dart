@@ -24,7 +24,7 @@ class _OffersApi implements OffersApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<OffersResponseModel> getOffers({required String governorateId}) async {
+  Future<OffersResponseModel> getOffers({required int governorateId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
