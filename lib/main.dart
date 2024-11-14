@@ -1,5 +1,3 @@
-import 'package:aroodi_app/core/database/cache/shared_pref_keys.dart';
-import 'package:aroodi_app/core/networking/shared_pref.dart';
 import 'package:aroodi_app/features/categories/presentation/bloc/categories_bloc.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_cit_cubit.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
@@ -15,8 +13,8 @@ import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/generated/l10n.dart';
 import 'package:aroodi_app/home_view.dart';
 import 'core/app_observer.dart';
-import 'core/database/cache/shared_pref_helper.dart';
 import 'core/di/dependency_injection.dart';
+import 'core/global.dart';
 import 'features/categories/presentation/bloc/categories_event.dart';
 import 'features/offers/presentation/bloc/offers_event.dart';
 
@@ -25,8 +23,6 @@ void main() async {
   MobileAds.instance.initialize();
   await Injection.inject();
   Bloc.observer = AppBlocObserver();
-  await Prefs.init();
-
   runApp(
     MultiBlocProvider(providers: [
       BlocProvider(
@@ -59,15 +55,8 @@ class AroodiApp extends StatefulWidget {
   State<AroodiApp> createState() => _AroodiAppState();
 }
 
-Future<int> getGovernorate() async {
-  int? governorateId = await SharedPrefHelper.getInt(
-    key: SharedPrefKeys.governorateId,
-  );
-  return governorateId;
-}
-
 class _AroodiAppState extends State<AroodiApp> {
-  Future<Null> newMethod() async {
+  Future<Null> injectEvent() async {
     await Future.microtask(
       () {
         getGovernorate().then((governorateId) {
@@ -87,7 +76,7 @@ class _AroodiAppState extends State<AroodiApp> {
   @override
   void initState() {
     super.initState();
-    newMethod();
+    injectEvent();
   }
 
   @override

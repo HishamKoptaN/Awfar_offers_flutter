@@ -22,7 +22,7 @@ class GetCityCubit extends Cubit<GetCityState> {
         success: (countriesModel) {
           emit(
             GetCitySuccess(
-              getCityModel: countriesModel,
+              getGovernorateModel: countriesModel,
             ),
           );
         },

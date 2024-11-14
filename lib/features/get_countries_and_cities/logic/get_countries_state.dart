@@ -8,7 +8,9 @@ final class GetCountriesLoading extends GetCountriesState {}
 
 final class GetCountriesSuccess extends GetCountriesState {
   final List<GetCountriesModel> getCountriesModel;
-  GetCountriesSuccess({required this.getCountriesModel});
+  GetCountriesSuccess({
+    required this.getCountriesModel,
+  });
 }
 
 final class GetCountriesFailure extends GetCountriesState {

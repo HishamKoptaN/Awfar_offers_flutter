@@ -3,6 +3,4 @@ class SharedPrefKeys {
   static const String userId = 'userId';
   static const String governorateId = 'governorateId';
   static const String countryId = 'countryId';
-  static const String cityName = 'cityName';
-  static const String countryCode = 'countryCode';
 }

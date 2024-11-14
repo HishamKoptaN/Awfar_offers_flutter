@@ -4,7 +4,6 @@ import 'package:aroodi_app/features/offers/presentation/bloc/offers_event.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aroodi_app/core/networking/shared_pref.dart';
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/core/utils/app_text_styles.dart';
 import 'package:aroodi_app/features/offers/presentation/bloc/offers_bloc.dart';
@@ -15,34 +14,40 @@ import 'package:aroodi_app/features/get_countries_and_cities/logic/get_cit_cubit
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_city_state.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_state.dart';
-
+import '../../../../../../core/database/cache/shared_pref_helper.dart';
 import '../../../../../../core/database/cache/shared_pref_keys.dart';
+import '../../../../../../core/global.dart';
 
 class BuildAppBarWidget extends StatefulWidget {
-  const BuildAppBarWidget({super.key});
+  const BuildAppBarWidget({
+    super.key,
+  });
 
   @override
   State<BuildAppBarWidget> createState() => _BuildAppBarWidgetState();
 }
 
 class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
-  String selectedCountry = 'EG';
-  String selectedCity = Prefs.getString(
-    SharedPrefKeys.cityName,
-  );
-  String? selectedCountryCode = Prefs.getString(
-    SharedPrefKeys.countryCode,
-  );
-  int selectedCountryId = Prefs.getInt(
-    SharedPrefKeys.countryId,
-  );
+  int? selectedCountryId = 1;
+  int? selectedGovernorateId = 2;
+
   @override
   void initState() {
     super.initState();
+    _initializeGovernorate();
+  }
+
+  void _initializeGovernorate() async {
+    selectedGovernorateId = await SharedPrefHelper.getInt(
+      key: SharedPrefKeys.governorateId,
+    );
+    setState(() {});
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    context,
+  ) {
     return BlocListener<OffersBloc, OffersState>(
       listener: (context, state) {},
       child: Padding(
@@ -67,7 +72,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                   children: [
                     _buildCountrySelector(),
                     const SizedBox(width: 8),
-                    _buildCitySelector(),
+                    _buildGovernorateSelector(),
                     const Icon(
                       Icons.arrow_drop_down_sharp,
                       color: AppColors.lightPrimaryColor,
@@ -95,16 +100,21 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                 state.getCountriesModel,
               );
             },
-            child: selectedCountryCode != null
+            child: selectedCountryId != null
                 ? CountryFlag.fromCountryCode(
-                    selectedCountryCode!,
+                    state.getCountriesModel
+                        .where(
+                          (country) => country.id == selectedCountryId,
+                        )
+                        .first
+                        .code,
                     width: 30,
                     height: 20,
                     shape: const RoundedRectangle(6),
                   )
-                : Text(
-                    selectedCountry,
-                    style: const TextStyle(color: Colors.white),
+                : const Text(
+                    "select Country",
+                    style: TextStyle(color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
           );
@@ -118,7 +128,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
     );
   }
 
-  Widget _buildCitySelector() {
+  Widget _buildGovernorateSelector() {
     return BlocConsumer<GetCityCubit, GetCityState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -128,11 +138,16 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
           return GestureDetector(
             onTap: () {
               _showCitySelection(
-                state.getCityModel,
+                state.getGovernorateModel,
               );
             },
             child: Text(
-              selectedCity,
+              state.getGovernorateModel
+                  .where(
+                    (governorate) => governorate.id == selectedGovernorateId,
+                  )
+                  .first
+                  .name,
               style: const TextStyle(color: Colors.white),
             ),
           );
@@ -169,22 +184,15 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                 child: ListView.builder(
                   itemCount: countries.length,
                   itemBuilder: (context, index) {
+                    final country = countries[index];
                     return GestureDetector(
-                      onTap: () {
+                      onTap: () async {
+                        await SharedPrefHelper.setData(
+                          key: SharedPrefKeys.countryId,
+                          value: country.id,
+                        );
                         setState(
-                          () {
-                            selectedCity = 'اختر المدينة';
-                            selectedCountryCode = countries[index].code;
-                            selectedCountryId = countries[index].id;
-                            Prefs.setInt(
-                              SharedPrefKeys.countryId,
-                              selectedCountryId,
-                            );
-                            Prefs.setString(
-                              SharedPrefKeys.countryCode,
-                              selectedCountryCode!,
-                            );
-                          },
+                          () {},
                         );
                         Navigator.pop(context);
                       },
@@ -208,12 +216,10 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
   }
 
   void _showCitySelection(List<GetCityModel> cities) {
-    List<GetCityModel> filteredCities = cities
-        .where((city) =>
-            city.countryId ==
-            Prefs.getInt(
-              SharedPrefKeys.countryId,
-            ))
+    List<GetCityModel> filteredGovernorates = cities
+        .where(
+          (city) => city.countryId == selectedCountryId,
+        )
         .toList();
     showModalBottomSheet(
       context: context,
@@ -229,37 +235,38 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('إختر المنطقة', style: TextStyles.bold18),
+              const Text(
+                'إختر المحافظة',
+                style: TextStyles.bold18,
+              ),
               const CustomDividerWidget(),
               Expanded(
                 child: ListView.builder(
-                  itemCount: filteredCities.length,
+                  itemCount: filteredGovernorates.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () async {
+                        await SharedPrefHelper.setData(
+                          key: SharedPrefKeys.governorateId,
+                          value: filteredGovernorates[index].id,
+                        );
                         setState(
-                          () {
-                            selectedCity = filteredCities[index].name;
-                            Prefs.setString(
-                              SharedPrefKeys.cityName,
-                              selectedCity,
-                            );
-                          },
+                          () {},
                         );
                         Navigator.pop(context);
-                        getIt<OffersBloc>().add(
-                          OffersEvent.getOffers(
-                            governorateId: Prefs.getInt(
-                              SharedPrefKeys.countryId,
-                            ),
-                          ),
-                        );
+                        getGovernorate().then((governorateId) {
+                          context.read<OffersBloc>().add(
+                                OffersEvent.getOffers(
+                                  governorateId: governorateId,
+                                ),
+                              );
+                        });
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 16, horizontal: 8),
                         child: Text(
-                          filteredCities[index].name,
+                          filteredGovernorates[index].name,
                           style: TextStyles.bold14,
                         ),
                       ),

@@ -62,15 +62,23 @@ class SharedPrefHelper {
   }
 
   //!Gets an int value from SharedPreferences with given [key].
-  static Future<int> getInt({required String key}) async {
-    debugPrint('SharedPrefHelper : getInt with key : $key');
+  static Future<int> getInt({
+    required String key,
+  }) async {
+    debugPrint(
+      'SharedPrefHelper : getInt with key : $key',
+    );
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getInt(key) ?? 0;
   }
 
   //! Gets an String value from SharedPreferences with given [key].
-  static Future<String?> getString({required String key}) async {
-    debugPrint('SharedPrefHelper : getString with key : $key');
+  static Future<String?> getString({
+    required String key,
+  }) async {
+    debugPrint(
+      'SharedPrefHelper : getString with key : $key',
+    );
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String? value = sharedPreferences.getString(key);
     return value;

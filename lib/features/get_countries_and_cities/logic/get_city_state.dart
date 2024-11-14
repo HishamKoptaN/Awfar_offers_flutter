@@ -7,8 +7,8 @@ final class GetCityInitial extends GetCityState {}
 final class GetCityLoading extends GetCityState {}
 
 final class GetCitySuccess extends GetCityState {
-  final List<GetCityModel> getCityModel;
-  GetCitySuccess({required this.getCityModel});
+  final List<GetCityModel> getGovernorateModel;
+  GetCitySuccess({required this.getGovernorateModel});
 }
 
 final class GetCityFailure extends GetCityState {
