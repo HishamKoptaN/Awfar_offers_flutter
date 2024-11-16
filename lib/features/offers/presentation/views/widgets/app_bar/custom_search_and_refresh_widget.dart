@@ -23,7 +23,10 @@ class CustomSearchAndRefreshWidget extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, SearchView.routeName);
+                Navigator.pushNamed(
+                  context,
+                  SearchView.routeName,
+                );
               },
               child: Container(
                 decoration: BoxDecoration(

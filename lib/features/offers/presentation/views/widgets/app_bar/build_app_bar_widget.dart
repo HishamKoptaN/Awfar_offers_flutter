@@ -1,4 +1,3 @@
-import 'package:aroodi_app/core/di/dependency_injection.dart';
 import 'package:aroodi_app/core/widgets/custom_divider_widget.dart';
 import 'package:aroodi_app/features/offers/presentation/bloc/offers_event.dart';
 import 'package:country_flags/country_flags.dart';
@@ -28,20 +27,22 @@ class BuildAppBarWidget extends StatefulWidget {
 }
 
 class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
-  int? selectedCountryId = 1;
-  int? selectedGovernorateId = 2;
+  int? selectedCountryId;
+  int? selectedGovernorateId;
 
   @override
   void initState() {
     super.initState();
-    _initializeGovernorate();
-  }
-
-  void _initializeGovernorate() async {
-    selectedGovernorateId = await SharedPrefHelper.getInt(
-      key: SharedPrefKeys.governorateId,
+    getGovernorate().then(
+      (dovernorateId) {
+        selectedGovernorateId = dovernorateId;
+      },
     );
-    setState(() {});
+    getCountry().then(
+      (dovernorateId) {
+        selectedGovernorateId = dovernorateId;
+      },
+    );
   }
 
   @override
@@ -51,7 +52,11 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
     return BlocListener<OffersBloc, OffersState>(
       listener: (context, state) {},
       child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+        padding: const EdgeInsets.only(
+          left: 8,
+          right: 8,
+          top: 8,
+        ),
         child: Row(
           children: [
             Text(
@@ -70,7 +75,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                 padding: const EdgeInsets.all(4.0),
                 child: Row(
                   children: [
-                    _buildCountrySelector(),
+                    buildCountrySelector(),
                     const SizedBox(width: 8),
                     _buildGovernorateSelector(),
                     const Icon(
@@ -87,7 +92,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
     );
   }
 
-  Widget _buildCountrySelector() {
+  Widget buildCountrySelector() {
     return BlocConsumer<GetCountriesCubit, GetCountriesState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -161,10 +166,12 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
     );
   }
 
-  void _showCountrySelection(List<GetCountriesModel> countries) {
+  void _showCountrySelection(
+    List<GetCountriesModel> countries,
+  ) {
     showModalBottomSheet(
       context: context,
-      builder: (BuildContext context) {
+      builder: (context) {
         return Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -191,10 +198,10 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                           key: SharedPrefKeys.countryId,
                           value: country.id,
                         );
+                        Navigator.pop(context);
                         setState(
                           () {},
                         );
-                        Navigator.pop(context);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -250,17 +257,17 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                           key: SharedPrefKeys.governorateId,
                           value: filteredGovernorates[index].id,
                         );
-                        setState(
-                          () {},
-                        );
+                        setState(() {});
                         Navigator.pop(context);
-                        getGovernorate().then((governorateId) {
-                          context.read<OffersBloc>().add(
-                                OffersEvent.getOffers(
-                                  governorateId: governorateId,
-                                ),
-                              );
-                        });
+                        getGovernorate().then(
+                          (governorateId) {
+                            context.read<OffersBloc>().add(
+                                  OffersEvent.getOffers(
+                                    governorateId: governorateId,
+                                  ),
+                                );
+                          },
+                        );
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(

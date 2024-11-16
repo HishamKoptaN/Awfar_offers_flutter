@@ -14,7 +14,7 @@ class CustomMarkaItemListView extends StatelessWidget {
       height: 46,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: stores?.length,
+        itemCount: stores!.length,
         itemBuilder: (context, index) {
           final store = stores![index];
           return Padding(

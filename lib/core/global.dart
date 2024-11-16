@@ -7,3 +7,10 @@ Future<int> getGovernorate() async {
   );
   return governorateId;
 }
+
+Future<int> getCountry() async {
+  int? countryId = await SharedPrefHelper.getInt(
+    key: SharedPrefKeys.countryId,
+  );
+  return countryId;
+}

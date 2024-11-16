@@ -25,7 +25,7 @@ class _HomeView extends State<HomeView> {
     const SettingsView(
       isBack: false,
     ),
-    const ProfileView(),
+    // const ProfileView(),
   ];
 
   @override
@@ -75,11 +75,11 @@ class _HomeView extends State<HomeView> {
               icon: Icon(Icons.settings_outlined),
               label: 'الإعدادات',
             ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.person_outlined),
-              label: 'حساب',
-            ),
+            // BottomNavigationBarItem(
+            //   backgroundColor: AppColors.primaryColor,
+            //   icon: Icon(Icons.person_outlined),
+            //   label: 'حساب',
+            // ),
           ],
         ),
       ),

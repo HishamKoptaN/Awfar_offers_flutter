@@ -13,6 +13,7 @@ import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/generated/l10n.dart';
 import 'package:aroodi_app/home_view.dart';
 import 'core/app_observer.dart';
+import 'core/database/cache/shared_pref_helper.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/global.dart';
 import 'features/categories/presentation/bloc/categories_event.dart';
@@ -22,6 +23,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   await Injection.inject();
+  SharedPrefHelper;
+
   Bloc.observer = AppBlocObserver();
   runApp(
     MultiBlocProvider(providers: [
@@ -31,7 +34,9 @@ void main() async {
       BlocProvider(
         create: (context) => getIt<GetCityCubit>()..getCity(),
       ),
-      BlocProvider(create: (context) => getIt<OffersBloc>()),
+      BlocProvider(
+        create: (context) => getIt<OffersBloc>(),
+      ),
       BlocProvider(
         create: (context) => getIt<OffersBloc>(),
       ),
@@ -59,13 +64,15 @@ class _AroodiAppState extends State<AroodiApp> {
   Future<Null> injectEvent() async {
     await Future.microtask(
       () {
-        getGovernorate().then((governorateId) {
-          context.read<OffersBloc>().add(
-                OffersEvent.getOffers(
-                  governorateId: governorateId,
-                ),
-              );
-        });
+        getGovernorate().then(
+          (governorateId) {
+            context.read<OffersBloc>().add(
+                  OffersEvent.getOffers(
+                    governorateId: governorateId,
+                  ),
+                );
+          },
+        );
         context.read<CategoriesBloc>().add(
               const CategoriesEvent.getCategoriesEvent(),
             );

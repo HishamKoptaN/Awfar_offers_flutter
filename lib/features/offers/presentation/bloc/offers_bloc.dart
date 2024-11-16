@@ -15,6 +15,7 @@ class OffersBloc extends Bloc<OffersEvent, OffersState> {
       (event, emit) async {
         await event.when(
           getOffers: (governorateId) async {
+            const OffersState.loading();
             final result = await getOffersUseCase.getOffers(
               governorateId: governorateId,
             );

@@ -13,7 +13,9 @@ class SearchView extends StatelessWidget {
   static const String routeName = 'search_view';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    context,
+  ) {
     return SafeArea(
       child: Scaffold(
         body: SearchViewBody(

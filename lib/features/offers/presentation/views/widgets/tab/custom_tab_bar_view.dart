@@ -10,21 +10,25 @@ class CustomTabBarView extends StatelessWidget {
   });
   OffersResponseModel offersResponseModel;
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     double screenHeight = MediaQuery.of(context).size.height - 240;
     return SizedBox(
       height: screenHeight,
       child: TabBarView(
         children: [
+          // Top
           AroodiViewBodyDetails(
             offersResponseModel: offersResponseModel,
           ),
+          // Favorites
           AroodiViewBodyDetails(
             offersResponseModel: offersResponseModel,
           ),
+          // Nearer
           AroodiViewBodyDetails(
             offersResponseModel: offersResponseModel,
           ),
+          // Recentley
           AroodiViewBodyDetails(
             offersResponseModel: offersResponseModel,
           ),

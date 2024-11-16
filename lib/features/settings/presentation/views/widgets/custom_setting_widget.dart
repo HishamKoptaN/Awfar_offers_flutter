@@ -2,18 +2,19 @@ import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomSettingWidget extends StatelessWidget {
-  const CustomSettingWidget({
+  CustomSettingWidget({
     super.key,
     required this.title,
+    required this.onTap,
   });
   final String title;
-
+  void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: GestureDetector(
-        onTap: () {},
+        onTap: onTap,
         child: Row(
           children: [
             Text(
