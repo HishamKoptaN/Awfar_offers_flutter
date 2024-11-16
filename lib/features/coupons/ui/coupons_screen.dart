@@ -1,7 +1,10 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:aroodi_app/core/utils/app_text_styles.dart';
+import 'package:aroodi_app/features/coupons/logic/coupons_cubit.dart';
+import 'package:aroodi_app/features/coupons/logic/coupons_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CouponsScreen extends StatefulWidget {
   const CouponsScreen({super.key});
@@ -19,241 +22,243 @@ class _CouponsScreenState extends State<CouponsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
-              child: Row(
+        body: BlocConsumer<CouponsCubit, CouponsState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            if (state is CouponsStateLoading) {
+              return const CircularProgressIndicator();
+            } else if (state is CouponsStateFailure) {
+              print(state.message);
+              return Text(state.message.toString());
+            } else if (state is CouponsStateSuccess) {
+              return Column(
                 children: [
-                  Text(
-                    "Coupon",
-                    style: TextStyles.bold13.copyWith(
-                      color: AppColors.lightPrimaryColor,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Coupon",
+                          style: TextStyles.bold13.copyWith(
+                            color: AppColors.lightPrimaryColor,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        const Icon(
+                          Icons.card_giftcard_outlined,
+                          color: AppColors.lightPrimaryColor,
+                          size: 20,
+                        ),
+                        const Spacer(),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.search_outlined,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                   const SizedBox(
-                    width: 4,
+                    height: 16,
                   ),
-                  const Icon(
-                    Icons.card_giftcard_outlined,
-                    color: AppColors.lightPrimaryColor,
-                    size: 20,
-                  ),
-                  const Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.search_outlined,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            // Categories section
-            Padding(
-              padding: const EdgeInsets.only(right: 2),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedIndex = -1;
-                      });
-                      // widget.onCategorySelected(-1);
-                    },
-                    child: Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: _selectedIndex == -1
-                            ? AppColors.lightPrimaryColor
-                            : AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          child: Text(
-                            "جميع",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _selectedIndex = -2;
-                      });
-                      // widget.onCategorySelected(-1);
-                    },
-                    child: Container(
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: _selectedIndex == -2
-                            ? AppColors.lightPrimaryColor
-                            : AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 8,
-                          ),
-                          child: Icon(
-                            Icons.favorite_border_outlined,
-                            color: _selectedIndex == -2
-                                ? Colors.white
-                                : AppColors.lightPrimaryColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      height: 40,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 8,
-                        itemBuilder: (context, index) {
-                          // final category = widget.categories![index];
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _selectedIndex = index;
-                              });
-                              // widget.onCategorySelected(category.id);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: _selectedIndex == index
-                                      ? AppColors.lightPrimaryColor
-                                      : AppColors.primaryColor,
-                                  borderRadius: BorderRadius.circular(10),
+                  // Categories section
+                  Padding(
+                    padding: const EdgeInsets.only(right: 2),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = -1;
+                            });
+                            // widget.onCategorySelected(-1);
+                          },
+                          child: Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: _selectedIndex == -1
+                                  ? AppColors.lightPrimaryColor
+                                  : AppColors.primaryColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 8,
-                                  ),
-                                  child: Text(
-                                    "الأزياء",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
+                                child: Text(
+                                  "جميع",
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             ),
-                          );
-                        },
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = -2;
+                            });
+                            // widget.onCategorySelected(-1);
+                          },
+                          child: Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: _selectedIndex == -2
+                                  ? AppColors.lightPrimaryColor
+                                  : AppColors.primaryColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 8,
+                                ),
+                                child: Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: _selectedIndex == -2
+                                      ? Colors.white
+                                      : AppColors.lightPrimaryColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: 40,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 8,
+                              itemBuilder: (context, index) {
+                                // final category = widget.categories![index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _selectedIndex = index;
+                                    });
+                                    // widget.onCategorySelected(category.id);
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: _selectedIndex == index
+                                            ? AppColors.lightPrimaryColor
+                                            : AppColors.primaryColor,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 16,
+                                          vertical: 8,
+                                        ),
+                                        child: Text(
+                                          "الأزياء",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  SizedBox(
+                    height: 46,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 4,
+                      itemBuilder: (context, index) {
+                        return const Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child: CircleAvatar(
+                            radius: 23,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              backgroundColor: AppColors.primaryColor,
+                              backgroundImage: NetworkImage(
+                                "https://pbs.twimg.com/media/DIkUxZZVYAEu9mV.jpg",
+                              ),
+                              radius: 22,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Expanded(
+                    child: GridView.builder(
+                      padding: const EdgeInsets.all(8.0),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 10.0,
+                        childAspectRatio: 1,
                       ),
+                      itemCount: state.couponsModel.length, // عدد الكوبونات
+                      itemBuilder: (context, index) {
+                        return _buildCouponCard(
+                          state.couponsModel[index].code,
+                          state.couponsModel[index].description,
+                          state.couponsModel[index].code,
+                        );
+                      },
                     ),
                   ),
                 ],
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            SizedBox(
-              height: 46,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: CircleAvatar(
-                      radius: 23,
-                      backgroundColor: Colors.white,
-                      child: CircleAvatar(
-                        backgroundColor: AppColors.primaryColor,
-                        backgroundImage: NetworkImage(
-                          "https://pbs.twimg.com/media/DIkUxZZVYAEu9mV.jpg",
-                        ),
-                        radius: 22,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Expanded(
-              child: GridView.builder(
-                padding: const EdgeInsets.all(8.0),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 10.0,
-                  childAspectRatio: 1,
-                ),
-                itemCount: 4, // عدد الكوبونات
-                itemBuilder: (context, index) {
-                  return _buildCouponCard(index);
-                },
-              ),
-            ),
-          ],
+              );
+            } else {
+              return const Text(
+                "unknown",
+                style: TextStyle(color: Colors.white),
+              );
+            }
+          },
         ),
       ),
     );
   }
 
-  Widget _buildCouponCard(int index) {
-    // بيانات افتراضية للكوبونات
-    List<Map<String, String>> coupons = [
-      {
-        'logo': 'UBUY',
-        'description': 'احصل على خصم يصل إلى 50% على الموقع',
-        'code': 'UBUDTYAN',
-      },
-      {
-        'logo': 'Foot Locker',
-        'description': 'Upto 50% on selected lines',
-        'code': 'DAM7',
-      },
-      {
-        'logo': 'Raya Shop',
-        'description': 'احصل على خصم 10% على جميع المنتجات',
-        'code': 'AA4',
-      },
-      {
-        'logo': 'Swarovski',
-        'description': 'خصم 25% + خصم إضافي 5%',
-        'code': 'SK39',
-      },
-    ];
-
-    var coupon = coupons[index];
-
+  Widget _buildCouponCard(
+    String title,
+    String description,
+    String code,
+  ) {
     return GestureDetector(
       onTap: () {
         bottomSheet(context);
@@ -280,7 +285,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
                     height: 8,
                   ),
                   Text(
-                    coupon['logo']!,
+                    title,
                     style: const TextStyle(
                       fontSize: 14,
                       color: Colors.white,
@@ -290,7 +295,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
                     height: 8,
                   ),
                   Text(
-                    coupon['description']!,
+                    description,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.white,
@@ -301,13 +306,13 @@ class _CouponsScreenState extends State<CouponsScreen> {
                   GestureDetector(
                     onTap: () {
                       // نسخ الكود إلى الحافظة
-                      Clipboard.setData(ClipboardData(text: coupon['code']!));
+                      Clipboard.setData(ClipboardData(text: code));
 
                       // إظهار رسالة SnackBar
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'تم نسخ الكود: ${coupon['code']}',
+                            'تم نسخ الكود: $code',
                             style: const TextStyle(color: Colors.white),
                           ),
                           backgroundColor: AppColors.lightPrimaryColor,
@@ -329,7 +334,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
                         child: Row(
                           children: [
                             Text(
-                              coupon['code']!,
+                              code,
                               style: const TextStyle(
                                 color: Colors.white,
                               ),

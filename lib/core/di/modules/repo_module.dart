@@ -1,3 +1,4 @@
+import 'package:aroodi_app/features/coupons/data/repos/coupons_repos.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/data/repos/get_city_repo.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/data/repos/get_countries_repo.dart';
 
@@ -28,6 +29,11 @@ class RepositoryModule extends DIModule {
       )
       ..registerLazySingleton<GetCityRepo>(
         () => GetCityRepo(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<CouponsRepos>(
+        () => CouponsRepos(
           getIt(),
         ),
       );

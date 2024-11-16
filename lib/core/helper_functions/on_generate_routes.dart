@@ -1,3 +1,5 @@
+import 'package:aroodi_app/core/di/dependency_injection.dart';
+import 'package:aroodi_app/features/coupons/logic/coupons_cubit.dart';
 import 'package:aroodi_app/features/coupons/ui/coupons_screen.dart';
 import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:aroodi_app/features/offers/presentation/views/offer_view.dart';
@@ -9,6 +11,7 @@ import 'package:aroodi_app/features/profile/presentation/views/profile_view.dart
 import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
 import 'package:aroodi_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -25,7 +28,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
 
     case CouponsScreen.routeName:
-      return MaterialPageRoute(builder: (context) => const CouponsScreen());
+      return MaterialPageRoute(
+        builder: (context) => BlocProvider(
+          create: (context) => getIt<CouponsCubit>()..getCoupons(),
+          child: const CouponsScreen(),
+        ),
+      );
     case FullScreenOfOfferImage.routeName:
       final args = settings.arguments as Map<String, dynamic>;
       final store = args['store'] as Store;
