@@ -1,3 +1,4 @@
+import 'package:aroodi_app/features/coupons/ui/coupons_screen.dart';
 import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:aroodi_app/features/offers/presentation/views/offer_view.dart';
 import 'package:aroodi_app/features/categories/presentation/views/categories_view.dart';
@@ -23,6 +24,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         ),
       );
 
+    case CouponsScreen.routeName:
+      return MaterialPageRoute(builder: (context) => const CouponsScreen());
     case FullScreenOfOfferImage.routeName:
       final args = settings.arguments as Map<String, dynamic>;
       final store = args['store'] as Store;
