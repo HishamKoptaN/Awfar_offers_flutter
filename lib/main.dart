@@ -39,10 +39,6 @@ class AroodiApp extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return MultiBlocProvider(
       providers: [
-<<<<<<< HEAD
-=======
-        // Add all the blocs you want to provide
->>>>>>> 1f26d2f2d3d04898f3ed2d75690840262827f178
         BlocProvider(
           create: (context) => getIt<GetCountriesCubit>()..getCountries(),
         ),
