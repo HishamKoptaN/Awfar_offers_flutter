@@ -8,7 +8,9 @@ final class CouponsStateLoading extends CouponsState {}
 
 final class CouponsStateSuccess extends CouponsState {
   final List<CouponModel> couponsModel;
-  CouponsStateSuccess({required this.couponsModel});
+  CouponsStateSuccess({
+    required this.couponsModel,
+  });
 }
 
 final class CouponsStateFailure extends CouponsState {

@@ -15,8 +15,8 @@ class CouponsCubit extends Cubit<CouponsState> {
         failure: (error) {
           emit(CouponsStateFailure(message: error.error!.toString()));
         },
-        success: (countriesModel) {
-          emit(CouponsStateSuccess(couponsModel: countriesModel));
+        success: (couponsModel) {
+          emit(CouponsStateSuccess(couponsModel: couponsModel));
         },
       );
     } catch (e) {
