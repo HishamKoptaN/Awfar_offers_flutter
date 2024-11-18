@@ -1,6 +1,7 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../offers/presentation/views/widgets/store/custom_marka_item.dart';
 
 class AppBarInCategory extends StatelessWidget {
   const AppBarInCategory({

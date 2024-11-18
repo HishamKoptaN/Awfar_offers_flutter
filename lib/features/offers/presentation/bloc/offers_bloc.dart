@@ -5,10 +5,9 @@ import 'offers_state.dart';
 
 class OffersBloc extends Bloc<OffersEvent, OffersState> {
   final GetOffersUseCase getOffersUseCase;
-
-  OffersBloc(
-    this.getOffersUseCase,
-  ) : super(
+  OffersBloc({
+    required this.getOffersUseCase,
+  }) : super(
           const OffersState.initialState(),
         ) {
     on<OffersEvent>(

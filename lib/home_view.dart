@@ -1,10 +1,10 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/offers/presentation/views/offer_view.dart';
-import 'package:aroodi_app/features/categories/presentation/views/categories_view.dart';
-import 'package:aroodi_app/features/profile/presentation/views/profile_view.dart';
-import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
-import 'package:aroodi_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
+
+import 'core/utils/app_colors.dart';
+import 'features/categories/presentation/views/categories_view.dart';
+import 'features/offers/presentation/views/offer_view.dart';
+import 'features/search/presentation/views/search_view.dart';
+import 'features/settings/presentation/views/settings_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

@@ -1,10 +1,10 @@
-import 'package:aroodi_app/features/offers/presentation/views/widgets/category/custom_category_item_list_view.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../../../admobe/banner_ad.dart';
 import '../../../data/models/offers_response_model.dart';
+import 'category/custom_category_item_list_view.dart';
 import 'items/offers_card_items_grid_view.dart';
+import 'store/custom_marka_item_list_view.dart';
 
 class AroodiViewBodyDetails extends StatefulWidget {
   AroodiViewBodyDetails({

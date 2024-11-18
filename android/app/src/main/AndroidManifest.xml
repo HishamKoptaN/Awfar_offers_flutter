@@ -1,6 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.awfaroffers.app">
     <application
-        android:label="aroodi_app"
+        android:label="awfaroffers"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

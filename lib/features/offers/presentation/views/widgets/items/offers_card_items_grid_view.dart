@@ -1,7 +1,7 @@
-import 'package:aroodi_app/features/offers/presentation/views/widgets/items/custom_offer_card_item.dart';
 import 'package:flutter/material.dart';
 import '../../../../../offer_details/presentation/views/offer_deatails_view.dart';
 import '../../../../data/models/offers_response_model.dart';
+import 'custom_offer_card_item.dart';
 
 class OffersItemsGridView extends StatelessWidget {
   const OffersItemsGridView({

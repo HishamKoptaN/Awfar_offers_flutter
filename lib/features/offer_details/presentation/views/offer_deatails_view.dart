@@ -1,6 +1,7 @@
-import 'package:aroodi_app/features/offer_details/presentation/views/widgets/offer_details_view_body.dart';
-import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../offers/data/models/offers_response_model.dart';
+import 'widgets/offer_details_view_body.dart';
 
 class OfferDeatailsView extends StatelessWidget {
   const OfferDeatailsView({

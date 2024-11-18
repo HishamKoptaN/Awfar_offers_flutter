@@ -1,13 +1,14 @@
-import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
-import 'package:aroodi_app/features/offers/presentation/views/offer_view.dart';
-import 'package:aroodi_app/features/categories/presentation/views/categories_view.dart';
-import 'package:aroodi_app/features/offer_details/presentation/views/offer_deatails_view.dart';
-import 'package:aroodi_app/features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
-import 'package:aroodi_app/home_view.dart';
-import 'package:aroodi_app/features/profile/presentation/views/profile_view.dart';
-import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
-import 'package:aroodi_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/categories/presentation/views/categories_view.dart';
+import '../../features/offer_details/presentation/views/offer_deatails_view.dart';
+import '../../features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
+import '../../features/offers/data/models/offers_response_model.dart';
+import '../../features/offers/presentation/views/offer_view.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
+import '../../features/search/presentation/views/search_view.dart';
+import '../../features/settings/presentation/views/settings_view.dart';
+import '../../home_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {

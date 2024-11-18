@@ -1,8 +1,8 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/categories/presentation/views/widgets/active_and_in_active_category.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/app_colors.dart';
 import '../../../data/models/categories_response_model.dart';
+import 'active_and_in_active_category.dart';
 
 class ListViewAndGridView extends StatefulWidget {
   ListViewAndGridView({

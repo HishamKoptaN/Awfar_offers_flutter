@@ -1,5 +1,6 @@
-import 'package:aroodi_app/features/settings/presentation/views/widgets/settings_view_body.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/settings_view_body.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key, required this.isBack});
@@ -12,7 +13,9 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SettingsViewBody(isBack: isBack),
+        body: SettingsViewBody(
+          isBack: isBack,
+        ),
       ),
     );
   }

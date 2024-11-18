@@ -1,8 +1,9 @@
-import 'package:aroodi_app/features/offer_details/presentation/views/widgets/app_bar_in_offer_details.dart';
-import 'package:aroodi_app/features/offer_details/presentation/views/widgets/offers_grid_view.dart';
-import 'package:aroodi_app/features/offer_details/presentation/views/widgets/text_and_share_notification_icon.dart';
-import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../offers/data/models/offers_response_model.dart';
+import 'app_bar_in_offer_details.dart';
+import 'offers_grid_view.dart';
+import 'text_and_share_notification_icon.dart';
 
 class OfferDetailsViewBody extends StatelessWidget {
   const OfferDetailsViewBody({

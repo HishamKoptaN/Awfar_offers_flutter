@@ -1,7 +1,8 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
-import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../offers/data/models/offers_response_model.dart';
+import 'full_screen_of_offer_image.dart';
 
 class OffersGridView extends StatelessWidget {
   const OffersGridView({

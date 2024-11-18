@@ -1,5 +1,6 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+
+import 'app_colors.dart';
 
 abstract class TextStyles {
   static const TextStyle normal10 = TextStyle(

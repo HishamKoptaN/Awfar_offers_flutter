@@ -1,8 +1,8 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/core/utils/app_text_styles.dart';
-import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../core/utils/app_colors.dart';
+import '../../../../../../core/utils/app_text_styles.dart';
+import '../../../../../search/presentation/views/search_view.dart';
 import '../../../../data/models/offers_response_model.dart';
 
 class CustomSearchAndRefreshWidget extends StatelessWidget {

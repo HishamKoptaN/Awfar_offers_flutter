@@ -1,6 +1,7 @@
-import 'package:aroodi_app/core/widgets/custom_back_button.dart';
-import 'package:aroodi_app/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class SearchViewBody extends StatefulWidget {
   const SearchViewBody({

@@ -1,0 +1,10 @@
+# dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+flutter_native_splash:
+  color: "#ffffff" # لون الخلفية للشاشة الترحيبية
+  image: assets/icons/launcher_icon.jpg # مسار الصورة للشاشة الترحيبية
+  android: true
+  ios: true
+
+  # خيارات تحديد الموضع
+  android_gravity: center
+  ios_content_mode: center

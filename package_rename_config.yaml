@@ -1,0 +1,34 @@
+# dart run package_rename --path="package_rename_config.yaml"
+
+package_rename_config:
+  android:
+    app_name: "awfaroffers"        # اسم التطبيق
+    package_name: "com.awfaroffers.app"  # اسم الحزمة
+    override_old_package: true  # لتجاهل الحزمة القديمة
+    lang: "en"                 # لغة التطبيق (اختياري)
+
+  ios:
+    app_name: "awfaroffers"        # اسم التطبيق
+    bundle_name: "com.awfaroffers.app"  # اسم الحزمة
+    package_name: "com.awfaroffers.app"  # اسم الحزمة
+
+  linux:
+    app_name: "awfaroffers"        # اسم التطبيق
+    package_name: "com.awfaroffers.app"  # اسم الحزمة
+    exe_name: "awfaroffers"        # اسم ملف التنفيذ
+
+  macos:
+    app_name: "awfaroffers"        # اسم التطبيق
+    package_name: "com.awfaroffers.app"  # اسم الحزمة
+    copyright_notice: "© 2024 IMolds"  # حقوق الطبع والنشر (اختياري)
+
+  web:
+    app_name: "awfaroffers"        # اسم التطبيق
+    short_app_name: "awfaroffers"  # اسم التطبيق المختصر (اختياري)
+    description: "awfaroffers App" # وصف التطبيق (اختياري)
+
+  windows:
+    app_name: "awfaroffers"        # اسم التطبيق
+    organization: "awfaroffers"     # اسم المؤسسة (اختياري)
+    copyright_notice: "© 2024 awfaroffers"  # حقوق الطبع والنشر (اختياري)
+    exe_name: "awfaroffers"        # اسم ملف التنفيذ

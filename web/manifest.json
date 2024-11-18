@@ -1,11 +1,11 @@
 {
-    "name": "aroodi_app",
-    "short_name": "aroodi_app",
+    "name": "awfaroffers",
+    "short_name": "awfaroffers",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "description": "awfaroffers App",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

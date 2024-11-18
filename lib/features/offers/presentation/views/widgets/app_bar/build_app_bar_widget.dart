@@ -1,21 +1,22 @@
-import 'package:aroodi_app/core/widgets/custom_divider_widget.dart';
-import 'package:aroodi_app/features/offers/presentation/bloc/offers_event.dart';
+import 'package:awfaroffers/features/countries/presentation/bloc/countries_bloc.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/core/utils/app_text_styles.dart';
-import 'package:aroodi_app/features/offers/presentation/bloc/offers_bloc.dart';
-import 'package:aroodi_app/features/offers/presentation/bloc/offers_state.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/data/models/get_city_model.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/data/models/get_countries_model.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/logic/get_cit_cubit.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/logic/get_city_state.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_state.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/database/cache/shared_pref_helper.dart';
 import '../../../../../../core/database/cache/shared_pref_keys.dart';
-import '../../../../../../core/global.dart';
+import '../../../../../../core/global_methods.dart';
+import '../../../../../../core/utils/app_colors.dart';
+import '../../../../../../core/utils/app_text_styles.dart';
+import '../../../../../../core/widgets/custom_divider_widget.dart';
+import '../../../../../countries/data/models/countries_response_model.dart';
+import '../../../../../countries/presentation/bloc/countries_state.dart';
+import '../../../../../governorates/data/models/governorates_res_model.dart';
+import '../../../../../governorates/present/bloc/governorates_bloc.dart';
+import '../../../../../governorates/present/bloc/governorates_state.dart';
+import '../../../bloc/offers_bloc.dart';
+import '../../../bloc/offers_event.dart';
+import '../../../bloc/offers_state.dart';
 
 class BuildAppBarWidget extends StatefulWidget {
   const BuildAppBarWidget({
@@ -27,147 +28,145 @@ class BuildAppBarWidget extends StatefulWidget {
 }
 
 class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
-  int? selectedCountryId;
-  int? selectedGovernorateId;
-
   @override
   void initState() {
     super.initState();
-    getGovernorate().then(
-      (dovernorateId) {
-        selectedGovernorateId = dovernorateId;
-      },
-    );
-    getCountry().then(
-      (dovernorateId) {
-        selectedGovernorateId = dovernorateId;
-      },
-    );
   }
 
   @override
   Widget build(
     context,
   ) {
-    return BlocListener<OffersBloc, OffersState>(
-      listener: (context, state) {},
-      child: Padding(
-        padding: const EdgeInsets.only(
-          left: 8,
-          right: 8,
-          top: 8,
-        ),
-        child: Row(
-          children: [
-            Text(
-              "Awfar Offer",
-              style: TextStyles.bold13.copyWith(
-                color: AppColors.lightPrimaryColor,
-              ),
-            ),
-            const Spacer(),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Row(
-                  children: [
-                    buildCountrySelector(),
-                    const SizedBox(width: 8),
-                    _buildGovernorateSelector(),
-                    const Icon(
-                      Icons.arrow_drop_down_sharp,
-                      color: AppColors.lightPrimaryColor,
-                    ),
-                  ],
+    return BlocBuilder<OffersBloc, OffersState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(
+            left: 8,
+            right: 8,
+            top: 8,
+          ),
+          child: Row(
+            children: [
+              Text(
+                "Awfar Offer",
+                style: TextStyles.bold13.copyWith(
+                  color: AppColors.lightPrimaryColor,
                 ),
               ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildCountrySelector() {
-    return BlocConsumer<GetCountriesCubit, GetCountriesState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        if (state is GetCountriesLoading) {
-          return const CircularProgressIndicator();
-        } else if (state is GetCountriesSuccess) {
-          return GestureDetector(
-            onTap: () {
-              _showCountrySelection(
-                state.getCountriesModel,
-              );
-            },
-            child: selectedCountryId != null
-                ? CountryFlag.fromCountryCode(
-                    state.getCountriesModel
-                        .where(
-                          (country) => country.id == selectedCountryId,
-                        )
-                        .first
-                        .code,
-                    width: 30,
-                    height: 20,
-                    shape: const RoundedRectangle(6),
-                  )
-                : const Text(
-                    "select Country",
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
+              const Spacer(),
+              Container(
+                width: 150.w,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      buildCountrySelectorWidget(),
+                      const SizedBox(width: 8),
+                      _buildGovernorateSelectorWidget(),
+                      const Icon(
+                        Icons.arrow_drop_down_sharp,
+                        color: AppColors.lightPrimaryColor,
+                      ),
+                    ],
                   ),
-          );
-        } else {
-          return const Text(
-            "unknown",
-            style: TextStyle(color: Colors.white),
-          );
-        }
+                ),
+              )
+            ],
+          ),
+        );
       },
     );
   }
 
-  Widget _buildGovernorateSelector() {
-    return BlocConsumer<GetCityCubit, GetCityState>(
+  Widget buildCountrySelectorWidget() {
+    return BlocConsumer<CountriesBloc, CountriesState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is GetCityLoading) {
-          return const CircularProgressIndicator();
-        } else if (state is GetCitySuccess) {
-          return GestureDetector(
-            onTap: () {
-              _showCitySelection(
-                state.getGovernorateModel,
-              );
-            },
-            child: Text(
-              state.getGovernorateModel
-                  .where(
-                    (governorate) => governorate.id == selectedGovernorateId,
-                  )
-                  .first
-                  .name,
-              style: const TextStyle(color: Colors.white),
-            ),
-          );
-        } else {
-          return const Text(
-            "unknown",
-            style: TextStyle(color: Colors.white),
-          );
-        }
+        return state.maybeWhen(
+          countriesloaded: (countries, selectedCountryId) {
+            return GestureDetector(
+              onTap: () {
+                _showCountrySelection(
+                  countries,
+                );
+              },
+              child: selectedCountryId != null
+                  ? CountryFlag.fromCountryCode(
+                      countries
+                          .where(
+                            (country) => country.id == selectedCountryId,
+                          )
+                          .first
+                          .code!,
+                      width: 30,
+                      height: 20,
+                      shape: const RoundedRectangle(6),
+                    )
+                  : const Text(
+                      "select Country",
+                      style: TextStyle(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+            );
+          },
+          loading: () {
+            return const CircularProgressIndicator();
+          },
+          orElse: () {
+            return const CircularProgressIndicator();
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildGovernorateSelectorWidget() {
+    return BlocConsumer<GovernoratesBloc, GovernoratesState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return state.maybeWhen(
+          governoratesloaded: (governorates, selectedGovernorateId) {
+            return GestureDetector(
+              onTap: () {
+                _showGovernorateSelection(
+                  governorates: governorates,
+                  selectedCountryId: selectedGovernorateId!,
+                );
+              },
+              child: Text(
+                selectedGovernorateId != null
+                    ? governorates
+                        .where(
+                          (governorate) =>
+                              governorate.id == selectedGovernorateId,
+                        )
+                        .first
+                        .name!
+                    : "اختر محافظة",
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            );
+          },
+          loading: () {
+            return const CircularProgressIndicator();
+          },
+          orElse: () {
+            return const CircularProgressIndicator();
+          },
+        );
       },
     );
   }
 
   void _showCountrySelection(
-    List<GetCountriesModel> countries,
+    List<Country> countries,
   ) {
     showModalBottomSheet(
       context: context,
@@ -207,7 +206,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 16, horizontal: 8),
                         child: Text(
-                          countries[index].code,
+                          countries[index].code!,
                           style: TextStyles.bold14,
                         ),
                       ),
@@ -222,12 +221,10 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
     );
   }
 
-  void _showCitySelection(List<GetCityModel> cities) {
-    List<GetCityModel> filteredGovernorates = cities
-        .where(
-          (city) => city.countryId == selectedCountryId,
-        )
-        .toList();
+  void _showGovernorateSelection({
+    required List<Governorate> governorates,
+    required int selectedCountryId,
+  }) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -249,13 +246,23 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
               const CustomDividerWidget(),
               Expanded(
                 child: ListView.builder(
-                  itemCount: filteredGovernorates.length,
+                  itemCount: governorates
+                      .where(
+                        (city) => city.countryId == selectedCountryId,
+                      )
+                      .toList()
+                      .length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () async {
                         await SharedPrefHelper.setData(
                           key: SharedPrefKeys.governorateId,
-                          value: filteredGovernorates[index].id,
+                          value: governorates
+                              .where(
+                                (city) => city.countryId == selectedCountryId,
+                              )
+                              .toList()[index]
+                              .id,
                         );
                         setState(() {});
                         Navigator.pop(context);
@@ -273,7 +280,12 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 16, horizontal: 8),
                         child: Text(
-                          filteredGovernorates[index].name,
+                          governorates
+                              .where(
+                                (city) => city.countryId == selectedCountryId,
+                              )
+                              .toList()[index]
+                              .name!,
                           style: TextStyles.bold14,
                         ),
                       ),

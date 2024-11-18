@@ -1,4 +1,4 @@
-import 'package:aroodi_app/features/categories/data/models/categories_response_model.dart';
+import 'package:awfaroffers/features/categories/data/models/categories_response_model.dart';
 import '../../../../core/networking/api_result.dart';
 import '../repo/categories_repo.dart';
 

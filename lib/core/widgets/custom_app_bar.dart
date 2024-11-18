@@ -1,5 +1,6 @@
-import 'package:aroodi_app/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/app_text_styles.dart';
 
 AppBar buildAppBar(context, {required String title}) {
   return AppBar(

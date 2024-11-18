@@ -1,7 +1,7 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/category/custom_category_item.dart';
 import 'package:flutter/material.dart';
+import '../../../../../../core/utils/app_colors.dart';
 import '../../../../data/models/offers_response_model.dart';
+import 'custom_category_item.dart';
 
 class CustomCategoryItemListView extends StatefulWidget {
   const CustomCategoryItemListView({

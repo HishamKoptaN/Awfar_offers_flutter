@@ -1,8 +1,9 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
-import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../../core/utils/app_colors.dart';
+import '../../../../data/models/offers_response_model.dart';
+import '../store/custom_marka_item.dart';
 
 class CustomCardItem extends StatefulWidget {
   const CustomCardItem({

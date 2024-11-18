@@ -1,9 +1,10 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/core/widgets/custom_back_button.dart';
-import 'package:aroodi_app/features/offers/data/models/offers_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../offers/data/models/offers_response_model.dart';
 
 class FullScreenOfOfferImage extends StatefulWidget {
   const FullScreenOfOfferImage({

@@ -1,7 +1,8 @@
-import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
-import 'package:aroodi_app/core/widgets/custom_back_button.dart';
-import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../offers/presentation/views/widgets/store/custom_marka_item.dart';
+import '../../../../search/presentation/views/search_view.dart';
 
 class AppBarInOfferDetails extends StatelessWidget {
   const AppBarInOfferDetails({

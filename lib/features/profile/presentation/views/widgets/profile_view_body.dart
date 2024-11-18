@@ -1,7 +1,3 @@
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/features/profile/presentation/views/widgets/custom_personal_list.dart';
-import 'package:aroodi_app/features/profile/presentation/views/widgets/tools_widget.dart';
-import 'package:aroodi_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
 
 class ProfileViewBody extends StatelessWidget {

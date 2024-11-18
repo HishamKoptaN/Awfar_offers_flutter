@@ -1,49 +1,67 @@
-import 'package:aroodi_app/features/categories/presentation/bloc/categories_bloc.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/logic/get_cit_cubit.dart';
-import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
-import 'package:aroodi_app/features/offers/presentation/bloc/offers_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:aroodi_app/core/helper_functions/on_generate_routes.dart';
-import 'package:aroodi_app/core/utils/app_colors.dart';
-import 'package:aroodi_app/generated/l10n.dart';
-import 'package:aroodi_app/home_view.dart';
 import 'core/app_observer.dart';
 import 'core/database/cache/shared_pref_helper.dart';
+import 'core/database/cache/shared_pref_keys.dart';
 import 'core/di/dependency_injection.dart';
-import 'core/global.dart';
+import 'core/global_methods.dart';
+import 'core/helper_functions/on_generate_routes.dart';
+import 'core/utils/app_colors.dart';
+import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/categories/presentation/bloc/categories_event.dart';
+import 'features/countries/presentation/bloc/countries_bloc.dart';
+import 'features/countries/presentation/bloc/countries_event.dart';
+import 'features/governorates/present/bloc/governorates_bloc.dart';
+import 'features/governorates/present/bloc/governorates_event.dart';
+import 'features/offers/presentation/bloc/offers_bloc.dart';
 import 'features/offers/presentation/bloc/offers_event.dart';
+import 'generated/l10n.dart';
+import 'home_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
   await Injection.inject();
   SharedPrefHelper;
-
   Bloc.observer = AppBlocObserver();
+  await SharedPrefHelper.setData(
+    key: SharedPrefKeys.countryId,
+    value: 1,
+  );
+  await SharedPrefHelper.setData(
+    key: SharedPrefKeys.governorateId,
+    value: 1,
+  );
   runApp(
-    MultiBlocProvider(providers: [
-      BlocProvider(
-        create: (context) => getIt<GetCountriesCubit>()..getCountries(),
-      ),
-      BlocProvider(
-        create: (context) => getIt<GetCityCubit>()..getCity(),
-      ),
-      BlocProvider(
-        create: (context) => getIt<OffersBloc>(),
-      ),
-      BlocProvider(
-        create: (context) => getIt<OffersBloc>(),
-      ),
-      BlocProvider(
-        create: (context) => getIt<CategoriesBloc>(),
-      ),
-    ], child: const AroodiApp()),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CountriesBloc(
+            getCountriesUseCase: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => GovernoratesBloc(
+            getGovernoratesUseCase: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => OffersBloc(
+            getOffersUseCase: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => CategoriesBloc(
+            getCategoriesUseCase: getIt(),
+          ),
+        ),
+      ],
+      child: const AroodiApp(),
+    ),
   );
 }
 
@@ -64,6 +82,12 @@ class _AroodiAppState extends State<AroodiApp> {
   Future<Null> injectEvent() async {
     await Future.microtask(
       () {
+        context.read<CountriesBloc>().add(
+              const CountriesEvent.getCountries(),
+            );
+        context.read<GovernoratesBloc>().add(
+              const GovernoratesEvent.getGvernorates(),
+            );
         getGovernorate().then(
           (governorateId) {
             context.read<OffersBloc>().add(

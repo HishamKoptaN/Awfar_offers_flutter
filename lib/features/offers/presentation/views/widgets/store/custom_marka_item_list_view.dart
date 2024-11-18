@@ -1,6 +1,6 @@
-import 'package:aroodi_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 import '../../../../data/models/offers_response_model.dart';
+import 'custom_marka_item.dart';
 
 class CustomMarkaItemListView extends StatelessWidget {
   const CustomMarkaItemListView({

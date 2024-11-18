@@ -1,19 +1,13 @@
-import 'package:aroodi_app/core/widgets/custom_back_button.dart';
-import 'package:aroodi_app/core/widgets/custom_divider_widget.dart';
-import 'package:aroodi_app/features/settings/presentation/views/widgets/card_in_settings.dart';
-import 'package:aroodi_app/features/settings/presentation/views/widgets/custom_setting_widget.dart';
-import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../../../core/database/cache/shared_pref_helper.dart';
 import '../../../../../core/database/cache/shared_pref_keys.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
-import '../../../../get_countries_and_cities/data/models/get_countries_model.dart';
-import '../../../../get_countries_and_cities/logic/get_countries_cubit.dart';
-import '../../../../get_countries_and_cities/logic/get_countries_state.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../../core/widgets/custom_divider_widget.dart';
+import '../../../../countries/data/models/countries_response_model.dart';
+import 'custom_setting_widget.dart';
 
 class SettingsViewBody extends StatefulWidget {
   const SettingsViewBody({super.key, required this.isBack});
@@ -25,20 +19,9 @@ class SettingsViewBody extends StatefulWidget {
 }
 
 class _SettingsViewBodyState extends State<SettingsViewBody> {
-  int? selectedCountryId;
-  int? selectedGovernorateId;
-
   @override
   void initState() {
     super.initState();
-    _initializeGovernorate();
-  }
-
-  void _initializeGovernorate() async {
-    selectedGovernorateId = await SharedPrefHelper.getInt(
-      key: SharedPrefKeys.governorateId,
-    );
-    setState(() {});
   }
 
   @override
@@ -94,36 +77,36 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
             //     iconWidget: DefaultModeIconsWidget(),
             //   ),
             // ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 16,
-                ),
-                child: GestureDetector(
-                  child: Row(
-                    children: [
-                      _buildCountrySelector(),
-                      const Spacer(),
-                      const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 16,
-                        color: AppColors.lightPrimaryColor,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: CardInSettings(
-                title: "لغة / Language",
-                subTitle: "العربية",
-                iconWidget: SizedBox(),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 8),
+            //   child: Padding(
+            //     padding: const EdgeInsets.symmetric(
+            //       horizontal: 16,
+            //       vertical: 16,
+            //     ),
+            //     child: GestureDetector(
+            //       child: Row(
+            //         children: [
+            //           _buildCountrySelector(),
+            //           const Spacer(),
+            //           const Icon(
+            //             Icons.arrow_forward_ios,
+            //             size: 16,
+            //             color: AppColors.lightPrimaryColor,
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 8),
+            //   child: CardInSettings(
+            //     title: "لغة / Language",
+            //     subTitle: "العربية",
+            //     iconWidget: SizedBox(),
+            //   ),
+            // ),
             const SizedBox(
               height: 8,
             ),
@@ -194,49 +177,50 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
     );
   }
 
-  Widget _buildCountrySelector() {
-    return BlocConsumer<GetCountriesCubit, GetCountriesState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        if (state is GetCountriesLoading) {
-          return const CircularProgressIndicator();
-        } else if (state is GetCountriesSuccess) {
-          return GestureDetector(
-            onTap: () {
-              _showCountrySelection(
-                state.getCountriesModel,
-              );
-            },
-            child: selectedCountryId != null
-                ? CountryFlag.fromCountryCode(
-                    state.getCountriesModel
-                        .where(
-                          (country) => country.id == selectedCountryId,
-                        )
-                        .first
-                        .code,
-                    width: 30,
-                    height: 20,
-                    shape: const RoundedRectangle(6),
-                  )
-                : const Text(
-                    "select Country",
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-          );
-        } else {
-          return const Text(
-            "unknown",
-            style: TextStyle(color: Colors.white),
-          );
-        }
-      },
-    );
-  }
+  // Widget _buildCountrySelector() {
+  //   return BlocConsumer<CountriesBloc, CountriesState>(
+  //     listener: (context, state) {},
+  //     builder: (context, state) {
+  //       return state.maybeWhen(
+  //         countriesloaded: (countries, se) {
+  //           return GestureDetector(
+  //             onTap: () {
+  //               _showCountrySelection(
+  //                 countries,
+  //               );
+  //             },
+  //             child: selectedCountryId != null
+  //                 ? CountryFlag.fromCountryCode(
+  //                     countries
+  //                         .where(
+  //                           (country) => country.id == selectedCountryId,
+  //                         )
+  //                         .first
+  //                         .code!,
+  //                     width: 30,
+  //                     height: 20,
+  //                     shape: const RoundedRectangle(6),
+  //                   )
+  //                 : const Text(
+  //                     "select Country",
+  //                     style: TextStyle(color: Colors.white),
+  //                     textAlign: TextAlign.center,
+  //                   ),
+  //           );
+  //         },
+  //         loading: () {
+  //           return const CircularProgressIndicator();
+  //         },
+  //         orElse: () {
+  //           return const CircularProgressIndicator();
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 
   void _showCountrySelection(
-    List<GetCountriesModel> countries,
+    List<Country> countries,
   ) {
     showModalBottomSheet(
       context: context,
@@ -276,7 +260,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 16, horizontal: 8),
                         child: Text(
-                          countries[index].code,
+                          countries[index].code!,
                           style: TextStyles.bold14,
                         ),
                       ),
