@@ -1,9 +1,9 @@
 import 'package:aroodi_app/core/utils/app_colors.dart';
+import 'package:aroodi_app/features/coupons/ui/coupons_screen.dart';
 import 'package:aroodi_app/features/offers/presentation/views/offer_view.dart';
 import 'package:aroodi_app/features/categories/presentation/views/categories_view.dart';
 import 'package:aroodi_app/features/profile/presentation/views/profile_view.dart';
 import 'package:aroodi_app/features/search/presentation/views/search_view.dart';
-import 'package:aroodi_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -22,9 +22,7 @@ class _HomeView extends State<HomeView> {
       isBack: false,
       searchLabel: "بحث",
     ),
-    const SettingsView(
-      isBack: false,
-    ),
+    const CouponsScreen(),
     const ProfileView(),
   ];
 
@@ -72,8 +70,8 @@ class _HomeView extends State<HomeView> {
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.settings_outlined),
-              label: 'الإعدادات',
+              icon: Icon(Icons.card_giftcard_outlined),
+              label: 'كوبون',
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.primaryColor,

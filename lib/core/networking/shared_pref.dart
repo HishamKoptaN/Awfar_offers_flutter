@@ -30,4 +30,16 @@ class Prefs {
   static getInt(String key) {
     return _instance.getInt(key) ?? 0;
   }
+
+  static setStringList(String key, List<String> favoritesJson) {
+    return _instance.setStringList(key, favoritesJson);
+  }
+
+  static getStringList(String key) {
+    return _instance.getStringList(key) ?? [];
+  }
+
+  static remove(String key) {
+    return _instance.remove(key);
+  }
 }

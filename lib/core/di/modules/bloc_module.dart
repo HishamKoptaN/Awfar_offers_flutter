@@ -1,3 +1,4 @@
+import 'package:aroodi_app/features/coupons/logic/coupons_cubit.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_cit_cubit.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
 
@@ -26,6 +27,11 @@ class BlocModule extends DIModule {
       )
       ..registerLazySingleton<GetCityCubit>(
         () => GetCityCubit(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<CouponsCubit>(
+        () => CouponsCubit(
           getIt(),
         ),
       );

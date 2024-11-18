@@ -1,4 +1,5 @@
 import 'package:aroodi_app/core/networking/shared_pref.dart';
+import 'package:aroodi_app/features/coupons/logic/coupons_cubit.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_cit_cubit.dart';
 import 'package:aroodi_app/features/get_countries_and_cities/logic/get_countries_cubit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -44,6 +45,9 @@ class AroodiApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<GetCityCubit>()..getCity(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<CouponsCubit>()..getCoupons(),
         ),
       ],
       child: ScreenUtilInit(
