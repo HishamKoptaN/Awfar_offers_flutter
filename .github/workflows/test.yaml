@@ -50,35 +50,35 @@ jobs:
         run: |
           flutter build apk --split-per-abi
       
-      - name: Upload app-armeabi-v7a-release.apk to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: app-armeabi-v7a-release.apk                           
-          file: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
-          releaseNotes: "app-armeabi-v7a-release.apk"
-#! app-profile.apk  
-- name: Upload app-profile.apk to Firebase App Distribution
-uses: wzieba/Firebase-Distribution-Github-Action@v1
-with:
-  appId: ${{ secrets.FIREBASE_APP_ID }}
-  serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-  groups: app-profile.apk
-  file: build/app/outputs/flutter-apk/app-profile.apk
-  debug: false
-  releaseNotes: "app-profile.apk"
-#! app-x86_64-release.apk
-- name: Upload app-x86_64-release.apk to Firebase App Distribution
-uses: wzieba/Firebase-Distribution-Github-Action@v1
-with:
-  appId: ${{ secrets.FIREBASE_APP_ID }}
-  serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-  groups: app-x86_64-release.apk
-  file: build/app/outputs/flutter-apk/app-x86_64-release.apk          
-  releaseNotes: "app-x86_64-release.apk"
-
-
+      # - name: Upload app-armeabi-v7a-release.apk to Firebase App Distribution
+      #     uses: wzieba/Firebase-Distribution-Github-Action@v1
+      #     with:
+      #       appId: ${{ secrets.FIREBASE_APP_ID }}
+      #       serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      #       groups: app-armeabi-v7a-release.apk                           
+      #       file: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+      #       releaseNotes: "app-armeabi-v7a-release.apk"
+      #     #! app-profile.apk  
+      # - name: Upload app-profile.apk to Firebase App Distribution
+      # uses: wzieba/Firebase-Distribution-Github-Action@v1
+      # with:
+      #   appId: ${{ secrets.FIREBASE_APP_ID }}
+      #   serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      #   groups: app-profile.apk
+      #   file: build/app/outputs/flutter-apk/app-profile.apk
+      #   debug: false
+      #   releaseNotes: "app-profile.apk"
+      # #! app-x86_64-release.apk
+      # - name: Upload app-x86_64-release.apk to Firebase App Distribution
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
+      #   with:
+      #     appId: ${{ secrets.FIREBASE_APP_ID }}
+      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      #     groups: app-x86_64-release.apk
+      #     file: build/app/outputs/flutter-apk/app-x86_64-release.apk          
+      #     releaseNotes: "app-x86_64-release.apk"
+          
+          
 
 
 

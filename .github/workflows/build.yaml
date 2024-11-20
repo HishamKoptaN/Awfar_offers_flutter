@@ -29,9 +29,9 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      # 5. بناء APKs مع Flavors
-      - name: Build Unsigned APKs
-        run: flutter build apk --flavor dev --target=lib/main_dev.dart --split-per-abi --no-signing
+      # 5. بناء APK للـ dev flavor
+      - name: Build --flavor devFlavor
+        run: flutter build apk --flavor devFlavor --target=lib/main_dev.dart --split-per-abi 
 
       # 6. تحميل النسخ كـ Artifacts
       - name: Upload Unsigned APKs
@@ -39,26 +39,24 @@ jobs:
         with:
            name: Unsigned APKs
            path: |
-                  build/app/outputs/flutter-apk/app-dev-armeabi-v7a-release-unsigned.apk
-                  build/app/outputs/flutter-apk/app-dev-arm64-v8a-release-unsigned.apk
-
-      # 6. توزيع النسخ
-      # armeabi-v7a
-      - name: Upload app-armeabi-v7a-release.apk to Firebase App Distribution
+             build\app\outputs\flutter-apk\app-armeabi-v7a-devflavor-release.apk
+             build\app\outputs\flutter-apk\app-arm64-v8a-devflavor-release.apk
+      # 7. توزيع النسخ عبر Firebase
+      #! armeabi-v7a
+      - name: Upload armeabi-v7a to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: testers
-          file: build/app/outputs/flutter-apk/app-dev-armeabi-v7a-release-unsigned.apk
-          releaseNotes: "Release notes for armeabi-v7a"
-
-      # arm64-v8a
-      - name: Upload app-arm64-v8a-release.apk to Firebase App Distribution
+          groups: armeabi-v7a
+          file: build\app\outputs\flutter-apk\app-armeabi-v7a-devflavor-release.apk
+          releaseNotes: "armeabi-v7a"
+      #! arm64-v8a
+      - name: Upload arm64-v8a to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: testers
-          file: build/app/outputs/flutter-apk/app-dev-arm64-v8a-release-unsigned.apk
-          releaseNotes: "Release notes for arm64-v8a"
+          groups: arm64-v8a
+          file: build\app\outputs\flutter-apk\app-arm64-v8a-devflavor-release.apk    
+        
