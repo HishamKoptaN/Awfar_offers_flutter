@@ -49,7 +49,7 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: armeabi-v7a
-          file: build\app\outputs\flutter-apk\app-armeabi-v7a-devflavor-release.apk
+          file: build/app/outputs/flutter-apk/app-armeabi-v7a-devflavor-release.apk
           releaseNotes: "armeabi-v7a"
       #! arm64-v8a
       - name: Upload arm64-v8a to Firebase App Distribution
@@ -58,5 +58,5 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: arm64-v8a
-          file: build\app\outputs\flutter-apk\app-arm64-v8a-devflavor-release.apk    
+          file: build/app/outputs/flutter-apk/app-arm64-v8a-devflavor-release.apk    
         
