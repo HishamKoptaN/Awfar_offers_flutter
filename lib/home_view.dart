@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'core/utils/app_colors.dart';
 import 'features/categories/presentation/views/categories_view.dart';
 import 'features/offers/presentation/views/offer_view.dart';
@@ -72,8 +71,8 @@ class _HomeView extends State<HomeView> {
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.settings_outlined),
-              label: 'الإعدادات',
+              icon: Icon(Icons.card_giftcard_outlined),
+              label: 'كوبون',
             ),
             // BottomNavigationBarItem(
             //   backgroundColor: AppColors.primaryColor,

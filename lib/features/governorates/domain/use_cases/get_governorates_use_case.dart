@@ -1,5 +1,5 @@
-import 'package:awfaroffers/features/governorates/data/models/governorates_res_model.dart';
 import '../../../../core/networking/api_result.dart';
+import '../../data/models/governorates_res_model.dart';
 import '../repo/governorates_repo.dart';
 
 class GetGovernoratesUseCase {

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/categories/presentation/views/categories_view.dart';
+import '../../features/coupons/logic/coupons_cubit.dart';
+import '../../features/coupons/ui/coupons_screen.dart';
 import '../../features/offer_details/presentation/views/offer_deatails_view.dart';
 import '../../features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
 import '../../features/offers/data/models/offers_response_model.dart';
@@ -9,6 +12,7 @@ import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/settings/presentation/views/settings_view.dart';
 import '../../home_view.dart';
+import '../di/dependency_injection.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -24,6 +28,13 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         ),
       );
 
+    case CouponsScreen.routeName:
+      return MaterialPageRoute(
+        builder: (context) => BlocProvider(
+          create: (context) => getIt<CouponsCubit>()..getCoupons(),
+          child: const CouponsScreen(),
+        ),
+      );
     case FullScreenOfOfferImage.routeName:
       final args = settings.arguments as Map<String, dynamic>;
       final storeElement = args['store'] as StoreElement;

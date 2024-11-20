@@ -1,9 +1,9 @@
-import 'package:awfaroffers/features/governorates/data/models/governorates_res_model.dart';
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/global_methods.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../domain/repo/governorates_repo.dart';
 import '../data_sources/governorates_api.dart';
+import '../models/governorates_res_model.dart';
 
 class GovernoratesRepoImpl implements GovernoratesRepo {
   GovernoratesApi governoratesApi;

@@ -1,7 +1,7 @@
-import 'package:awfaroffers/features/governorates/data/models/governorates_res_model.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../core/networking/api_constants.dart';
+import '../models/governorates_res_model.dart';
 part 'governorates_api.g.dart';
 
 @RestApi(
