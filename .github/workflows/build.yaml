@@ -30,8 +30,17 @@ jobs:
         run: flutter pub get
 
       # 5. بناء APKs مع Flavors
-      - name: Build APKs
-        run: flutter build apk --flavor dev --target=lib/main_dev.dart --split-per-abi
+      - name: Build Unsigned APKs
+        run: flutter build apk --flavor dev --target=lib/main_dev.dart --split-per-abi --no-signing
+
+      # 6. تحميل النسخ كـ Artifacts
+      - name: Upload Unsigned APKs
+        uses: actions/upload-artifact@v3
+        with:
+           name: Unsigned APKs
+           path: |
+                  build/app/outputs/flutter-apk/app-dev-armeabi-v7a-release-unsigned.apk
+                  build/app/outputs/flutter-apk/app-dev-arm64-v8a-release-unsigned.apk
 
       # 6. توزيع النسخ
       # armeabi-v7a
@@ -41,7 +50,7 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: build/app/outputs/flutter-apk/app-dev-armeabi-v7a-release.apk
+          file: build/app/outputs/flutter-apk/app-dev-armeabi-v7a-release-unsigned.apk
           releaseNotes: "Release notes for armeabi-v7a"
 
       # arm64-v8a
@@ -51,5 +60,5 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          file: build/app/outputs/flutter-apk/app-dev-arm64-v8a-release.apk
+          file: build/app/outputs/flutter-apk/app-dev-arm64-v8a-release-unsigned.apk
           releaseNotes: "Release notes for arm64-v8a"
