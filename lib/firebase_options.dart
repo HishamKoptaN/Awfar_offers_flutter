@@ -41,48 +41,48 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA9JwYfw_cjdrZmFc1RlHgd0DITvHfYz0c',
-    appId: '1:630596450299:web:d8bdc965ea323a833ffd5e',
-    messagingSenderId: '630596450299',
-    projectId: 'awfar-offers',
-    authDomain: 'awfar-offers.firebaseapp.com',
-    storageBucket: 'awfar-offers.firebasestorage.app',
-    measurementId: 'G-0264FFCK73',
+    apiKey: 'AIzaSyB2MqQrd_UO3uuYu2cnM7Ogulz0J8FNOCI',
+    appId: '1:1067135384858:web:a478a25d518fec866e40a3',
+    messagingSenderId: '1067135384858',
+    projectId: 'com-awfaroffers-app-dev',
+    authDomain: 'com-awfaroffers-app-dev.firebaseapp.com',
+    storageBucket: 'com-awfaroffers-app-dev.firebasestorage.app',
+    measurementId: 'G-WXLE6LDG5S',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDdz2VEKNdXNaxbWk5Fjfa4rjn-_S7gpe8',
-    appId: '1:630596450299:android:1eab30b838ee19393ffd5e',
-    messagingSenderId: '630596450299',
-    projectId: 'awfar-offers',
-    storageBucket: 'awfar-offers.firebasestorage.app',
+    apiKey: 'AIzaSyDxn2y9018fOh8wVWJZc4zXEBEiFSWE_50',
+    appId: '1:1067135384858:android:2a21e013fc06ec416e40a3',
+    messagingSenderId: '1067135384858',
+    projectId: 'com-awfaroffers-app-dev',
+    storageBucket: 'com-awfaroffers-app-dev.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCdRTOk5DrN2AsNiktHKY35s_V3lDp77RI',
-    appId: '1:630596450299:ios:0ed0dc86304305aa3ffd5e',
-    messagingSenderId: '630596450299',
-    projectId: 'awfar-offers',
-    storageBucket: 'awfar-offers.firebasestorage.app',
-    iosBundleId: 'com.example.aroodiApp',
+    apiKey: 'AIzaSyBdZGIfSxQvwfhpNOPFg2Hs2blWwXujIgg',
+    appId: '1:1067135384858:ios:e09564a3b14234086e40a3',
+    messagingSenderId: '1067135384858',
+    projectId: 'com-awfaroffers-app-dev',
+    storageBucket: 'com-awfaroffers-app-dev.firebasestorage.app',
+    iosBundleId: 'com.awfaroffers.app.dev.RunnerTests',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCdRTOk5DrN2AsNiktHKY35s_V3lDp77RI',
-    appId: '1:630596450299:ios:0ed0dc86304305aa3ffd5e',
-    messagingSenderId: '630596450299',
-    projectId: 'awfar-offers',
-    storageBucket: 'awfar-offers.firebasestorage.app',
-    iosBundleId: 'com.example.aroodiApp',
+    apiKey: 'AIzaSyBdZGIfSxQvwfhpNOPFg2Hs2blWwXujIgg',
+    appId: '1:1067135384858:ios:83fde8b1c847e9ef6e40a3',
+    messagingSenderId: '1067135384858',
+    projectId: 'com-awfaroffers-app-dev',
+    storageBucket: 'com-awfaroffers-app-dev.firebasestorage.app',
+    iosBundleId: 'com.awfaroffers.app.dev',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyA9JwYfw_cjdrZmFc1RlHgd0DITvHfYz0c',
-    appId: '1:630596450299:web:9a9a48a9bfbab62e3ffd5e',
-    messagingSenderId: '630596450299',
-    projectId: 'awfar-offers',
-    authDomain: 'awfar-offers.firebaseapp.com',
-    storageBucket: 'awfar-offers.firebasestorage.app',
-    measurementId: 'G-2PGC1QXBZD',
+    apiKey: 'AIzaSyB2MqQrd_UO3uuYu2cnM7Ogulz0J8FNOCI',
+    appId: '1:1067135384858:web:e1e8e3ecf3a5d7996e40a3',
+    messagingSenderId: '1067135384858',
+    projectId: 'com-awfaroffers-app-dev',
+    authDomain: 'com-awfaroffers-app-dev.firebaseapp.com',
+    storageBucket: 'com-awfaroffers-app-dev.firebasestorage.app',
+    measurementId: 'G-1F9SRSZT2M',
   );
 }

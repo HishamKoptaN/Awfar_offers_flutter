@@ -9,8 +9,12 @@ import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/categories/presentation/bloc/categories_event.dart';
 import 'features/countries/presentation/bloc/countries_bloc.dart';
 import 'features/countries/presentation/bloc/countries_event.dart';
+import 'features/coupons/present/bloc/coupons_bloc.dart';
+import 'features/coupons/present/bloc/coupons_event.dart';
 import 'features/governorates/present/bloc/governorates_bloc.dart';
 import 'features/governorates/present/bloc/governorates_event.dart';
+import 'features/notifications/present/bloc/notifications_bloc.dart';
+import 'features/notifications/present/bloc/notifications_event.dart';
 import 'features/offers/presentation/bloc/offers_bloc.dart';
 import 'features/offers/presentation/bloc/offers_event.dart';
 import 'generated/l10n.dart';
@@ -44,6 +48,20 @@ class _AroodiAppState extends State<AroodiApp> {
         );
         context.read<CategoriesBloc>().add(
               const CategoriesEvent.getCategoriesEvent(),
+            );
+
+        getGovernorate().then(
+          (governorateId) {
+            context.read<CouponsBloc>().add(
+                  CouponsEvent.getCoupons(
+                    governorateId: governorateId,
+                  ),
+                );
+          },
+        );
+
+        context.read<NotificationsBloc>().add(
+              const NotificationsEvent.getNotifications(),
             );
       },
     );

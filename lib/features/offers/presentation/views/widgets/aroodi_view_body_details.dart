@@ -10,8 +10,12 @@ class AroodiViewBodyDetails extends StatefulWidget {
   AroodiViewBodyDetails({
     super.key,
     required this.offersResponseModel,
+    required this.offers,
+    required this.favorites,
   });
   OffersResponseModel offersResponseModel;
+  final List<OffersResponseModelOffer> offers;
+  final List<int> favorites;
   @override
   State<AroodiViewBodyDetails> createState() => _AroodiViewBodyDetailsState();
 }
@@ -50,15 +54,16 @@ class _AroodiViewBodyDetailsState extends State<AroodiViewBodyDetails> {
             height: 8,
           ),
           OffersItemsGridView(
-            offersResponseModel: widget.offersResponseModel,
+            stores: widget.offersResponseModel.stores!,
             offers: _selectedCategoryId != null
-                ? widget.offersResponseModel.offers!
+                ? widget.offers
                     .where(
                       (offer) =>
                           offer.subCategory!.categoryId == _selectedCategoryId,
                     )
                     .toList()
-                : widget.offersResponseModel.offers!,
+                : widget.offers,
+            favorites: widget.favorites,
           ),
           const SizedBox(
             height: 16,

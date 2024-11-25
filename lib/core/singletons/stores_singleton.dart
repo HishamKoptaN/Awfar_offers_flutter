@@ -1,21 +1,20 @@
-// import '../../features/offers/data/models/offers_response_model.dart';
-// import '../models/store_model.dart';
+import 'package:awfar_offer_app/features/offers/data/models/offers_response_model.dart';
 
-// class StoresSingleton {
-//   List<Store> _stores = [];
-//   static final StoresSingleton _instance = StoresSingleton._internal();
+class StoresSingleton {
+  List<StoreElement> _stores = [];
+  static final StoresSingleton _instance = StoresSingleton._internal();
 
-//   StoresSingleton._internal();
+  StoresSingleton._internal();
 
-//   static StoresSingleton get instance => _instance;
+  static StoresSingleton get instance => _instance;
 
-//   List<Store> get stores => _stores;
+  List<StoreElement> get stores => _stores;
 
-//   set stores(List<Store> storesList) {
-//     _stores = storesList;
-//   }
+  set stores(List<StoreElement> storesList) {
+    _stores = storesList;
+  }
 
-//   void clear() {
-//     _stores = [];
-//   }
-// }
+  void clear() {
+    _stores = [];
+  }
+}

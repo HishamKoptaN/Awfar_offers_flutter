@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../../../core/database/cache/shared_pref_helper.dart';
+import '../../../../../../core/database/cache/shared_pref_keys.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../data/models/offers_response_model.dart';
 import '../store/custom_marka_item.dart';
 
 class CustomCardItem extends StatefulWidget {
-  const CustomCardItem({
+  CustomCardItem({
     super.key,
     required this.offersResponseModelOffer,
+    required this.isFav,
   });
 
   final OffersResponseModelOffer offersResponseModelOffer;
-
+  bool isFav;
   @override
   State<CustomCardItem> createState() => _CustomCardItemState();
 }
 
 class _CustomCardItemState extends State<CustomCardItem> {
-  bool isSelected = false;
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -133,15 +133,29 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   ),
                   const Spacer(),
                   GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isSelected = !isSelected;
-                      });
+                    onTap: () async {
+                      !widget.isFav
+                          ? await SharedPrefHelper.updateList(
+                              key: SharedPrefKeys.favoriteOffers,
+                              value: widget.offersResponseModelOffer.id!,
+                              add: true,
+                            )
+                          : await SharedPrefHelper.updateList(
+                              key: SharedPrefKeys.favoriteOffers,
+                              value: widget.offersResponseModelOffer.id!,
+                              add: false,
+                            );
+
+                      setState(
+                        () {
+                          widget.isFav = !widget.isFav;
+                        },
+                      );
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 4),
                       child: Icon(
-                        isSelected
+                        widget.isFav
                             ? Icons.favorite_outlined
                             : Icons.favorite_border_outlined,
                         color: AppColors.lightPrimaryColor,

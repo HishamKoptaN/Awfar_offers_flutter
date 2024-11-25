@@ -14,7 +14,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
     on<CountriesEvent>(
       (event, emit) async {
         await event.when(
-          getGovernorates: () async {
+          getCountries: () async {
             final result = await getCountriesUseCase.getCountries();
             await result.when(
               success: (response) async {
@@ -26,7 +26,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
                 );
                 emit(
                   CountriesState.countriesloaded(
-                    countries: response,
+                    countries: response!,
                     selectedcountrId: selectedCountryId,
                   ),
                 );

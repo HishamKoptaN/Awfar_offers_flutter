@@ -4,9 +4,9 @@ import '../repo/offers_repo.dart';
 
 class GetOffersUseCase {
   final OffersRepo offersRepo;
-  GetOffersUseCase(
-    this.offersRepo,
-  );
+  GetOffersUseCase({
+    required this.offersRepo,
+  });
   Future<ApiResult<OffersResponseModel>> getOffers({
     required int governorateId,
   }) async {

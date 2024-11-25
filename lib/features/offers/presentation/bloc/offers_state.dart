@@ -7,6 +7,7 @@ class OffersState with _$OffersState {
   const factory OffersState.initialState() = _InitialState;
   const factory OffersState.offersLoaded({
     required OffersResponseModel offersResponseModel,
+    required List<int> favorites,
   }) = _OffersLoaded;
   const factory OffersState.loading() = _Loading;
   const factory OffersState.failure({

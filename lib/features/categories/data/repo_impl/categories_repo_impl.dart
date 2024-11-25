@@ -6,20 +6,20 @@ import '../models/categories_response_model.dart';
 
 class CategoriesRepoImpl implements CategoriesRepo {
   final CategoriesApi categoriesApi;
-  CategoriesRepoImpl(
-    this.categoriesApi,
-  );
+  CategoriesRepoImpl({
+    required this.categoriesApi,
+  });
   @override
   Future<ApiResult<List<CategoriesResponseModel>>> getCategories() async {
     try {
       final response = await categoriesApi.getCategories();
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }

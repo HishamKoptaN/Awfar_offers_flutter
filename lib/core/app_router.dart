@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../features/offers/presentation/views/offer_view.dart';
+import '../features/offers/presentation/views/offers_view.dart';
 
 class AppRouter {
   Route? generateRoutes(RouteSettings settings) {

@@ -55,7 +55,7 @@ android {
     }
 
     signingConfigs {
-        prod {
+        release {
             keyAlias = keystoreProperties['keyAlias']
             keyPassword = keystoreProperties['keyPassword']
             storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
@@ -63,33 +63,26 @@ android {
         }
     }
     buildTypes {
-        dev {
-
+        debug {
         }
-        stg {
-
-        }
-        prod {
-            signingConfig signingConfigs.prod
+        release {
+            signingConfig signingConfigs.release
         }
     }
 
     flavorDimensions += "default"
    productFlavors {
-        create("devFlavor") {
-            dimension = "default"
-            resValue("string", "app_name", "Awfar offers dev")
-        }
-        create("stgFlavor") {
-            dimension = "default"
-            resValue("string", "app_name", "Awfar offers stg")
-        }
-        create("prodFlavor") {
-            dimension = "default"
-            resValue("string", "app_name", "Awfar offers")
-            signingConfig signingConfigs.prod
-        }
+    dev {
+        dimension = "default"
+        applicationIdSuffix ".dev" // لتجنب التعارض مع النسخة الأصلية
+        resValue("string", "app_name", "Awfar offers dev")
     }
+    prod {
+        dimension = "default"
+        resValue("string", "app_name", "Awfar offers")
+    }
+}
+
 }
 
 flutter {

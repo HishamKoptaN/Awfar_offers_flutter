@@ -1,6 +1,8 @@
 import '../../../features/categories/domain/use_cases/categories_use_case.dart';
 import '../../../features/countries/domain/use_cases/get_countries_use_case.dart';
+import '../../../features/coupons/domain/use_cases/get_coupons_use_case.dart';
 import '../../../features/governorates/domain/use_cases/get_governorates_use_case.dart';
+import '../../../features/notifications/domain/use_cases/get_notifications_use_case.dart';
 import '../../../features/offers/domain/use_cases/get_offers_use_case.dart';
 import '../dependency_injection.dart';
 
@@ -20,12 +22,22 @@ class UseCaseModule extends DIModule {
       )
       ..registerLazySingleton(
         () => GetOffersUseCase(
-          getIt(),
+          offersRepo: getIt(),
         ),
       )
       ..registerLazySingleton(
         () => GetCategoriesUseCase(
-          getIt(),
+          categoriesRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => GetCouponsUseCase(
+          couponsRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => GetNotificationsUseCase(
+          notificationsRepoImp: getIt(),
         ),
       );
   }

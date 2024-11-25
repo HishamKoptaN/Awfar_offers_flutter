@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/features/notifications/present/view/notifications_view.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/database/cache/shared_pref_helper.dart';
@@ -68,6 +69,16 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
             ),
             const SizedBox(
               height: 8,
+            ),
+            const CustomDividerWidget(),
+            CustomSettingWidget(
+              title: " الإشعارات",
+              onTap: () async {
+                Navigator.pushNamed(
+                  context,
+                  NotificationsView.routeName,
+                );
+              },
             ),
             // const Padding(
             //   padding: EdgeInsets.symmetric(horizontal: 8),

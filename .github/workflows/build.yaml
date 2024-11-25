@@ -34,29 +34,30 @@ jobs:
         run: flutter build apk --flavor devFlavor --target=lib/main_dev.dart --split-per-abi 
 
       # 6. تحميل النسخ كـ Artifacts
-      - name: Upload Unsigned APKs
+      - name: Upload  APKs
         uses: actions/upload-artifact@v3
         with:
-           name: Unsigned APKs
+           name:  APKs
            path: |
-             build\app\outputs\flutter-apk\app-armeabi-v7a-devflavor-release.apk
-             build\app\outputs\flutter-apk\app-arm64-v8a-devflavor-release.apk
-      # 7. توزيع النسخ عبر Firebase
-      #! armeabi-v7a
+           
+             build\app\outputs\flutter-apk\app-armeabi-v7a-dev-release.apk
+             build\app\outputs\flutter-apk\app-arm64-v8a-dev-release.apk
+      #! 🚀 7. توزيع النسخ عبر Firebase
+      #! 🚀 armeabi-v7a
       - name: Upload armeabi-v7a to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: armeabi-v7a
-          file: build/app/outputs/flutter-apk/app-armeabi-v7a-devflavor-release.apk
+          file: build/app/outputs/flutter-apk/app-armeabi-v7a-dev-release.apk
           releaseNotes: "armeabi-v7a"
-      #! arm64-v8a
+      #! 🚀 arm64-v8a
       - name: Upload arm64-v8a to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: arm64-v8a
-          file: build/app/outputs/flutter-apk/app-arm64-v8a-devflavor-release.apk    
-        
+          file: build/app/outputs/flutter-apk/app-arm64-v8a-dev-release.apk    
+          releaseNotes: "arm64-v8a"

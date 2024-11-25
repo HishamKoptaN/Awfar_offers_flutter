@@ -1,7 +1,8 @@
 import '../../../features/categories/presentation/bloc/categories_bloc.dart';
 import '../../../features/countries/presentation/bloc/countries_bloc.dart';
-import '../../../features/coupons/logic/coupons_cubit.dart';
+import '../../../features/coupons/present/bloc/coupons_bloc.dart';
 import '../../../features/governorates/present/bloc/governorates_bloc.dart';
+import '../../../features/notifications/present/bloc/notifications_bloc.dart';
 import '../../../features/offers/presentation/bloc/offers_bloc.dart';
 import '../dependency_injection.dart';
 
@@ -29,9 +30,14 @@ class BlocModule extends DIModule {
           getCategoriesUseCase: getIt(),
         ),
       )
-      ..registerLazySingleton<CouponsCubit>(
-        () => CouponsCubit(
-          getIt(),
+      ..registerLazySingleton<CouponsBloc>(
+        () => CouponsBloc(
+          getCouponsUseCase: getIt(),
+        ),
+      )
+      ..registerLazySingleton<NotificationsBloc>(
+        () => NotificationsBloc(
+          getNotificationsUseCase: getIt(),
         ),
       );
   }

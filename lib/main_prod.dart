@@ -9,7 +9,9 @@ import 'core/database/cache/shared_pref_keys.dart';
 import 'core/di/dependency_injection.dart';
 import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/countries/presentation/bloc/countries_bloc.dart';
+import 'features/coupons/present/bloc/coupons_bloc.dart';
 import 'features/governorates/present/bloc/governorates_bloc.dart';
+import 'features/notifications/present/bloc/notifications_bloc.dart';
 import 'features/offers/presentation/bloc/offers_bloc.dart';
 
 void main() async {
@@ -26,19 +28,6 @@ void main() async {
     key: SharedPrefKeys.governorateId,
     value: 1,
   );
-  const flavor = String.fromEnvironment('FLAVOR');
-  // AppConfig config;
-
-  // switch (flavor) {
-  //   case 'development':
-  //     config = developmentConfig;
-  //     break;
-  //   case 'production':
-  //     config = productionConfig;
-  //     break;
-  //   default:
-  //     config = productionConfig;
-  // }
   runApp(
     MultiBlocProvider(
       providers: [
@@ -60,6 +49,16 @@ void main() async {
         BlocProvider(
           create: (context) => CategoriesBloc(
             getCategoriesUseCase: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => CouponsBloc(
+            getCouponsUseCase: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => NotificationsBloc(
+            getNotificationsUseCase: getIt(),
           ),
         ),
       ],

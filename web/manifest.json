@@ -1,11 +1,11 @@
 {
-    "name": "awfaroffers",
-    "short_name": "awfaroffers",
+    "name": "awfar offers",
+    "short_name": "awfar offers",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
-    "description": "awfaroffers App",
+    "description": "awfar offers App",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

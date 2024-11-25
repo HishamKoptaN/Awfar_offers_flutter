@@ -19,7 +19,8 @@ mixin _$OffersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(OffersResponseModel offersResponseModel)
+    required TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)
         offersLoaded,
     required TResult Function() loading,
     required TResult Function(String error) failure,
@@ -29,7 +30,9 @@ mixin _$OffersState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult? Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult? Function()? loading,
     TResult? Function(String error)? failure,
     TResult? Function()? success,
@@ -38,7 +41,9 @@ mixin _$OffersState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult Function()? loading,
     TResult Function(String error)? failure,
     TResult Function()? success,
@@ -138,7 +143,8 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(OffersResponseModel offersResponseModel)
+    required TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)
         offersLoaded,
     required TResult Function() loading,
     required TResult Function(String error) failure,
@@ -151,7 +157,9 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult? Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult? Function()? loading,
     TResult? Function(String error)? failure,
     TResult? Function()? success,
@@ -163,7 +171,9 @@ class _$InitialStateImpl implements _InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult Function()? loading,
     TResult Function(String error)? failure,
     TResult Function()? success,
@@ -226,7 +236,7 @@ abstract class _$$OffersLoadedImplCopyWith<$Res> {
           _$OffersLoadedImpl value, $Res Function(_$OffersLoadedImpl) then) =
       __$$OffersLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OffersResponseModel offersResponseModel});
+  $Res call({OffersResponseModel offersResponseModel, List<int> favorites});
 
   $OffersResponseModelCopyWith<$Res> get offersResponseModel;
 }
@@ -245,12 +255,17 @@ class __$$OffersLoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? offersResponseModel = null,
+    Object? favorites = null,
   }) {
     return _then(_$OffersLoadedImpl(
       offersResponseModel: null == offersResponseModel
           ? _value.offersResponseModel
           : offersResponseModel // ignore: cast_nullable_to_non_nullable
               as OffersResponseModel,
+      favorites: null == favorites
+          ? _value._favorites
+          : favorites // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 
@@ -269,14 +284,23 @@ class __$$OffersLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OffersLoadedImpl implements _OffersLoaded {
-  const _$OffersLoadedImpl({required this.offersResponseModel});
+  const _$OffersLoadedImpl(
+      {required this.offersResponseModel, required final List<int> favorites})
+      : _favorites = favorites;
 
   @override
   final OffersResponseModel offersResponseModel;
+  final List<int> _favorites;
+  @override
+  List<int> get favorites {
+    if (_favorites is EqualUnmodifiableListView) return _favorites;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favorites);
+  }
 
   @override
   String toString() {
-    return 'OffersState.offersLoaded(offersResponseModel: $offersResponseModel)';
+    return 'OffersState.offersLoaded(offersResponseModel: $offersResponseModel, favorites: $favorites)';
   }
 
   @override
@@ -285,11 +309,14 @@ class _$OffersLoadedImpl implements _OffersLoaded {
         (other.runtimeType == runtimeType &&
             other is _$OffersLoadedImpl &&
             (identical(other.offersResponseModel, offersResponseModel) ||
-                other.offersResponseModel == offersResponseModel));
+                other.offersResponseModel == offersResponseModel) &&
+            const DeepCollectionEquality()
+                .equals(other._favorites, _favorites));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offersResponseModel);
+  int get hashCode => Object.hash(runtimeType, offersResponseModel,
+      const DeepCollectionEquality().hash(_favorites));
 
   /// Create a copy of OffersState
   /// with the given fields replaced by the non-null parameter values.
@@ -303,39 +330,44 @@ class _$OffersLoadedImpl implements _OffersLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(OffersResponseModel offersResponseModel)
+    required TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)
         offersLoaded,
     required TResult Function() loading,
     required TResult Function(String error) failure,
     required TResult Function() success,
   }) {
-    return offersLoaded(offersResponseModel);
+    return offersLoaded(offersResponseModel, favorites);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult? Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult? Function()? loading,
     TResult? Function(String error)? failure,
     TResult? Function()? success,
   }) {
-    return offersLoaded?.call(offersResponseModel);
+    return offersLoaded?.call(offersResponseModel, favorites);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult Function()? loading,
     TResult Function(String error)? failure,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (offersLoaded != null) {
-      return offersLoaded(offersResponseModel);
+      return offersLoaded(offersResponseModel, favorites);
     }
     return orElse();
   }
@@ -383,10 +415,11 @@ class _$OffersLoadedImpl implements _OffersLoaded {
 
 abstract class _OffersLoaded implements OffersState {
   const factory _OffersLoaded(
-          {required final OffersResponseModel offersResponseModel}) =
-      _$OffersLoadedImpl;
+      {required final OffersResponseModel offersResponseModel,
+      required final List<int> favorites}) = _$OffersLoadedImpl;
 
   OffersResponseModel get offersResponseModel;
+  List<int> get favorites;
 
   /// Create a copy of OffersState
   /// with the given fields replaced by the non-null parameter values.
@@ -437,7 +470,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(OffersResponseModel offersResponseModel)
+    required TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)
         offersLoaded,
     required TResult Function() loading,
     required TResult Function(String error) failure,
@@ -450,7 +484,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult? Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult? Function()? loading,
     TResult? Function(String error)? failure,
     TResult? Function()? success,
@@ -462,7 +498,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult Function()? loading,
     TResult Function(String error)? failure,
     TResult Function()? success,
@@ -588,7 +626,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(OffersResponseModel offersResponseModel)
+    required TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)
         offersLoaded,
     required TResult Function() loading,
     required TResult Function(String error) failure,
@@ -601,7 +640,9 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult? Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult? Function()? loading,
     TResult? Function(String error)? failure,
     TResult? Function()? success,
@@ -613,7 +654,9 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult Function()? loading,
     TResult Function(String error)? failure,
     TResult Function()? success,
@@ -720,7 +763,8 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(OffersResponseModel offersResponseModel)
+    required TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)
         offersLoaded,
     required TResult Function() loading,
     required TResult Function(String error) failure,
@@ -733,7 +777,9 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialState,
-    TResult? Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult? Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult? Function()? loading,
     TResult? Function(String error)? failure,
     TResult? Function()? success,
@@ -745,7 +791,9 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(OffersResponseModel offersResponseModel)? offersLoaded,
+    TResult Function(
+            OffersResponseModel offersResponseModel, List<int> favorites)?
+        offersLoaded,
     TResult Function()? loading,
     TResult Function(String error)? failure,
     TResult Function()? success,

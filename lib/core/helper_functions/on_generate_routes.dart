@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/categories/presentation/views/categories_view.dart';
-import '../../features/coupons/logic/coupons_cubit.dart';
-import '../../features/coupons/ui/coupons_screen.dart';
+import '../../features/coupons/present/bloc/coupons_bloc.dart';
+import '../../features/coupons/present/coupons_view.dart';
+import '../../features/notifications/present/view/notifications_view.dart';
 import '../../features/offer_details/presentation/views/offer_deatails_view.dart';
 import '../../features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
 import '../../features/offers/data/models/offers_response_model.dart';
-import '../../features/offers/presentation/views/offer_view.dart';
+import '../../features/offers/presentation/views/offers_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/settings/presentation/views/settings_view.dart';
@@ -28,11 +29,13 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         ),
       );
 
-    case CouponsScreen.routeName:
+    case CouponsView.routeName:
       return MaterialPageRoute(
         builder: (context) => BlocProvider(
-          create: (context) => getIt<CouponsCubit>()..getCoupons(),
-          child: const CouponsScreen(),
+          create: (context) => CouponsBloc(
+            getCouponsUseCase: getIt(),
+          ),
+          child: const CouponsView(),
         ),
       );
     case FullScreenOfOfferImage.routeName:
@@ -58,12 +61,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           searchLabel: searchLabel,
         ),
       );
-
     case SettingsView.routeName:
       return MaterialPageRoute(
         builder: (context) => SettingsView(
           isBack: settings.arguments as bool,
         ),
+      );
+    case NotificationsView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const NotificationsView(),
       );
 
     case ProfileView.routeName:

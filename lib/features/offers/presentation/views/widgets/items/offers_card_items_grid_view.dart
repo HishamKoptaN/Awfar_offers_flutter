@@ -6,11 +6,14 @@ import 'custom_offer_card_item.dart';
 class OffersItemsGridView extends StatelessWidget {
   const OffersItemsGridView({
     super.key,
-    required this.offersResponseModel,
+    required this.stores,
     required this.offers,
+    required this.favorites,
   });
-  final OffersResponseModel offersResponseModel;
+  final List<StoreElement> stores;
   final List<OffersResponseModelOffer> offers;
+  final List<int> favorites;
+
   @override
   Widget build(context) {
     return GridView.builder(
@@ -24,10 +27,10 @@ class OffersItemsGridView extends StatelessWidget {
       ),
       itemCount: offers.length,
       itemBuilder: (context, index) {
-        final offer = offersResponseModel.offers![index];
+        final offer = offers[index];
         return GestureDetector(
           onTap: () {
-            StoreElement selectedStore = offersResponseModel.stores!.firstWhere(
+            StoreElement selectedStore = stores.firstWhere(
               (store) => store.id == offer.store!.id,
             );
             Navigator.pushNamed(
@@ -38,6 +41,9 @@ class OffersItemsGridView extends StatelessWidget {
           },
           child: CustomCardItem(
             offersResponseModelOffer: offer,
+            isFav: favorites.contains(
+              offer.id,
+            ),
           ),
         );
       },

@@ -25,37 +25,74 @@ class SharedPrefHelper {
     required String key,
     required dynamic value,
   }) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     debugPrint(
       "SharedPrefHelper : setData with key : $key and value : $value",
     );
     switch (value.runtimeType) {
       case String:
-        await sharedPreferences.setString(key, value);
+        await prefs.setString(key, value);
         break;
       case int:
-        await sharedPreferences.setInt(key, value);
+        await prefs.setInt(key, value);
         break;
       case bool:
-        await sharedPreferences.setBool(key, value);
+        await prefs.setBool(key, value);
         break;
       case double:
-        await sharedPreferences.setDouble(key, value);
+        await prefs.setDouble(key, value);
         break;
       default:
         return;
     }
   }
 
+//! استرجاع قائمة من الأرقام المحفوظة محليًا بناءً على مفتاح معين
+  static Future<List<int>> getIntList({
+    required String key,
+  }) async {
+    debugPrint('SharedPrefHelper : get Int List with key : $key ');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final favorites = prefs.getStringList(key);
+    return favorites?.map(int.parse).toList() ?? [];
+  }
+
+  //! تحديث لقائمة
+  static Future<void> updateList({
+    required String key,
+    required int value,
+    required bool add,
+  }) async {
+    debugPrint(
+        'SharedPrefHelper : updateList with key : $key and value : $value');
+    final prefs = await SharedPreferences.getInstance();
+    final list = await getIntList(key: key);
+    if (add && !list.contains(value)) {
+      debugPrint('SharedPrefHelper : add ');
+      list.add(value);
+    } else if (!add && list.contains(value)) {
+      debugPrint('SharedPrefHelper : remove ');
+      list.remove(value);
+    }
+    await prefs.setStringList(
+      key,
+      list.map((e) => e.toString()).toList(),
+    );
+  }
+
   //! Gets a bool value from SharedPreferences with given [key].
-  static Future<bool> getBool({required String key}) async {
+  static Future<bool> getBool({
+    required String key,
+  }) async {
     debugPrint('SharedPrefHelper : getBool with key : $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getBool(key) ?? false;
   }
 
   //!Gets a double value from SharedPreferences with given [key].
-  static Future<double> getDouble({required String key}) async {
+  static Future<double> getDouble({
+    required String key,
+  }) async {
     debugPrint('SharedPrefHelper : getDouble with key : $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getDouble(key) ?? 0.0;
@@ -99,8 +136,10 @@ class SharedPrefHelper {
     );
   }
 
-  /// Gets an String value from FlutterSecureStorage with given [key].
-  static Future<dynamic> getSecuredString({required String key}) async {
+  //! Gets an String value from FlutterSecureStorage with given [key].
+  static Future<dynamic> getSecuredString({
+    required String key,
+  }) async {
     const flutterSecureStorage = FlutterSecureStorage();
     debugPrint(
       'FlutterSecureStorage : getSecuredString with key :',
@@ -111,7 +150,7 @@ class SharedPrefHelper {
         '';
   }
 
-  /// Removes all keys and values in the FlutterSecureStorage
+  //! Removes all keys and values in the FlutterSecureStorage
   static Future<void> clearAllSecuredData() async {
     debugPrint(
       'FlutterSecureStorage : all data has been cleared',

@@ -4,9 +4,9 @@ import '../repo/categories_repo.dart';
 
 class GetCategoriesUseCase {
   final CategoriesRepo categoriesRepo;
-  GetCategoriesUseCase(
-    this.categoriesRepo,
-  );
+  GetCategoriesUseCase({
+    required this.categoriesRepo,
+  });
   Future<ApiResult<List<CategoriesResponseModel>>> getCategories() async {
     return await categoriesRepo.getCategories();
   }

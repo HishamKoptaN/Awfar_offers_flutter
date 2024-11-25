@@ -14,12 +14,12 @@ class CountriesRepoImpl implements CountriesRepo {
     try {
       final response = await countriesApi.getCountries();
       return ApiResult.success(
-        response,
+        data: response,
       );
     } catch (error) {
       return ApiResult.failure(
-        ApiErrorHandler.handle(
-          error,
+        apiErrorModel: ApiErrorHandler.handle(
+          error: error,
         ),
       );
     }

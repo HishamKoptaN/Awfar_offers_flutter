@@ -26,7 +26,7 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
                 );
                 emit(
                   GovernoratesState.governoratesloaded(
-                    countries: response,
+                    countries: response!,
                     selectedGovernorateId: selectedGovernorateId,
                   ),
                 );

@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "awfaroffers" "\0"
-            VALUE "FileDescription", "awfaroffers" "\0"
+            VALUE "CompanyName", "awfar offers" "\0"
+            VALUE "FileDescription", "awfar offers" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "awfaroffers" "\0"
-            VALUE "LegalCopyright", "© 2024 awfaroffers" "\0"
+            VALUE "InternalName", "awfar offers" "\0"
+            VALUE "LegalCopyright", "© 2024 awfar offers" "\0"
             VALUE "OriginalFilename", "awfaroffers.exe" "\0"
-            VALUE "ProductName", "awfaroffers" "\0"
+            VALUE "ProductName", "awfar offers" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

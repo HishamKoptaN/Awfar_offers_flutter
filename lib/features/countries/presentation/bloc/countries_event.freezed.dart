@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CountriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getGovernorates,
+    required TResult Function() getCountries,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -112,9 +112,9 @@ class _$GetCountriesImpl implements _GetCountries {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getGovernorates,
+    required TResult Function() getCountries,
   }) {
-    return getGovernorates();
+    return getCountries();
   }
 
   @override

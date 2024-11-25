@@ -19,7 +19,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
               success: (response) async {
                 emit(
                   CategoriesState.categoriesloaded(
-                    categories: response,
+                    categories: response!,
                   ),
                 );
               },
