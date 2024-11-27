@@ -47,5 +47,4 @@ package="com.awfaroffers.app">
             <data android:mimeType="text/plain"/>
         </intent>
     </queries>
-
 </manifest>

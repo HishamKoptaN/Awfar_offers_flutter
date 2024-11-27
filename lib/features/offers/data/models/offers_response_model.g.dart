@@ -57,7 +57,8 @@ _$OffersResponseModelOfferImpl _$$OffersResponseModelOfferImplFromJson(
       daysRemaining: (json['days_remaining'] as num?)?.toInt(),
       subCategory: json['sub_category'] == null
           ? null
-          : SubCategory.fromJson(json['sub_category'] as Map<String, dynamic>),
+          : SubCategoryOffers.fromJson(
+              json['sub_category'] as Map<String, dynamic>),
       store: json['store'] == null
           ? null
           : OfferStore.fromJson(json['store'] as Map<String, dynamic>),
@@ -91,13 +92,15 @@ Map<String, dynamic> _$$OfferStoreImplToJson(_$OfferStoreImpl instance) =>
       'offers_count': instance.offersCount,
     };
 
-_$SubCategoryImpl _$$SubCategoryImplFromJson(Map<String, dynamic> json) =>
-    _$SubCategoryImpl(
+_$SubCategoryOffersImpl _$$SubCategoryOffersImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SubCategoryOffersImpl(
       id: (json['id'] as num?)?.toInt(),
       categoryId: (json['category_id'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$SubCategoryImplToJson(_$SubCategoryImpl instance) =>
+Map<String, dynamic> _$$SubCategoryOffersImplToJson(
+        _$SubCategoryOffersImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'category_id': instance.categoryId,

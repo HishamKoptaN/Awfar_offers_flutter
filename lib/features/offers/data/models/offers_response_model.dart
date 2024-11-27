@@ -47,7 +47,7 @@ class OffersResponseModelOffer with _$OffersResponseModelOffer {
     @JsonKey(name: "description") String? description,
     @JsonKey(name: "image") String? image,
     @JsonKey(name: "days_remaining") int? daysRemaining,
-    @JsonKey(name: "sub_category") SubCategory? subCategory,
+    @JsonKey(name: "sub_category") SubCategoryOffers? subCategory,
     @JsonKey(name: "store") OfferStore? store,
   }) = _OffersResponseModelOffer;
 
@@ -69,14 +69,14 @@ class OfferStore with _$OfferStore {
 }
 
 @freezed
-class SubCategory with _$SubCategory {
-  const factory SubCategory({
+class SubCategoryOffers with _$SubCategoryOffers {
+  const factory SubCategoryOffers({
     @JsonKey(name: "id") int? id,
     @JsonKey(name: "category_id") int? categoryId,
-  }) = _SubCategory;
+  }) = _SubCategoryOffers;
 
-  factory SubCategory.fromJson(Map<String, dynamic> json) =>
-      _$SubCategoryFromJson(json);
+  factory SubCategoryOffers.fromJson(Map<String, dynamic> json) =>
+      _$SubCategoryOffersFromJson(json);
 }
 
 @freezed

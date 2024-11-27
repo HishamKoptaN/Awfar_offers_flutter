@@ -520,7 +520,7 @@ mixin _$OffersResponseModelOffer {
   @JsonKey(name: "days_remaining")
   int? get daysRemaining => throw _privateConstructorUsedError;
   @JsonKey(name: "sub_category")
-  SubCategory? get subCategory => throw _privateConstructorUsedError;
+  SubCategoryOffers? get subCategory => throw _privateConstructorUsedError;
   @JsonKey(name: "store")
   OfferStore? get store => throw _privateConstructorUsedError;
 
@@ -546,10 +546,10 @@ abstract class $OffersResponseModelOfferCopyWith<$Res> {
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "image") String? image,
       @JsonKey(name: "days_remaining") int? daysRemaining,
-      @JsonKey(name: "sub_category") SubCategory? subCategory,
+      @JsonKey(name: "sub_category") SubCategoryOffers? subCategory,
       @JsonKey(name: "store") OfferStore? store});
 
-  $SubCategoryCopyWith<$Res>? get subCategory;
+  $SubCategoryOffersCopyWith<$Res>? get subCategory;
   $OfferStoreCopyWith<$Res>? get store;
 }
 
@@ -601,7 +601,7 @@ class _$OffersResponseModelOfferCopyWithImpl<$Res,
       subCategory: freezed == subCategory
           ? _value.subCategory
           : subCategory // ignore: cast_nullable_to_non_nullable
-              as SubCategory?,
+              as SubCategoryOffers?,
       store: freezed == store
           ? _value.store
           : store // ignore: cast_nullable_to_non_nullable
@@ -613,12 +613,12 @@ class _$OffersResponseModelOfferCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $SubCategoryCopyWith<$Res>? get subCategory {
+  $SubCategoryOffersCopyWith<$Res>? get subCategory {
     if (_value.subCategory == null) {
       return null;
     }
 
-    return $SubCategoryCopyWith<$Res>(_value.subCategory!, (value) {
+    return $SubCategoryOffersCopyWith<$Res>(_value.subCategory!, (value) {
       return _then(_value.copyWith(subCategory: value) as $Val);
     });
   }
@@ -653,11 +653,11 @@ abstract class _$$OffersResponseModelOfferImplCopyWith<$Res>
       @JsonKey(name: "description") String? description,
       @JsonKey(name: "image") String? image,
       @JsonKey(name: "days_remaining") int? daysRemaining,
-      @JsonKey(name: "sub_category") SubCategory? subCategory,
+      @JsonKey(name: "sub_category") SubCategoryOffers? subCategory,
       @JsonKey(name: "store") OfferStore? store});
 
   @override
-  $SubCategoryCopyWith<$Res>? get subCategory;
+  $SubCategoryOffersCopyWith<$Res>? get subCategory;
   @override
   $OfferStoreCopyWith<$Res>? get store;
 }
@@ -709,7 +709,7 @@ class __$$OffersResponseModelOfferImplCopyWithImpl<$Res>
       subCategory: freezed == subCategory
           ? _value.subCategory
           : subCategory // ignore: cast_nullable_to_non_nullable
-              as SubCategory?,
+              as SubCategoryOffers?,
       store: freezed == store
           ? _value.store
           : store // ignore: cast_nullable_to_non_nullable
@@ -750,7 +750,7 @@ class _$OffersResponseModelOfferImpl implements _OffersResponseModelOffer {
   final int? daysRemaining;
   @override
   @JsonKey(name: "sub_category")
-  final SubCategory? subCategory;
+  final SubCategoryOffers? subCategory;
   @override
   @JsonKey(name: "store")
   final OfferStore? store;
@@ -806,7 +806,7 @@ abstract class _OffersResponseModelOffer implements OffersResponseModelOffer {
           @JsonKey(name: "description") final String? description,
           @JsonKey(name: "image") final String? image,
           @JsonKey(name: "days_remaining") final int? daysRemaining,
-          @JsonKey(name: "sub_category") final SubCategory? subCategory,
+          @JsonKey(name: "sub_category") final SubCategoryOffers? subCategory,
           @JsonKey(name: "store") final OfferStore? store}) =
       _$OffersResponseModelOfferImpl;
 
@@ -830,7 +830,7 @@ abstract class _OffersResponseModelOffer implements OffersResponseModelOffer {
   int? get daysRemaining;
   @override
   @JsonKey(name: "sub_category")
-  SubCategory? get subCategory;
+  SubCategoryOffers? get subCategory;
   @override
   @JsonKey(name: "store")
   OfferStore? get store;
@@ -1070,32 +1070,32 @@ abstract class _OfferStore implements OfferStore {
       throw _privateConstructorUsedError;
 }
 
-SubCategory _$SubCategoryFromJson(Map<String, dynamic> json) {
-  return _SubCategory.fromJson(json);
+SubCategoryOffers _$SubCategoryOffersFromJson(Map<String, dynamic> json) {
+  return _SubCategoryOffers.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SubCategory {
+mixin _$SubCategoryOffers {
   @JsonKey(name: "id")
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "category_id")
   int? get categoryId => throw _privateConstructorUsedError;
 
-  /// Serializes this SubCategory to a JSON map.
+  /// Serializes this SubCategoryOffers to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SubCategory
+  /// Create a copy of SubCategoryOffers
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SubCategoryCopyWith<SubCategory> get copyWith =>
+  $SubCategoryOffersCopyWith<SubCategoryOffers> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SubCategoryCopyWith<$Res> {
-  factory $SubCategoryCopyWith(
-          SubCategory value, $Res Function(SubCategory) then) =
-      _$SubCategoryCopyWithImpl<$Res, SubCategory>;
+abstract class $SubCategoryOffersCopyWith<$Res> {
+  factory $SubCategoryOffersCopyWith(
+          SubCategoryOffers value, $Res Function(SubCategoryOffers) then) =
+      _$SubCategoryOffersCopyWithImpl<$Res, SubCategoryOffers>;
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
@@ -1103,16 +1103,16 @@ abstract class $SubCategoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
-    implements $SubCategoryCopyWith<$Res> {
-  _$SubCategoryCopyWithImpl(this._value, this._then);
+class _$SubCategoryOffersCopyWithImpl<$Res, $Val extends SubCategoryOffers>
+    implements $SubCategoryOffersCopyWith<$Res> {
+  _$SubCategoryOffersCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SubCategory
+  /// Create a copy of SubCategoryOffers
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1134,11 +1134,11 @@ class _$SubCategoryCopyWithImpl<$Res, $Val extends SubCategory>
 }
 
 /// @nodoc
-abstract class _$$SubCategoryImplCopyWith<$Res>
-    implements $SubCategoryCopyWith<$Res> {
-  factory _$$SubCategoryImplCopyWith(
-          _$SubCategoryImpl value, $Res Function(_$SubCategoryImpl) then) =
-      __$$SubCategoryImplCopyWithImpl<$Res>;
+abstract class _$$SubCategoryOffersImplCopyWith<$Res>
+    implements $SubCategoryOffersCopyWith<$Res> {
+  factory _$$SubCategoryOffersImplCopyWith(_$SubCategoryOffersImpl value,
+          $Res Function(_$SubCategoryOffersImpl) then) =
+      __$$SubCategoryOffersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1147,14 +1147,14 @@ abstract class _$$SubCategoryImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SubCategoryImplCopyWithImpl<$Res>
-    extends _$SubCategoryCopyWithImpl<$Res, _$SubCategoryImpl>
-    implements _$$SubCategoryImplCopyWith<$Res> {
-  __$$SubCategoryImplCopyWithImpl(
-      _$SubCategoryImpl _value, $Res Function(_$SubCategoryImpl) _then)
+class __$$SubCategoryOffersImplCopyWithImpl<$Res>
+    extends _$SubCategoryOffersCopyWithImpl<$Res, _$SubCategoryOffersImpl>
+    implements _$$SubCategoryOffersImplCopyWith<$Res> {
+  __$$SubCategoryOffersImplCopyWithImpl(_$SubCategoryOffersImpl _value,
+      $Res Function(_$SubCategoryOffersImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SubCategory
+  /// Create a copy of SubCategoryOffers
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1162,7 +1162,7 @@ class __$$SubCategoryImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? categoryId = freezed,
   }) {
-    return _then(_$SubCategoryImpl(
+    return _then(_$SubCategoryOffersImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -1177,13 +1177,13 @@ class __$$SubCategoryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SubCategoryImpl implements _SubCategory {
-  const _$SubCategoryImpl(
+class _$SubCategoryOffersImpl implements _SubCategoryOffers {
+  const _$SubCategoryOffersImpl(
       {@JsonKey(name: "id") this.id,
       @JsonKey(name: "category_id") this.categoryId});
 
-  factory _$SubCategoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SubCategoryImplFromJson(json);
+  factory _$SubCategoryOffersImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubCategoryOffersImplFromJson(json);
 
   @override
   @JsonKey(name: "id")
@@ -1194,14 +1194,14 @@ class _$SubCategoryImpl implements _SubCategory {
 
   @override
   String toString() {
-    return 'SubCategory(id: $id, categoryId: $categoryId)';
+    return 'SubCategoryOffers(id: $id, categoryId: $categoryId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SubCategoryImpl &&
+            other is _$SubCategoryOffersImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId));
@@ -1211,29 +1211,31 @@ class _$SubCategoryImpl implements _SubCategory {
   @override
   int get hashCode => Object.hash(runtimeType, id, categoryId);
 
-  /// Create a copy of SubCategory
+  /// Create a copy of SubCategoryOffers
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SubCategoryImplCopyWith<_$SubCategoryImpl> get copyWith =>
-      __$$SubCategoryImplCopyWithImpl<_$SubCategoryImpl>(this, _$identity);
+  _$$SubCategoryOffersImplCopyWith<_$SubCategoryOffersImpl> get copyWith =>
+      __$$SubCategoryOffersImplCopyWithImpl<_$SubCategoryOffersImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SubCategoryImplToJson(
+    return _$$SubCategoryOffersImplToJson(
       this,
     );
   }
 }
 
-abstract class _SubCategory implements SubCategory {
-  const factory _SubCategory(
-      {@JsonKey(name: "id") final int? id,
-      @JsonKey(name: "category_id") final int? categoryId}) = _$SubCategoryImpl;
+abstract class _SubCategoryOffers implements SubCategoryOffers {
+  const factory _SubCategoryOffers(
+          {@JsonKey(name: "id") final int? id,
+          @JsonKey(name: "category_id") final int? categoryId}) =
+      _$SubCategoryOffersImpl;
 
-  factory _SubCategory.fromJson(Map<String, dynamic> json) =
-      _$SubCategoryImpl.fromJson;
+  factory _SubCategoryOffers.fromJson(Map<String, dynamic> json) =
+      _$SubCategoryOffersImpl.fromJson;
 
   @override
   @JsonKey(name: "id")
@@ -1242,11 +1244,11 @@ abstract class _SubCategory implements SubCategory {
   @JsonKey(name: "category_id")
   int? get categoryId;
 
-  /// Create a copy of SubCategory
+  /// Create a copy of SubCategoryOffers
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SubCategoryImplCopyWith<_$SubCategoryImpl> get copyWith =>
+  _$$SubCategoryOffersImplCopyWith<_$SubCategoryOffersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

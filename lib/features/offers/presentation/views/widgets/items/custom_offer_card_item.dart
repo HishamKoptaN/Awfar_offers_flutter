@@ -22,6 +22,7 @@ class CustomCardItem extends StatefulWidget {
 class _CustomCardItemState extends State<CustomCardItem> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Card(
       color: AppColors.primaryColor,
       elevation: 4,
@@ -40,7 +41,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 ),
                 child: Image.network(
                   widget.offersResponseModelOffer.image!,
-                  height: 260.h,
+                  height: (((width - 6) / 2) / 0.58) / 1.38,
                   width: double.infinity,
                   fit: BoxFit.fill,
                 ),

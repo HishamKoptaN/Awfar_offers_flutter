@@ -21,8 +21,8 @@ class OffersItemsGridView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(), // Disable grid scroll
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Number of columns in the grid
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
+        crossAxisSpacing: 6,
+        mainAxisSpacing: 6,
         childAspectRatio: 0.58,
       ),
       itemCount: offers.length,

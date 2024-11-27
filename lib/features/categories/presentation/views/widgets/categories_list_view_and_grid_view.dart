@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/features/categories/presentation/views/sub_categories_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_colors.dart';
@@ -5,7 +6,7 @@ import '../../../data/models/categories_response_model.dart';
 import 'active_and_in_active_category.dart';
 
 class ListViewAndGridView extends StatefulWidget {
-  ListViewAndGridView({
+  const ListViewAndGridView({
     super.key,
     required this.categories,
   });
@@ -71,15 +72,15 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                       selectedCategory != null ? selectedCategory.name! : "",
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
                   Expanded(
-                    child: selectedCategory?.subCategories != null &&
-                            selectedCategory!.subCategories!.isNotEmpty
+                    child: selectedCategory.subCategories != null &&
+                            selectedCategory.subCategories!.isNotEmpty
                         ? GridView.builder(
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
@@ -92,9 +93,14 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                   selectedCategory.subCategories![index];
                               return Column(
                                 children: [
-                                  const SizedBox(height: 8),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        SubCategoriesView.routeName,
+                                        arguments: subCategory,
+                                      );
+                                    },
                                     child: Stack(
                                       children: [
                                         CircleAvatar(
@@ -136,7 +142,7 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                     subCategory.name!,
                                     style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 9,
                                     ),
                                   ),
                                 ],

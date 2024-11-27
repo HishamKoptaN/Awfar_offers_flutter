@@ -55,7 +55,6 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
               ),
               const Spacer(),
               Container(
-                width: 150.w,
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor,
                   borderRadius: BorderRadius.circular(10),
@@ -63,7 +62,6 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       buildCountrySelectorWidget(),
                       const SizedBox(width: 8),

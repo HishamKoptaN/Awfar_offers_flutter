@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
 import '../bloc/categories_bloc.dart';
 import '../bloc/categories_event.dart';
@@ -16,9 +15,7 @@ class CategoriesView extends StatelessWidget {
   static const String routeName = 'categories_view';
   final String brandName;
   @override
-  Widget build(
-    context,
-  ) {
+  Widget build(context) {
     return SafeArea(
       child: Scaffold(
         body: BlocConsumer<CategoriesBloc, CategoriesState>(

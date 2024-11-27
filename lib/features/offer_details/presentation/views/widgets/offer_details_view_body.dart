@@ -26,7 +26,11 @@ class OfferDetailsViewBody extends StatelessWidget {
             urlImage: storeElement.image!,
           ),
           // const ViewProductsWidgetButton(),
-          const TextAndShareAndNotificationIcon(),
+          TextAndShareAndNotificationIcon(
+            image: storeElement.image!,
+            offerLink: "https://pub.dev/packages/share_plus",
+            title: "فتح الله",
+          ),
           const SizedBox(
             height: 24,
           ),
