@@ -3,13 +3,11 @@ on:
   push:
     branches:
       - dev
-
 jobs:
   build:
-    if: contains(github.event.head_commit.message, 'build') # التحقق من اسم الـ commit
+    if: contains(github.event.head_commit.message, 'build')
     runs-on: ubuntu-latest
     steps:
-     
       - name: #! 1. التحقق من الكود
         uses: actions/checkout@v2
 
@@ -30,7 +28,6 @@ jobs:
 
       - name: #! 5. بناء نسخ الاندرويد
         run: flutter build apk --split-per-abi 
-
       
       - name: #! 6. تحميل النسخ كـ Artifacts
         uses: actions/upload-artifact@v3
