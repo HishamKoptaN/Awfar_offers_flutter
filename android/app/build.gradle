@@ -26,14 +26,8 @@ if (flutterVersionName == null) {
     flutterVersionName = "1.0"
 }
 
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
-
 android {
-    namespace = "com.awfaroffers.app"
+    namespace = "com.awfaroffers.app.dev"
     compileSdk = 34
     ndkVersion = "25.1.8937393"
 
@@ -47,7 +41,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.awfaroffers.app"
+        applicationId = "com.awfaroffers.app.dev"
         minSdk = 21
         targetSdk = 34
         versionCode = flutterVersionCode.toInteger()
@@ -56,32 +50,13 @@ android {
 
     signingConfigs {
         release {
-            keyAlias = keystoreProperties['keyAlias']
-            keyPassword = keystoreProperties['keyPassword']
-            storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword = keystoreProperties['storePassword']
         }
     }
     buildTypes {
-        debug {
-        }
         release {
-            signingConfig signingConfigs.release
+            signingConfig = signingConfigs.debug
         }
     }
-
-    flavorDimensions += "default"
-   productFlavors {
-    dev {
-        dimension = "default"
-        applicationIdSuffix ".dev" // لتجنب التعارض مع النسخة الأصلية
-        resValue("string", "app_name", "Awfar offers dev")
-    }
-    prod {
-        dimension = "default"
-        resValue("string", "app_name", "Awfar offers")
-    }
-}
 
 }
 

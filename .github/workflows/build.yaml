@@ -2,44 +2,45 @@ name: Build and Distribute Flutter APKs
 on:
   push:
     branches:
-      - master
+      - dev
+
 jobs:
   build:
+    if: contains(github.event.head_commit.message, 'build') # التحقق من اسم الـ commit
     runs-on: ubuntu-latest
     steps:
-      # 1. التحقق من الكود
+      #! 1. التحقق من الكود
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # 2. إعداد JDK
+      #! 2. إعداد JDK
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # 3. إعداد Flutter
+      #! 3. إعداد Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
           channel: stable
 
-      # 4. تحميل التبعيات
+      #! 4. تحميل التبعيات
       - name: Flutter pub get
         run: flutter pub get
 
-      # 5. بناء APK للـ dev flavor
+      #! 5. بناء APK للـ dev flavor
       - name: Build --flavor devFlavor
         run: flutter build apk --flavor devFlavor --target=lib/main_dev.dart --split-per-abi 
 
-      # 6. تحميل النسخ كـ Artifacts
-      - name: Upload  APKs
+      #! 6. تحميل النسخ كـ Artifacts
+      - name: Upload APKs
         uses: actions/upload-artifact@v3
         with:
-           name:  APKs
+           name: APKs
            path: |
-           
              build\app\outputs\flutter-apk\app-armeabi-v7a-dev-release.apk
              build\app\outputs\flutter-apk\app-arm64-v8a-dev-release.apk
       #! 🚀 7. توزيع النسخ عبر Firebase

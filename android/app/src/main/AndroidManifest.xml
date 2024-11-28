@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.awfaroffers.app">
+package="com.awfaroffers.app.dev">
     <application
-        android:label="awfar offers"
+        android:label="awfar offers dev"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

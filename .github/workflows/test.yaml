@@ -1,11 +1,8 @@
-name: test
-
+name: Build and Distribute Flutter APKs
 on:
-   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
-
+  push:
+    branches:
+      - test
 jobs:
   build:
     runs-on: ubuntu-latest

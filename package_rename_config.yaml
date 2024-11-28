@@ -2,33 +2,33 @@
 
 package_rename_config:
   android:
-    app_name: "awfar offers"        # اسم التطبيق
-    package_name: "com.awfaroffers.app"  # اسم الحزمة
+    app_name: "awfar offers dev"        # اسم التطبيق
+    package_name: "com.awfaroffers.app.dev"  # اسم الحزمة
     override_old_package: true  # لتجاهل الحزمة القديمة
     lang: "ar"                 # لغة التطبيق (اختياري)
 
   ios:
-    app_name: "awfar offers"        # اسم التطبيق
-    bundle_name: "com.awfaroffers.app"  # اسم الحزمة
-    package_name: "com.awfaroffers.app"  # اسم الحزمة
+    app_name: "awfar offers dev"        # اسم التطبيق
+    bundle_name: "com.awfaroffers.app.dev"  # اسم الحزمة
+    package_name: "com.awfaroffers.app.dev"  # اسم الحزمة
 
   linux:
-    app_name: "awfar offers"        # اسم التطبيق
-    package_name: "com.awfaroffers.app"  # اسم الحزمة
+    app_name: "awfar offers dev"        # اسم التطبيق
+    package_name: "com.awfaroffers.app.dev"  # اسم الحزمة
     exe_name: "awfar offers"        # اسم ملف التنفيذ
 
   macos:
-    app_name: "awfar offers"        # اسم التطبيق
-    package_name: "com.awfaroffers.app"  # اسم الحزمة
+    app_name: "awfar offers dev"        # اسم التطبيق
+    package_name: "com.awfaroffers.app.dev"  # اسم الحزمة
     copyright_notice: "© 2024 awfar offers"  # حقوق الطبع والنشر (اختياري)
 
   web:
-    app_name: "awfar offers"        # اسم التطبيق
+    app_name: "awfar offers dev"        # اسم التطبيق
     short_app_name: "awfar offers"  # اسم التطبيق المختصر (اختياري)
     description: "awfar offers App" # وصف التطبيق (اختياري)
 
   windows:
-    app_name: "awfar offers"        # اسم التطبيق
-    organization: "awfar offers"     # اسم المؤسسة (اختياري)
-    copyright_notice: "© 2024 awfar offers"  # حقوق الطبع والنشر (اختياري)
-    exe_name: "awfar offers"        # اسم ملف التنفيذ
+    app_name: "awfar offers dev"        # اسم التطبيق
+    organization: "awfar offers dev"     # اسم المؤسسة (اختياري)
+    copyright_notice: "© 2024 awfar offers dev"  # حقوق الطبع والنشر (اختياري)
+    exe_name: "awfar offers dev"        # اسم ملف التنفيذ
