@@ -9,56 +9,51 @@ jobs:
     if: contains(github.event.head_commit.message, 'build') # التحقق من اسم الـ commit
     runs-on: ubuntu-latest
     steps:
-      #! 1. التحقق من الكود
-      - name: Checkout code
+     
+      - name: #! 1. التحقق من الكود
         uses: actions/checkout@v2
 
-      #! 2. إعداد JDK
-      - name: Set up JDK 17
+      - name: #! 2. إعداد JDK
         uses: actions/setup-java@v2
         with:
           java-version: '17'
           distribution: 'temurin'
-
-      #! 3. إعداد Flutter
-      - name: Setup Flutter
+      
+      - name: #! 3. إعداد Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
           channel: stable
 
-      #! 4. تحميل التبعيات
-      - name: Flutter pub get
+      - name: #! 4. تحميل التبعيات
         run: flutter pub get
 
-      #! 5. بناء APK للـ dev flavor
-      - name: Build --flavor devFlavor
-        run: flutter build apk --flavor devFlavor --target=lib/main_dev.dart --split-per-abi 
+      - name: #! 5. بناء نسخ الاندرويد
+        run: flutter build apk --split-per-abi 
 
-      #! 6. تحميل النسخ كـ Artifacts
-      - name: Upload APKs
+      
+      - name: #! 6. تحميل النسخ كـ Artifacts
         uses: actions/upload-artifact@v3
         with:
            name: APKs
            path: |
-             build\app\outputs\flutter-apk\app-armeabi-v7a-dev-release.apk
-             build\app\outputs\flutter-apk\app-arm64-v8a-dev-release.apk
+             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+             build\app\outputs\flutter-apk\app-arm64-v8a-release.apk
       #! 🚀 7. توزيع النسخ عبر Firebase
-      #! 🚀 armeabi-v7a
-      - name: Upload armeabi-v7a to Firebase App Distribution
+      - name: #! 🚀 armeabi-v7a
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: armeabi-v7a
-          file: build/app/outputs/flutter-apk/app-armeabi-v7a-dev-release.apk
+          file: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
           releaseNotes: "armeabi-v7a"
-      #! 🚀 arm64-v8a
-      - name: Upload arm64-v8a to Firebase App Distribution
+     
+      - name: #! 🚀 arm64-v8a
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: arm64-v8a
-          file: build/app/outputs/flutter-apk/app-arm64-v8a-dev-release.apk    
+          file: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk    
           releaseNotes: "arm64-v8a"
