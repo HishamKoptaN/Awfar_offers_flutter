@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/core/widgets/custom_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,112 +21,197 @@ class NotificationsView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.darkPrimaryColor,
-        appBar: AppBar(
-          backgroundColor: AppColors.darkPrimaryColor,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: BlocConsumer<NotificationsBloc, NotificationsState>(
-            listener: (context, state) {
-              state.mapOrNull(
-                failure: (
-                  apiErrorModel,
-                ) {
-                  ToastNotifier().showError(
-                    context: context,
-                    message: apiErrorModel.apiErrorModel.error!,
-                  );
-                },
-              );
-            },
-            builder: (context, state) {
-              return state.maybeWhen(
-                loaded: (notifications) {
-                  return ListView.separated(
-                    itemCount: notifications.length,
-                    itemBuilder: (context, index) {
-                      var notification = notifications[index];
-                      return Container(
-                        height: 150.h,
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: notification.image != null
-                                  ? Image.network(
-                                      notification.image!,
-                                      fit: BoxFit.fill,
-                                      height: double.infinity,
-                                      width: double.infinity,
-                                    )
-                                  : const Icon(Icons.image),
-                            ),
-                            Gap(
-                              10.w,
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    notification.message!,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: "Arial",
-                                      fontSize: 15.sp,
-                                    ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const CustomBackButton(),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Text(
+                    "إشعار",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.settings,
+                      size: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: BlocConsumer<NotificationsBloc, NotificationsState>(
+                  listener: (context, state) {
+                    state.mapOrNull(
+                      failure: (
+                        apiErrorModel,
+                      ) {
+                        ToastNotifier().showError(
+                          context: context,
+                          message: apiErrorModel.apiErrorModel.error!,
+                        );
+                      },
+                    );
+                  },
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      loaded: (notifications) {
+                        return ListView.separated(
+                          itemCount: notifications.length,
+                          itemBuilder: (context, index) {
+                            var notification = notifications[index];
+                            return Stack(
+                              children: [
+                                Container(
+                                  height: 100.h,
+                                  width: double.infinity,
+                                  // padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primaryColor,
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  Gap(
-                                    5.h,
+                                  child: Row(
+                                    children: [
+                                      notification.image != null
+                                          ? Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    const BorderRadius.all(
+                                                  Radius.circular(10),
+                                                ),
+                                                child: Image.network(
+                                                  notification.image!,
+                                                  height: double.infinity,
+                                                  width: 65,
+                                                  fit: BoxFit.fill,
+                                                ),
+                                              ),
+                                            )
+                                          : const Icon(
+                                              Icons.image,
+                                              size: 65,
+                                              color: Colors.white,
+                                            ),
+                                      Gap(
+                                        10.w,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            ListTile(
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                      left: 16),
+                                              title: Text(
+                                                notification.message!,
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: "Arial",
+                                                  fontSize: 16.sp,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              subtitle: Text(
+                                                notification.store!.name!,
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: "Arial",
+                                                  fontSize: 15.sp,
+                                                ),
+                                              ),
+                                              trailing: const Icon(
+                                                Icons.delete,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                const Icon(
+                                                  Icons.access_time,
+                                                  color: Colors.white,
+                                                  size: 18,
+                                                ),
+                                                const SizedBox(
+                                                  width: 4,
+                                                ),
+                                                Text(
+                                                  "الخميس, 28 نوفمبر 24",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: "Arial",
+                                                    fontSize: 15.sp,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                const Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 16,
+                                                  ),
+                                                  child: Icon(
+                                                    Icons.done_all_outlined,
+                                                    color: AppColors
+                                                        .lightPrimaryColor,
+                                                    size: 14,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    notification.store!.name!,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: "Arial",
-                                      fontSize: 15.sp,
-                                    ),
+                                ),
+                                const Positioned(
+                                  right: 1,
+                                  top: 1,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.red,
+                                    radius: 5,
                                   ),
-                                  Gap(
-                                    5.h,
-                                  ),
-                                  Text(
-                                    "notification.creatAt!",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: "Arial",
-                                      fontSize: 15.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return const Gap(15);
-                    },
-                  );
-                },
-                loading: () {
-                  return const CustomCircularProgress();
-                },
-                orElse: () {
-                  return const CustomCircularProgress();
-                },
-              );
-            },
-          ),
+                                ),
+                              ],
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return const Gap(15);
+                          },
+                        );
+                      },
+                      loading: () {
+                        return const CustomCircularProgress();
+                      },
+                      orElse: () {
+                        return const CustomCircularProgress();
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

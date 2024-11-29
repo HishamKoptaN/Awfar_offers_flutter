@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/app_colors.dart';
-import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/categories/presentation/views/categories_view.dart';
-import 'features/countries/presentation/bloc/countries_bloc.dart';
-import 'features/coupons/present/bloc/coupons_bloc.dart';
 import 'features/coupons/present/coupons_view.dart';
-import 'features/governorates/present/bloc/governorates_bloc.dart';
 import 'features/notifications/present/bloc/notifications_bloc.dart';
-import 'features/offers/presentation/bloc/offers_bloc.dart';
 import 'features/offers/presentation/views/offers_view.dart';
 import 'features/search/presentation/views/search_view.dart';
 import 'features/settings/presentation/views/settings_view.dart';
-import 'features/categories/presentation/bloc/categories_event.dart';
-import 'features/countries/presentation/bloc/countries_event.dart';
-import 'core/global_methods.dart';
-import 'features/coupons/present/bloc/coupons_event.dart';
-import 'features/governorates/present/bloc/governorates_event.dart';
 import 'features/notifications/present/bloc/notifications_event.dart';
-import 'features/offers/presentation/bloc/offers_event.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
