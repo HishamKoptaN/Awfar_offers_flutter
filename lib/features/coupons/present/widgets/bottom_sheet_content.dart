@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/database/cache/shared_pref_helper.dart';
-import '../../../../core/database/cache/shared_pref_keys.dart';
-import '../../../../core/singletons/favorite_coupons_singleton.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../data/models/coupons_res_model.dart';
 import '../bloc/coupons_bloc.dart';
@@ -56,9 +53,9 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
               const SizedBox(
                 height: 8,
               ),
-              const Image(
+              Image(
                 image: NetworkImage(
-                  "https://pbs.twimg.com/media/DIkUxZZVYAEu9mV.jpg",
+                  widget.coupon.store!.image!,
                 ),
                 width: 70,
               ),

@@ -1,4 +1,5 @@
 import 'package:awfar_offer_app/features/categories/presentation/views/sub_categories_view.dart';
+import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,6 +38,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         builder: (context) => SubCategoriesView(
           category: settings.arguments as SubCategory,
         ),
+      );
+
+    case NotificationsSettingsView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const NotificationsSettingsView(),
       );
 
     case CouponsView.routeName:

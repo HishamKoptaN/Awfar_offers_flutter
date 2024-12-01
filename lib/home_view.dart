@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/utils/app_colors.dart';
@@ -6,7 +7,6 @@ import 'features/coupons/present/coupons_view.dart';
 import 'features/notifications/present/bloc/notifications_bloc.dart';
 import 'features/offers/presentation/views/offers_view.dart';
 import 'features/search/presentation/views/search_view.dart';
-import 'features/settings/presentation/views/settings_view.dart';
 import 'features/notifications/present/bloc/notifications_event.dart';
 
 class HomeView extends StatefulWidget {
@@ -26,10 +26,7 @@ class _HomeView extends State<HomeView> {
       searchLabel: "بحث",
     ),
     const CouponsView(),
-    const SettingsView(
-      isBack: false,
-    ),
-    // const ProfileView(),
+    const ProfileView(),
   ];
 
   @override

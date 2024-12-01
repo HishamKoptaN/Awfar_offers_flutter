@@ -1,5 +1,8 @@
+import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_view.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/database/cache/shared_pref_helper.dart';
 import '../../../../../core/database/cache/shared_pref_keys.dart';
@@ -72,11 +75,28 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
             ),
             const CustomDividerWidget(),
             CustomSettingWidget(
+              title: "شارك التطبيق",
+              onTap: () async {
+                await shareTheApp();
+              },
+            ),
+            const CustomDividerWidget(),
+            CustomSettingWidget(
               title: " الإشعارات",
               onTap: () async {
                 Navigator.pushNamed(
                   context,
                   NotificationsView.routeName,
+                );
+              },
+            ),
+            const CustomDividerWidget(),
+            CustomSettingWidget(
+              title: "إعدادات الإشعارات",
+              onTap: () async {
+                Navigator.pushNamed(
+                  context,
+                  NotificationsSettingsView.routeName,
                 );
               },
             ),
@@ -283,6 +303,13 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
           ),
         );
       },
+    );
+  }
+
+  Future<void> shareTheApp() async {
+    Share.share(
+      'اكتشف عروضاً مذهلة للسوبر ماركت، الإلكترونيات، والأزياء مع تطبيق Awfar Offer! 🛒💻👗\n\nتوفير كبير بانتظارك! حمل الآن:\nhttps://play.google.com/store/apps/details?id=com.awfaroffers.app',
+      subject: 'عروض مذهلة في انتظارك!',
     );
   }
 }

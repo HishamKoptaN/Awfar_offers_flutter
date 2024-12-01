@@ -1,4 +1,5 @@
 import 'package:awfar_offer_app/core/widgets/custom_back_button.dart';
+import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +43,12 @@ class NotificationsView extends StatelessWidget {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        NotificationsSettingsView.routeName,
+                      );
+                    },
                     icon: const Icon(
                       Icons.settings,
                       size: 24,

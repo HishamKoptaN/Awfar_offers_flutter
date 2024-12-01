@@ -18,7 +18,7 @@ class IconAndTextWidget extends StatelessWidget {
         children: [
           Icon(
             iconData,
-            size: 28,
+            size: 36,
             color: Colors.white,
           ),
           const SizedBox(
@@ -27,7 +27,10 @@ class IconAndTextWidget extends StatelessWidget {
           Text(
             title,
             style: const TextStyle(
-                color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+              color: Colors.white,
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
