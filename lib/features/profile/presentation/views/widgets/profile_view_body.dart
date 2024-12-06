@@ -120,69 +120,71 @@ class ProfileViewBody extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            const Text(
-              "الأدوات",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
+            // const Text(
+            //   "الأدوات",
+            //   style: TextStyle(
+            //     fontSize: 20,
+            //     fontWeight: FontWeight.w500,
+            //     color: Colors.white,
+            //   ),
+            // ),
             const SizedBox(
               height: 8,
             ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ToolsWidget(
-                  iconData: Icons.qr_code_outlined,
-                  title: "الباركود",
-                ),
-                ToolsWidget(
-                  iconData: Icons.sports_soccer_outlined,
-                  title: "إس أو إس",
-                ),
-                ToolsWidget(
-                  iconData: Icons.place_outlined,
-                  title: "منافذ",
-                ),
+                // ToolsWidget(
+                //   iconData: Icons.qr_code_outlined,
+                //   title: "الباركود",
+                // ),
+                //! ملغي
+                // ToolsWidget(
+                //   iconData: Icons.sports_soccer_outlined,
+                //   title: "إس أو إس",
+                // ),
+                //! ملغي
+                // ToolsWidget(
+                //   iconData: Icons.place_outlined,
+                //   title: "منافذ",
+                // ),
               ],
             ),
             const SizedBox(
               height: 16,
             ),
-            const Text(
-              "قائمة شخصية",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
-            ),
+            // const Text(
+            //   "قائمة شخصية",
+            //   style: TextStyle(
+            //     fontSize: 20,
+            //     fontWeight: FontWeight.w500,
+            //     color: Colors.white,
+            //   ),
+            // ),
             const SizedBox(
               height: 24,
             ),
-            const CustomPersonalList(
-              headerTitle: "قائمة التسوق",
-              title: "لم تستخدم قائمة التسوق بعد",
-              subTitle: "أنشىء قائمة التسوق وشاركها لتسهيل تسوقك.",
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            const CustomPersonalList(
-              headerTitle: "الضمان",
-              title: "لم تضف أي إيصالات بعد",
-              subTitle: "أضف إيصالك أو بطاقة الضمان, حتى لاتفقدها",
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            const CustomPersonalList(
-              headerTitle: "بطاقة الولاء",
-              title: "احفظ بطاقات الولاء الخاصة بك",
-              subTitle: "استخدم هذة الميزة حتى لا تضطر الى حملها بعد الأن",
-            ),
+            // const CustomPersonalList(
+            //   headerTitle: "قائمة التسوق",
+            //   title: "لم تستخدم قائمة التسوق بعد",
+            //   subTitle: "أنشىء قائمة التسوق وشاركها لتسهيل تسوقك.",
+            // ),
+            // const SizedBox(
+            //   height: 8,
+            // ),
+            // const CustomPersonalList(
+            //   headerTitle: "الضمان",
+            //   title: "لم تضف أي إيصالات بعد",
+            //   subTitle: "أضف إيصالك أو بطاقة الضمان, حتى لاتفقدها",
+            // ),
+            // const SizedBox(
+            //   height: 8,
+            // ),
+            // const CustomPersonalList(
+            //   headerTitle: "بطاقة الولاء",
+            //   title: "احفظ بطاقات الولاء الخاصة بك",
+            //   subTitle: "استخدم هذة الميزة حتى لا تضطر الى حملها بعد الأن",
+            // ),
           ],
         ),
       ),

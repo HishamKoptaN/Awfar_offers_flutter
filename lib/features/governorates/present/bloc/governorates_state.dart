@@ -6,7 +6,6 @@ part 'governorates_state.freezed.dart';
 class GovernoratesState with _$GovernoratesState {
   const factory GovernoratesState.initial() = _Initial;
   const factory GovernoratesState.governoratesloaded({
-    required List<Governorate> countries,
     required int? selectedGovernorateId,
   }) = _Governoratesloaded;
   const factory GovernoratesState.loading() = _Loading;

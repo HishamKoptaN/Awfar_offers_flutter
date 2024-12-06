@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/database/cache/shared_pref_helper.dart';
-import '../../../../../../core/database/cache/shared_pref_keys.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/models/store.dart';
 import '../../../../../../core/utils/app_colors.dart';
-import '../../../../data/models/offers_response_model.dart';
+import '../../../../../stores/presentation/bloc/stores_bloc.dart';
+import '../../../../../stores/presentation/bloc/stores_event.dart';
 import '../store/custom_marka_item.dart';
 
 class CustomCardItem extends StatefulWidget {
   CustomCardItem({
     super.key,
-    required this.offersResponseModelOffer,
+    required this.store,
     required this.isFav,
   });
 
-  final OffersResponseModelOffer offersResponseModelOffer;
+  final Store store;
   bool isFav;
   @override
   State<CustomCardItem> createState() => _CustomCardItemState();
@@ -21,7 +21,7 @@ class CustomCardItem extends StatefulWidget {
 
 class _CustomCardItemState extends State<CustomCardItem> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     double width = MediaQuery.of(context).size.width;
     return Card(
       color: AppColors.primaryColor,
@@ -40,7 +40,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   topRight: Radius.circular(16),
                 ),
                 child: Image.network(
-                  widget.offersResponseModelOffer.image!,
+                  widget.store.image!,
                   height: (((width - 6) / 2) / 0.58) / 1.38,
                   width: double.infinity,
                   fit: BoxFit.fill,
@@ -50,7 +50,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 top: 8,
                 right: 8,
                 child: Text(
-                  "+${widget.offersResponseModelOffer.store!.offersCount!}",
+                  "+${widget.store.offerGroups!.length}",
                   style: const TextStyle(
                     color: AppColors.lightPrimaryColor,
                     fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 child: CustomMarkaItem(
                   radius1: 20,
                   radius2: 19,
-                  imageUrl: widget.offersResponseModelOffer.store!.name!,
+                  imageUrl: widget.store.offerGroups!.first.image!,
                 ),
               ),
               Positioned(
@@ -78,9 +78,9 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      widget.offersResponseModelOffer.daysRemaining == 0
+                      widget.store.offerGroups!.first.endAt == 0
                           ? "ينتهي اليوم"
-                          : "${widget.offersResponseModelOffer.daysRemaining} أيام متبقية",
+                          : "${widget.store.offerGroups!.first.daysRemaining} أيام متبقية",
                       style: const TextStyle(fontSize: 10),
                     ),
                   ),
@@ -97,7 +97,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
               child: Row(
                 children: [
                   Text(
-                    widget.offersResponseModelOffer.description!,
+                    widget.store.offerGroups!.first.name!,
                     style: const TextStyle(
                       color: AppColors.yellowColor,
                       fontSize: 12,
@@ -125,7 +125,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
               child: Row(
                 children: [
                   Text(
-                    widget.offersResponseModelOffer.store!.name!,
+                    widget.store.name!,
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -135,26 +135,21 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   const Spacer(),
                   GestureDetector(
                     onTap: () async {
-                      !widget.isFav
-                          ? await SharedPrefHelper.updateList(
-                              key: SharedPrefKeys.favoriteOffers,
-                              value: widget.offersResponseModelOffer.id!,
-                              add: true,
-                            )
-                          : await SharedPrefHelper.updateList(
-                              key: SharedPrefKeys.favoriteOffers,
-                              value: widget.offersResponseModelOffer.id!,
-                              add: false,
-                            );
-
+                      widget.isFav = !widget.isFav;
                       setState(
-                        () {
-                          widget.isFav = !widget.isFav;
-                        },
+                        () {},
                       );
+                      context.read<StoresBloc>().add(
+                            StoresEvent.updateFavs(
+                              id: widget.store.id!,
+                              add: !widget.isFav,
+                            ),
+                          );
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 4),
+                      padding: const EdgeInsets.only(
+                        left: 4,
+                      ),
                       child: Icon(
                         widget.isFav
                             ? Icons.favorite_outlined

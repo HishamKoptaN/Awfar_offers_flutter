@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/app_text_styles.dart';
 import '../../../../../search/presentation/views/search_view.dart';
-import '../../../../data/models/offers_response_model.dart';
 
 class CustomSearchAndRefreshWidget extends StatelessWidget {
   CustomSearchAndRefreshWidget({
     super.key,
-    required this.offersResponseModel,
   });
-  OffersResponseModel offersResponseModel;
   @override
   Widget build(context) {
     return Padding(

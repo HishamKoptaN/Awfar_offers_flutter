@@ -1,24 +1,23 @@
-// import '../models/sub_category.dart'; // تأكد من استيراد النموذج الصحيح
+import '../models/sub_category.dart';
 
-// class SubCategoriesSingleton {
-//   List<SubCategory> _subCategories =
-//       []; // استخدم List<SubCategory> بدلاً من List<Category>
-//   static final SubCategoriesSingleton _instance =
-//       SubCategoriesSingleton._internal();
+class SubCategoriesSingleton {
+  List<SubCategory> _subCategories = [];
+  static final SubCategoriesSingleton _instance =
+      SubCategoriesSingleton._internal();
 
-//   SubCategoriesSingleton._internal();
+  SubCategoriesSingleton._internal();
 
-//   static SubCategoriesSingleton get instance => _instance;
+  static SubCategoriesSingleton get instance => _instance;
 
-//   List<SubCategory> get subCategories =>
-//       _subCategories; // يجب أن يكون من نوع List<SubCategory>
+  List<SubCategory> get subCategories => _subCategories;
 
-//   set subCategories(List<SubCategory> subCategoriesList) {
-//     // تحديد النوع الصحيح في الـ setter
-//     _subCategories = subCategoriesList;
-//   }
+  set subCategories(
+    List<SubCategory> subCategoriesList,
+  ) {
+    _subCategories = subCategoriesList;
+  }
 
-//   void clear() {
-//     _subCategories = [];
-//   }
-// }
+  void clear() {
+    _subCategories = [];
+  }
+}

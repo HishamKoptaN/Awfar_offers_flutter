@@ -6,10 +6,8 @@ class CouponsEvent with _$CouponsEvent {
   const factory CouponsEvent.getCoupons({
     required int governorateId,
   }) = _GetCoupons;
-  const factory CouponsEvent.addToFavorites({
-    required int governorateId,
-  }) = _AddToFavorites;
-  const factory CouponsEvent.removeFromFavorites({
-    required int governorateId,
-  }) = _RemoveFromFavorites;
+  const factory CouponsEvent.updateFavs({
+    required int id,
+    required bool add,
+  }) = _UpdateFavs;
 }

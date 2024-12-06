@@ -1,7 +1,7 @@
-import '../../features/categories/data/models/categories_response_model.dart';
+import '../../features/governorates/data/models/governorates_res_model.dart';
 
 class GovernoratesSingleton {
-  List<Offer> _offers = [];
+  List<Governorate> _governorates = [];
   static final GovernoratesSingleton _instance =
       GovernoratesSingleton._internal();
 
@@ -9,13 +9,13 @@ class GovernoratesSingleton {
 
   static GovernoratesSingleton get instance => _instance;
 
-  // List<Governorate> get offers => _offers;
+  List<Governorate> get governorates => _governorates;
 
-  set offers(List<Offer> offersList) {
-    _offers = offersList;
+  set governorates(List<Governorate> governoratesList) {
+    _governorates = governoratesList;
   }
 
   void clear() {
-    _offers = [];
+    _governorates = [];
   }
 }

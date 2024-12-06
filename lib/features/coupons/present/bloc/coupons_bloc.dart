@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/database/cache/shared_pref_helper.dart';
 import '../../../../core/database/cache/shared_pref_keys.dart';
+import '../../../../core/singletons/favs_coupons_singleton.dart';
 import '../../domain/use_cases/get_coupons_use_case.dart';
 import 'coupons_event.dart';
 import 'coupons_state.dart';
@@ -25,7 +26,7 @@ class CouponsBloc extends Bloc<CouponsEvent, CouponsState> {
             await result.when(
               success: (catgoryCoupons) async {
                 emit(
-                  CouponsState.couponsloaded(
+                  CouponsState.loaded(
                     catgoryCoupons: catgoryCoupons!,
                     favorites: favorites,
                   ),
@@ -40,19 +41,35 @@ class CouponsBloc extends Bloc<CouponsEvent, CouponsState> {
               },
             );
           },
-          addToFavorites: (couponId) async {
-            await SharedPrefHelper.updateList(
-              key: SharedPrefKeys.favoriteCoupons,
-              value: couponId,
-              add: true,
-            );
-          },
-          removeFromFavorites: (couponId) async {
-            await SharedPrefHelper.updateList(
-              key: SharedPrefKeys.favoriteCoupons,
-              value: couponId,
-              add: false,
-            );
+          updateFavs: (id, add) async {
+            try {
+              if (add) {
+                await SharedPrefHelper.updateList(
+                  key: SharedPrefKeys.favoriteCoupons,
+                  value: id,
+                  add: true,
+                );
+              } else {
+                await SharedPrefHelper.updateList(
+                  key: SharedPrefKeys.favoriteCoupons,
+                  value: id,
+                  add: false,
+                );
+              }
+              FavsCouponsSingleton.instance.favs =
+                  await SharedPrefHelper.getIntList(
+                key: SharedPrefKeys.favoriteCoupons,
+              );
+              // emit(
+              //   CouponsState.loaded(),
+              // );
+            } catch (error) {
+              emit(
+                CouponsState.failure(
+                  error: error.toString(),
+                ),
+              );
+            }
           },
         );
       },

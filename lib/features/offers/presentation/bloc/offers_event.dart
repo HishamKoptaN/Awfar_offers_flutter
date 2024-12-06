@@ -6,4 +6,8 @@ class OffersEvent with _$OffersEvent {
   const factory OffersEvent.getOffers({
     required int governorateId,
   }) = _GetOffers;
+  const factory OffersEvent.updateFavs({
+    required int id,
+    required bool add,
+  }) = _UpdateFavs;
 }

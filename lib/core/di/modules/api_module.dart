@@ -2,8 +2,13 @@ import '../../../features/categories/data/data_sources/categories_api.dart';
 import '../../../features/countries/data/data_sources/countries_api.dart';
 import '../../../features/coupons/data/data_sources/coupons_api.dart';
 import '../../../features/governorates/data/data_sources/governorates_api.dart';
+import '../../../features/main/data/datasources/main_api.dart';
 import '../../../features/notifications/data/datasources/notifications_api.dart';
 import '../../../features/offers/data/data_sources/offers_api.dart';
+import '../../../features/products/data/data_sources/products_api.dart';
+import '../../../features/stores/data/data_sources/stores_api.dart';
+import '../../../features/sub_categories/data/data_sources/sub_categories_api.dart';
+import '../../../features/sub_categories_items/data/data_sources/sub_categories_items_api.dart';
 import '../../networking/dio_factory.dart';
 import '../dependency_injection.dart';
 
@@ -13,6 +18,11 @@ class ApiModule extends DIModule {
     final dio = await DioFactory.setupDio();
     getIt
       ..registerSingleton(dio)
+      ..registerLazySingleton<MainApi>(
+        () => MainApi(
+          getIt(),
+        ),
+      )
       ..registerLazySingleton<CountriesApi>(
         () => CountriesApi(
           getIt(),
@@ -28,8 +38,28 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
+      ..registerLazySingleton<StoresApi>(
+        () => StoresApi(
+          getIt(),
+        ),
+      )
       ..registerLazySingleton<CategoriesApi>(
         () => CategoriesApi(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<SubCategoriesApi>(
+        () => SubCategoriesApi(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<SubCategoriesItemsApi>(
+        () => SubCategoriesItemsApi(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<ProductsApi>(
+        () => ProductsApi(
           getIt(),
         ),
       )

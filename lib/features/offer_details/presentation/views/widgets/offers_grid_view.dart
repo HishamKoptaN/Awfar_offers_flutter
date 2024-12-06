@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-
+import '../../../../../core/models/store.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../offers/data/models/offers_response_model.dart';
 import 'full_screen_of_offer_image.dart';
 
 class OffersGridView extends StatelessWidget {
   const OffersGridView({
     super.key,
-    required this.storeElement,
+    required this.store,
   });
-
-  final StoreElement storeElement;
-
+  final Store store;
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -23,7 +20,7 @@ class OffersGridView extends StatelessWidget {
         mainAxisSpacing: 8,
         childAspectRatio: 2 / 3,
       ),
-      itemCount: storeElement.offers!.length,
+      itemCount: store.offerGroups!.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -31,8 +28,8 @@ class OffersGridView extends StatelessWidget {
               context,
               FullScreenOfOfferImage.routeName,
               arguments: {
-                'store': storeElement,
-                'initialIndex': index, // The initial index
+                'store': store,
+                'initialIndex': index,
               },
             );
           },
@@ -41,7 +38,7 @@ class OffersGridView extends StatelessWidget {
               child: Center(
                 child: Image(
                   image: NetworkImage(
-                    storeElement.offers![index].image!,
+                    store.offerGroups![index].image!,
                   ),
                 ),
               ),

@@ -1,6 +1,5 @@
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_view.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';

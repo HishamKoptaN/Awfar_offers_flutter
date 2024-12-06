@@ -20,7 +20,7 @@ mixin _$CouponsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        couponsloaded,
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -29,8 +29,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -39,8 +38,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -50,7 +48,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Couponsloaded value) couponsloaded,
+    required TResult Function(_loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) failure,
@@ -59,7 +57,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Couponsloaded value)? couponsloaded,
+    TResult? Function(_loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? failure,
@@ -68,7 +66,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Couponsloaded value)? couponsloaded,
+    TResult Function(_loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? failure,
@@ -141,7 +139,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        couponsloaded,
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -153,8 +151,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -166,8 +163,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -183,7 +179,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Couponsloaded value) couponsloaded,
+    required TResult Function(_loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) failure,
@@ -195,7 +191,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Couponsloaded value)? couponsloaded,
+    TResult? Function(_loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? failure,
@@ -207,7 +203,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Couponsloaded value)? couponsloaded,
+    TResult Function(_loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? failure,
@@ -225,20 +221,20 @@ abstract class _Initial implements CouponsState {
 }
 
 /// @nodoc
-abstract class _$$CouponsloadedImplCopyWith<$Res> {
-  factory _$$CouponsloadedImplCopyWith(
-          _$CouponsloadedImpl value, $Res Function(_$CouponsloadedImpl) then) =
-      __$$CouponsloadedImplCopyWithImpl<$Res>;
+abstract class _$$loadedImplCopyWith<$Res> {
+  factory _$$loadedImplCopyWith(
+          _$loadedImpl value, $Res Function(_$loadedImpl) then) =
+      __$$loadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Coupon> catgoryCoupons, List<int> favorites});
 }
 
 /// @nodoc
-class __$$CouponsloadedImplCopyWithImpl<$Res>
-    extends _$CouponsStateCopyWithImpl<$Res, _$CouponsloadedImpl>
-    implements _$$CouponsloadedImplCopyWith<$Res> {
-  __$$CouponsloadedImplCopyWithImpl(
-      _$CouponsloadedImpl _value, $Res Function(_$CouponsloadedImpl) _then)
+class __$$loadedImplCopyWithImpl<$Res>
+    extends _$CouponsStateCopyWithImpl<$Res, _$loadedImpl>
+    implements _$$loadedImplCopyWith<$Res> {
+  __$$loadedImplCopyWithImpl(
+      _$loadedImpl _value, $Res Function(_$loadedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CouponsState
@@ -249,7 +245,7 @@ class __$$CouponsloadedImplCopyWithImpl<$Res>
     Object? catgoryCoupons = null,
     Object? favorites = null,
   }) {
-    return _then(_$CouponsloadedImpl(
+    return _then(_$loadedImpl(
       catgoryCoupons: null == catgoryCoupons
           ? _value._catgoryCoupons
           : catgoryCoupons // ignore: cast_nullable_to_non_nullable
@@ -264,8 +260,8 @@ class __$$CouponsloadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CouponsloadedImpl implements _Couponsloaded {
-  const _$CouponsloadedImpl(
+class _$loadedImpl implements _loaded {
+  const _$loadedImpl(
       {required final List<Coupon> catgoryCoupons,
       required final List<int> favorites})
       : _catgoryCoupons = catgoryCoupons,
@@ -289,14 +285,14 @@ class _$CouponsloadedImpl implements _Couponsloaded {
 
   @override
   String toString() {
-    return 'CouponsState.couponsloaded(catgoryCoupons: $catgoryCoupons, favorites: $favorites)';
+    return 'CouponsState.loaded(catgoryCoupons: $catgoryCoupons, favorites: $favorites)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CouponsloadedImpl &&
+            other is _$loadedImpl &&
             const DeepCollectionEquality()
                 .equals(other._catgoryCoupons, _catgoryCoupons) &&
             const DeepCollectionEquality()
@@ -314,48 +310,46 @@ class _$CouponsloadedImpl implements _Couponsloaded {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CouponsloadedImplCopyWith<_$CouponsloadedImpl> get copyWith =>
-      __$$CouponsloadedImplCopyWithImpl<_$CouponsloadedImpl>(this, _$identity);
+  _$$loadedImplCopyWith<_$loadedImpl> get copyWith =>
+      __$$loadedImplCopyWithImpl<_$loadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        couponsloaded,
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
-    return couponsloaded(catgoryCoupons, favorites);
+    return loaded(catgoryCoupons, favorites);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
-    return couponsloaded?.call(catgoryCoupons, favorites);
+    return loaded?.call(catgoryCoupons, favorites);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
-    if (couponsloaded != null) {
-      return couponsloaded(catgoryCoupons, favorites);
+    if (loaded != null) {
+      return loaded(catgoryCoupons, favorites);
     }
     return orElse();
   }
@@ -364,47 +358,47 @@ class _$CouponsloadedImpl implements _Couponsloaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Couponsloaded value) couponsloaded,
+    required TResult Function(_loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) failure,
   }) {
-    return couponsloaded(this);
+    return loaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Couponsloaded value)? couponsloaded,
+    TResult? Function(_loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? failure,
   }) {
-    return couponsloaded?.call(this);
+    return loaded?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Couponsloaded value)? couponsloaded,
+    TResult Function(_loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? failure,
     required TResult orElse(),
   }) {
-    if (couponsloaded != null) {
-      return couponsloaded(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _Couponsloaded implements CouponsState {
-  const factory _Couponsloaded(
+abstract class _loaded implements CouponsState {
+  const factory _loaded(
       {required final List<Coupon> catgoryCoupons,
-      required final List<int> favorites}) = _$CouponsloadedImpl;
+      required final List<int> favorites}) = _$loadedImpl;
 
   List<Coupon> get catgoryCoupons;
   List<int> get favorites;
@@ -412,7 +406,7 @@ abstract class _Couponsloaded implements CouponsState {
   /// Create a copy of CouponsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CouponsloadedImplCopyWith<_$CouponsloadedImpl> get copyWith =>
+  _$$loadedImplCopyWith<_$loadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -459,7 +453,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        couponsloaded,
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -471,8 +465,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -484,8 +477,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -501,7 +493,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Couponsloaded value) couponsloaded,
+    required TResult Function(_loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) failure,
@@ -513,7 +505,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Couponsloaded value)? couponsloaded,
+    TResult? Function(_loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? failure,
@@ -525,7 +517,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Couponsloaded value)? couponsloaded,
+    TResult Function(_loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? failure,
@@ -585,7 +577,7 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        couponsloaded,
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -597,8 +589,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -610,8 +601,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -627,7 +617,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Couponsloaded value) couponsloaded,
+    required TResult Function(_loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) failure,
@@ -639,7 +629,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Couponsloaded value)? couponsloaded,
+    TResult? Function(_loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? failure,
@@ -651,7 +641,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Couponsloaded value)? couponsloaded,
+    TResult Function(_loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? failure,
@@ -738,7 +728,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        couponsloaded,
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -750,8 +740,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -763,8 +752,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)?
-        couponsloaded,
+    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -780,7 +768,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Couponsloaded value) couponsloaded,
+    required TResult Function(_loaded value) loaded,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) failure,
@@ -792,7 +780,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Couponsloaded value)? couponsloaded,
+    TResult? Function(_loaded value)? loaded,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? failure,
@@ -804,7 +792,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Couponsloaded value)? couponsloaded,
+    TResult Function(_loaded value)? loaded,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? failure,

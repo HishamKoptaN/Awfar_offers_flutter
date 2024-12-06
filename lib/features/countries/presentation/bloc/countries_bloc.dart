@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/global_methods.dart';
+import '../../../../core/singletons/countries_singleton.dart';
 import '../../domain/use_cases/get_countries_use_case.dart';
 import 'countries_event.dart';
 import 'countries_state.dart';
@@ -18,17 +19,15 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
             final result = await getCountriesUseCase.getCountries();
             await result.when(
               success: (response) async {
-                int? selectedCountryId;
+                CountriesSingleton.instance.countries = response!;
                 await getCountry().then(
                   (countryId) {
-                    selectedCountryId = countryId;
+                    emit(
+                      CountriesState.countriesloaded(
+                        selectedcountrId: countryId,
+                      ),
+                    );
                   },
-                );
-                emit(
-                  CountriesState.countriesloaded(
-                    countries: response!,
-                    selectedcountrId: selectedCountryId,
-                  ),
                 );
               },
               failure: (error) async {

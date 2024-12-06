@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../../core/singletons/categories_singleton.dart';
 import '../../../../../../core/utils/app_colors.dart';
-import '../../../../data/models/offers_response_model.dart';
 import 'custom_category_item.dart';
 
 class CustomCategoryItemListView extends StatefulWidget {
   const CustomCategoryItemListView({
     super.key,
-    required this.categories,
     required this.onCategorySelected,
   });
-  final List<Category>? categories;
   final Function(int) onCategorySelected;
   @override
   State<CustomCategoryItemListView> createState() =>
@@ -28,9 +27,11 @@ class _CustomCategoryItemListViewState
         children: [
           GestureDetector(
             onTap: () {
-              setState(() {
-                _selectedIndex = -1;
-              });
+              setState(
+                () {
+                  _selectedIndex = -1;
+                },
+              );
               widget.onCategorySelected(-1);
             },
             child: Container(
@@ -53,18 +54,23 @@ class _CustomCategoryItemListViewState
           ),
           Expanded(
             child: SizedBox(
-              height: 40,
+              height: 30.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: widget.categories?.length ?? 0,
+                itemCount: CategoriesSingleton.instance.categories.length,
                 itemBuilder: (context, index) {
-                  final category = widget.categories![index];
+                  final category =
+                      CategoriesSingleton.instance.categories[index];
                   return GestureDetector(
                     onTap: () {
-                      setState(() {
-                        _selectedIndex = index;
-                      });
-                      widget.onCategorySelected(category.id!);
+                      setState(
+                        () {
+                          _selectedIndex = index;
+                        },
+                      );
+                      widget.onCategorySelected(
+                        category.id!,
+                      );
                     },
                     child: CustomCategoryItem(
                       category: category,

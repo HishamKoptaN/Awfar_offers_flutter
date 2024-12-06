@@ -3,5 +3,7 @@ part 'categories_event.freezed.dart';
 
 @freezed
 class CategoriesEvent with _$CategoriesEvent {
-  const factory CategoriesEvent.getCategoriesEvent() = _GetCategoriesEvent;
+  const factory CategoriesEvent.getCategories({
+    required int governorateId,
+  }) = _GetCategories;
 }

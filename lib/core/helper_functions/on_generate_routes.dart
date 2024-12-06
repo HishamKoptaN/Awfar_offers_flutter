@@ -1,23 +1,22 @@
-import 'package:awfar_offer_app/features/categories/presentation/views/sub_categories_view.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/categories/presentation/views/categories_view.dart';
+import '../../features/categories/presentation/views/sub_categories_items_view.dart';
 import '../../features/coupons/present/bloc/coupons_bloc.dart';
-import '../../features/coupons/present/coupons_view.dart';
+import '../../features/coupons/present/view/coupons_view.dart';
 import '../../features/notifications/present/view/notifications_view.dart';
-import '../../features/offer_details/presentation/views/offer_deatails_view.dart';
+import '../../features/offer_details/presentation/views/store_deatails_view.dart';
 import '../../features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
-import '../../features/offers/data/models/offers_response_model.dart';
-import 'package:awfar_offer_app/features/categories/data/models/categories_response_model.dart';
-
 import '../../features/offers/presentation/views/offers_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/settings/presentation/views/settings_view.dart';
 import '../../home_view.dart';
 import '../di/dependency_injection.dart';
+import '../models/store.dart';
+import '../models/sub_category.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -33,10 +32,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         ),
       );
 
-    case SubCategoriesView.routeName:
+    case SubCategoriesItemsView.routeName:
       return MaterialPageRoute(
-        builder: (context) => SubCategoriesView(
-          category: settings.arguments as SubCategory,
+        builder: (context) => SubCategoriesItemsView(
+          subCategory: settings.arguments as SubCategory,
         ),
       );
 
@@ -56,12 +55,12 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case FullScreenOfOfferImage.routeName:
       final args = settings.arguments as Map<String, dynamic>;
-      final storeElement = args['store'] as StoreElement;
+      final storeElement = args['store'] as Store;
       final initialIndex = args['initialIndex'] as int;
 
       return MaterialPageRoute(
         builder: (context) => FullScreenOfOfferImage(
-          storeElement: storeElement,
+          store: storeElement,
           initialIndex: initialIndex,
         ),
       );
@@ -90,11 +89,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const ProfileView());
-    case OfferDeatailsView.routeName:
-      final storeElement = settings.arguments as StoreElement;
+    case StoreDeatailsView.routeName:
+      final storeElement = settings.arguments as Store;
       return MaterialPageRoute(
-        builder: (context) => OfferDeatailsView(
-          storeElement: storeElement,
+        builder: (context) => StoreDeatailsView(
+          store: storeElement,
         ),
       );
     default:

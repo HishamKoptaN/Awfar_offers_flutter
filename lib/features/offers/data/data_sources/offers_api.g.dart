@@ -24,12 +24,12 @@ class _OffersApi implements OffersApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<OffersResponseModel> getOffers({required int governorateId}) async {
+  Future<List<Offer>> getOffers({required int governorateId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OffersResponseModel>(Options(
+    final _options = _setStreamType<List<Offer>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -45,10 +45,12 @@ class _OffersApi implements OffersApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OffersResponseModel _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<Offer> _value;
     try {
-      _value = OffersResponseModel.fromJson(_result.data!);
+      _value = _result.data!
+          .map((dynamic i) => Offer.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

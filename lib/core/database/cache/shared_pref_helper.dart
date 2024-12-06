@@ -57,7 +57,7 @@ class SharedPrefHelper {
     return favorites?.map(int.parse).toList() ?? [];
   }
 
-  //! تحديث لقائمة
+  //! تحديث القائمة
   static Future<void> updateList({
     required String key,
     required int value,
@@ -69,10 +69,10 @@ class SharedPrefHelper {
     final list = await getIntList(key: key);
     if (add && !list.contains(value)) {
       debugPrint('SharedPrefHelper : add ');
-      list.add(value);
+      list.add(value,);
     } else if (!add && list.contains(value)) {
       debugPrint('SharedPrefHelper : remove ');
-      list.remove(value);
+      list.remove(value,);
     }
     await prefs.setStringList(
       key,

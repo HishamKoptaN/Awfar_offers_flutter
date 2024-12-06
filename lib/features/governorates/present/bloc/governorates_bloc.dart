@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/global_methods.dart';
+import '../../../../core/singletons/governorates_singleron.dart';
 import '../../domain/use_cases/get_governorates_use_case.dart';
 import 'governorates_event.dart';
 import 'governorates_state.dart';
@@ -24,9 +25,9 @@ class GovernoratesBloc extends Bloc<GovernoratesEvent, GovernoratesState> {
                     selectedGovernorateId = dovernorateId;
                   },
                 );
+                GovernoratesSingleton.instance.governorates = response!;
                 emit(
                   GovernoratesState.governoratesloaded(
-                    countries: response!,
                     selectedGovernorateId: selectedGovernorateId,
                   ),
                 );

@@ -1,0 +1,1079 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'store.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+Store _$StoreFromJson(Map<String, dynamic> json) {
+  return _Store.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Store {
+  @JsonKey(name: "id")
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "name")
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: "governorate_id")
+  int? get governorateId => throw _privateConstructorUsedError;
+  @JsonKey(name: "place")
+  String? get place => throw _privateConstructorUsedError;
+  @JsonKey(name: "created_at")
+  String? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated_at")
+  String? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "offer_groups")
+  List<OfferGroup>? get offerGroups => throw _privateConstructorUsedError;
+
+  /// Serializes this Store to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Store
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $StoreCopyWith<Store> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StoreCopyWith<$Res> {
+  factory $StoreCopyWith(Store value, $Res Function(Store) then) =
+      _$StoreCopyWithImpl<$Res, Store>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "governorate_id") int? governorateId,
+      @JsonKey(name: "place") String? place,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "offer_groups") List<OfferGroup>? offerGroups});
+}
+
+/// @nodoc
+class _$StoreCopyWithImpl<$Res, $Val extends Store>
+    implements $StoreCopyWith<$Res> {
+  _$StoreCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Store
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+    Object? governorateId = freezed,
+    Object? place = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? offerGroups = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      governorateId: freezed == governorateId
+          ? _value.governorateId
+          : governorateId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      place: freezed == place
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offerGroups: freezed == offerGroups
+          ? _value.offerGroups
+          : offerGroups // ignore: cast_nullable_to_non_nullable
+              as List<OfferGroup>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$StoreImplCopyWith<$Res> implements $StoreCopyWith<$Res> {
+  factory _$$StoreImplCopyWith(
+          _$StoreImpl value, $Res Function(_$StoreImpl) then) =
+      __$$StoreImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "governorate_id") int? governorateId,
+      @JsonKey(name: "place") String? place,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "offer_groups") List<OfferGroup>? offerGroups});
+}
+
+/// @nodoc
+class __$$StoreImplCopyWithImpl<$Res>
+    extends _$StoreCopyWithImpl<$Res, _$StoreImpl>
+    implements _$$StoreImplCopyWith<$Res> {
+  __$$StoreImplCopyWithImpl(
+      _$StoreImpl _value, $Res Function(_$StoreImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Store
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+    Object? governorateId = freezed,
+    Object? place = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? offerGroups = freezed,
+  }) {
+    return _then(_$StoreImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      governorateId: freezed == governorateId
+          ? _value.governorateId
+          : governorateId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      place: freezed == place
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offerGroups: freezed == offerGroups
+          ? _value._offerGroups
+          : offerGroups // ignore: cast_nullable_to_non_nullable
+              as List<OfferGroup>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$StoreImpl implements _Store {
+  const _$StoreImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "image") this.image,
+      @JsonKey(name: "governorate_id") this.governorateId,
+      @JsonKey(name: "place") this.place,
+      @JsonKey(name: "created_at") this.createdAt,
+      @JsonKey(name: "updated_at") this.updatedAt,
+      @JsonKey(name: "offer_groups") final List<OfferGroup>? offerGroups})
+      : _offerGroups = offerGroups;
+
+  factory _$StoreImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StoreImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final int? id;
+  @override
+  @JsonKey(name: "name")
+  final String? name;
+  @override
+  @JsonKey(name: "image")
+  final String? image;
+  @override
+  @JsonKey(name: "governorate_id")
+  final int? governorateId;
+  @override
+  @JsonKey(name: "place")
+  final String? place;
+  @override
+  @JsonKey(name: "created_at")
+  final String? createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  final String? updatedAt;
+  final List<OfferGroup>? _offerGroups;
+  @override
+  @JsonKey(name: "offer_groups")
+  List<OfferGroup>? get offerGroups {
+    final value = _offerGroups;
+    if (value == null) return null;
+    if (_offerGroups is EqualUnmodifiableListView) return _offerGroups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'Store(id: $id, name: $name, image: $image, governorateId: $governorateId, place: $place, createdAt: $createdAt, updatedAt: $updatedAt, offerGroups: $offerGroups)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StoreImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.governorateId, governorateId) ||
+                other.governorateId == governorateId) &&
+            (identical(other.place, place) || other.place == place) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            const DeepCollectionEquality()
+                .equals(other._offerGroups, _offerGroups));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      image,
+      governorateId,
+      place,
+      createdAt,
+      updatedAt,
+      const DeepCollectionEquality().hash(_offerGroups));
+
+  /// Create a copy of Store
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StoreImplCopyWith<_$StoreImpl> get copyWith =>
+      __$$StoreImplCopyWithImpl<_$StoreImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$StoreImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Store implements Store {
+  const factory _Store(
+          {@JsonKey(name: "id") final int? id,
+          @JsonKey(name: "name") final String? name,
+          @JsonKey(name: "image") final String? image,
+          @JsonKey(name: "governorate_id") final int? governorateId,
+          @JsonKey(name: "place") final String? place,
+          @JsonKey(name: "created_at") final String? createdAt,
+          @JsonKey(name: "updated_at") final String? updatedAt,
+          @JsonKey(name: "offer_groups") final List<OfferGroup>? offerGroups}) =
+      _$StoreImpl;
+
+  factory _Store.fromJson(Map<String, dynamic> json) = _$StoreImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  int? get id;
+  @override
+  @JsonKey(name: "name")
+  String? get name;
+  @override
+  @JsonKey(name: "image")
+  String? get image;
+  @override
+  @JsonKey(name: "governorate_id")
+  int? get governorateId;
+  @override
+  @JsonKey(name: "place")
+  String? get place;
+  @override
+  @JsonKey(name: "created_at")
+  String? get createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  String? get updatedAt;
+  @override
+  @JsonKey(name: "offer_groups")
+  List<OfferGroup>? get offerGroups;
+
+  /// Create a copy of Store
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StoreImplCopyWith<_$StoreImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OfferGroup _$OfferGroupFromJson(Map<String, dynamic> json) {
+  return _OfferGroup.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OfferGroup {
+  @JsonKey(name: "id")
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "status")
+  int? get status => throw _privateConstructorUsedError;
+  @JsonKey(name: "name")
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "store_id")
+  int? get storeId => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: "category_id")
+  int? get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: "start_at")
+  dynamic get startAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "end_at")
+  dynamic get endAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "created_at")
+  String? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated_at")
+  String? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "days_remaining")
+  String? get daysRemaining => throw _privateConstructorUsedError;
+  @JsonKey(name: "offers")
+  List<Offer>? get offers => throw _privateConstructorUsedError;
+
+  /// Serializes this OfferGroup to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of OfferGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OfferGroupCopyWith<OfferGroup> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OfferGroupCopyWith<$Res> {
+  factory $OfferGroupCopyWith(
+          OfferGroup value, $Res Function(OfferGroup) then) =
+      _$OfferGroupCopyWithImpl<$Res, OfferGroup>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "status") int? status,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "store_id") int? storeId,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "category_id") int? categoryId,
+      @JsonKey(name: "start_at") dynamic startAt,
+      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "days_remaining") String? daysRemaining,
+      @JsonKey(name: "offers") List<Offer>? offers});
+}
+
+/// @nodoc
+class _$OfferGroupCopyWithImpl<$Res, $Val extends OfferGroup>
+    implements $OfferGroupCopyWith<$Res> {
+  _$OfferGroupCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of OfferGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? status = freezed,
+    Object? name = freezed,
+    Object? storeId = freezed,
+    Object? image = freezed,
+    Object? categoryId = freezed,
+    Object? startAt = freezed,
+    Object? endAt = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? daysRemaining = freezed,
+    Object? offers = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storeId: freezed == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      startAt: freezed == startAt
+          ? _value.startAt
+          : startAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      endAt: freezed == endAt
+          ? _value.endAt
+          : endAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      daysRemaining: freezed == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offers: freezed == offers
+          ? _value.offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OfferGroupImplCopyWith<$Res>
+    implements $OfferGroupCopyWith<$Res> {
+  factory _$$OfferGroupImplCopyWith(
+          _$OfferGroupImpl value, $Res Function(_$OfferGroupImpl) then) =
+      __$$OfferGroupImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "status") int? status,
+      @JsonKey(name: "name") String? name,
+      @JsonKey(name: "store_id") int? storeId,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "category_id") int? categoryId,
+      @JsonKey(name: "start_at") dynamic startAt,
+      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "days_remaining") String? daysRemaining,
+      @JsonKey(name: "offers") List<Offer>? offers});
+}
+
+/// @nodoc
+class __$$OfferGroupImplCopyWithImpl<$Res>
+    extends _$OfferGroupCopyWithImpl<$Res, _$OfferGroupImpl>
+    implements _$$OfferGroupImplCopyWith<$Res> {
+  __$$OfferGroupImplCopyWithImpl(
+      _$OfferGroupImpl _value, $Res Function(_$OfferGroupImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of OfferGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? status = freezed,
+    Object? name = freezed,
+    Object? storeId = freezed,
+    Object? image = freezed,
+    Object? categoryId = freezed,
+    Object? startAt = freezed,
+    Object? endAt = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? daysRemaining = freezed,
+    Object? offers = freezed,
+  }) {
+    return _then(_$OfferGroupImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storeId: freezed == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      startAt: freezed == startAt
+          ? _value.startAt
+          : startAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      endAt: freezed == endAt
+          ? _value.endAt
+          : endAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      daysRemaining: freezed == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offers: freezed == offers
+          ? _value._offers
+          : offers // ignore: cast_nullable_to_non_nullable
+              as List<Offer>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OfferGroupImpl implements _OfferGroup {
+  const _$OfferGroupImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "status") this.status,
+      @JsonKey(name: "name") this.name,
+      @JsonKey(name: "store_id") this.storeId,
+      @JsonKey(name: "image") this.image,
+      @JsonKey(name: "category_id") this.categoryId,
+      @JsonKey(name: "start_at") this.startAt,
+      @JsonKey(name: "end_at") this.endAt,
+      @JsonKey(name: "created_at") this.createdAt,
+      @JsonKey(name: "updated_at") this.updatedAt,
+      @JsonKey(name: "days_remaining") this.daysRemaining,
+      @JsonKey(name: "offers") final List<Offer>? offers})
+      : _offers = offers;
+
+  factory _$OfferGroupImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OfferGroupImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final int? id;
+  @override
+  @JsonKey(name: "status")
+  final int? status;
+  @override
+  @JsonKey(name: "name")
+  final String? name;
+  @override
+  @JsonKey(name: "store_id")
+  final int? storeId;
+  @override
+  @JsonKey(name: "image")
+  final String? image;
+  @override
+  @JsonKey(name: "category_id")
+  final int? categoryId;
+  @override
+  @JsonKey(name: "start_at")
+  final dynamic startAt;
+  @override
+  @JsonKey(name: "end_at")
+  final dynamic endAt;
+  @override
+  @JsonKey(name: "created_at")
+  final String? createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  final String? updatedAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  final String? daysRemaining;
+  final List<Offer>? _offers;
+  @override
+  @JsonKey(name: "offers")
+  List<Offer>? get offers {
+    final value = _offers;
+    if (value == null) return null;
+    if (_offers is EqualUnmodifiableListView) return _offers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'OfferGroup(id: $id, status: $status, name: $name, storeId: $storeId, image: $image, categoryId: $categoryId, startAt: $startAt, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt, daysRemaining: $daysRemaining, offers: $offers)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OfferGroupImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.storeId, storeId) || other.storeId == storeId) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            const DeepCollectionEquality().equals(other.startAt, startAt) &&
+            const DeepCollectionEquality().equals(other.endAt, endAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.daysRemaining, daysRemaining) ||
+                other.daysRemaining == daysRemaining) &&
+            const DeepCollectionEquality().equals(other._offers, _offers));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      status,
+      name,
+      storeId,
+      image,
+      categoryId,
+      const DeepCollectionEquality().hash(startAt),
+      const DeepCollectionEquality().hash(endAt),
+      createdAt,
+      updatedAt,
+      daysRemaining,
+      const DeepCollectionEquality().hash(_offers));
+
+  /// Create a copy of OfferGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OfferGroupImplCopyWith<_$OfferGroupImpl> get copyWith =>
+      __$$OfferGroupImplCopyWithImpl<_$OfferGroupImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfferGroupImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OfferGroup implements OfferGroup {
+  const factory _OfferGroup(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "status") final int? status,
+      @JsonKey(name: "name") final String? name,
+      @JsonKey(name: "store_id") final int? storeId,
+      @JsonKey(name: "image") final String? image,
+      @JsonKey(name: "category_id") final int? categoryId,
+      @JsonKey(name: "start_at") final dynamic startAt,
+      @JsonKey(name: "end_at") final dynamic endAt,
+      @JsonKey(name: "created_at") final String? createdAt,
+      @JsonKey(name: "updated_at") final String? updatedAt,
+      @JsonKey(name: "days_remaining") final String? daysRemaining,
+      @JsonKey(name: "offers") final List<Offer>? offers}) = _$OfferGroupImpl;
+
+  factory _OfferGroup.fromJson(Map<String, dynamic> json) =
+      _$OfferGroupImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  int? get id;
+  @override
+  @JsonKey(name: "status")
+  int? get status;
+  @override
+  @JsonKey(name: "name")
+  String? get name;
+  @override
+  @JsonKey(name: "store_id")
+  int? get storeId;
+  @override
+  @JsonKey(name: "image")
+  String? get image;
+  @override
+  @JsonKey(name: "category_id")
+  int? get categoryId;
+  @override
+  @JsonKey(name: "start_at")
+  dynamic get startAt;
+  @override
+  @JsonKey(name: "end_at")
+  dynamic get endAt;
+  @override
+  @JsonKey(name: "created_at")
+  String? get createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  String? get updatedAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  String? get daysRemaining;
+  @override
+  @JsonKey(name: "offers")
+  List<Offer>? get offers;
+
+  /// Create a copy of OfferGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OfferGroupImplCopyWith<_$OfferGroupImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Offer _$OfferFromJson(Map<String, dynamic> json) {
+  return _Offer.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Offer {
+  @JsonKey(name: "id")
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "status")
+  int? get status => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: "offer_group_id")
+  int? get offerGroupId => throw _privateConstructorUsedError;
+  @JsonKey(name: "created_at")
+  String? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated_at")
+  String? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "days_remaining")
+  int? get daysRemaining => throw _privateConstructorUsedError;
+
+  /// Serializes this Offer to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Offer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OfferCopyWith<Offer> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OfferCopyWith<$Res> {
+  factory $OfferCopyWith(Offer value, $Res Function(Offer) then) =
+      _$OfferCopyWithImpl<$Res, Offer>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "status") int? status,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "offer_group_id") int? offerGroupId,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "days_remaining") int? daysRemaining});
+}
+
+/// @nodoc
+class _$OfferCopyWithImpl<$Res, $Val extends Offer>
+    implements $OfferCopyWith<$Res> {
+  _$OfferCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Offer
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? status = freezed,
+    Object? image = freezed,
+    Object? offerGroupId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? daysRemaining = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offerGroupId: freezed == offerGroupId
+          ? _value.offerGroupId
+          : offerGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      daysRemaining: freezed == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
+  factory _$$OfferImplCopyWith(
+          _$OfferImpl value, $Res Function(_$OfferImpl) then) =
+      __$$OfferImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "status") int? status,
+      @JsonKey(name: "image") String? image,
+      @JsonKey(name: "offer_group_id") int? offerGroupId,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "days_remaining") int? daysRemaining});
+}
+
+/// @nodoc
+class __$$OfferImplCopyWithImpl<$Res>
+    extends _$OfferCopyWithImpl<$Res, _$OfferImpl>
+    implements _$$OfferImplCopyWith<$Res> {
+  __$$OfferImplCopyWithImpl(
+      _$OfferImpl _value, $Res Function(_$OfferImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Offer
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? status = freezed,
+    Object? image = freezed,
+    Object? offerGroupId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? daysRemaining = freezed,
+  }) {
+    return _then(_$OfferImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offerGroupId: freezed == offerGroupId
+          ? _value.offerGroupId
+          : offerGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      daysRemaining: freezed == daysRemaining
+          ? _value.daysRemaining
+          : daysRemaining // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OfferImpl implements _Offer {
+  const _$OfferImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "status") this.status,
+      @JsonKey(name: "image") this.image,
+      @JsonKey(name: "offer_group_id") this.offerGroupId,
+      @JsonKey(name: "created_at") this.createdAt,
+      @JsonKey(name: "updated_at") this.updatedAt,
+      @JsonKey(name: "days_remaining") this.daysRemaining});
+
+  factory _$OfferImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OfferImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final int? id;
+  @override
+  @JsonKey(name: "status")
+  final int? status;
+  @override
+  @JsonKey(name: "image")
+  final String? image;
+  @override
+  @JsonKey(name: "offer_group_id")
+  final int? offerGroupId;
+  @override
+  @JsonKey(name: "created_at")
+  final String? createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  final String? updatedAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  final int? daysRemaining;
+
+  @override
+  String toString() {
+    return 'Offer(id: $id, status: $status, image: $image, offerGroupId: $offerGroupId, createdAt: $createdAt, updatedAt: $updatedAt, daysRemaining: $daysRemaining)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OfferImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.offerGroupId, offerGroupId) ||
+                other.offerGroupId == offerGroupId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.daysRemaining, daysRemaining) ||
+                other.daysRemaining == daysRemaining));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, status, image, offerGroupId,
+      createdAt, updatedAt, daysRemaining);
+
+  /// Create a copy of Offer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OfferImplCopyWith<_$OfferImpl> get copyWith =>
+      __$$OfferImplCopyWithImpl<_$OfferImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OfferImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Offer implements Offer {
+  const factory _Offer(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "status") final int? status,
+      @JsonKey(name: "image") final String? image,
+      @JsonKey(name: "offer_group_id") final int? offerGroupId,
+      @JsonKey(name: "created_at") final String? createdAt,
+      @JsonKey(name: "updated_at") final String? updatedAt,
+      @JsonKey(name: "days_remaining") final int? daysRemaining}) = _$OfferImpl;
+
+  factory _Offer.fromJson(Map<String, dynamic> json) = _$OfferImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  int? get id;
+  @override
+  @JsonKey(name: "status")
+  int? get status;
+  @override
+  @JsonKey(name: "image")
+  String? get image;
+  @override
+  @JsonKey(name: "offer_group_id")
+  int? get offerGroupId;
+  @override
+  @JsonKey(name: "created_at")
+  String? get createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  String? get updatedAt;
+  @override
+  @JsonKey(name: "days_remaining")
+  int? get daysRemaining;
+
+  /// Create a copy of Offer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OfferImplCopyWith<_$OfferImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

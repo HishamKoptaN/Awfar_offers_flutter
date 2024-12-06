@@ -1,5 +1,5 @@
 import '../../../../core/networking/api_result.dart';
-import '../../data/models/coupons_res_model.dart';
+import '../../data/models/coupon.dart';
 import '../../data/repos/coupons_repo.dart';
 
 class GetCouponsUseCase {

@@ -1,7 +1,7 @@
 import '../../../../core/errors/api_error_handler.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../data/data_sources/coupons_api.dart';
-import '../../data/models/coupons_res_model.dart';
+import '../../data/models/coupon.dart';
 import '../../data/repos/coupons_repo.dart';
 
 class CouponsRepoImpl implements CouponsRepo {

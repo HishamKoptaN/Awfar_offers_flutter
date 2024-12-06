@@ -4,6 +4,8 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
+
+import '../../../../core/models/store.dart';
 part 'notifications_res_model.freezed.dart';
 part 'notifications_res_model.g.dart';
 
@@ -26,15 +28,4 @@ class Notification with _$Notification {
 
   factory Notification.fromJson(Map<String, dynamic> json) =>
       _$NotificationFromJson(json);
-}
-
-@freezed
-class Store with _$Store {
-  const factory Store({
-    @JsonKey(name: "id") int? id,
-    @JsonKey(name: "name") String? name,
-    @JsonKey(name: "image") String? image,
-  }) = _Store;
-
-  factory Store.fromJson(Map<String, dynamic> json) => _$StoreFromJson(json);
 }

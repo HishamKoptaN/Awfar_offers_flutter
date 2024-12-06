@@ -27,16 +27,3 @@ Map<String, dynamic> _$$NotificationImplToJson(_$NotificationImpl instance) =>
       'read_at': instance.readAt,
       'store': instance.store,
     };
-
-_$StoreImpl _$$StoreImplFromJson(Map<String, dynamic> json) => _$StoreImpl(
-      id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
-      image: json['image'] as String?,
-    );
-
-Map<String, dynamic> _$$StoreImplToJson(_$StoreImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'image': instance.image,
-    };

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../../core/networking/api_constants.dart';
-import '../models/categories_response_model.dart';
+import '../../../../core/models/category.dart';
 part 'categories_api.g.dart';
 
 @RestApi(
@@ -14,7 +14,9 @@ abstract class CategoriesApi {
   }) = _CategoriesApi;
   // ! get getCategories
   @GET(
-    ApiConstants.categories,
+    '${ApiConstants.categories}/{governorateId}',
   )
-  Future<List<CategoriesResponseModel>> getCategories();
+  Future<List<Category>> getCategories({
+    @Path('governorateId') required int governorateId,
+  });
 }

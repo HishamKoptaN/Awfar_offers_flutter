@@ -1,8 +1,8 @@
 import '../../../../../core/errors/api_error_handler.dart';
 import '../../../../../core/networking/api_result.dart';
+import '../../../../core/models/offer.dart';
 import '../../domain/repo/offers_repo.dart';
 import '../data_sources/offers_api.dart';
-import '../models/offers_response_model.dart';
 
 class OffersRepoImpl implements OffersRepo {
   final OffersApi offersApi;
@@ -10,7 +10,7 @@ class OffersRepoImpl implements OffersRepo {
     required this.offersApi,
   });
   @override
-  Future<ApiResult<OffersResponseModel>> getOffers({
+  Future<ApiResult<List<Offer>>> getOffers({
     required int governorateId,
   }) async {
     try {

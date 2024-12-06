@@ -1,13 +1,14 @@
 import 'package:awfar_offer_app/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'core/global_methods.dart';
 import 'core/utils/app_colors.dart';
 import 'features/categories/presentation/views/categories_view.dart';
-import 'features/coupons/present/coupons_view.dart';
-import 'features/notifications/present/bloc/notifications_bloc.dart';
+import 'features/coupons/present/view/coupons_view.dart';
+import 'features/main/presentation/bloc/main_bloc.dart';
+import 'features/main/presentation/bloc/main_state.dart';
 import 'features/offers/presentation/views/offers_view.dart';
 import 'features/search/presentation/views/search_view.dart';
-import 'features/notifications/present/bloc/notifications_event.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -20,7 +21,9 @@ class _HomeView extends State<HomeView> {
   int currentIndex = 0;
   final List<Widget> screens = [
     const OfferView(),
-    const CategoriesView(brandName: ''),
+    const CategoriesView(
+      brandName: '',
+    ),
     const SearchView(
       isBack: false,
       searchLabel: "بحث",
@@ -32,38 +35,6 @@ class _HomeView extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    injectEvent();
-  }
-
-  Future<Null> injectEvent() async {
-    await Future.microtask(
-      () {
-        // context.read<CountriesBloc>().add(
-        //       const CountriesEvent.getCountries(),
-        //     );
-        // context.read<GovernoratesBloc>().add(
-        //       const GovernoratesEvent.getGvernorates(),
-        //     );
-        // getGovernorate().then(
-        //   (governorateId) {
-        //     context.read<OffersBloc>().add(
-        //           OffersEvent.getOffers(
-        //             governorateId: governorateId,
-        //           ),
-        //         );
-        //   },
-        // );
-        // context.read<CategoriesBloc>().add(
-        //       const CategoriesEvent.getCategoriesEvent(),
-        //     );
-        // context.read<CouponsBloc>().add(
-        //       const CouponsEvent.getCoupons(),
-        //     );
-        context.read<NotificationsBloc>().add(
-              const NotificationsEvent.getNotifications(),
-            );
-      },
-    );
   }
 
   @override
@@ -77,9 +48,25 @@ class _HomeView extends State<HomeView> {
     }
 
     return Scaffold(
-      body: IndexedStack(
-        index: currentIndex,
-        children: screens,
+      body: BlocConsumer<MainBloc, MainState>(
+        listener: (context, state) async {
+          state.whenOrNull(
+            firstTime: () async {
+              showCountrySelection(
+                context: context,
+              );
+            },
+            logedIn: () async {
+              await loadAppData(context);
+            },
+          );
+        },
+        builder: (context, state) {
+          return IndexedStack(
+            index: currentIndex,
+            children: screens,
+          );
+        },
       ),
       bottomNavigationBar: SizedBox(
         height: 70,

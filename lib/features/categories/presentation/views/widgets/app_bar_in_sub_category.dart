@@ -1,7 +1,7 @@
 import 'package:awfar_offer_app/core/widgets/custom_back_button.dart';
-import 'package:awfar_offer_app/features/categories/data/models/categories_response_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/models/sub_category.dart';
 import '../../../../../core/utils/app_colors.dart';
 
 class AppBarInSubCategory extends StatelessWidget {

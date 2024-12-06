@@ -1,8 +1,8 @@
 import '../../../../../core/networking/api_result.dart';
-import '../../data/models/offers_response_model.dart';
+import '../../../../core/models/offer.dart';
 
 abstract class OffersRepo {
-  Future<ApiResult<OffersResponseModel>> getOffers({
+  Future<ApiResult<List<Offer>>> getOffers({
     required int governorateId,
   });
 }

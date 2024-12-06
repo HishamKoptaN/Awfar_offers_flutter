@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
+import '../../../../../core/models/store.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
-import '../../../../offers/data/models/offers_response_model.dart';
 
 class FullScreenOfOfferImage extends StatefulWidget {
   const FullScreenOfOfferImage({
     super.key,
-    required this.storeElement,
+    required this.store,
     required this.initialIndex,
   });
 
-  final StoreElement storeElement;
+  final Store store;
   final int initialIndex;
 
   static const String routeName = 'full_screen_of_offer_image';
@@ -50,14 +50,14 @@ class _FullScreenOfOfferImageState extends State<FullScreenOfOfferImage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.storeElement.name!,
+                      widget.store.name!,
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
                     Text(
-                      widget.storeElement.offers![0].description!,
+                      widget.store.offerGroups![0].name!,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 10,
@@ -81,11 +81,11 @@ class _FullScreenOfOfferImageState extends State<FullScreenOfOfferImage> {
               height: MediaQuery.of(context).size.height * 0.75,
               child: PhotoViewGallery.builder(
                 pageController: _pageController,
-                itemCount: widget.storeElement.offers!.length,
+                itemCount: widget.store.offerGroups!.length,
                 builder: (context, index) {
                   return PhotoViewGalleryPageOptions(
                     imageProvider:
-                        NetworkImage(widget.storeElement.offers![index].image!),
+                        NetworkImage(widget.store.offerGroups![index].image!),
                     minScale: PhotoViewComputedScale.contained * 0.8,
                     maxScale: PhotoViewComputedScale.covered * 2,
                   );

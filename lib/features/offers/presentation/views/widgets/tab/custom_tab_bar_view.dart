@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../../data/models/offers_response_model.dart';
+import '../../../../../../core/singletons/favs_offers_singleton.dart';
+import '../../../../../../core/singletons/stores_singleton.dart';
 import '../aroodi_view_body_details.dart';
 
 class CustomTabBarView extends StatelessWidget {
-  CustomTabBarView({
+  const CustomTabBarView({
     super.key,
-    required this.offersResponseModel,
-    required this.favorites,
   });
-  OffersResponseModel offersResponseModel;
-  List<int> favorites;
   @override
   Widget build(context) {
     double screenHeight = MediaQuery.of(context).size.height - 240;
@@ -19,31 +16,26 @@ class CustomTabBarView extends StatelessWidget {
         children: [
           // Top
           AroodiViewBodyDetails(
-            offersResponseModel: offersResponseModel,
-            offers: offersResponseModel.offers!,
-            favorites: favorites,
+            stores: StoresSingleton.instance.stores,
           ),
           // Favorites
           AroodiViewBodyDetails(
-            offersResponseModel: offersResponseModel,
-            offers: offersResponseModel.offers!.where(
+            stores: StoresSingleton.instance.stores.where(
               (offer) {
-                return offer.id != null && favorites.contains(offer.id);
+                return offer.id != null &&
+                    FavsOffersSingleton.instance.favs!.contains(
+                      offer.id,
+                    );
               },
             ).toList(),
-            favorites: favorites,
           ),
           // Nearer
           AroodiViewBodyDetails(
-            offersResponseModel: offersResponseModel,
-            offers: offersResponseModel.offers!,
-            favorites: favorites,
+            stores: StoresSingleton.instance.stores,
           ),
           // Recentley
           AroodiViewBodyDetails(
-            offersResponseModel: offersResponseModel,
-            offers: offersResponseModel.offers!,
-            favorites: favorites,
+            stores: StoresSingleton.instance.stores,
           ),
         ],
       ),

@@ -1,0 +1,43 @@
+name: Build and deploy web
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  build:
+    if: contains(github.event.head_commit.message, 'build')
+    runs-on: ubuntu-latest
+    steps:
+     # !
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+     # !
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.0.0'
+        channel: stable
+        architecture: x64
+        cache: false
+        pub-cache-path: default
+        dry-run: false
+     # !
+    - name: Upgrade Flutter
+      run: flutter upgrade
+     # !
+    - name: Install dependencies
+      run: flutter pub get
+     # !
+    - name: Build web
+      run: flutter build web  
+     # !
+    - name: 📂 deploy build web
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ftp.awfar-offers.com
+        username:  u941582685
+        password:  Coder1632001@
+        protocol: "ftp" 
+        port: 21  
+        server-dir: /domains/awfar-offers.com/public_html/awfer_offers_website/
+        local-dir: ./build/web/

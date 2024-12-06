@@ -16,56 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CouponsEvent {
-  int get governorateId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int governorateId) getCoupons,
-    required TResult Function(int governorateId) addToFavorites,
-    required TResult Function(int governorateId) removeFromFavorites,
+    required TResult Function(int id, bool add) updateFavs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int governorateId)? getCoupons,
-    TResult? Function(int governorateId)? addToFavorites,
-    TResult? Function(int governorateId)? removeFromFavorites,
+    TResult? Function(int id, bool add)? updateFavs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int governorateId)? getCoupons,
-    TResult Function(int governorateId)? addToFavorites,
-    TResult Function(int governorateId)? removeFromFavorites,
+    TResult Function(int id, bool add)? updateFavs,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupons value) getCoupons,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_UpdateFavs value) updateFavs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupons value)? getCoupons,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_UpdateFavs value)? updateFavs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupons value)? getCoupons,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_UpdateFavs value)? updateFavs,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of CouponsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CouponsEventCopyWith<CouponsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -74,8 +61,6 @@ abstract class $CouponsEventCopyWith<$Res> {
   factory $CouponsEventCopyWith(
           CouponsEvent value, $Res Function(CouponsEvent) then) =
       _$CouponsEventCopyWithImpl<$Res, CouponsEvent>;
-  @useResult
-  $Res call({int governorateId});
 }
 
 /// @nodoc
@@ -90,27 +75,13 @@ class _$CouponsEventCopyWithImpl<$Res, $Val extends CouponsEvent>
 
   /// Create a copy of CouponsEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? governorateId = null,
-  }) {
-    return _then(_value.copyWith(
-      governorateId: null == governorateId
-          ? _value.governorateId
-          : governorateId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetCouponsImplCopyWith<$Res>
-    implements $CouponsEventCopyWith<$Res> {
+abstract class _$$GetCouponsImplCopyWith<$Res> {
   factory _$$GetCouponsImplCopyWith(
           _$GetCouponsImpl value, $Res Function(_$GetCouponsImpl) then) =
       __$$GetCouponsImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int governorateId});
 }
@@ -176,8 +147,7 @@ class _$GetCouponsImpl implements _GetCoupons {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int governorateId) getCoupons,
-    required TResult Function(int governorateId) addToFavorites,
-    required TResult Function(int governorateId) removeFromFavorites,
+    required TResult Function(int id, bool add) updateFavs,
   }) {
     return getCoupons(governorateId);
   }
@@ -186,8 +156,7 @@ class _$GetCouponsImpl implements _GetCoupons {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int governorateId)? getCoupons,
-    TResult? Function(int governorateId)? addToFavorites,
-    TResult? Function(int governorateId)? removeFromFavorites,
+    TResult? Function(int id, bool add)? updateFavs,
   }) {
     return getCoupons?.call(governorateId);
   }
@@ -196,8 +165,7 @@ class _$GetCouponsImpl implements _GetCoupons {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int governorateId)? getCoupons,
-    TResult Function(int governorateId)? addToFavorites,
-    TResult Function(int governorateId)? removeFromFavorites,
+    TResult Function(int id, bool add)? updateFavs,
     required TResult orElse(),
   }) {
     if (getCoupons != null) {
@@ -210,8 +178,7 @@ class _$GetCouponsImpl implements _GetCoupons {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupons value) getCoupons,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_UpdateFavs value) updateFavs,
   }) {
     return getCoupons(this);
   }
@@ -220,8 +187,7 @@ class _$GetCouponsImpl implements _GetCoupons {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupons value)? getCoupons,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_UpdateFavs value)? updateFavs,
   }) {
     return getCoupons?.call(this);
   }
@@ -230,8 +196,7 @@ class _$GetCouponsImpl implements _GetCoupons {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupons value)? getCoupons,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_UpdateFavs value)? updateFavs,
     required TResult orElse(),
   }) {
     if (getCoupons != null) {
@@ -245,34 +210,30 @@ abstract class _GetCoupons implements CouponsEvent {
   const factory _GetCoupons({required final int governorateId}) =
       _$GetCouponsImpl;
 
-  @override
   int get governorateId;
 
   /// Create a copy of CouponsEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCouponsImplCopyWith<_$GetCouponsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddToFavoritesImplCopyWith<$Res>
-    implements $CouponsEventCopyWith<$Res> {
-  factory _$$AddToFavoritesImplCopyWith(_$AddToFavoritesImpl value,
-          $Res Function(_$AddToFavoritesImpl) then) =
-      __$$AddToFavoritesImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$UpdateFavsImplCopyWith<$Res> {
+  factory _$$UpdateFavsImplCopyWith(
+          _$UpdateFavsImpl value, $Res Function(_$UpdateFavsImpl) then) =
+      __$$UpdateFavsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int governorateId});
+  $Res call({int id, bool add});
 }
 
 /// @nodoc
-class __$$AddToFavoritesImplCopyWithImpl<$Res>
-    extends _$CouponsEventCopyWithImpl<$Res, _$AddToFavoritesImpl>
-    implements _$$AddToFavoritesImplCopyWith<$Res> {
-  __$$AddToFavoritesImplCopyWithImpl(
-      _$AddToFavoritesImpl _value, $Res Function(_$AddToFavoritesImpl) _then)
+class __$$UpdateFavsImplCopyWithImpl<$Res>
+    extends _$CouponsEventCopyWithImpl<$Res, _$UpdateFavsImpl>
+    implements _$$UpdateFavsImplCopyWith<$Res> {
+  __$$UpdateFavsImplCopyWithImpl(
+      _$UpdateFavsImpl _value, $Res Function(_$UpdateFavsImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CouponsEvent
@@ -280,81 +241,84 @@ class __$$AddToFavoritesImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? governorateId = null,
+    Object? id = null,
+    Object? add = null,
   }) {
-    return _then(_$AddToFavoritesImpl(
-      governorateId: null == governorateId
-          ? _value.governorateId
-          : governorateId // ignore: cast_nullable_to_non_nullable
+    return _then(_$UpdateFavsImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
+      add: null == add
+          ? _value.add
+          : add // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AddToFavoritesImpl implements _AddToFavorites {
-  const _$AddToFavoritesImpl({required this.governorateId});
+class _$UpdateFavsImpl implements _UpdateFavs {
+  const _$UpdateFavsImpl({required this.id, required this.add});
 
   @override
-  final int governorateId;
+  final int id;
+  @override
+  final bool add;
 
   @override
   String toString() {
-    return 'CouponsEvent.addToFavorites(governorateId: $governorateId)';
+    return 'CouponsEvent.updateFavs(id: $id, add: $add)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddToFavoritesImpl &&
-            (identical(other.governorateId, governorateId) ||
-                other.governorateId == governorateId));
+            other is _$UpdateFavsImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.add, add) || other.add == add));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, governorateId);
+  int get hashCode => Object.hash(runtimeType, id, add);
 
   /// Create a copy of CouponsEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddToFavoritesImplCopyWith<_$AddToFavoritesImpl> get copyWith =>
-      __$$AddToFavoritesImplCopyWithImpl<_$AddToFavoritesImpl>(
-          this, _$identity);
+  _$$UpdateFavsImplCopyWith<_$UpdateFavsImpl> get copyWith =>
+      __$$UpdateFavsImplCopyWithImpl<_$UpdateFavsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int governorateId) getCoupons,
-    required TResult Function(int governorateId) addToFavorites,
-    required TResult Function(int governorateId) removeFromFavorites,
+    required TResult Function(int id, bool add) updateFavs,
   }) {
-    return addToFavorites(governorateId);
+    return updateFavs(id, add);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int governorateId)? getCoupons,
-    TResult? Function(int governorateId)? addToFavorites,
-    TResult? Function(int governorateId)? removeFromFavorites,
+    TResult? Function(int id, bool add)? updateFavs,
   }) {
-    return addToFavorites?.call(governorateId);
+    return updateFavs?.call(id, add);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int governorateId)? getCoupons,
-    TResult Function(int governorateId)? addToFavorites,
-    TResult Function(int governorateId)? removeFromFavorites,
+    TResult Function(int id, bool add)? updateFavs,
     required TResult orElse(),
   }) {
-    if (addToFavorites != null) {
-      return addToFavorites(governorateId);
+    if (updateFavs != null) {
+      return updateFavs(id, add);
     }
     return orElse();
   }
@@ -363,201 +327,44 @@ class _$AddToFavoritesImpl implements _AddToFavorites {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupons value) getCoupons,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_UpdateFavs value) updateFavs,
   }) {
-    return addToFavorites(this);
+    return updateFavs(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupons value)? getCoupons,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_UpdateFavs value)? updateFavs,
   }) {
-    return addToFavorites?.call(this);
+    return updateFavs?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupons value)? getCoupons,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_UpdateFavs value)? updateFavs,
     required TResult orElse(),
   }) {
-    if (addToFavorites != null) {
-      return addToFavorites(this);
+    if (updateFavs != null) {
+      return updateFavs(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddToFavorites implements CouponsEvent {
-  const factory _AddToFavorites({required final int governorateId}) =
-      _$AddToFavoritesImpl;
+abstract class _UpdateFavs implements CouponsEvent {
+  const factory _UpdateFavs({required final int id, required final bool add}) =
+      _$UpdateFavsImpl;
 
-  @override
-  int get governorateId;
-
-  /// Create a copy of CouponsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddToFavoritesImplCopyWith<_$AddToFavoritesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$RemoveFromFavoritesImplCopyWith<$Res>
-    implements $CouponsEventCopyWith<$Res> {
-  factory _$$RemoveFromFavoritesImplCopyWith(_$RemoveFromFavoritesImpl value,
-          $Res Function(_$RemoveFromFavoritesImpl) then) =
-      __$$RemoveFromFavoritesImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int governorateId});
-}
-
-/// @nodoc
-class __$$RemoveFromFavoritesImplCopyWithImpl<$Res>
-    extends _$CouponsEventCopyWithImpl<$Res, _$RemoveFromFavoritesImpl>
-    implements _$$RemoveFromFavoritesImplCopyWith<$Res> {
-  __$$RemoveFromFavoritesImplCopyWithImpl(_$RemoveFromFavoritesImpl _value,
-      $Res Function(_$RemoveFromFavoritesImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CouponsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? governorateId = null,
-  }) {
-    return _then(_$RemoveFromFavoritesImpl(
-      governorateId: null == governorateId
-          ? _value.governorateId
-          : governorateId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RemoveFromFavoritesImpl implements _RemoveFromFavorites {
-  const _$RemoveFromFavoritesImpl({required this.governorateId});
-
-  @override
-  final int governorateId;
-
-  @override
-  String toString() {
-    return 'CouponsEvent.removeFromFavorites(governorateId: $governorateId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RemoveFromFavoritesImpl &&
-            (identical(other.governorateId, governorateId) ||
-                other.governorateId == governorateId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, governorateId);
+  int get id;
+  bool get add;
 
   /// Create a copy of CouponsEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RemoveFromFavoritesImplCopyWith<_$RemoveFromFavoritesImpl> get copyWith =>
-      __$$RemoveFromFavoritesImplCopyWithImpl<_$RemoveFromFavoritesImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int governorateId) getCoupons,
-    required TResult Function(int governorateId) addToFavorites,
-    required TResult Function(int governorateId) removeFromFavorites,
-  }) {
-    return removeFromFavorites(governorateId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int governorateId)? getCoupons,
-    TResult? Function(int governorateId)? addToFavorites,
-    TResult? Function(int governorateId)? removeFromFavorites,
-  }) {
-    return removeFromFavorites?.call(governorateId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int governorateId)? getCoupons,
-    TResult Function(int governorateId)? addToFavorites,
-    TResult Function(int governorateId)? removeFromFavorites,
-    required TResult orElse(),
-  }) {
-    if (removeFromFavorites != null) {
-      return removeFromFavorites(governorateId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetCoupons value) getCoupons,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
-  }) {
-    return removeFromFavorites(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCoupons value)? getCoupons,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
-  }) {
-    return removeFromFavorites?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCoupons value)? getCoupons,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
-    required TResult orElse(),
-  }) {
-    if (removeFromFavorites != null) {
-      return removeFromFavorites(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RemoveFromFavorites implements CouponsEvent {
-  const factory _RemoveFromFavorites({required final int governorateId}) =
-      _$RemoveFromFavoritesImpl;
-
-  @override
-  int get governorateId;
-
-  /// Create a copy of CouponsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RemoveFromFavoritesImplCopyWith<_$RemoveFromFavoritesImpl> get copyWith =>
+  _$$UpdateFavsImplCopyWith<_$UpdateFavsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

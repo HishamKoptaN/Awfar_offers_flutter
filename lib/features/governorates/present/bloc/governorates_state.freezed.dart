@@ -19,9 +19,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<Governorate> countries, int? selectedGovernorateId)
-        governoratesloaded,
+    required TResult Function(int? selectedGovernorateId) governoratesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -30,8 +28,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult? Function(int? selectedGovernorateId)? governoratesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -40,8 +37,7 @@ mixin _$GovernoratesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult Function(int? selectedGovernorateId)? governoratesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -141,9 +137,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<Governorate> countries, int? selectedGovernorateId)
-        governoratesloaded,
+    required TResult Function(int? selectedGovernorateId) governoratesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -155,8 +149,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult? Function(int? selectedGovernorateId)? governoratesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -168,8 +161,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult Function(int? selectedGovernorateId)? governoratesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -232,7 +224,7 @@ abstract class _$$GovernoratesloadedImplCopyWith<$Res> {
           $Res Function(_$GovernoratesloadedImpl) then) =
       __$$GovernoratesloadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Governorate> countries, int? selectedGovernorateId});
+  $Res call({int? selectedGovernorateId});
 }
 
 /// @nodoc
@@ -248,14 +240,9 @@ class __$$GovernoratesloadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? countries = null,
     Object? selectedGovernorateId = freezed,
   }) {
     return _then(_$GovernoratesloadedImpl(
-      countries: null == countries
-          ? _value._countries
-          : countries // ignore: cast_nullable_to_non_nullable
-              as List<Governorate>,
       selectedGovernorateId: freezed == selectedGovernorateId
           ? _value.selectedGovernorateId
           : selectedGovernorateId // ignore: cast_nullable_to_non_nullable
@@ -267,25 +254,14 @@ class __$$GovernoratesloadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GovernoratesloadedImpl implements _Governoratesloaded {
-  const _$GovernoratesloadedImpl(
-      {required final List<Governorate> countries,
-      required this.selectedGovernorateId})
-      : _countries = countries;
-
-  final List<Governorate> _countries;
-  @override
-  List<Governorate> get countries {
-    if (_countries is EqualUnmodifiableListView) return _countries;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_countries);
-  }
+  const _$GovernoratesloadedImpl({required this.selectedGovernorateId});
 
   @override
   final int? selectedGovernorateId;
 
   @override
   String toString() {
-    return 'GovernoratesState.governoratesloaded(countries: $countries, selectedGovernorateId: $selectedGovernorateId)';
+    return 'GovernoratesState.governoratesloaded(selectedGovernorateId: $selectedGovernorateId)';
   }
 
   @override
@@ -293,15 +269,12 @@ class _$GovernoratesloadedImpl implements _Governoratesloaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GovernoratesloadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._countries, _countries) &&
             (identical(other.selectedGovernorateId, selectedGovernorateId) ||
                 other.selectedGovernorateId == selectedGovernorateId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_countries), selectedGovernorateId);
+  int get hashCode => Object.hash(runtimeType, selectedGovernorateId);
 
   /// Create a copy of GovernoratesState
   /// with the given fields replaced by the non-null parameter values.
@@ -316,42 +289,38 @@ class _$GovernoratesloadedImpl implements _Governoratesloaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<Governorate> countries, int? selectedGovernorateId)
-        governoratesloaded,
+    required TResult Function(int? selectedGovernorateId) governoratesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
-    return governoratesloaded(countries, selectedGovernorateId);
+    return governoratesloaded(selectedGovernorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult? Function(int? selectedGovernorateId)? governoratesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
-    return governoratesloaded?.call(countries, selectedGovernorateId);
+    return governoratesloaded?.call(selectedGovernorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult Function(int? selectedGovernorateId)? governoratesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
     if (governoratesloaded != null) {
-      return governoratesloaded(countries, selectedGovernorateId);
+      return governoratesloaded(selectedGovernorateId);
     }
     return orElse();
   }
@@ -399,10 +368,8 @@ class _$GovernoratesloadedImpl implements _Governoratesloaded {
 
 abstract class _Governoratesloaded implements GovernoratesState {
   const factory _Governoratesloaded(
-      {required final List<Governorate> countries,
-      required final int? selectedGovernorateId}) = _$GovernoratesloadedImpl;
+      {required final int? selectedGovernorateId}) = _$GovernoratesloadedImpl;
 
-  List<Governorate> get countries;
   int? get selectedGovernorateId;
 
   /// Create a copy of GovernoratesState
@@ -454,9 +421,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<Governorate> countries, int? selectedGovernorateId)
-        governoratesloaded,
+    required TResult Function(int? selectedGovernorateId) governoratesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -468,8 +433,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult? Function(int? selectedGovernorateId)? governoratesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -481,8 +445,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult Function(int? selectedGovernorateId)? governoratesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -581,9 +544,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<Governorate> countries, int? selectedGovernorateId)
-        governoratesloaded,
+    required TResult Function(int? selectedGovernorateId) governoratesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -595,8 +556,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult? Function(int? selectedGovernorateId)? governoratesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -608,8 +568,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult Function(int? selectedGovernorateId)? governoratesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -735,9 +694,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(
-            List<Governorate> countries, int? selectedGovernorateId)
-        governoratesloaded,
+    required TResult Function(int? selectedGovernorateId) governoratesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -749,8 +706,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult? Function(int? selectedGovernorateId)? governoratesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -762,8 +718,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Governorate> countries, int? selectedGovernorateId)?
-        governoratesloaded,
+    TResult Function(int? selectedGovernorateId)? governoratesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,

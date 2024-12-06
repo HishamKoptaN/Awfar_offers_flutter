@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/models/category.dart';
 import '../../../../../../core/utils/app_colors.dart';
-import '../../../../data/models/offers_response_model.dart';
 
 class CustomCategoryItem extends StatelessWidget {
   const CustomCategoryItem({
@@ -10,9 +10,9 @@ class CustomCategoryItem extends StatelessWidget {
     required this.category,
   });
 
-  final int selectedIndex, index;
+  final int selectedIndex;
+  final int index;
   final Category category;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +31,9 @@ class CustomCategoryItem extends StatelessWidget {
             children: [
               Text(
                 category.name!,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(
                 width: 4,
@@ -44,8 +46,12 @@ class CustomCategoryItem extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: Text(
-                    category.offersCount.toString(),
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
+                    category.offerGroupsCount.toString(),
+                    // category.subCategoryOffersCount.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               ),

@@ -1,5 +1,6 @@
 class ApiConstants {
   static const String apiBaseUrl = "https://api.awfar-offers.com/app/";
+  static const String apiAuthBaseUrl = "https://api.awfar-offers.com/app/";
 
   static const String check = "check";
   static const String login = "login";
@@ -9,6 +10,8 @@ class ApiConstants {
   static const String offers = "offers";
   static const String categories = "categories";
   static const String subCategories = "sub-categories";
+  static const String subCategoriesItems = "sub-categories-items";
+  static const String products = "products";
   static const String coupons = "coupons";
   static const String notifications = "notifications";
 }

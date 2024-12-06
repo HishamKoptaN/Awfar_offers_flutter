@@ -19,8 +19,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country> countries, int? selectedcountrId)
-        countriesloaded,
+    required TResult Function(int? selectedcountrId) countriesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -29,8 +28,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult? Function(int? selectedcountrId)? countriesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -39,8 +37,7 @@ mixin _$CountriesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult Function(int? selectedcountrId)? countriesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -140,8 +137,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country> countries, int? selectedcountrId)
-        countriesloaded,
+    required TResult Function(int? selectedcountrId) countriesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -153,8 +149,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult? Function(int? selectedcountrId)? countriesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -166,8 +161,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult Function(int? selectedcountrId)? countriesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -230,7 +224,7 @@ abstract class _$$CountriesloadedImplCopyWith<$Res> {
           $Res Function(_$CountriesloadedImpl) then) =
       __$$CountriesloadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Country> countries, int? selectedcountrId});
+  $Res call({int? selectedcountrId});
 }
 
 /// @nodoc
@@ -246,14 +240,9 @@ class __$$CountriesloadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? countries = null,
     Object? selectedcountrId = freezed,
   }) {
     return _then(_$CountriesloadedImpl(
-      countries: null == countries
-          ? _value._countries
-          : countries // ignore: cast_nullable_to_non_nullable
-              as List<Country>,
       selectedcountrId: freezed == selectedcountrId
           ? _value.selectedcountrId
           : selectedcountrId // ignore: cast_nullable_to_non_nullable
@@ -265,24 +254,14 @@ class __$$CountriesloadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CountriesloadedImpl implements _Countriesloaded {
-  const _$CountriesloadedImpl(
-      {required final List<Country> countries, required this.selectedcountrId})
-      : _countries = countries;
-
-  final List<Country> _countries;
-  @override
-  List<Country> get countries {
-    if (_countries is EqualUnmodifiableListView) return _countries;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_countries);
-  }
+  const _$CountriesloadedImpl({required this.selectedcountrId});
 
   @override
   final int? selectedcountrId;
 
   @override
   String toString() {
-    return 'CountriesState.countriesloaded(countries: $countries, selectedcountrId: $selectedcountrId)';
+    return 'CountriesState.countriesloaded(selectedcountrId: $selectedcountrId)';
   }
 
   @override
@@ -290,15 +269,12 @@ class _$CountriesloadedImpl implements _Countriesloaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CountriesloadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._countries, _countries) &&
             (identical(other.selectedcountrId, selectedcountrId) ||
                 other.selectedcountrId == selectedcountrId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_countries), selectedcountrId);
+  int get hashCode => Object.hash(runtimeType, selectedcountrId);
 
   /// Create a copy of CountriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -313,41 +289,38 @@ class _$CountriesloadedImpl implements _Countriesloaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country> countries, int? selectedcountrId)
-        countriesloaded,
+    required TResult Function(int? selectedcountrId) countriesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
-    return countriesloaded(countries, selectedcountrId);
+    return countriesloaded(selectedcountrId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult? Function(int? selectedcountrId)? countriesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
-    return countriesloaded?.call(countries, selectedcountrId);
+    return countriesloaded?.call(selectedcountrId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult Function(int? selectedcountrId)? countriesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
     if (countriesloaded != null) {
-      return countriesloaded(countries, selectedcountrId);
+      return countriesloaded(selectedcountrId);
     }
     return orElse();
   }
@@ -394,11 +367,9 @@ class _$CountriesloadedImpl implements _Countriesloaded {
 }
 
 abstract class _Countriesloaded implements CountriesState {
-  const factory _Countriesloaded(
-      {required final List<Country> countries,
-      required final int? selectedcountrId}) = _$CountriesloadedImpl;
+  const factory _Countriesloaded({required final int? selectedcountrId}) =
+      _$CountriesloadedImpl;
 
-  List<Country> get countries;
   int? get selectedcountrId;
 
   /// Create a copy of CountriesState
@@ -450,8 +421,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country> countries, int? selectedcountrId)
-        countriesloaded,
+    required TResult Function(int? selectedcountrId) countriesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -463,8 +433,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult? Function(int? selectedcountrId)? countriesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -476,8 +445,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult Function(int? selectedcountrId)? countriesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -576,8 +544,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country> countries, int? selectedcountrId)
-        countriesloaded,
+    required TResult Function(int? selectedcountrId) countriesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -589,8 +556,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult? Function(int? selectedcountrId)? countriesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -602,8 +568,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult Function(int? selectedcountrId)? countriesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -729,8 +694,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Country> countries, int? selectedcountrId)
-        countriesloaded,
+    required TResult Function(int? selectedcountrId) countriesloaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -742,8 +706,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult? Function(int? selectedcountrId)? countriesloaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -755,8 +718,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Country> countries, int? selectedcountrId)?
-        countriesloaded,
+    TResult Function(int? selectedcountrId)? countriesloaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,

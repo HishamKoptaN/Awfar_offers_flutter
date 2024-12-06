@@ -1,48 +1,44 @@
 import 'package:flutter/material.dart';
-import '../../../../../offer_details/presentation/views/offer_deatails_view.dart';
-import '../../../../data/models/offers_response_model.dart';
+import '../../../../../../core/models/store.dart';
+import '../../../../../../core/singletons/favs_offers_singleton.dart';
+import '../../../../../offer_details/presentation/views/store_deatails_view.dart';
 import 'custom_offer_card_item.dart';
 
 class OffersItemsGridView extends StatelessWidget {
   const OffersItemsGridView({
     super.key,
     required this.stores,
-    required this.offers,
-    required this.favorites,
   });
-  final List<StoreElement> stores;
-  final List<OffersResponseModelOffer> offers;
-  final List<int> favorites;
+  final List<Store> stores;
 
   @override
-  Widget build(context) {
+  Widget build(
+    context,
+  ) {
     return GridView.builder(
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(), // Disable grid scroll
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Number of columns in the grid
+        crossAxisCount: 2,
         crossAxisSpacing: 6,
         mainAxisSpacing: 6,
         childAspectRatio: 0.58,
       ),
-      itemCount: offers.length,
+      itemCount: stores.length,
       itemBuilder: (context, index) {
-        final offer = offers[index];
+        final store = stores[index];
         return GestureDetector(
           onTap: () {
-            StoreElement selectedStore = stores.firstWhere(
-              (store) => store.id == offer.store!.id,
-            );
             Navigator.pushNamed(
               context,
-              OfferDeatailsView.routeName,
-              arguments: selectedStore,
+              StoreDeatailsView.routeName,
+              arguments: store,
             );
           },
           child: CustomCardItem(
-            offersResponseModelOffer: offer,
-            isFav: favorites.contains(
-              offer.id,
+            store: store,
+            isFav: FavsOffersSingleton.instance.favs!.contains(
+              store.id!,
             ),
           ),
         );
