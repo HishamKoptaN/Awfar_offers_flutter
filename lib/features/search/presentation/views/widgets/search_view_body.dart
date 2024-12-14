@@ -1,3 +1,5 @@
+import 'package:awfar_offer_app/core/utils/app_colors.dart';
+import 'package:awfar_offer_app/features/admobe/banner_ad.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_back_button.dart';
@@ -18,23 +20,32 @@ class SearchViewBody extends StatefulWidget {
 
 class _SearchViewBodyState extends State<SearchViewBody> {
   List<String> popularSearchTerms = [
-    "Flutter",
+    "زبادي",
+    "دجاج",
+    "tv",
+    "كازيون",
+    "بانيه",
+    "بيف",
+    "رومي",
+    "Lu lu",
+    "feba",
+    "بطاطس",
+    "حفاظات",
+    "بازلاء",
     "Firebase",
-    "Helwan University",
-    "Dart Programming",
-    "Bridal Preparation",
-    "Family Committees",
-    "Flutter",
-    "Firebase",
-    "Helwan University",
-    "Dart Programming",
-    "Bridal Preparation",
-    "Family Committees",
-    "Firebase",
-    "Helwan University",
-    "Dart Programming",
-    "Bridal Preparation",
-    "Family Committees",
+    "زيت كريستال",
+    "مياه",
+    "سجق",
+    "غساله",
+    "ملابس نسائية",
+    "شاشة تلفزيون",
+    "كريم",
+    "كريمة",
+  ];
+
+  List<String> recentSearches = [
+    "بانيه",
+    "بيف",
   ];
 
   List<String> filteredSearchTerms = [];
@@ -88,50 +99,148 @@ class _SearchViewBodyState extends State<SearchViewBody> {
               ),
             ],
           ),
-          const SizedBox(height: 16),
-          const Row(
-            children: [
-              Icon(
-                Icons.local_fire_department_rounded,
-                color: Colors.white,
-                size: 20,
-              ),
-              SizedBox(
-                width: 4,
-              ),
-              Text(
-                "البحث الشائع",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          // Displaying filtered search terms
           Expanded(
-            child: ListView.builder(
-              itemCount: filteredSearchTerms.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    filteredSearchTerms[index],
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 16),
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.local_fire_department_rounded,
+                        color: Colors.white,
+                        size: 22,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(
+                        "البحث الشائع",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Wrap(
+                    spacing: 8.0,
+                    runSpacing: 4.0,
+                    children: List.generate(
+                      popularSearchTerms.length,
+                      (index) => Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 10.0),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(8.0),
+                          border: Border.all(color: Colors.grey, width: 0.8),
+                        ),
+                        child: FittedBox(
+                          child: Text(
+                            popularSearchTerms[index],
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  onTap: () {
-                    // You can handle what happens when a search term is clicked here
-                    // For example, you can navigate to another screen
-                  },
-                );
-              },
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.history_outlined,
+                        color: Colors.white,
+                        size: 22,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      const Text(
+                        "عمليات البحث الأخيره",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const Spacer(),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "إمسح",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Wrap(
+                    spacing: 8.0,
+                    runSpacing: 4.0,
+                    children: List.generate(
+                      recentSearches.length,
+                      (index) => Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 10.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(8.0),
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 0.8,
+                          ),
+                        ),
+                        child: FittedBox(
+                          child: Row(
+                            children: [
+                              Text(
+                                recentSearches[index],
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: const Icon(
+                                  Icons.close,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const BannerAds(),
+                ],
+              ),
             ),
           ),
         ],

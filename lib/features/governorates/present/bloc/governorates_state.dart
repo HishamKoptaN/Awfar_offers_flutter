@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../data/models/governorates_res_model.dart';
 part 'governorates_state.freezed.dart';
 
 @freezed

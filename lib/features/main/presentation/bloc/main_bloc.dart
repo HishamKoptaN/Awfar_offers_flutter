@@ -1,7 +1,5 @@
 import 'package:awfar_offer_app/core/global_methods.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/database/cache/shared_pref_helper.dart';
-import '../../../../core/database/cache/shared_pref_keys.dart';
 import '../../domain/usecases/check_use_case.dart';
 import 'main_event.dart';
 import 'main_state.dart';

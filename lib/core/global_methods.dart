@@ -8,8 +8,6 @@ import '../features/countries/presentation/bloc/countries_event.dart';
 import '../features/countries/presentation/bloc/countries_state.dart';
 import '../features/governorates/present/bloc/governorates_bloc.dart';
 import '../features/governorates/present/bloc/governorates_event.dart';
-import '../features/offers/presentation/bloc/offers_bloc.dart';
-import '../features/offers/presentation/bloc/offers_event.dart';
 import '../features/stores/presentation/bloc/stores_bloc.dart';
 import 'database/cache/shared_pref_helper.dart';
 import 'database/cache/shared_pref_keys.dart';

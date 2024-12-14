@@ -303,9 +303,8 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                             final prdouct = products![index];
                             return GestureDetector(
                               onTap: () async {
-                                Store selectedStore = await StoresSingleton
-                                    .instance.stores
-                                    .firstWhere(
+                                Store selectedStore =
+                                    StoresSingleton.instance.stores.firstWhere(
                                   (store) =>
                                       store.id == prdouct.offerGroup!.storeId!,
                                 );

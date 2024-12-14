@@ -1,8 +1,6 @@
 import 'package:awfar_offer_app/core/utils/app_colors.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_view.dart';
-import 'package:awfar_offer_app/features/profile/presentation/views/widgets/custom_personal_list.dart';
 import 'package:awfar_offer_app/features/profile/presentation/views/widgets/icon_and_text_widget.dart';
-import 'package:awfar_offer_app/features/profile/presentation/views/widgets/tools_widget.dart';
 import 'package:awfar_offer_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
 

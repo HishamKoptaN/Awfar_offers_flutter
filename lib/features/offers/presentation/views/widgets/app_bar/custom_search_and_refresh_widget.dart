@@ -5,7 +5,7 @@ import '../../../../../../core/utils/app_text_styles.dart';
 import '../../../../../search/presentation/views/search_view.dart';
 
 class CustomSearchAndRefreshWidget extends StatelessWidget {
-  CustomSearchAndRefreshWidget({
+  const CustomSearchAndRefreshWidget({
     super.key,
   });
   @override
