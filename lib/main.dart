@@ -1,3 +1,7 @@
+import 'package:awfar_offer_app/core/services/local_notifications_services.dart';
+import 'package:awfar_offer_app/core/services/push_notifications_services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -16,11 +20,19 @@ import 'features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // تهيئة Firebase
+
   MobileAds.instance.initialize();
   await Injection.inject();
   SharedPrefHelper;
   Bloc.observer = AppBlocObserver();
   // await SharedPrefHelper.clearAllData();
+
+  Future.wait([
+    PushNotificationsServices.init(),
+    LocalNotificationsServices.init(),
+  ]);
+
   runApp(
     MultiBlocProvider(
       providers: [
