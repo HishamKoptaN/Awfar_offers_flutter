@@ -4,7 +4,7 @@ import 'app_colors.dart';
 
 abstract class TextStyles {
   static const TextStyle normal10 = TextStyle(
-    color: AppColors.yellowColor,
+    color: AppColors.brownColor,
     fontSize: 10,
   );
   static const TextStyle normal14 = TextStyle(

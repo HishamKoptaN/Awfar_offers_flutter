@@ -363,7 +363,7 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(
-                                              color: AppColors.yellowColor,
+                                              color: AppColors.brownColor,
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                             ),
@@ -402,7 +402,7 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                               Text(
                                                 "ج.م ${prdouct.priceAfterDiscount!}",
                                                 style: const TextStyle(
-                                                  color: AppColors.yellowColor,
+                                                  color: AppColors.brownColor,
                                                   fontSize: 12,
                                                 ),
                                               ),

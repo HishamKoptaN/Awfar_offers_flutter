@@ -74,7 +74,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
-                    color: AppColors.yellowColor,
+                    color: AppColors.brownColor,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -82,7 +82,10 @@ class _CustomCardItemState extends State<CustomCardItem> {
                       widget.store.offerGroups!.first.endAt == 0
                           ? "ينتهي اليوم"
                           : "${widget.store.offerGroups!.first.daysRemaining} أيام متبقية",
-                      style: const TextStyle(fontSize: 10),
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: AppColors.lightPrimaryColor,
+                      ),
                     ),
                   ),
                 ),
@@ -100,7 +103,7 @@ class _CustomCardItemState extends State<CustomCardItem> {
                   Text(
                     widget.store.offerGroups!.first.name!,
                     style: const TextStyle(
-                      color: AppColors.yellowColor,
+                      color: AppColors.brownColor,
                       fontSize: 12,
                     ),
                   ),

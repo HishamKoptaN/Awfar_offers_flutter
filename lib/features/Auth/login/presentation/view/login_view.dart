@@ -1,4 +1,6 @@
 import 'package:awfar_offer_app/core/app_layout.dart';
+import 'package:awfar_offer_app/core/utils/app_colors.dart';
+import 'package:awfar_offer_app/core/utils/app_text_styles.dart';
 import 'package:awfar_offer_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -83,13 +85,13 @@ class _LoginViewState extends State<LoginView> {
           builder: (context, state) {
             return Scaffold(
               backgroundColor: Colors.white,
-              body: Center(
+              body: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Gap(
-                        40.h,
+                        16.h,
                       ),
                       ClipOval(
                         child: Image.asset(
@@ -106,69 +108,62 @@ class _LoginViewState extends State<LoginView> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Gap(
-                              40.h,
+                              33.h,
                             ),
-                            Container(
-                              width: width / 1.3,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: Colors.grey[200],
-                              ),
-                              child: TextFormField(
-                                controller: _email,
-                                validator: validator,
-                                decoration: const InputDecoration(
-                                  labelText: "الايميل",
-                                  suffixIcon: Icon(
-                                    Icons.email,
-                                  ),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.symmetric(
-                                    vertical: 10,
-                                    horizontal: 20,
-                                  ),
+                            TextFormField(
+                              controller: _email,
+                              validator: validator,
+                              decoration: InputDecoration(
+                                hintText: "البريد الإلكتروني",
+                                suffixIcon: const Icon(
+                                  Icons.email_outlined,
+                                  color: Color(0xffC9CECF),
                                 ),
+                                hintStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: Color(0xff949D9E)),
+                                filled: true,
+                                fillColor: const Color(0xffF9FAFA),
+                                border: buildBorder(),
+                                enabledBorder: buildBorder(),
+                                focusedBorder: buildBorder(),
                               ),
                             ),
                             Gap(
-                              20.h,
+                              16.h,
                             ),
-                            Container(
-                              width: width / 1.3,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: Colors.grey[200],
-                              ),
-                              child: TextFormField(
-                                controller: _password,
-                                validator: validator,
-                                obscureText: showPassword,
-                                decoration: InputDecoration(
-                                  labelText: 'كلمة المرور',
-                                  suffixIcon: InkWell(
-                                    onTap: () {
-                                      setState(
-                                        () {
-                                          showPassword = !showPassword;
-                                        },
-                                      );
-                                    },
-                                    child: Icon(
-                                      showPassword
-                                          ? FontAwesomeIcons.eye
-                                          : FontAwesomeIcons.eyeSlash,
-                                    ),
-                                  ),
-                                  border: InputBorder.none,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10,
-                                    horizontal: 20,
+                            TextFormField(
+                              controller: _password,
+                              validator: validator,
+                              obscureText: showPassword,
+                              decoration: InputDecoration(
+                                hintText: "كلمة المرور",
+                                suffixIcon: InkWell(
+                                  onTap: () {
+                                    setState(
+                                      () {
+                                        showPassword = !showPassword;
+                                      },
+                                    );
+                                  },
+                                  child: Icon(
+                                    showPassword
+                                        ? FontAwesomeIcons.eye
+                                        : FontAwesomeIcons.eyeSlash,
+                                    color: const Color(0xffC9CECF),
                                   ),
                                 ),
+                                hintStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: Color(0xff949D9E)),
+                                filled: true,
+                                fillColor: const Color(0xffF9FAFA),
+                                border: buildBorder(),
+                                enabledBorder: buildBorder(),
+                                focusedBorder: buildBorder(),
                               ),
-                            ),
-                            Gap(
-                              10.h,
                             ),
                             Align(
                               alignment: Alignment.centerRight,
@@ -181,11 +176,12 @@ class _LoginViewState extends State<LoginView> {
                                     ),
                                   );
                                 },
-                                child: const Text("نسيت كلمة المرور"),
+                                child: const Text("نسيت كلمة المرور؟",
+                                    style: TextStyles.bold13),
                               ),
                             ),
                             Gap(
-                              20.h,
+                              16.h,
                             ),
                             CustomTextButtonWidget(
                               widget: state.maybeWhen(
@@ -195,7 +191,7 @@ class _LoginViewState extends State<LoginView> {
                                 orElse: () {
                                   return CustomText(
                                     text: "تسجيل الدخول",
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontFamily: "Arial",
                                     fontSize: 25.sp,
                                   );
@@ -215,19 +211,19 @@ class _LoginViewState extends State<LoginView> {
                               },
                             ),
                             Gap(
-                              40.h,
+                              16.h,
                             ),
                             Row(
                               children: <Widget>[
                                 const Expanded(
                                   child: Divider(
-                                    thickness: 2,
+                                    thickness: 1,
                                     color: Colors.black,
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
+                                      horizontal: 16),
                                   child: Text(
                                     "أو",
                                     style: TextStyle(
@@ -239,14 +235,14 @@ class _LoginViewState extends State<LoginView> {
                                 ),
                                 const Expanded(
                                   child: Divider(
-                                    thickness: 2,
+                                    thickness: 1,
                                     color: Colors.black,
                                   ),
                                 ),
                               ],
                             ),
                             Gap(
-                              40.h,
+                              16.h,
                             ),
                             GestureDetector(
                               onTap: () {
@@ -264,7 +260,7 @@ class _LoginViewState extends State<LoginView> {
                                       text: "أنشئ",
                                       style: TextStyle(
                                         fontSize: 16.sp,
-                                        color: Colors.blue,
+                                        color: AppColors.lightPrimaryColor,
                                         decorationThickness: 2.0,
                                       ),
                                     ),
@@ -282,6 +278,16 @@ class _LoginViewState extends State<LoginView> {
             );
           },
         ),
+      ),
+    );
+  }
+
+  OutlineInputBorder buildBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(4),
+      borderSide: const BorderSide(
+        color: Color(0xffE6E9E9),
+        width: 1,
       ),
     );
   }

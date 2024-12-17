@@ -149,7 +149,7 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                                   child: Container(
                                                     decoration: BoxDecoration(
                                                       color:
-                                                          AppColors.yellowColor,
+                                                          AppColors.brownColor,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               16),
@@ -164,7 +164,8 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                                             .toString(),
                                                         style: const TextStyle(
                                                           fontSize: 9,
-                                                          color: Colors.black,
+                                                          color: AppColors
+                                                              .lightPrimaryColor,
                                                         ),
                                                       ),
                                                     ),
