@@ -1,3 +1,5 @@
+import '../../../features/Auth/login/data/repo_imp/login_repo_impl.dart';
+import '../../../features/Auth/login/domain/repo/login_repo.dart';
 import '../../../features/categories/data/repo_impl/categories_repo_impl.dart';
 import '../../../features/categories/domain/repo/categories_repo.dart';
 import '../../../features/countries/data/repo_impl/countries_repo_impl.dart';
@@ -29,6 +31,16 @@ class RepositoryModule extends DIModule {
       ..registerLazySingleton<MainRepo>(
         () => MainRepoImpl(
           mainApi: getIt(),
+        ),
+      )
+      ..registerLazySingleton<LoginRepo>(
+        () => LoginRepoImpl(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<LoginRepoImpl>(
+        () => LoginRepoImpl(
+          getIt(),
         ),
       )
       ..registerLazySingleton<CountriesRepo>(

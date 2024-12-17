@@ -9,30 +9,32 @@ import 'app.dart';
 import 'core/app_observer.dart';
 import 'core/database/cache/shared_pref_helper.dart';
 import 'core/di/dependency_injection.dart';
+import 'core/notification_helper.dart';
 import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/countries/presentation/bloc/countries_bloc.dart';
 import 'features/coupons/present/bloc/coupons_bloc.dart';
 import 'features/governorates/present/bloc/governorates_bloc.dart';
 import 'features/notifications/present/bloc/notifications_bloc.dart';
 import 'features/offers/presentation/bloc/offers_bloc.dart';
-import 'features/stores/presentation/bloc/stores_bloc.dart';
+import 'features/stores/present/bloc/stores_bloc.dart';
 import 'features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // تهيئة Firebase
-
+  await Firebase.initializeApp();
   MobileAds.instance.initialize();
   await Injection.inject();
   SharedPrefHelper;
   Bloc.observer = AppBlocObserver();
   // await SharedPrefHelper.clearAllData();
-
-  Future.wait([
-    PushNotificationsServices.init(),
-    LocalNotificationsServices.init(),
-  ]);
-
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await NotificationsHelper().getAccessToken();
+  Future.wait(
+    [
+      PushNotificationsServices.init(),
+      LocalNotificationsServices.init(),
+    ],
+  );
   runApp(
     MultiBlocProvider(
       providers: [
@@ -80,4 +82,8 @@ void main() async {
       child: const AroodiApp(),
     ),
   );
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("Handling a background message: ${message.messageId}");
 }

@@ -8,7 +8,7 @@ import '../features/countries/presentation/bloc/countries_event.dart';
 import '../features/countries/presentation/bloc/countries_state.dart';
 import '../features/governorates/present/bloc/governorates_bloc.dart';
 import '../features/governorates/present/bloc/governorates_event.dart';
-import '../features/stores/presentation/bloc/stores_bloc.dart';
+import '../features/stores/present/bloc/stores_bloc.dart';
 import 'database/cache/shared_pref_helper.dart';
 import 'database/cache/shared_pref_keys.dart';
 import 'singletons/countries_singleton.dart';
@@ -23,7 +23,7 @@ import '../features/coupons/present/bloc/coupons_bloc.dart';
 import '../features/coupons/present/bloc/coupons_event.dart';
 import '../features/notifications/present/bloc/notifications_bloc.dart';
 import '../features/notifications/present/bloc/notifications_event.dart';
-import '../features/stores/presentation/bloc/stores_event.dart';
+import '../features/stores/present/bloc/stores_event.dart';
 import '../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 import '../features/sub_categories/presentation/bloc/sub_categories_event.dart';
 

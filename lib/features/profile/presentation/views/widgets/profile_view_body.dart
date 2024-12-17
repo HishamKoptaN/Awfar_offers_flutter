@@ -4,6 +4,8 @@ import 'package:awfar_offer_app/features/profile/presentation/views/widgets/icon
 import 'package:awfar_offer_app/features/settings/presentation/views/settings_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../Auth/login/presentation/view/login_view.dart';
+
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
 
@@ -65,7 +67,12 @@ class ProfileViewBody extends StatelessWidget {
                 IconAndTextWidget(
                   iconData: Icons.login_outlined,
                   title: "تسجيل الدخول",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      LoginView.routeName,
+                    );
+                  },
                 ),
                 Stack(
                   children: [

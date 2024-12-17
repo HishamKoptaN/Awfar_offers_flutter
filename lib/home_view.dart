@@ -7,8 +7,8 @@ import 'features/categories/presentation/views/categories_view.dart';
 import 'features/coupons/present/view/coupons_view.dart';
 import 'features/main/presentation/bloc/main_bloc.dart';
 import 'features/main/presentation/bloc/main_state.dart';
-import 'features/offers/presentation/views/offers_view.dart';
 import 'features/search/presentation/views/search_view.dart';
+import 'features/stores/present/views/stores_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -20,7 +20,7 @@ class HomeView extends StatefulWidget {
 class _HomeView extends State<HomeView> {
   int currentIndex = 0;
   final List<Widget> screens = [
-    const OfferView(),
+    const StoresView(),
     const CategoriesView(
       brandName: '',
     ),
@@ -39,7 +39,9 @@ class _HomeView extends State<HomeView> {
 
   @override
   Widget build(context) {
-    void onTapped(int index) {
+    void onTapped(
+      int index,
+    ) {
       setState(
         () {
           currentIndex = index;

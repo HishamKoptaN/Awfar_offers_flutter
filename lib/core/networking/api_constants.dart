@@ -13,6 +13,7 @@ class ApiConstants {
   static const String subCategoriesItems = "sub-categories-items";
   static const String products = "products";
   static const String coupons = "coupons";
+  static const String signup = "signup";
   static const String notifications = "notifications";
 }
 

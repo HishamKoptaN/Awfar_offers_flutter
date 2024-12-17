@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../offers/presentation/views/widgets/store/custom_marka_item.dart';
+import '../../../../stores/present/views/widgets/store/custom_marka_item.dart';
 
 class AppBarInCategory extends StatelessWidget {
   const AppBarInCategory({

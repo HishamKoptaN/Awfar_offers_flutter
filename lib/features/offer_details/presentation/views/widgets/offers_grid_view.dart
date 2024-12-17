@@ -38,7 +38,7 @@ class OffersGridView extends StatelessWidget {
               child: Center(
                 child: Image(
                   image: NetworkImage(
-                    store.offerGroups![index].image!,
+                    store.offerGroups![index].offers?.first.image ?? '',
                   ),
                 ),
               ),
