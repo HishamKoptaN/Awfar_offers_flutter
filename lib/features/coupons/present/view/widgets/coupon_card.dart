@@ -22,7 +22,7 @@ class CouponCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.primaryColor,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.purpleAccent),
+              border: Border.all(color: AppColors.lightPrimaryColor),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
