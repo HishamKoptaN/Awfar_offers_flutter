@@ -358,19 +358,15 @@ mixin _$OfferGroup {
   @JsonKey(name: "id")
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: "status")
-  int? get status => throw _privateConstructorUsedError;
+  bool? get status => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: "store_id")
   int? get storeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "image")
-  String? get image => throw _privateConstructorUsedError;
-  @JsonKey(name: "category_id")
-  int? get categoryId => throw _privateConstructorUsedError;
   @JsonKey(name: "start_at")
   dynamic get startAt => throw _privateConstructorUsedError;
   @JsonKey(name: "end_at")
-  dynamic get endAt => throw _privateConstructorUsedError;
+  DateTime? get endAt => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
@@ -398,13 +394,11 @@ abstract class $OfferGroupCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "status") int? status,
+      @JsonKey(name: "status") bool? status,
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "store_id") int? storeId,
-      @JsonKey(name: "image") String? image,
-      @JsonKey(name: "category_id") int? categoryId,
       @JsonKey(name: "start_at") dynamic startAt,
-      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "end_at") DateTime? endAt,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "days_remaining") String? daysRemaining,
@@ -430,8 +424,6 @@ class _$OfferGroupCopyWithImpl<$Res, $Val extends OfferGroup>
     Object? status = freezed,
     Object? name = freezed,
     Object? storeId = freezed,
-    Object? image = freezed,
-    Object? categoryId = freezed,
     Object? startAt = freezed,
     Object? endAt = freezed,
     Object? createdAt = freezed,
@@ -447,7 +439,7 @@ class _$OfferGroupCopyWithImpl<$Res, $Val extends OfferGroup>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as bool?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -456,14 +448,6 @@ class _$OfferGroupCopyWithImpl<$Res, $Val extends OfferGroup>
           ? _value.storeId
           : storeId // ignore: cast_nullable_to_non_nullable
               as int?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
       startAt: freezed == startAt
           ? _value.startAt
           : startAt // ignore: cast_nullable_to_non_nullable
@@ -471,7 +455,7 @@ class _$OfferGroupCopyWithImpl<$Res, $Val extends OfferGroup>
       endAt: freezed == endAt
           ? _value.endAt
           : endAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -502,13 +486,11 @@ abstract class _$$OfferGroupImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "status") int? status,
+      @JsonKey(name: "status") bool? status,
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "store_id") int? storeId,
-      @JsonKey(name: "image") String? image,
-      @JsonKey(name: "category_id") int? categoryId,
       @JsonKey(name: "start_at") dynamic startAt,
-      @JsonKey(name: "end_at") dynamic endAt,
+      @JsonKey(name: "end_at") DateTime? endAt,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "days_remaining") String? daysRemaining,
@@ -532,8 +514,6 @@ class __$$OfferGroupImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? name = freezed,
     Object? storeId = freezed,
-    Object? image = freezed,
-    Object? categoryId = freezed,
     Object? startAt = freezed,
     Object? endAt = freezed,
     Object? createdAt = freezed,
@@ -549,7 +529,7 @@ class __$$OfferGroupImplCopyWithImpl<$Res>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as bool?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -558,14 +538,6 @@ class __$$OfferGroupImplCopyWithImpl<$Res>
           ? _value.storeId
           : storeId // ignore: cast_nullable_to_non_nullable
               as int?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      categoryId: freezed == categoryId
-          ? _value.categoryId
-          : categoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
       startAt: freezed == startAt
           ? _value.startAt
           : startAt // ignore: cast_nullable_to_non_nullable
@@ -573,7 +545,7 @@ class __$$OfferGroupImplCopyWithImpl<$Res>
       endAt: freezed == endAt
           ? _value.endAt
           : endAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -602,8 +574,6 @@ class _$OfferGroupImpl implements _OfferGroup {
       @JsonKey(name: "status") this.status,
       @JsonKey(name: "name") this.name,
       @JsonKey(name: "store_id") this.storeId,
-      @JsonKey(name: "image") this.image,
-      @JsonKey(name: "category_id") this.categoryId,
       @JsonKey(name: "start_at") this.startAt,
       @JsonKey(name: "end_at") this.endAt,
       @JsonKey(name: "created_at") this.createdAt,
@@ -620,7 +590,7 @@ class _$OfferGroupImpl implements _OfferGroup {
   final int? id;
   @override
   @JsonKey(name: "status")
-  final int? status;
+  final bool? status;
   @override
   @JsonKey(name: "name")
   final String? name;
@@ -628,17 +598,11 @@ class _$OfferGroupImpl implements _OfferGroup {
   @JsonKey(name: "store_id")
   final int? storeId;
   @override
-  @JsonKey(name: "image")
-  final String? image;
-  @override
-  @JsonKey(name: "category_id")
-  final int? categoryId;
-  @override
   @JsonKey(name: "start_at")
   final dynamic startAt;
   @override
   @JsonKey(name: "end_at")
-  final dynamic endAt;
+  final DateTime? endAt;
   @override
   @JsonKey(name: "created_at")
   final String? createdAt;
@@ -661,7 +625,7 @@ class _$OfferGroupImpl implements _OfferGroup {
 
   @override
   String toString() {
-    return 'OfferGroup(id: $id, status: $status, name: $name, storeId: $storeId, image: $image, categoryId: $categoryId, startAt: $startAt, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt, daysRemaining: $daysRemaining, offers: $offers)';
+    return 'OfferGroup(id: $id, status: $status, name: $name, storeId: $storeId, startAt: $startAt, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt, daysRemaining: $daysRemaining, offers: $offers)';
   }
 
   @override
@@ -673,11 +637,8 @@ class _$OfferGroupImpl implements _OfferGroup {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.storeId, storeId) || other.storeId == storeId) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.categoryId, categoryId) ||
-                other.categoryId == categoryId) &&
             const DeepCollectionEquality().equals(other.startAt, startAt) &&
-            const DeepCollectionEquality().equals(other.endAt, endAt) &&
+            (identical(other.endAt, endAt) || other.endAt == endAt) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -695,10 +656,8 @@ class _$OfferGroupImpl implements _OfferGroup {
       status,
       name,
       storeId,
-      image,
-      categoryId,
       const DeepCollectionEquality().hash(startAt),
-      const DeepCollectionEquality().hash(endAt),
+      endAt,
       createdAt,
       updatedAt,
       daysRemaining,
@@ -723,13 +682,11 @@ class _$OfferGroupImpl implements _OfferGroup {
 abstract class _OfferGroup implements OfferGroup {
   const factory _OfferGroup(
       {@JsonKey(name: "id") final int? id,
-      @JsonKey(name: "status") final int? status,
+      @JsonKey(name: "status") final bool? status,
       @JsonKey(name: "name") final String? name,
       @JsonKey(name: "store_id") final int? storeId,
-      @JsonKey(name: "image") final String? image,
-      @JsonKey(name: "category_id") final int? categoryId,
       @JsonKey(name: "start_at") final dynamic startAt,
-      @JsonKey(name: "end_at") final dynamic endAt,
+      @JsonKey(name: "end_at") final DateTime? endAt,
       @JsonKey(name: "created_at") final String? createdAt,
       @JsonKey(name: "updated_at") final String? updatedAt,
       @JsonKey(name: "days_remaining") final String? daysRemaining,
@@ -743,7 +700,7 @@ abstract class _OfferGroup implements OfferGroup {
   int? get id;
   @override
   @JsonKey(name: "status")
-  int? get status;
+  bool? get status;
   @override
   @JsonKey(name: "name")
   String? get name;
@@ -751,17 +708,11 @@ abstract class _OfferGroup implements OfferGroup {
   @JsonKey(name: "store_id")
   int? get storeId;
   @override
-  @JsonKey(name: "image")
-  String? get image;
-  @override
-  @JsonKey(name: "category_id")
-  int? get categoryId;
-  @override
   @JsonKey(name: "start_at")
   dynamic get startAt;
   @override
   @JsonKey(name: "end_at")
-  dynamic get endAt;
+  DateTime? get endAt;
   @override
   @JsonKey(name: "created_at")
   String? get createdAt;
@@ -791,12 +742,12 @@ Offer _$OfferFromJson(Map<String, dynamic> json) {
 mixin _$Offer {
   @JsonKey(name: "id")
   int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "status")
-  int? get status => throw _privateConstructorUsedError;
-  @JsonKey(name: "image")
-  String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: "offer_group_id")
   int? get offerGroupId => throw _privateConstructorUsedError;
+  @JsonKey(name: "status")
+  bool? get status => throw _privateConstructorUsedError;
+  @JsonKey(name: "image")
+  String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
@@ -820,9 +771,9 @@ abstract class $OfferCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "status") int? status,
-      @JsonKey(name: "image") String? image,
       @JsonKey(name: "offer_group_id") int? offerGroupId,
+      @JsonKey(name: "status") bool? status,
+      @JsonKey(name: "image") String? image,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "days_remaining") int? daysRemaining});
@@ -844,9 +795,9 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
   @override
   $Res call({
     Object? id = freezed,
+    Object? offerGroupId = freezed,
     Object? status = freezed,
     Object? image = freezed,
-    Object? offerGroupId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? daysRemaining = freezed,
@@ -856,18 +807,18 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
       offerGroupId: freezed == offerGroupId
           ? _value.offerGroupId
           : offerGroupId // ignore: cast_nullable_to_non_nullable
               as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -893,9 +844,9 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "status") int? status,
-      @JsonKey(name: "image") String? image,
       @JsonKey(name: "offer_group_id") int? offerGroupId,
+      @JsonKey(name: "status") bool? status,
+      @JsonKey(name: "image") String? image,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt,
       @JsonKey(name: "days_remaining") int? daysRemaining});
@@ -915,9 +866,9 @@ class __$$OfferImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? offerGroupId = freezed,
     Object? status = freezed,
     Object? image = freezed,
-    Object? offerGroupId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? daysRemaining = freezed,
@@ -927,18 +878,18 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
       offerGroupId: freezed == offerGroupId
           ? _value.offerGroupId
           : offerGroupId // ignore: cast_nullable_to_non_nullable
               as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -960,9 +911,9 @@ class __$$OfferImplCopyWithImpl<$Res>
 class _$OfferImpl implements _Offer {
   const _$OfferImpl(
       {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "offer_group_id") this.offerGroupId,
       @JsonKey(name: "status") this.status,
       @JsonKey(name: "image") this.image,
-      @JsonKey(name: "offer_group_id") this.offerGroupId,
       @JsonKey(name: "created_at") this.createdAt,
       @JsonKey(name: "updated_at") this.updatedAt,
       @JsonKey(name: "days_remaining") this.daysRemaining});
@@ -974,14 +925,14 @@ class _$OfferImpl implements _Offer {
   @JsonKey(name: "id")
   final int? id;
   @override
+  @JsonKey(name: "offer_group_id")
+  final int? offerGroupId;
+  @override
   @JsonKey(name: "status")
-  final int? status;
+  final bool? status;
   @override
   @JsonKey(name: "image")
   final String? image;
-  @override
-  @JsonKey(name: "offer_group_id")
-  final int? offerGroupId;
   @override
   @JsonKey(name: "created_at")
   final String? createdAt;
@@ -994,7 +945,7 @@ class _$OfferImpl implements _Offer {
 
   @override
   String toString() {
-    return 'Offer(id: $id, status: $status, image: $image, offerGroupId: $offerGroupId, createdAt: $createdAt, updatedAt: $updatedAt, daysRemaining: $daysRemaining)';
+    return 'Offer(id: $id, offerGroupId: $offerGroupId, status: $status, image: $image, createdAt: $createdAt, updatedAt: $updatedAt, daysRemaining: $daysRemaining)';
   }
 
   @override
@@ -1003,10 +954,10 @@ class _$OfferImpl implements _Offer {
         (other.runtimeType == runtimeType &&
             other is _$OfferImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.image, image) || other.image == image) &&
             (identical(other.offerGroupId, offerGroupId) ||
                 other.offerGroupId == offerGroupId) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -1017,7 +968,7 @@ class _$OfferImpl implements _Offer {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, status, image, offerGroupId,
+  int get hashCode => Object.hash(runtimeType, id, offerGroupId, status, image,
       createdAt, updatedAt, daysRemaining);
 
   /// Create a copy of Offer
@@ -1039,9 +990,9 @@ class _$OfferImpl implements _Offer {
 abstract class _Offer implements Offer {
   const factory _Offer(
       {@JsonKey(name: "id") final int? id,
-      @JsonKey(name: "status") final int? status,
-      @JsonKey(name: "image") final String? image,
       @JsonKey(name: "offer_group_id") final int? offerGroupId,
+      @JsonKey(name: "status") final bool? status,
+      @JsonKey(name: "image") final String? image,
       @JsonKey(name: "created_at") final String? createdAt,
       @JsonKey(name: "updated_at") final String? updatedAt,
       @JsonKey(name: "days_remaining") final int? daysRemaining}) = _$OfferImpl;
@@ -1052,14 +1003,14 @@ abstract class _Offer implements Offer {
   @JsonKey(name: "id")
   int? get id;
   @override
+  @JsonKey(name: "offer_group_id")
+  int? get offerGroupId;
+  @override
   @JsonKey(name: "status")
-  int? get status;
+  bool? get status;
   @override
   @JsonKey(name: "image")
   String? get image;
-  @override
-  @JsonKey(name: "offer_group_id")
-  int? get offerGroupId;
   @override
   @JsonKey(name: "created_at")
   String? get createdAt;

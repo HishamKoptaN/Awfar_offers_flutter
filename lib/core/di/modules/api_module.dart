@@ -1,3 +1,4 @@
+import '../../../features/Auth/login/data/data_sources/login_api.dart';
 import '../../../features/categories/data/data_sources/categories_api.dart';
 import '../../../features/countries/data/data_sources/countries_api.dart';
 import '../../../features/coupons/data/data_sources/coupons_api.dart';
@@ -20,6 +21,11 @@ class ApiModule extends DIModule {
       ..registerSingleton(dio)
       ..registerLazySingleton<MainApi>(
         () => MainApi(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<LoginApi>(
+        () => LoginApi(
           getIt(),
         ),
       )

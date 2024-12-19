@@ -1,3 +1,4 @@
+import '../../../features/Auth/login/presentation/bloc/login_bloc.dart';
 import '../../../features/categories/presentation/bloc/categories_bloc.dart';
 import '../../../features/countries/presentation/bloc/countries_bloc.dart';
 import '../../../features/coupons/present/bloc/coupons_bloc.dart';
@@ -6,7 +7,7 @@ import '../../../features/main/presentation/bloc/main_bloc.dart';
 import '../../../features/notifications/present/bloc/notifications_bloc.dart';
 import '../../../features/offers/presentation/bloc/offers_bloc.dart';
 import '../../../features/products/presentation/bloc/products_bloc.dart';
-import '../../../features/stores/presentation/bloc/stores_bloc.dart';
+import '../../../features/stores/present/bloc/stores_bloc.dart';
 import '../../../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 import '../../../features/sub_categories_items/presentation/bloc/sub_categories_items_bloc.dart';
 import '../dependency_injection.dart';
@@ -18,6 +19,11 @@ class BlocModule extends DIModule {
       ..registerLazySingleton<MainBloc>(
         () => MainBloc(
           checkUseCase: getIt(),
+        ),
+      )
+      ..registerLazySingleton<LoginBloc>(
+        () => LoginBloc(
+          getIt(),
         ),
       )
       ..registerLazySingleton<CountriesBloc>(

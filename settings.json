@@ -1,0 +1,16 @@
+{
+    "editor.formatOnSave": false,
+    "editor.codeLens": false,
+    "editor.lightbulb.enabled": false,
+    "files.autoSave": "onFocusChange",
+    "files.watcherExclude": {
+      "**/node_modules/*": true,
+      "**/.git/*": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/build": true
+    },
+    "terminal.integrated.scrollback": 1000
+  }
+  

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -23,6 +24,25 @@ class AroodiApp extends StatefulWidget {
 }
 
 class _AroodiAppState extends State<AroodiApp> {
+  getToken() async {
+    String? myToken = await FirebaseMessaging.instance.getToken();
+    print("My token  ==================${myToken}");
+  }
+
+  //! allow notifactions permissions for ios and web
+  requestPermissions() async {
+    FirebaseMessaging? firebaseMessaging = await FirebaseMessaging.instance;
+    NotificationSettings settings = await firebaseMessaging.requestPermission(
+      alert: true,
+      announcement: true,
+      badge: true,
+      carPlay: true,
+      criticalAlert: true,
+      provisional: true,
+      sound: true,
+    );
+  }
+
   Future<void> injectEvent() async {
     await Future.microtask(
       () async {
@@ -41,6 +61,7 @@ class _AroodiAppState extends State<AroodiApp> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
+        getToken();
         injectEvent();
       },
     );
@@ -49,8 +70,10 @@ class _AroodiAppState extends State<AroodiApp> {
   @override
   Widget build(context) {
     return ScreenUtilInit(
-      designSize: Size(MediaQuery.of(context).size.width,
-          MediaQuery.of(context).size.height),
+      designSize: Size(
+        MediaQuery.of(context).size.width,
+        MediaQuery.of(context).size.height,
+      ),
       minTextAdapt: true,
       splitScreenMode: true,
       child: BlocProvider(

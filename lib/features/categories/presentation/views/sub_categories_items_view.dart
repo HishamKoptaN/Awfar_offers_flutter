@@ -1,6 +1,6 @@
 import 'package:awfar_offer_app/core/utils/app_colors.dart';
 import 'package:awfar_offer_app/features/categories/presentation/views/widgets/app_bar_in_sub_category.dart';
-import 'package:awfar_offer_app/features/offers/presentation/views/widgets/store/custom_marka_item.dart';
+import 'package:awfar_offer_app/features/stores/present/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

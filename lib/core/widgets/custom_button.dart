@@ -1,29 +1,47 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_colors.dart';
-import '../utils/app_text_styles.dart';
+import 'custom_text.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.text, required this.onPressed});
-  final String text;
-  final VoidCallback onPressed;
-
+class CustomTextButtonWidget extends StatelessWidget {
+  const CustomTextButtonWidget({
+    super.key,
+    required this.onPressed,
+    this.text,
+    this.buttonColor = AppColors.primaryColor,
+    this.textColor = Colors.white,
+    this.widget,
+  });
+  final void Function()? onPressed;
+  final String? text;
+  final Color buttonColor;
+  final Color textColor;
+  final Widget? widget;
   @override
   Widget build(context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 54,
-      child: TextButton(
-        style: TextButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          backgroundColor: AppColors.primaryColor,
+    return TextButton(
+      onPressed: onPressed,
+      child: Container(
+        width: 175.w,
+        height: 50.h,
+        decoration: BoxDecoration(
+          color: buttonColor,
+          borderRadius: BorderRadius.circular(10),
         ),
-        onPressed: onPressed,
-        child: Text(
-          text,
-          style: TextStyles.bold16.copyWith(color: Colors.white),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.all(
+              5.sp,
+            ),
+            child: widget ??
+                CustomText(
+                  text: text ?? "",
+                  color: textColor,
+                  fontSize: 18.sp,
+                  maxLines: 2,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
         ),
       ),
     );

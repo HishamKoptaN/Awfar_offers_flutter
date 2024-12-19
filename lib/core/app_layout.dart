@@ -6,14 +6,14 @@ import 'widgets/custom_text.dart';
 class AppLayout extends StatefulWidget {
   AppLayout({
     super.key,
-    required this.route,
+    this.route,
     required this.body,
     required this.showAppBar,
     this.backArow = false,
     this.onPressed,
     this.floatingActionButton,
   });
-  final String route;
+  final String? route;
   final Widget body;
   final bool showAppBar;
   final bool backArow;
@@ -45,7 +45,7 @@ class _AppLayoutState extends State<AppLayout> {
                       )
                     : null,
                 title: CustomText(
-                  text: widget.route,
+                  text: widget.route ?? '',
                   color: AppColors.primaryColor,
                   fontSize: 30.sp,
                   fontWeight: FontWeight.bold,

@@ -26,10 +26,10 @@ mixin _$User {
   String get accountNumber => throw _privateConstructorUsedError;
   @JsonKey(name: "online_offline")
   String get onlineOffline => throw _privateConstructorUsedError;
-  @JsonKey(name: "name")
-  String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: "username")
-  String get username => throw _privateConstructorUsedError;
+  @JsonKey(name: "first_name")
+  String get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: "last_name")
+  String get lastName => throw _privateConstructorUsedError;
   @JsonKey(name: "email")
   String get email => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
@@ -38,10 +38,6 @@ mixin _$User {
   String get address => throw _privateConstructorUsedError;
   @JsonKey(name: "phone")
   String get phone => throw _privateConstructorUsedError;
-  @JsonKey(name: "balance")
-  double get balance => throw _privateConstructorUsedError;
-  @JsonKey(name: "plan_id")
-  int get planId => throw _privateConstructorUsedError;
   @JsonKey(name: "upgraded_at")
   String get upgradedAt => throw _privateConstructorUsedError;
 
@@ -63,14 +59,12 @@ abstract class $UserCopyWith<$Res> {
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "account_number") String accountNumber,
       @JsonKey(name: "online_offline") String onlineOffline,
-      @JsonKey(name: "name") String name,
-      @JsonKey(name: "username") String username,
+      @JsonKey(name: "first_name") String firstName,
+      @JsonKey(name: "last_name") String lastName,
       @JsonKey(name: "email") String email,
       @JsonKey(name: "image") String image,
       @JsonKey(name: "address") String address,
       @JsonKey(name: "phone") String phone,
-      @JsonKey(name: "balance") double balance,
-      @JsonKey(name: "plan_id") int planId,
       @JsonKey(name: "upgraded_at") String upgradedAt});
 }
 
@@ -92,14 +86,12 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? id = null,
     Object? accountNumber = null,
     Object? onlineOffline = null,
-    Object? name = null,
-    Object? username = null,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? email = null,
     Object? image = null,
     Object? address = null,
     Object? phone = null,
-    Object? balance = null,
-    Object? planId = null,
     Object? upgradedAt = null,
   }) {
     return _then(_value.copyWith(
@@ -115,13 +107,13 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.onlineOffline
           : onlineOffline // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -139,14 +131,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      balance: null == balance
-          ? _value.balance
-          : balance // ignore: cast_nullable_to_non_nullable
-              as double,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as int,
       upgradedAt: null == upgradedAt
           ? _value.upgradedAt
           : upgradedAt // ignore: cast_nullable_to_non_nullable
@@ -166,14 +150,12 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       {@JsonKey(name: "id") int id,
       @JsonKey(name: "account_number") String accountNumber,
       @JsonKey(name: "online_offline") String onlineOffline,
-      @JsonKey(name: "name") String name,
-      @JsonKey(name: "username") String username,
+      @JsonKey(name: "first_name") String firstName,
+      @JsonKey(name: "last_name") String lastName,
       @JsonKey(name: "email") String email,
       @JsonKey(name: "image") String image,
       @JsonKey(name: "address") String address,
       @JsonKey(name: "phone") String phone,
-      @JsonKey(name: "balance") double balance,
-      @JsonKey(name: "plan_id") int planId,
       @JsonKey(name: "upgraded_at") String upgradedAt});
 }
 
@@ -192,14 +174,12 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? id = null,
     Object? accountNumber = null,
     Object? onlineOffline = null,
-    Object? name = null,
-    Object? username = null,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? email = null,
     Object? image = null,
     Object? address = null,
     Object? phone = null,
-    Object? balance = null,
-    Object? planId = null,
     Object? upgradedAt = null,
   }) {
     return _then(_$UserImpl(
@@ -215,13 +195,13 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.onlineOffline
           : onlineOffline // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -239,14 +219,6 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      balance: null == balance
-          ? _value.balance
-          : balance // ignore: cast_nullable_to_non_nullable
-              as double,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as int,
       upgradedAt: null == upgradedAt
           ? _value.upgradedAt
           : upgradedAt // ignore: cast_nullable_to_non_nullable
@@ -262,14 +234,12 @@ class _$UserImpl implements _User {
       {@JsonKey(name: "id") this.id = 0,
       @JsonKey(name: "account_number") this.accountNumber = "",
       @JsonKey(name: "online_offline") this.onlineOffline = "",
-      @JsonKey(name: "name") this.name = "",
-      @JsonKey(name: "username") this.username = "",
+      @JsonKey(name: "first_name") this.firstName = "",
+      @JsonKey(name: "last_name") this.lastName = "",
       @JsonKey(name: "email") this.email = "",
       @JsonKey(name: "image") this.image = "",
       @JsonKey(name: "address") this.address = "",
       @JsonKey(name: "phone") this.phone = "",
-      @JsonKey(name: "balance") this.balance = 0.0,
-      @JsonKey(name: "plan_id") this.planId = 1,
       @JsonKey(name: "upgraded_at") this.upgradedAt = ""});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -285,11 +255,11 @@ class _$UserImpl implements _User {
   @JsonKey(name: "online_offline")
   final String onlineOffline;
   @override
-  @JsonKey(name: "name")
-  final String name;
+  @JsonKey(name: "first_name")
+  final String firstName;
   @override
-  @JsonKey(name: "username")
-  final String username;
+  @JsonKey(name: "last_name")
+  final String lastName;
   @override
   @JsonKey(name: "email")
   final String email;
@@ -303,18 +273,12 @@ class _$UserImpl implements _User {
   @JsonKey(name: "phone")
   final String phone;
   @override
-  @JsonKey(name: "balance")
-  final double balance;
-  @override
-  @JsonKey(name: "plan_id")
-  final int planId;
-  @override
   @JsonKey(name: "upgraded_at")
   final String upgradedAt;
 
   @override
   String toString() {
-    return 'User(id: $id, accountNumber: $accountNumber, onlineOffline: $onlineOffline, name: $name, username: $username, email: $email, image: $image, address: $address, phone: $phone, balance: $balance, planId: $planId, upgradedAt: $upgradedAt)';
+    return 'User(id: $id, accountNumber: $accountNumber, onlineOffline: $onlineOffline, firstName: $firstName, lastName: $lastName, email: $email, image: $image, address: $address, phone: $phone, upgradedAt: $upgradedAt)';
   }
 
   @override
@@ -327,35 +291,22 @@ class _$UserImpl implements _User {
                 other.accountNumber == accountNumber) &&
             (identical(other.onlineOffline, onlineOffline) ||
                 other.onlineOffline == onlineOffline) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.balance, balance) || other.balance == balance) &&
-            (identical(other.planId, planId) || other.planId == planId) &&
             (identical(other.upgradedAt, upgradedAt) ||
                 other.upgradedAt == upgradedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      accountNumber,
-      onlineOffline,
-      name,
-      username,
-      email,
-      image,
-      address,
-      phone,
-      balance,
-      planId,
-      upgradedAt);
+  int get hashCode => Object.hash(runtimeType, id, accountNumber, onlineOffline,
+      firstName, lastName, email, image, address, phone, upgradedAt);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -378,14 +329,12 @@ abstract class _User implements User {
       {@JsonKey(name: "id") final int id,
       @JsonKey(name: "account_number") final String accountNumber,
       @JsonKey(name: "online_offline") final String onlineOffline,
-      @JsonKey(name: "name") final String name,
-      @JsonKey(name: "username") final String username,
+      @JsonKey(name: "first_name") final String firstName,
+      @JsonKey(name: "last_name") final String lastName,
       @JsonKey(name: "email") final String email,
       @JsonKey(name: "image") final String image,
       @JsonKey(name: "address") final String address,
       @JsonKey(name: "phone") final String phone,
-      @JsonKey(name: "balance") final double balance,
-      @JsonKey(name: "plan_id") final int planId,
       @JsonKey(name: "upgraded_at") final String upgradedAt}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -400,11 +349,11 @@ abstract class _User implements User {
   @JsonKey(name: "online_offline")
   String get onlineOffline;
   @override
-  @JsonKey(name: "name")
-  String get name;
+  @JsonKey(name: "first_name")
+  String get firstName;
   @override
-  @JsonKey(name: "username")
-  String get username;
+  @JsonKey(name: "last_name")
+  String get lastName;
   @override
   @JsonKey(name: "email")
   String get email;
@@ -417,12 +366,6 @@ abstract class _User implements User {
   @override
   @JsonKey(name: "phone")
   String get phone;
-  @override
-  @JsonKey(name: "balance")
-  double get balance;
-  @override
-  @JsonKey(name: "plan_id")
-  int get planId;
   @override
   @JsonKey(name: "upgraded_at")
   String get upgradedAt;
