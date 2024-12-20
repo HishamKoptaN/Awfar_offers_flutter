@@ -22,26 +22,14 @@ Offer _$OfferFromJson(Map<String, dynamic> json) {
 mixin _$Offer {
   @JsonKey(name: "id")
   int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "name")
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: "description")
-  String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: "offer_group_id")
+  int? get offerGroupId => throw _privateConstructorUsedError;
+  @JsonKey(name: "status")
+  bool? get status => throw _privateConstructorUsedError;
   @JsonKey(name: "image")
   String? get image => throw _privateConstructorUsedError;
-  @JsonKey(name: "days_remaining")
-  int? get daysRemaining => throw _privateConstructorUsedError;
-  @JsonKey(name: "sub_category")
-  SubCategory? get subCategory => throw _privateConstructorUsedError;
-  @JsonKey(name: "store")
-  Store? get store => throw _privateConstructorUsedError;
-  @JsonKey(name: "status")
-  String? get status => throw _privateConstructorUsedError;
-  @JsonKey(name: "store_id")
-  int? get storeId => throw _privateConstructorUsedError;
-  @JsonKey(name: "sub_category_id")
-  int? get subCategoryId => throw _privateConstructorUsedError;
-  @JsonKey(name: "end_at")
-  DateTime? get endAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "offer_group")
+  OfferGroup? get offerGroup => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: "updated_at")
@@ -63,21 +51,14 @@ abstract class $OfferCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "name") String? name,
-      @JsonKey(name: "description") String? description,
+      @JsonKey(name: "offer_group_id") int? offerGroupId,
+      @JsonKey(name: "status") bool? status,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "days_remaining") int? daysRemaining,
-      @JsonKey(name: "sub_category") SubCategory? subCategory,
-      @JsonKey(name: "store") Store? store,
-      @JsonKey(name: "status") String? status,
-      @JsonKey(name: "store_id") int? storeId,
-      @JsonKey(name: "sub_category_id") int? subCategoryId,
-      @JsonKey(name: "end_at") DateTime? endAt,
+      @JsonKey(name: "offer_group") OfferGroup? offerGroup,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt});
 
-  $SubCategoryCopyWith<$Res>? get subCategory;
-  $StoreCopyWith<$Res>? get store;
+  $OfferGroupCopyWith<$Res>? get offerGroup;
 }
 
 /// @nodoc
@@ -96,16 +77,10 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? daysRemaining = freezed,
-    Object? subCategory = freezed,
-    Object? store = freezed,
+    Object? offerGroupId = freezed,
     Object? status = freezed,
-    Object? storeId = freezed,
-    Object? subCategoryId = freezed,
-    Object? endAt = freezed,
+    Object? image = freezed,
+    Object? offerGroup = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -114,46 +89,22 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+      offerGroupId: freezed == offerGroupId
+          ? _value.offerGroupId
+          : offerGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      daysRemaining: freezed == daysRemaining
-          ? _value.daysRemaining
-          : daysRemaining // ignore: cast_nullable_to_non_nullable
-              as int?,
-      subCategory: freezed == subCategory
-          ? _value.subCategory
-          : subCategory // ignore: cast_nullable_to_non_nullable
-              as SubCategory?,
-      store: freezed == store
-          ? _value.store
-          : store // ignore: cast_nullable_to_non_nullable
-              as Store?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      storeId: freezed == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      subCategoryId: freezed == subCategoryId
-          ? _value.subCategoryId
-          : subCategoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      endAt: freezed == endAt
-          ? _value.endAt
-          : endAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      offerGroup: freezed == offerGroup
+          ? _value.offerGroup
+          : offerGroup // ignore: cast_nullable_to_non_nullable
+              as OfferGroup?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -169,27 +120,13 @@ class _$OfferCopyWithImpl<$Res, $Val extends Offer>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $SubCategoryCopyWith<$Res>? get subCategory {
-    if (_value.subCategory == null) {
+  $OfferGroupCopyWith<$Res>? get offerGroup {
+    if (_value.offerGroup == null) {
       return null;
     }
 
-    return $SubCategoryCopyWith<$Res>(_value.subCategory!, (value) {
-      return _then(_value.copyWith(subCategory: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Offer
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $StoreCopyWith<$Res>? get store {
-    if (_value.store == null) {
-      return null;
-    }
-
-    return $StoreCopyWith<$Res>(_value.store!, (value) {
-      return _then(_value.copyWith(store: value) as $Val);
+    return $OfferGroupCopyWith<$Res>(_value.offerGroup!, (value) {
+      return _then(_value.copyWith(offerGroup: value) as $Val);
     });
   }
 }
@@ -203,23 +140,15 @@ abstract class _$$OfferImplCopyWith<$Res> implements $OfferCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "id") int? id,
-      @JsonKey(name: "name") String? name,
-      @JsonKey(name: "description") String? description,
+      @JsonKey(name: "offer_group_id") int? offerGroupId,
+      @JsonKey(name: "status") bool? status,
       @JsonKey(name: "image") String? image,
-      @JsonKey(name: "days_remaining") int? daysRemaining,
-      @JsonKey(name: "sub_category") SubCategory? subCategory,
-      @JsonKey(name: "store") Store? store,
-      @JsonKey(name: "status") String? status,
-      @JsonKey(name: "store_id") int? storeId,
-      @JsonKey(name: "sub_category_id") int? subCategoryId,
-      @JsonKey(name: "end_at") DateTime? endAt,
+      @JsonKey(name: "offer_group") OfferGroup? offerGroup,
       @JsonKey(name: "created_at") String? createdAt,
       @JsonKey(name: "updated_at") String? updatedAt});
 
   @override
-  $SubCategoryCopyWith<$Res>? get subCategory;
-  @override
-  $StoreCopyWith<$Res>? get store;
+  $OfferGroupCopyWith<$Res>? get offerGroup;
 }
 
 /// @nodoc
@@ -236,16 +165,10 @@ class __$$OfferImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
-    Object? description = freezed,
-    Object? image = freezed,
-    Object? daysRemaining = freezed,
-    Object? subCategory = freezed,
-    Object? store = freezed,
+    Object? offerGroupId = freezed,
     Object? status = freezed,
-    Object? storeId = freezed,
-    Object? subCategoryId = freezed,
-    Object? endAt = freezed,
+    Object? image = freezed,
+    Object? offerGroup = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -254,46 +177,22 @@ class __$$OfferImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+      offerGroupId: freezed == offerGroupId
+          ? _value.offerGroupId
+          : offerGroupId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      daysRemaining: freezed == daysRemaining
-          ? _value.daysRemaining
-          : daysRemaining // ignore: cast_nullable_to_non_nullable
-              as int?,
-      subCategory: freezed == subCategory
-          ? _value.subCategory
-          : subCategory // ignore: cast_nullable_to_non_nullable
-              as SubCategory?,
-      store: freezed == store
-          ? _value.store
-          : store // ignore: cast_nullable_to_non_nullable
-              as Store?,
-      status: freezed == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      storeId: freezed == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      subCategoryId: freezed == subCategoryId
-          ? _value.subCategoryId
-          : subCategoryId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      endAt: freezed == endAt
-          ? _value.endAt
-          : endAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      offerGroup: freezed == offerGroup
+          ? _value.offerGroup
+          : offerGroup // ignore: cast_nullable_to_non_nullable
+              as OfferGroup?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -311,16 +210,10 @@ class __$$OfferImplCopyWithImpl<$Res>
 class _$OfferImpl implements _Offer {
   const _$OfferImpl(
       {@JsonKey(name: "id") this.id,
-      @JsonKey(name: "name") this.name,
-      @JsonKey(name: "description") this.description,
-      @JsonKey(name: "image") this.image,
-      @JsonKey(name: "days_remaining") this.daysRemaining,
-      @JsonKey(name: "sub_category") this.subCategory,
-      @JsonKey(name: "store") this.store,
+      @JsonKey(name: "offer_group_id") this.offerGroupId,
       @JsonKey(name: "status") this.status,
-      @JsonKey(name: "store_id") this.storeId,
-      @JsonKey(name: "sub_category_id") this.subCategoryId,
-      @JsonKey(name: "end_at") this.endAt,
+      @JsonKey(name: "image") this.image,
+      @JsonKey(name: "offer_group") this.offerGroup,
       @JsonKey(name: "created_at") this.createdAt,
       @JsonKey(name: "updated_at") this.updatedAt});
 
@@ -331,35 +224,17 @@ class _$OfferImpl implements _Offer {
   @JsonKey(name: "id")
   final int? id;
   @override
-  @JsonKey(name: "name")
-  final String? name;
+  @JsonKey(name: "offer_group_id")
+  final int? offerGroupId;
   @override
-  @JsonKey(name: "description")
-  final String? description;
+  @JsonKey(name: "status")
+  final bool? status;
   @override
   @JsonKey(name: "image")
   final String? image;
   @override
-  @JsonKey(name: "days_remaining")
-  final int? daysRemaining;
-  @override
-  @JsonKey(name: "sub_category")
-  final SubCategory? subCategory;
-  @override
-  @JsonKey(name: "store")
-  final Store? store;
-  @override
-  @JsonKey(name: "status")
-  final String? status;
-  @override
-  @JsonKey(name: "store_id")
-  final int? storeId;
-  @override
-  @JsonKey(name: "sub_category_id")
-  final int? subCategoryId;
-  @override
-  @JsonKey(name: "end_at")
-  final DateTime? endAt;
+  @JsonKey(name: "offer_group")
+  final OfferGroup? offerGroup;
   @override
   @JsonKey(name: "created_at")
   final String? createdAt;
@@ -369,7 +244,7 @@ class _$OfferImpl implements _Offer {
 
   @override
   String toString() {
-    return 'Offer(id: $id, name: $name, description: $description, image: $image, daysRemaining: $daysRemaining, subCategory: $subCategory, store: $store, status: $status, storeId: $storeId, subCategoryId: $subCategoryId, endAt: $endAt, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Offer(id: $id, offerGroupId: $offerGroupId, status: $status, image: $image, offerGroup: $offerGroup, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -378,20 +253,12 @@ class _$OfferImpl implements _Offer {
         (other.runtimeType == runtimeType &&
             other is _$OfferImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.daysRemaining, daysRemaining) ||
-                other.daysRemaining == daysRemaining) &&
-            (identical(other.subCategory, subCategory) ||
-                other.subCategory == subCategory) &&
-            (identical(other.store, store) || other.store == store) &&
+            (identical(other.offerGroupId, offerGroupId) ||
+                other.offerGroupId == offerGroupId) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.storeId, storeId) || other.storeId == storeId) &&
-            (identical(other.subCategoryId, subCategoryId) ||
-                other.subCategoryId == subCategoryId) &&
-            (identical(other.endAt, endAt) || other.endAt == endAt) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.offerGroup, offerGroup) ||
+                other.offerGroup == offerGroup) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -400,21 +267,8 @@ class _$OfferImpl implements _Offer {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      image,
-      daysRemaining,
-      subCategory,
-      store,
-      status,
-      storeId,
-      subCategoryId,
-      endAt,
-      createdAt,
-      updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, offerGroupId, status, image,
+      offerGroup, createdAt, updatedAt);
 
   /// Create a copy of Offer
   /// with the given fields replaced by the non-null parameter values.
@@ -435,16 +289,10 @@ class _$OfferImpl implements _Offer {
 abstract class _Offer implements Offer {
   const factory _Offer(
       {@JsonKey(name: "id") final int? id,
-      @JsonKey(name: "name") final String? name,
-      @JsonKey(name: "description") final String? description,
+      @JsonKey(name: "offer_group_id") final int? offerGroupId,
+      @JsonKey(name: "status") final bool? status,
       @JsonKey(name: "image") final String? image,
-      @JsonKey(name: "days_remaining") final int? daysRemaining,
-      @JsonKey(name: "sub_category") final SubCategory? subCategory,
-      @JsonKey(name: "store") final Store? store,
-      @JsonKey(name: "status") final String? status,
-      @JsonKey(name: "store_id") final int? storeId,
-      @JsonKey(name: "sub_category_id") final int? subCategoryId,
-      @JsonKey(name: "end_at") final DateTime? endAt,
+      @JsonKey(name: "offer_group") final OfferGroup? offerGroup,
       @JsonKey(name: "created_at") final String? createdAt,
       @JsonKey(name: "updated_at") final String? updatedAt}) = _$OfferImpl;
 
@@ -454,35 +302,17 @@ abstract class _Offer implements Offer {
   @JsonKey(name: "id")
   int? get id;
   @override
-  @JsonKey(name: "name")
-  String? get name;
+  @JsonKey(name: "offer_group_id")
+  int? get offerGroupId;
   @override
-  @JsonKey(name: "description")
-  String? get description;
+  @JsonKey(name: "status")
+  bool? get status;
   @override
   @JsonKey(name: "image")
   String? get image;
   @override
-  @JsonKey(name: "days_remaining")
-  int? get daysRemaining;
-  @override
-  @JsonKey(name: "sub_category")
-  SubCategory? get subCategory;
-  @override
-  @JsonKey(name: "store")
-  Store? get store;
-  @override
-  @JsonKey(name: "status")
-  String? get status;
-  @override
-  @JsonKey(name: "store_id")
-  int? get storeId;
-  @override
-  @JsonKey(name: "sub_category_id")
-  int? get subCategoryId;
-  @override
-  @JsonKey(name: "end_at")
-  DateTime? get endAt;
+  @JsonKey(name: "offer_group")
+  OfferGroup? get offerGroup;
   @override
   @JsonKey(name: "created_at")
   String? get createdAt;

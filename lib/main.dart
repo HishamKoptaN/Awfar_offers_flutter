@@ -26,7 +26,7 @@ Future<void> main() async {
   await Injection.inject();
   SharedPrefHelper;
   Bloc.observer = AppBlocObserver();
-  await SharedPrefHelper.clearAllData();
+  // await SharedPrefHelper.clearAllData();
   Future.wait(
     [
       PushNotificationsServices.init(),

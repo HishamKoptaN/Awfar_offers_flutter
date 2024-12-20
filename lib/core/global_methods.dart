@@ -36,6 +36,11 @@ Future<void> loadAppData(
 ) async {
   return await getGovernorate().then(
     (governorateId) {
+      context.read<ExternalNotificationsBloc>().add(
+            ExternalNotificationsEvent.saveExternalNotificationData(
+              governorateId: governorateId!,
+            ),
+          );
       context.read<CountriesBloc>().add(
             const CountriesEvent.getCountries(),
           );
@@ -45,7 +50,7 @@ Future<void> loadAppData(
 
       context.read<StoresBloc>().add(
             StoresEvent.getStores(
-              governorateId: governorateId!,
+              governorateId: governorateId,
             ),
           );
       context.read<CategoriesBloc>().add(
@@ -63,11 +68,6 @@ Future<void> loadAppData(
           );
       context.read<NotificationsBloc>().add(
             const NotificationsEvent.getNotifications(),
-          );
-      context.read<ExternalNotificationsBloc>().add(
-            ExternalNotificationsEvent.saveExternalNotificationData(
-              governorateId: governorateId,
-            ),
           );
     },
   );

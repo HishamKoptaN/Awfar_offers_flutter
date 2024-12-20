@@ -23,8 +23,8 @@ SaveNotifcationsDataReqBodyModel _$SaveNotifcationsDataReqBodyModelFromJson(
 mixin _$SaveNotifcationsDataReqBodyModel {
   @JsonKey(name: "device_id")
   String? get deviceId => throw _privateConstructorUsedError;
-  @JsonKey(name: "governorate_id")
-  int? get governorateId => throw _privateConstructorUsedError;
+  @JsonKey(name: "city_id")
+  int? get cityId => throw _privateConstructorUsedError;
   @JsonKey(name: "fcm_token")
   String? get fcmToken => throw _privateConstructorUsedError;
 
@@ -48,7 +48,7 @@ abstract class $SaveNotifcationsDataReqBodyModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "device_id") String? deviceId,
-      @JsonKey(name: "governorate_id") int? governorateId,
+      @JsonKey(name: "city_id") int? cityId,
       @JsonKey(name: "fcm_token") String? fcmToken});
 }
 
@@ -69,7 +69,7 @@ class _$SaveNotifcationsDataReqBodyModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? deviceId = freezed,
-    Object? governorateId = freezed,
+    Object? cityId = freezed,
     Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
@@ -77,9 +77,9 @@ class _$SaveNotifcationsDataReqBodyModelCopyWithImpl<$Res,
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      governorateId: freezed == governorateId
-          ? _value.governorateId
-          : governorateId // ignore: cast_nullable_to_non_nullable
+      cityId: freezed == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
               as int?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
@@ -100,7 +100,7 @@ abstract class _$$SaveNotifcationsDataReqBodyModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "device_id") String? deviceId,
-      @JsonKey(name: "governorate_id") int? governorateId,
+      @JsonKey(name: "city_id") int? cityId,
       @JsonKey(name: "fcm_token") String? fcmToken});
 }
 
@@ -120,7 +120,7 @@ class __$$SaveNotifcationsDataReqBodyModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? deviceId = freezed,
-    Object? governorateId = freezed,
+    Object? cityId = freezed,
     Object? fcmToken = freezed,
   }) {
     return _then(_$SaveNotifcationsDataReqBodyModelImpl(
@@ -128,9 +128,9 @@ class __$$SaveNotifcationsDataReqBodyModelImplCopyWithImpl<$Res>
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
               as String?,
-      governorateId: freezed == governorateId
-          ? _value.governorateId
-          : governorateId // ignore: cast_nullable_to_non_nullable
+      cityId: freezed == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
               as int?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
@@ -146,7 +146,7 @@ class _$SaveNotifcationsDataReqBodyModelImpl
     implements _SaveNotifcationsDataReqBodyModel {
   const _$SaveNotifcationsDataReqBodyModelImpl(
       {@JsonKey(name: "device_id") this.deviceId,
-      @JsonKey(name: "governorate_id") this.governorateId,
+      @JsonKey(name: "city_id") this.cityId,
       @JsonKey(name: "fcm_token") this.fcmToken});
 
   factory _$SaveNotifcationsDataReqBodyModelImpl.fromJson(
@@ -157,15 +157,15 @@ class _$SaveNotifcationsDataReqBodyModelImpl
   @JsonKey(name: "device_id")
   final String? deviceId;
   @override
-  @JsonKey(name: "governorate_id")
-  final int? governorateId;
+  @JsonKey(name: "city_id")
+  final int? cityId;
   @override
   @JsonKey(name: "fcm_token")
   final String? fcmToken;
 
   @override
   String toString() {
-    return 'SaveNotifcationsDataReqBodyModel(deviceId: $deviceId, governorateId: $governorateId, fcmToken: $fcmToken)';
+    return 'SaveNotifcationsDataReqBodyModel(deviceId: $deviceId, cityId: $cityId, fcmToken: $fcmToken)';
   }
 
   @override
@@ -175,16 +175,14 @@ class _$SaveNotifcationsDataReqBodyModelImpl
             other is _$SaveNotifcationsDataReqBodyModelImpl &&
             (identical(other.deviceId, deviceId) ||
                 other.deviceId == deviceId) &&
-            (identical(other.governorateId, governorateId) ||
-                other.governorateId == governorateId) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId) &&
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, deviceId, governorateId, fcmToken);
+  int get hashCode => Object.hash(runtimeType, deviceId, cityId, fcmToken);
 
   /// Create a copy of SaveNotifcationsDataReqBodyModel
   /// with the given fields replaced by the non-null parameter values.
@@ -208,7 +206,7 @@ abstract class _SaveNotifcationsDataReqBodyModel
     implements SaveNotifcationsDataReqBodyModel {
   const factory _SaveNotifcationsDataReqBodyModel(
           {@JsonKey(name: "device_id") final String? deviceId,
-          @JsonKey(name: "governorate_id") final int? governorateId,
+          @JsonKey(name: "city_id") final int? cityId,
           @JsonKey(name: "fcm_token") final String? fcmToken}) =
       _$SaveNotifcationsDataReqBodyModelImpl;
 
@@ -220,8 +218,8 @@ abstract class _SaveNotifcationsDataReqBodyModel
   @JsonKey(name: "device_id")
   String? get deviceId;
   @override
-  @JsonKey(name: "governorate_id")
-  int? get governorateId;
+  @JsonKey(name: "city_id")
+  int? get cityId;
   @override
   @JsonKey(name: "fcm_token")
   String? get fcmToken;

@@ -58,7 +58,11 @@ class CouponCard extends StatelessWidget {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      Clipboard.setData(ClipboardData(text: coupon.code!));
+                      Clipboard.setData(
+                        ClipboardData(
+                          text: coupon.code!,
+                        ),
+                      );
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(

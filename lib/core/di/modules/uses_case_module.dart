@@ -10,7 +10,7 @@ import '../../../features/offers/domain/use_cases/get_offers_use_case.dart';
 import '../../../features/products/domain/use_cases/get_products_use_case.dart';
 import '../../../features/stores/domain/use_cases/get_stores_use_case.dart';
 import '../../../features/sub_categories/domain/use_cases/get_sub_categories_use_case.dart';
-import '../../../features/sub_categories_items/domain/use_cases/get_sub_categories_items_use_case.dart';
+import '../../../features/markas/domain/use_cases/get_items_use_case.dart';
 import '../dependency_injection.dart';
 
 class UseCaseModule extends DIModule {
@@ -58,8 +58,8 @@ class UseCaseModule extends DIModule {
         ),
       )
       ..registerLazySingleton(
-        () => GetSubCategoriesItemsUseCase(
-          subcategoriesRepo: getIt(),
+        () => GetMarkasUseCase(
+          markasRepo: getIt(),
         ),
       )
       ..registerLazySingleton(

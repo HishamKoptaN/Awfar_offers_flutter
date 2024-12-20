@@ -17,17 +17,22 @@ class ExternalNotificationsBloc
     on<ExternalNotificationsEvent>(
       (event, emit) async {
         await event.when(
-          saveExternalNotificationData: (governorateId) async {
+          saveExternalNotificationData: (cityId) async {
+            SaveNotifcationsDataReqBodyModel saveNotifcationsDataReqBodyModel =
+                SaveNotifcationsDataReqBodyModel();
+
             final deviceUtils = DeviceUtils();
             String? deviceId = await deviceUtils.getDeviceId();
             String? fcmToken = await FirebaseMessaging.instance.getToken();
+            saveNotifcationsDataReqBodyModel =
+                saveNotifcationsDataReqBodyModel.copyWith(
+              deviceId: deviceId,
+              cityId: cityId,
+              fcmToken: fcmToken,
+            );
             await saveNotificationsDataUseCase.saveNotificationsData(
               saveNotifcationsDataReqBodyModel:
-                  SaveNotifcationsDataReqBodyModel(
-                deviceId: deviceId,
-                governorateId: governorateId,
-                fcmToken: fcmToken,
-              ),
+                  saveNotifcationsDataReqBodyModel,
             );
           },
         );

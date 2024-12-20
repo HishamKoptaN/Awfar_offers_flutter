@@ -1,6 +1,5 @@
 import '../../../../core/networking/api_result.dart';
 import '../../data/model/save_notifcations_data_req_body_model.dart';
-import '../../../main/domain/repo/main_repo.dart';
 import '../../data/repo/external_notifications_repo.dart';
 
 class SaveExternalNotificationsDataUseCase {

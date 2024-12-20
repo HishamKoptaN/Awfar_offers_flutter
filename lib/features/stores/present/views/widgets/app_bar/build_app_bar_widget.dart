@@ -146,7 +146,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                         )
                         .first
                         .name!
-                    : "اختر محافظة",
+                    : "اختر مدينة",
                 style: const TextStyle(
                   color: Colors.white,
                 ),

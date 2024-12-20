@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/models/store.dart';
 import '../../../../../../core/widgets/custom_circular_progress.dart';
+import '../../../../../../core/widgets/custom_text.dart';
 import '../../../bloc/stores_bloc.dart';
 import '../../../bloc/stores_state.dart';
 import 'custom_marka_item.dart';
@@ -37,6 +38,12 @@ class CustomMarkaItemListView extends StatelessWidget {
                   );
                 },
               ),
+            );
+          },
+          failure: (error) {
+            return CustomText(
+              text: error,
+              fontSize: 25.sp,
             );
           },
           orElse: () {

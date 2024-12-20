@@ -128,8 +128,7 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                             onTap: () {
                                               Navigator.pushNamed(
                                                 context,
-                                                SubCategoriesItemsView
-                                                    .routeName,
+                                                MarkasView.routeName,
                                                 arguments: subCategory,
                                               );
                                             },

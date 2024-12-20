@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/database/cache/shared_pref_helper.dart';
 import '../../../../core/database/cache/shared_pref_keys.dart';
-import '../../../../core/singletons/favs_stores_singleton.dart';
+import '../../../../core/singletons/favs/fav_stores_singleton.dart';
 import '../../../../core/singletons/stores_singleton.dart';
 import '../../domain/use_cases/get_stores_use_case.dart';
 import 'stores_event.dart';
@@ -17,7 +17,9 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
     on<StoresEvent>(
       (event, emit) async {
         await event.when(
-          getStores: (governorateId) async {
+          getStores: (
+            governorateId,
+          ) async {
             emit(
               const StoresState.loading(),
             );
@@ -29,6 +31,10 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
                 stores,
               ) async {
                 StoresSingleton.instance.stores = stores!;
+                FavsStoresSingleton.instance.favs =
+                    await SharedPrefHelper.getIntList(
+                  key: SharedPrefKeys.favsStores,
+                );
                 emit(
                   const StoresState.loaded(),
                 );
@@ -42,7 +48,10 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
               },
             );
           },
-          updateFavs: (id, add) async {
+          updateFavs: (
+            id,
+            add,
+          ) async {
             try {
               if (add) {
                 await SharedPrefHelper.updateList(

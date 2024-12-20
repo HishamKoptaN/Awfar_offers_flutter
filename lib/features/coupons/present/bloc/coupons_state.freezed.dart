@@ -19,8 +19,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        loaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -29,7 +28,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -38,7 +37,7 @@ mixin _$CouponsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -138,8 +137,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        loaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -151,7 +149,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -163,7 +161,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -225,8 +223,6 @@ abstract class _$$loadedImplCopyWith<$Res> {
   factory _$$loadedImplCopyWith(
           _$loadedImpl value, $Res Function(_$loadedImpl) then) =
       __$$loadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Coupon> catgoryCoupons, List<int> favorites});
 }
 
 /// @nodoc
@@ -239,117 +235,63 @@ class __$$loadedImplCopyWithImpl<$Res>
 
   /// Create a copy of CouponsState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? catgoryCoupons = null,
-    Object? favorites = null,
-  }) {
-    return _then(_$loadedImpl(
-      catgoryCoupons: null == catgoryCoupons
-          ? _value._catgoryCoupons
-          : catgoryCoupons // ignore: cast_nullable_to_non_nullable
-              as List<Coupon>,
-      favorites: null == favorites
-          ? _value._favorites
-          : favorites // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$loadedImpl implements _loaded {
-  const _$loadedImpl(
-      {required final List<Coupon> catgoryCoupons,
-      required final List<int> favorites})
-      : _catgoryCoupons = catgoryCoupons,
-        _favorites = favorites;
-
-  final List<Coupon> _catgoryCoupons;
-  @override
-  List<Coupon> get catgoryCoupons {
-    if (_catgoryCoupons is EqualUnmodifiableListView) return _catgoryCoupons;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_catgoryCoupons);
-  }
-
-  final List<int> _favorites;
-  @override
-  List<int> get favorites {
-    if (_favorites is EqualUnmodifiableListView) return _favorites;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_favorites);
-  }
+  const _$loadedImpl();
 
   @override
   String toString() {
-    return 'CouponsState.loaded(catgoryCoupons: $catgoryCoupons, favorites: $favorites)';
+    return 'CouponsState.loaded()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$loadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._catgoryCoupons, _catgoryCoupons) &&
-            const DeepCollectionEquality()
-                .equals(other._favorites, _favorites));
+        (other.runtimeType == runtimeType && other is _$loadedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_catgoryCoupons),
-      const DeepCollectionEquality().hash(_favorites));
-
-  /// Create a copy of CouponsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$loadedImplCopyWith<_$loadedImpl> get copyWith =>
-      __$$loadedImplCopyWithImpl<_$loadedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        loaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
   }) {
-    return loaded(catgoryCoupons, favorites);
+    return loaded();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
   }) {
-    return loaded?.call(catgoryCoupons, favorites);
+    return loaded?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(catgoryCoupons, favorites);
+      return loaded();
     }
     return orElse();
   }
@@ -396,18 +338,7 @@ class _$loadedImpl implements _loaded {
 }
 
 abstract class _loaded implements CouponsState {
-  const factory _loaded(
-      {required final List<Coupon> catgoryCoupons,
-      required final List<int> favorites}) = _$loadedImpl;
-
-  List<Coupon> get catgoryCoupons;
-  List<int> get favorites;
-
-  /// Create a copy of CouponsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$loadedImplCopyWith<_$loadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _loaded() = _$loadedImpl;
 }
 
 /// @nodoc
@@ -452,8 +383,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        loaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -465,7 +395,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -477,7 +407,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -576,8 +506,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        loaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -589,7 +518,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -601,7 +530,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,
@@ -727,8 +656,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)
-        loaded,
+    required TResult Function() loaded,
     required TResult Function() loading,
     required TResult Function() success,
     required TResult Function(String error) failure,
@@ -740,7 +668,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult? Function()? loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
     TResult? Function(String error)? failure,
@@ -752,7 +680,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Coupon> catgoryCoupons, List<int> favorites)? loaded,
+    TResult Function()? loaded,
     TResult Function()? loading,
     TResult Function()? success,
     TResult Function(String error)? failure,

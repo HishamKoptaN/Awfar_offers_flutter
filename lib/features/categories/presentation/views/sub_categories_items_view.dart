@@ -1,6 +1,5 @@
 import 'package:awfar_offer_app/core/utils/app_colors.dart';
 import 'package:awfar_offer_app/features/categories/presentation/views/widgets/app_bar_in_sub_category.dart';
-import 'package:awfar_offer_app/features/stores/present/views/widgets/store/custom_marka_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,18 +9,20 @@ import '../../../../core/models/store.dart';
 import '../../../../core/models/sub_category.dart';
 import '../../../../core/singletons/products_singleton.dart';
 import '../../../../core/singletons/stores_singleton.dart';
-import '../../../../core/singletons/sub_categories_items_singleton.dart';
+import '../../../../core/singletons/markas_singleton.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
-import '../../../offer_details/presentation/views/store_deatails_view.dart';
+import '../../../../core/widgets/custom_text.dart';
+import '../../../offer_details/presentation/views/store_details_view.dart';
 import '../../../products/presentation/bloc/products_bloc.dart';
 import '../../../products/presentation/bloc/products_event.dart';
 import '../../../products/presentation/bloc/products_state.dart';
-import '../../../sub_categories_items/presentation/bloc/sub_categories_items_bloc.dart';
-import '../../../sub_categories_items/presentation/bloc/sub_categories_items_event.dart';
-import '../../../sub_categories_items/presentation/bloc/sub_categories_state.dart';
+import '../../../markas/presentation/bloc/markas_bloc.dart';
+import '../../../markas/presentation/bloc/markas_event.dart';
+import '../../../markas/presentation/bloc/markas_state.dart';
+import '../../../stores/present/views/widgets/store/custom_marka_item.dart';
 
-class SubCategoriesItemsView extends StatefulWidget {
-  const SubCategoriesItemsView({
+class MarkasView extends StatefulWidget {
+  const MarkasView({
     super.key,
     required this.subCategory,
   });
@@ -29,11 +30,11 @@ class SubCategoriesItemsView extends StatefulWidget {
   static const String routeName = 'subCategoriesItemsView';
 
   @override
-  State<SubCategoriesItemsView> createState() => _SubCategoriesItemsViewState();
+  State<MarkasView> createState() => _MarkasViewState();
 }
 
-class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
-  int selectedIndex = -1;
+class _MarkasViewState extends State<MarkasView> {
+  int _selectedIndex = -1;
   List<Product>? products;
 
   @override
@@ -58,7 +59,7 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                   onTap: () {
                     setState(
                       () {
-                        selectedIndex = -1;
+                        _selectedIndex = -1;
                         products = ProductsSingleton.instance.prdoucts;
                       },
                     );
@@ -66,14 +67,16 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                   child: Container(
                     height: 35.w,
                     decoration: BoxDecoration(
-                      color: selectedIndex == -1
+                      color: _selectedIndex == -1
                           ? AppColors.lightPrimaryColor
                           : AppColors.primaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 8),
+                        horizontal: 12,
+                        vertical: 8,
+                      ),
                       child: Text(
                         "الكل ${ProductsSingleton.instance.prdoucts.length}",
                         style: const TextStyle(
@@ -88,36 +91,34 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                   child: SizedBox(
                     height: 35.h,
                     child: BlocProvider(
-                      create: (context) => SubCategoriesItemsBloc(
-                        getSubCategoriesItemsUseCase: getIt(),
+                      create: (context) => MarkasBloc(
+                        getMarkasUseCase: getIt(),
                       )..add(
-                          SubCategoriesItemsEvent.getSubCategoriesItems(
+                          MarkasEvent.getMarkas(
                             subCategoryId: widget.subCategory.id!,
                           ),
                         ),
-                      child: BlocBuilder<SubCategoriesItemsBloc,
-                          SubCategoriesItemsState>(
+                      child: BlocBuilder<MarkasBloc, MarkasState>(
                         builder: (context, state) {
                           return state.maybeWhen(
                             loaded: () {
                               return ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: SubCategoriesItemsSingleton
-                                    .instance.subCategoriesitems.length,
-                                //      _selectedIndex == -1
-                                // ? SubCategoriesItemsSingleton
-                                //     .instance.subCategoriesitems.length
-                                // : SubCategoriesItemsSingleton
-                                //     .instance.subCategoriesitems
-                                //     .where(
-                                //       (i) => i.categoryId == _selectedIndex,
-                                //     )
-                                //     .toList()
-                                //     .length,
+                                itemCount:
+                                    MarkasSingleton.instance.markas.length,
+                                // _selectedIndex == -1
+                                //     ? MarkasSingleton.instance.markas.length
+                                //     : MarkasSingleton.instance.markas
+                                //         .where(
+                                //           (i) =>
+                                //               i.categoryId ==
+                                //               _selectedIndex,
+                                //         )
+                                //         .toList()
+                                //         .length,
                                 itemBuilder: (context, index) {
                                   final subCategoryItem =
-                                      SubCategoriesItemsSingleton
-                                          .instance.subCategoriesitems[index];
+                                      MarkasSingleton.instance.markas[index];
                                   return GestureDetector(
                                     onTap: () {
                                       setState(
@@ -126,11 +127,11 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                               .instance.prdoucts
                                               .where(
                                                 (product) =>
-                                                    product.subCategoryItemId ==
+                                                    product.markaId ==
                                                     subCategoryItem.id,
                                               )
                                               .toList();
-                                          selectedIndex = index;
+                                          _selectedIndex = index;
                                         },
                                       );
                                     },
@@ -140,7 +141,7 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                       ),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: selectedIndex == index
+                                          color: _selectedIndex == index
                                               ? AppColors.lightPrimaryColor
                                               : AppColors.primaryColor,
                                           borderRadius:
@@ -202,77 +203,6 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
             const SizedBox(
               height: 8,
             ),
-            // SizedBox(
-            //   height: 40.h,
-            //   child: BlocProvider(
-            //     create: (context) => ProductsBloc(
-            //       getProductsUseCase: getIt(),
-            //     )..add(
-            //         ProductsEvent.getProducts(
-            //           subCategoryId: subCategory.id!,
-            //         ),
-            //       ),
-            //     child: ListView.builder(
-            //       scrollDirection: Axis.horizontal,
-            //       itemCount: 10,
-            //       itemBuilder: (context, index) {
-            //         return Padding(
-            //           padding: const EdgeInsets.only(
-            //             right: 8,
-            //           ),
-            //           child: Stack(
-            //             children: [
-            //               CircleAvatar(
-            //                 radius: 23,
-            //                 backgroundColor: Colors.white,
-            //                 child: index != 0
-            //                     ? const CircleAvatar(
-            //                         backgroundColor: AppColors.primaryColor,
-            //                         backgroundImage: NetworkImage(
-            //                           "",
-            //                         ),
-            //                         radius: 22,
-            //                       )
-            //                     : const CircleAvatar(
-            //                         backgroundColor: AppColors.primaryColor,
-            //                         radius: 22,
-            //                         child: Text(
-            //                           "جميع",
-            //                           style: TextStyle(
-            //                             color: AppColors.lightPrimaryColor,
-            //                             fontSize: 12,
-            //                             fontWeight: FontWeight.w600,
-            //                           ),
-            //                         ),
-            //                       ),
-            //               ),
-            //               Positioned(
-            //                 right: 2,
-            //                 top: 0,
-            //                 child: Container(
-            //                   decoration: BoxDecoration(
-            //                     color: AppColors.yellowColor,
-            //                     borderRadius: BorderRadius.circular(16),
-            //                   ),
-            //                   child: const Padding(
-            //                     padding: EdgeInsets.all(4),
-            //                     child: Text(
-            //                       "98",
-            //                       style: TextStyle(
-            //                         fontSize: 9,
-            //                         color: Colors.black,
-            //                       ),
-            //                     ),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ],
-            //           ),
-            //         );
-            //       },
-            //     ),
-            //   ),
-            // ),
             const SizedBox(
               height: 8,
             ),
@@ -306,11 +236,12 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                 Store selectedStore =
                                     StoresSingleton.instance.stores.firstWhere(
                                   (store) =>
-                                      store.id == prdouct.offerGroup!.storeId!,
+                                      store.id ==
+                                      prdouct.offer?.offerGroup?.store?.id,
                                 );
                                 Navigator.pushNamed(
                                   context,
-                                  StoreDeatailsView.routeName,
+                                  StoreDetailsView.routeName,
                                   arguments: selectedStore,
                                 );
                               },
@@ -348,7 +279,7 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                         "وفر ج.م ${prdouct.amountSaved!}",
                                         style: const TextStyle(
                                           color: Colors.white,
-                                          // fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w600,
                                           fontSize: 9,
                                         ),
                                       ),
@@ -369,14 +300,13 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.all(8),
-                                              child: Text(
-                                                "خصم ${prdouct.discountRate}%",
-                                                style: const TextStyle(
-                                                  color: AppColors
-                                                      .darkPrimaryColor,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                              child: CustomText(
+                                                text:
+                                                    "خصم ${prdouct.discountRate}%",
+                                                color:
+                                                    AppColors.darkPrimaryColor,
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                           ),
@@ -387,13 +317,13 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                             children: [
                                               Text(
                                                 prdouct.price!,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   decoration: TextDecoration
                                                       .lineThrough,
                                                   decorationColor: Colors.grey,
                                                   decorationThickness: 2,
                                                   color: Colors.grey,
-                                                  fontSize: 8,
+                                                  fontSize: 10.sp,
                                                 ),
                                               ),
                                               const SizedBox(
@@ -422,8 +352,8 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                           CustomMarkaItem(
                                             radius1: 16,
                                             radius2: 15,
-                                            imageUrl: prdouct
-                                                .offerGroup!.store!.image!,
+                                            imageUrl: prdouct.offer!.offerGroup!
+                                                .store!.image!,
                                           ),
                                           const SizedBox(
                                             width: 8,
@@ -433,8 +363,7 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                prdouct
-                                                    .offerGroup!.daysRemaining!,
+                                                "متبقي ${prdouct.offer?.offerGroup?.daysRemaining ?? ''} يوم",
                                                 style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 12,
@@ -444,8 +373,9 @@ class _SubCategoriesItemsViewState extends State<SubCategoriesItemsView> {
                                                 height: 4,
                                               ),
                                               Text(
-                                                prdouct
-                                                    .offerGroup!.store!.name!,
+                                                prdouct.offer?.offerGroup?.store
+                                                        ?.name ??
+                                                    '',
                                                 style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 12,

@@ -7,7 +7,6 @@ import 'features/categories/presentation/views/categories_view.dart';
 import 'features/coupons/present/view/coupons_view.dart';
 import 'features/main/presentation/bloc/main_bloc.dart';
 import 'features/main/presentation/bloc/main_state.dart';
-import 'features/search/presentation/views/search_view.dart';
 import 'features/stores/present/views/stores_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -24,10 +23,10 @@ class _HomeView extends State<HomeView> {
     const CategoriesView(
       brandName: '',
     ),
-    const SearchView(
-      isBack: false,
-      searchLabel: "بحث",
-    ),
+    // const SearchView(
+    //   isBack: false,
+    //   searchLabel: "بحث",
+    // ),
     const CouponsView(),
     const ProfileView(),
   ];
@@ -88,7 +87,9 @@ class _HomeView extends State<HomeView> {
           items: const [
             BottomNavigationBarItem(
               backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.local_offer_outlined),
+              icon: Icon(
+                Icons.local_offer_outlined,
+              ),
               label: "عروض",
             ),
             BottomNavigationBarItem(
@@ -96,11 +97,11 @@ class _HomeView extends State<HomeView> {
               icon: Icon(Icons.category_outlined),
               label: "الفئات",
             ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.search_outlined),
-              label: 'بحث',
-            ),
+            // BottomNavigationBarItem(
+            //   backgroundColor: AppColors.primaryColor,
+            //   icon: Icon(Icons.search_outlined),
+            //   label: 'بحث',
+            // ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.primaryColor,
               icon: Icon(Icons.card_giftcard_outlined),

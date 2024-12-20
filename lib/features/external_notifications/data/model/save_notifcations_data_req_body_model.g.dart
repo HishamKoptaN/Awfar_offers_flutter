@@ -11,7 +11,7 @@ _$SaveNotifcationsDataReqBodyModelImpl
             Map<String, dynamic> json) =>
         _$SaveNotifcationsDataReqBodyModelImpl(
           deviceId: json['device_id'] as String?,
-          governorateId: (json['governorate_id'] as num?)?.toInt(),
+          cityId: (json['city_id'] as num?)?.toInt(),
           fcmToken: json['fcm_token'] as String?,
         );
 
@@ -19,6 +19,6 @@ Map<String, dynamic> _$$SaveNotifcationsDataReqBodyModelImplToJson(
         _$SaveNotifcationsDataReqBodyModelImpl instance) =>
     <String, dynamic>{
       'device_id': instance.deviceId,
-      'governorate_id': instance.governorateId,
+      'city_id': instance.cityId,
       'fcm_token': instance.fcmToken,
     };

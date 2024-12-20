@@ -5,6 +5,6 @@ class SharedPrefKeys {
   static const String governorateId = 'governorateId';
   static const String countryId = 'countryId';
   static const String favoriteOffers = 'favoriteOffers';
-  static const String favoriteCoupons = 'favoriteCoupons';
+  static const String favCoupons = 'favoriteCoupons';
   static const String favsStores = 'favsStores';
 }

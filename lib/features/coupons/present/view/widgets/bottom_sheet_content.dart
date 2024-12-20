@@ -41,7 +41,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 alignment: Alignment.topRight,
                 child: IconButton(
                   onPressed: () {
-                    Navigator.pop(context); // إغلاق الـ BottomSheet
+                    Navigator.pop(context);
                   },
                   icon: const Icon(
                     Icons.cancel_outlined,
@@ -91,10 +91,12 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                       ClipboardData(
                         text: widget.coupon.code!,
                       ),
-                    ); // نسخ الكود
-                    setState(() {
-                      isCopy = true;
-                    });
+                    );
+                    setState(
+                      () {
+                        isCopy = true;
+                      },
+                    );
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -177,7 +179,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                         context.read<CouponsBloc>().add(
                               CouponsEvent.updateFavs(
                                 id: widget.coupon.id!,
-                                add: !widget.isFav,
+                                add: widget.isFav,
                               ),
                             );
                       },

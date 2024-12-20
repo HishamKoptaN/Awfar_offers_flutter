@@ -10,7 +10,7 @@ import '../../../features/offers/presentation/bloc/offers_bloc.dart';
 import '../../../features/products/presentation/bloc/products_bloc.dart';
 import '../../../features/stores/present/bloc/stores_bloc.dart';
 import '../../../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
-import '../../../features/sub_categories_items/presentation/bloc/sub_categories_items_bloc.dart';
+import '../../../features/markas/presentation/bloc/markas_bloc.dart';
 import '../dependency_injection.dart';
 
 class BlocModule extends DIModule {
@@ -57,9 +57,9 @@ class BlocModule extends DIModule {
           getSubCategoriesUseCase: getIt(),
         ),
       )
-      ..registerLazySingleton<SubCategoriesItemsBloc>(
-        () => SubCategoriesItemsBloc(
-          getSubCategoriesItemsUseCase: getIt(),
+      ..registerLazySingleton<MarkasBloc>(
+        () => MarkasBloc(
+          getMarkasUseCase: getIt(),
         ),
       )
       ..registerLazySingleton<ProductsBloc>(
