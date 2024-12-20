@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'main_api.dart';
+part of 'external_notifications_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,13 +8,13 @@ part of 'main_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _MainApi implements MainApi {
-  _MainApi(
+class _ExternalNotificationsApi implements ExternalNotificationsApi {
+  _ExternalNotificationsApi(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://api.awfar-offers.com/auth/';
+    baseUrl ??= 'https://api.awfar-offers.com/app/';
   }
 
   final Dio _dio;
@@ -24,19 +24,21 @@ class _MainApi implements MainApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<User> check() async {
+  Future<void> saveNotificationData(
+      {required SaveNotifcationsDataReqBodyModel
+          saveNotifcationsDataReqBodyModel}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<User>(Options(
+    final _data = saveNotifcationsDataReqBodyModel;
+    final _options = _setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'check',
+          'external-notifications',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -45,15 +47,7 @@ class _MainApi implements MainApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late User _value;
-    try {
-      _value = User.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

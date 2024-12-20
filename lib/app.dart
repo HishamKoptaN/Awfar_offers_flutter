@@ -17,18 +17,15 @@ import 'generated/l10n.dart';
 import 'home_view.dart';
 
 class AroodiApp extends StatefulWidget {
-  const AroodiApp({super.key});
+  const AroodiApp({
+    super.key,
+  });
 
   @override
   State<AroodiApp> createState() => _AroodiAppState();
 }
 
 class _AroodiAppState extends State<AroodiApp> {
-  getToken() async {
-    String? myToken = await FirebaseMessaging.instance.getToken();
-    print("My token  ==================${myToken}");
-  }
-
   //! allow notifactions permissions for ios and web
   requestPermissions() async {
     FirebaseMessaging? firebaseMessaging = await FirebaseMessaging.instance;
@@ -61,7 +58,6 @@ class _AroodiAppState extends State<AroodiApp> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        getToken();
         injectEvent();
       },
     );

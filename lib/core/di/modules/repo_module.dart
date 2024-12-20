@@ -6,6 +6,8 @@ import '../../../features/countries/data/repo_impl/countries_repo_impl.dart';
 import '../../../features/countries/domain/repo/countries_repo.dart';
 import '../../../features/coupons/data/repos/coupons_repo.dart';
 import '../../../features/coupons/domain/repo_impl/coupons_repo_impl.dart';
+import '../../../features/external_notifications/data/repo/external_notifications_repo.dart';
+import '../../../features/external_notifications/domain/repo_imp/external_notifications_repo_impl.dart';
 import '../../../features/governorates/data/repo_impl/governorates_repo_impl.dart';
 import '../../../features/governorates/domain/repo/governorates_repo.dart';
 import '../../../features/main/data/repo_impl/main_repo_impl.dart';
@@ -96,6 +98,11 @@ class RepositoryModule extends DIModule {
       ..registerLazySingleton<NotificationsRepoImpl>(
         () => NotificationsRepoImpl(
           notificationsApi: getIt(),
+        ),
+      )
+      ..registerLazySingleton<ExternalNotificationsRepo>(
+        () => ExternalNotificationsRepoImpl(
+          externalnotificationsApi: getIt(),
         ),
       );
   }

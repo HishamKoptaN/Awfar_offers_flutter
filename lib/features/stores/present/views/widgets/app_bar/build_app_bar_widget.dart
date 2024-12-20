@@ -131,7 +131,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
                 await getCountry().then(
                   (id) {
                     showGovernorateSelection(
-                      selectedCountryId: id,
+                      selectedCountryId: id!,
                       context: context,
                     );
                   },

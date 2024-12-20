@@ -1,7 +1,6 @@
 import 'package:awfar_offer_app/core/services/local_notifications_services.dart';
 import 'package:awfar_offer_app/core/services/push_notifications_services.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -9,11 +8,12 @@ import 'app.dart';
 import 'core/app_observer.dart';
 import 'core/database/cache/shared_pref_helper.dart';
 import 'core/di/dependency_injection.dart';
-import 'core/notification_helper.dart';
 import 'features/categories/presentation/bloc/categories_bloc.dart';
 import 'features/countries/presentation/bloc/countries_bloc.dart';
 import 'features/coupons/present/bloc/coupons_bloc.dart';
+import 'features/external_notifications/present/bloc/external_notifications_bloc.dart';
 import 'features/governorates/present/bloc/governorates_bloc.dart';
+import 'features/main/presentation/bloc/main_bloc.dart';
 import 'features/notifications/present/bloc/notifications_bloc.dart';
 import 'features/offers/presentation/bloc/offers_bloc.dart';
 import 'features/stores/present/bloc/stores_bloc.dart';
@@ -26,9 +26,7 @@ Future<void> main() async {
   await Injection.inject();
   SharedPrefHelper;
   Bloc.observer = AppBlocObserver();
-  // await SharedPrefHelper.clearAllData();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await NotificationsHelper().getAccessToken();
+  await SharedPrefHelper.clearAllData();
   Future.wait(
     [
       PushNotificationsServices.init(),
@@ -38,6 +36,11 @@ Future<void> main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => MainBloc(
+            checkUseCase: getIt(),
+          ),
+        ),
         BlocProvider(
           create: (context) => CountriesBloc(
             getCountriesUseCase: getIt(),
@@ -78,12 +81,13 @@ Future<void> main() async {
             getNotificationsUseCase: getIt(),
           ),
         ),
+        BlocProvider(
+          create: (context) => ExternalNotificationsBloc(
+            saveNotificationsDataUseCase: getIt(),
+          ),
+        ),
       ],
       child: const AroodiApp(),
     ),
   );
-}
-
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print("Handling a background message: ${message.messageId}");
 }

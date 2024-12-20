@@ -4,6 +4,7 @@ import '../../../features/countries/domain/use_cases/get_countries_use_case.dart
 import '../../../features/coupons/domain/use_cases/get_coupons_use_case.dart';
 import '../../../features/governorates/domain/use_cases/get_governorates_use_case.dart';
 import '../../../features/main/domain/usecases/check_use_case.dart';
+import '../../../features/external_notifications/domain/use_cases/save_notifications_data_use_case.dart';
 import '../../../features/notifications/domain/use_cases/get_notifications_use_case.dart';
 import '../../../features/offers/domain/use_cases/get_offers_use_case.dart';
 import '../../../features/products/domain/use_cases/get_products_use_case.dart';
@@ -74,6 +75,11 @@ class UseCaseModule extends DIModule {
       ..registerLazySingleton(
         () => GetNotificationsUseCase(
           notificationsRepoImp: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => SaveExternalNotificationsDataUseCase(
+          externalNotificationsRepo: getIt(),
         ),
       );
   }

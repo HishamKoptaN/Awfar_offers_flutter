@@ -38,7 +38,9 @@ class _HomeView extends State<HomeView> {
   }
 
   @override
-  Widget build(context) {
+  Widget build(
+    context,
+  ) {
     void onTapped(
       int index,
     ) {
@@ -59,7 +61,9 @@ class _HomeView extends State<HomeView> {
               );
             },
             logedIn: () async {
-              await loadAppData(context);
+              await loadAppData(
+                context,
+              );
             },
           );
         },

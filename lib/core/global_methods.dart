@@ -1,4 +1,7 @@
+import 'package:awfar_offer_app/features/external_notifications/data/datasources/external_notifications_api.dart';
+import 'package:awfar_offer_app/features/external_notifications/present/bloc/external_notifications_bloc.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +9,7 @@ import 'package:gap/gap.dart';
 import '../features/countries/presentation/bloc/countries_bloc.dart';
 import '../features/countries/presentation/bloc/countries_event.dart';
 import '../features/countries/presentation/bloc/countries_state.dart';
+import '../features/external_notifications/present/bloc/external_notifications_event.dart';
 import '../features/governorates/present/bloc/governorates_bloc.dart';
 import '../features/governorates/present/bloc/governorates_event.dart';
 import '../features/stores/present/bloc/stores_bloc.dart';
@@ -27,7 +31,9 @@ import '../features/stores/present/bloc/stores_event.dart';
 import '../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 import '../features/sub_categories/presentation/bloc/sub_categories_event.dart';
 
-Future<void> loadAppData(BuildContext context) async {
+Future<void> loadAppData(
+  BuildContext context,
+) async {
   return await getGovernorate().then(
     (governorateId) {
       context.read<CountriesBloc>().add(
@@ -36,14 +42,10 @@ Future<void> loadAppData(BuildContext context) async {
       context.read<GovernoratesBloc>().add(
             const GovernoratesEvent.getGvernorates(),
           );
-      // context.read<OffersBloc>().add(
-      //       OffersEvent.getOffers(
-      //         governorateId: governorateId,
-      //       ),
-      //     );
+
       context.read<StoresBloc>().add(
             StoresEvent.getStores(
-              governorateId: governorateId,
+              governorateId: governorateId!,
             ),
           );
       context.read<CategoriesBloc>().add(
@@ -62,18 +64,30 @@ Future<void> loadAppData(BuildContext context) async {
       context.read<NotificationsBloc>().add(
             const NotificationsEvent.getNotifications(),
           );
+      context.read<ExternalNotificationsBloc>().add(
+            ExternalNotificationsEvent.saveExternalNotificationData(
+              governorateId: governorateId,
+            ),
+          );
     },
   );
 }
 
-Future<int> getGovernorate() async {
+Future<bool?> checkFirstTime() async {
+  bool? isFirst = await SharedPrefHelper.getBool(
+    key: SharedPrefKeys.countryId,
+  );
+  return isFirst;
+}
+
+Future<int?> getGovernorate() async {
   int? governorateId = await SharedPrefHelper.getInt(
     key: SharedPrefKeys.governorateId,
   );
   return governorateId;
 }
 
-Future<int> getCountry() async {
+Future<int?> getCountry() async {
   int? countryId = await SharedPrefHelper.getInt(
     key: SharedPrefKeys.countryId,
   );
@@ -99,7 +113,7 @@ void showGovernorateSelection({
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              'إختر المحافظة',
+              'إختر المدينة',
               style: TextStyles.bold18,
             ),
             const CustomDividerWidget(),

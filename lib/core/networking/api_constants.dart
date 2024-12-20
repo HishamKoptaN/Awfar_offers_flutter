@@ -1,6 +1,6 @@
 class ApiConstants {
   static const String apiBaseUrl = "https://api.awfar-offers.com/app/";
-  static const String apiAuthBaseUrl = "https://api.awfar-offers.com/app/";
+  static const String apiAuthBaseUrl = "https://api.awfar-offers.com/auth/";
 
   static const String check = "check";
   static const String login = "login";
@@ -15,6 +15,7 @@ class ApiConstants {
   static const String coupons = "coupons";
   static const String signup = "signup";
   static const String notifications = "notifications";
+  static const String externalNotifications = "external-notifications";
 }
 
 class ApiErrors {

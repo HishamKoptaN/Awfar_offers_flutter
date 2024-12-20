@@ -2,6 +2,7 @@ import '../../../features/Auth/login/presentation/bloc/login_bloc.dart';
 import '../../../features/categories/presentation/bloc/categories_bloc.dart';
 import '../../../features/countries/presentation/bloc/countries_bloc.dart';
 import '../../../features/coupons/present/bloc/coupons_bloc.dart';
+import '../../../features/external_notifications/present/bloc/external_notifications_bloc.dart';
 import '../../../features/governorates/present/bloc/governorates_bloc.dart';
 import '../../../features/main/presentation/bloc/main_bloc.dart';
 import '../../../features/notifications/present/bloc/notifications_bloc.dart';
@@ -74,6 +75,11 @@ class BlocModule extends DIModule {
       ..registerLazySingleton<NotificationsBloc>(
         () => NotificationsBloc(
           getNotificationsUseCase: getIt(),
+        ),
+      )
+      ..registerLazySingleton<ExternalNotificationsBloc>(
+        () => ExternalNotificationsBloc(
+          saveNotificationsDataUseCase: getIt(),
         ),
       );
   }

@@ -5,7 +5,7 @@ import '../../data/model/notifications_res_model.dart';
 import '../../data/repo/notifications_repo.dart';
 
 class NotificationsRepoImpl implements NotificationsRepo {
-  NotificationsApi notificationsApi;
+  final NotificationsApi notificationsApi;
   NotificationsRepoImpl({
     required this.notificationsApi,
   });

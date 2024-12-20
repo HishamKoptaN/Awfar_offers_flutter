@@ -14,7 +14,7 @@ class _LoginApi implements LoginApi {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://api.awfar-offers.com/app/';
+    baseUrl ??= 'https://api.awfar-offers.com/auth/';
   }
 
   final Dio _dio;

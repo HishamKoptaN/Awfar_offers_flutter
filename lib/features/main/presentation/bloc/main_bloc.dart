@@ -16,9 +16,9 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       (event, emit) async {
         await event.when(
           check: () async {
-            await getCountry().then(
-              (id) {
-                if (id == 0) {
+            await getGovernorate().then(
+              (id) async {
+                if (id == null) {
                   emit(
                     const MainState.firstTime(),
                   );
@@ -29,29 +29,28 @@ class MainBloc extends Bloc<MainEvent, MainState> {
                 }
               },
             );
-            // String? token = await SharedPrefHelper.getSecuredString(
-            //   key: SharedPrefKeys.userToken,
-            // );
-            // if (token == null || token.isEmpty) {
-            //   emit(const MainState.logedOut());
-            // } else {
-            //   final result = await checkUseCase.check();
-            //   await result!.when(
-            //     success: (response) async {
-            //       emit(
-            //         const MainState.logedIn(),
-            //       );
-            //     },
-            //     failure: (error) async {
-            //       emit(
-            //         const MainState.logedOut(),
-            //       );
-            //     },
-            //   );
-            // }
           },
         );
       },
     );
   }
 }
+  //  String? token = await SharedPrefHelper.getSecuredString(
+  //             key: SharedPrefKeys.userToken,
+  //           );
+  //           if (token == null || token.isEmpty) {
+  //           } else if (token.isNotEmpty) {
+  //             final result = await checkUseCase.check();
+  //             await result!.when(
+  //               success: (response) async {
+  //                 emit(
+  //                   const MainState.logedIn(),
+  //                 );
+  //               },
+  //               failure: (error) async {
+  //                 emit(
+  //                   const MainState.logedOut(),
+  //                 );
+  //               },
+  //             );
+  //           }
