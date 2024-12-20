@@ -43,7 +43,7 @@ class CustomPersonalList extends StatelessWidget {
                           leading: const Icon(
                             Icons.shopping_bag_outlined,
                             size: 50,
-                            color: AppColors.yellowColor,
+                            color: AppColors.brownColor,
                           ),
                           title: Text(
                             title,
@@ -67,7 +67,7 @@ class CustomPersonalList extends StatelessWidget {
                         left: 0,
                         bottom: 0,
                         child: Card(
-                          color: AppColors.yellowColor,
+                          color: AppColors.brownColor,
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 2),

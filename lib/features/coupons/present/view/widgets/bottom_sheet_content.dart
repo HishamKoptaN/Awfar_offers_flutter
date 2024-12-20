@@ -150,12 +150,12 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                   ),
                   Icon(
                     Icons.thumb_up_outlined,
-                    color: AppColors.yellowColor,
+                    color: AppColors.brownColor,
                     size: 18,
                   ),
                   Icon(
                     Icons.thumb_down_outlined,
-                    color: AppColors.yellowColor,
+                    color: AppColors.brownColor,
                     size: 18,
                   ),
                 ],

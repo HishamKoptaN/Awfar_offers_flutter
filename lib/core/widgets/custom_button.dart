@@ -19,15 +19,16 @@ class CustomTextButtonWidget extends StatelessWidget {
   final Widget? widget;
   @override
   Widget build(context) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Container(
-        width: 175.w,
-        height: 50.h,
-        decoration: BoxDecoration(
-          color: buttonColor,
-          borderRadius: BorderRadius.circular(10),
+    return SizedBox(
+      width: double.infinity,
+      height: 54,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: AppColors.primaryColor,
         ),
+        onPressed: onPressed,
         child: Center(
           child: Padding(
             padding: EdgeInsets.all(
@@ -37,8 +38,7 @@ class CustomTextButtonWidget extends StatelessWidget {
                 CustomText(
                   text: text ?? "",
                   color: textColor,
-                  fontSize: 18.sp,
-                  maxLines: 2,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                 ),
           ),

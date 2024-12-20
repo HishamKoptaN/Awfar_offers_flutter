@@ -22,7 +22,7 @@ class ToolsWidget extends StatelessWidget {
           children: [
             Icon(
               iconData,
-              color: AppColors.yellowColor,
+              color: AppColors.brownColor,
               size: 24,
             ),
             const SizedBox(

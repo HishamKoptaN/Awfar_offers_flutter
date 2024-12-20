@@ -48,7 +48,7 @@ class OffersGridView extends StatelessWidget {
               right: 8,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.yellowColor),
+                  border: Border.all(color: AppColors.brownColor),
                   color: const Color.fromARGB(150, 0, 0, 0),
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -59,7 +59,7 @@ class OffersGridView extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.yellowColor,
+                      color: AppColors.brownColor,
                     ),
                   ),
                 ),
