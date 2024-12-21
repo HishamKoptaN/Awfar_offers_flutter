@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/global_methods.dart';
 import 'core/utils/app_colors.dart';
-import 'features/categories/presentation/views/categories_view.dart';
+import 'features/categories/present/views/categories_view.dart';
 import 'features/coupons/present/view/coupons_view.dart';
-import 'features/main/presentation/bloc/main_bloc.dart';
-import 'features/main/presentation/bloc/main_state.dart';
+import 'features/main/present/bloc/main_bloc.dart';
+import 'features/main/present/bloc/main_state.dart';
 import 'features/stores/present/views/stores_view.dart';
 
 class HomeView extends StatefulWidget {

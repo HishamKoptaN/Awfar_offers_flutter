@@ -2,7 +2,7 @@ import '../../../features/Auth/login/domain/use_cases/login_use_case.dart';
 import '../../../features/categories/domain/use_cases/categories_use_case.dart';
 import '../../../features/countries/domain/use_cases/get_countries_use_case.dart';
 import '../../../features/coupons/domain/use_cases/get_coupons_use_case.dart';
-import '../../../features/governorates/domain/use_cases/get_governorates_use_case.dart';
+import '../../../features/cities/domain/use_cases/get_cities_use_case.dart';
 import '../../../features/main/domain/usecases/check_use_case.dart';
 import '../../../features/external_notifications/domain/use_cases/save_notifications_data_use_case.dart';
 import '../../../features/notifications/domain/use_cases/get_notifications_use_case.dart';
@@ -33,8 +33,8 @@ class UseCaseModule extends DIModule {
         ),
       )
       ..registerLazySingleton(
-        () => GetGovernoratesUseCase(
-          governoratesRepo: getIt(),
+        () => GetCitiesUseCase(
+          citiesRepo: getIt(),
         ),
       )
       ..registerLazySingleton(

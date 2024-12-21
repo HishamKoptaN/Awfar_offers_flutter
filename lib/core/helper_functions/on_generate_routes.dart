@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/Auth/login/presentation/view/login_view.dart';
-import '../../features/categories/presentation/views/categories_view.dart';
-import '../../features/categories/presentation/views/sub_categories_items_view.dart';
+import '../../features/categories/present/views/categories_view.dart';
+import '../../features/categories/present/views/sub_categories_items_view.dart';
 import '../../features/coupons/present/bloc/coupons_bloc.dart';
 import '../../features/coupons/present/view/coupons_view.dart';
 import '../../features/notifications/present/view/notifications_view.dart';

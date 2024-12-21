@@ -3,7 +3,7 @@ import '../../../features/categories/data/data_sources/categories_api.dart';
 import '../../../features/countries/data/data_sources/countries_api.dart';
 import '../../../features/coupons/data/data_sources/coupons_api.dart';
 import '../../../features/external_notifications/data/datasources/external_notifications_api.dart';
-import '../../../features/governorates/data/data_sources/governorates_api.dart';
+import '../../../features/cities/data/data_sources/cities_api.dart';
 import '../../../features/main/data/datasources/main_api.dart';
 import '../../../features/notifications/data/datasources/notifications_api.dart';
 import '../../../features/offers/data/data_sources/offers_api.dart';
@@ -35,8 +35,8 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
-      ..registerLazySingleton<GovernoratesApi>(
-        () => GovernoratesApi(
+      ..registerLazySingleton<CitiesApi>(
+        () => CitiesApi(
           getIt(),
         ),
       )

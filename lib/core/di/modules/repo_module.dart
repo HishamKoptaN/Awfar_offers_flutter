@@ -8,8 +8,8 @@ import '../../../features/coupons/data/repos/coupons_repo.dart';
 import '../../../features/coupons/domain/repo_impl/coupons_repo_impl.dart';
 import '../../../features/external_notifications/data/repo/external_notifications_repo.dart';
 import '../../../features/external_notifications/domain/repo_imp/external_notifications_repo_impl.dart';
-import '../../../features/governorates/data/repo_impl/governorates_repo_impl.dart';
-import '../../../features/governorates/domain/repo/governorates_repo.dart';
+import '../../../features/cities/data/repo_impl/cities_repo_impl.dart';
+import '../../../features/cities/domain/repo/cities_repo.dart';
 import '../../../features/main/data/repo_impl/main_repo_impl.dart';
 import '../../../features/main/domain/repo/main_repo.dart';
 import '../../../features/notifications/data/repo/notifications_repo.dart';
@@ -50,9 +50,9 @@ class RepositoryModule extends DIModule {
           countriesApi: getIt(),
         ),
       )
-      ..registerLazySingleton<GovernoratesRepo>(
-        () => GovernoratesRepoImpl(
-          governoratesApi: getIt(),
+      ..registerLazySingleton<CitiesRepo>(
+        () => CitiesRepoImpl(
+          citiesApi: getIt(),
         ),
       )
       ..registerLazySingleton<OffersRepo>(

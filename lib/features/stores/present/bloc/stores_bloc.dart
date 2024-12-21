@@ -33,7 +33,7 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
                 StoresSingleton.instance.stores = stores!;
                 FavsStoresSingleton.instance.favs =
                     await SharedPrefHelper.getIntList(
-                  key: SharedPrefKeys.favsStores,
+                  key: SharedPrefKeys.favStores,
                 );
                 emit(
                   const StoresState.loaded(),
@@ -55,20 +55,20 @@ class StoresBloc extends Bloc<StoresEvent, StoresState> {
             try {
               if (add) {
                 await SharedPrefHelper.updateList(
-                  key: SharedPrefKeys.favsStores,
+                  key: SharedPrefKeys.favStores,
                   value: id,
                   add: true,
                 );
               } else {
                 await SharedPrefHelper.updateList(
-                  key: SharedPrefKeys.favsStores,
+                  key: SharedPrefKeys.favStores,
                   value: id,
                   add: false,
                 );
               }
               FavsStoresSingleton.instance.favs =
                   await SharedPrefHelper.getIntList(
-                key: SharedPrefKeys.favsStores,
+                key: SharedPrefKeys.favStores,
               );
               emit(
                 const StoresState.loaded(),

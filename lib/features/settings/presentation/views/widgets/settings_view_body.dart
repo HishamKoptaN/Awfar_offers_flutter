@@ -9,7 +9,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_text_styles.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
 import '../../../../../core/widgets/custom_divider_widget.dart';
-import '../../../../countries/data/models/countries_response_model.dart';
+import '../../../../countries/data/models/countries_res_model.dart';
 import 'custom_setting_widget.dart';
 
 class SettingsViewBody extends StatefulWidget {
