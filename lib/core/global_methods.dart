@@ -37,7 +37,7 @@ Future<void> loadAppData(
   return await getGovernorate().then(
     (governorateId) {
       context.read<ExternalNotificationsBloc>().add(
-            ExternalNotificationsEvent.saveExternalNotificationData(
+            ExternalNotificationsEvent.saveTopic(
               governorateId: governorateId!,
             ),
           );

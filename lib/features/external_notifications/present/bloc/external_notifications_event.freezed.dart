@@ -19,36 +19,33 @@ mixin _$ExternalNotificationsEvent {
   int get governorateId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int governorateId) saveExternalNotificationData,
+    required TResult Function(int governorateId) saveTopic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int governorateId)? saveExternalNotificationData,
+    TResult? Function(int governorateId)? saveTopic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int governorateId)? saveExternalNotificationData,
+    TResult Function(int governorateId)? saveTopic,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SaveExternalNotificationData value)
-        saveExternalNotificationData,
+    required TResult Function(_SaveTopic value) saveTopic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SaveExternalNotificationData value)?
-        saveExternalNotificationData,
+    TResult? Function(_SaveTopic value)? saveTopic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SaveExternalNotificationData value)?
-        saveExternalNotificationData,
+    TResult Function(_SaveTopic value)? saveTopic,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -98,25 +95,22 @@ class _$ExternalNotificationsEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$SaveExternalNotificationDataImplCopyWith<$Res>
+abstract class _$$SaveTopicImplCopyWith<$Res>
     implements $ExternalNotificationsEventCopyWith<$Res> {
-  factory _$$SaveExternalNotificationDataImplCopyWith(
-          _$SaveExternalNotificationDataImpl value,
-          $Res Function(_$SaveExternalNotificationDataImpl) then) =
-      __$$SaveExternalNotificationDataImplCopyWithImpl<$Res>;
+  factory _$$SaveTopicImplCopyWith(
+          _$SaveTopicImpl value, $Res Function(_$SaveTopicImpl) then) =
+      __$$SaveTopicImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int governorateId});
 }
 
 /// @nodoc
-class __$$SaveExternalNotificationDataImplCopyWithImpl<$Res>
-    extends _$ExternalNotificationsEventCopyWithImpl<$Res,
-        _$SaveExternalNotificationDataImpl>
-    implements _$$SaveExternalNotificationDataImplCopyWith<$Res> {
-  __$$SaveExternalNotificationDataImplCopyWithImpl(
-      _$SaveExternalNotificationDataImpl _value,
-      $Res Function(_$SaveExternalNotificationDataImpl) _then)
+class __$$SaveTopicImplCopyWithImpl<$Res>
+    extends _$ExternalNotificationsEventCopyWithImpl<$Res, _$SaveTopicImpl>
+    implements _$$SaveTopicImplCopyWith<$Res> {
+  __$$SaveTopicImplCopyWithImpl(
+      _$SaveTopicImpl _value, $Res Function(_$SaveTopicImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ExternalNotificationsEvent
@@ -126,7 +120,7 @@ class __$$SaveExternalNotificationDataImplCopyWithImpl<$Res>
   $Res call({
     Object? governorateId = null,
   }) {
-    return _then(_$SaveExternalNotificationDataImpl(
+    return _then(_$SaveTopicImpl(
       governorateId: null == governorateId
           ? _value.governorateId
           : governorateId // ignore: cast_nullable_to_non_nullable
@@ -137,23 +131,22 @@ class __$$SaveExternalNotificationDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SaveExternalNotificationDataImpl
-    implements _SaveExternalNotificationData {
-  const _$SaveExternalNotificationDataImpl({required this.governorateId});
+class _$SaveTopicImpl implements _SaveTopic {
+  const _$SaveTopicImpl({required this.governorateId});
 
   @override
   final int governorateId;
 
   @override
   String toString() {
-    return 'ExternalNotificationsEvent.saveExternalNotificationData(governorateId: $governorateId)';
+    return 'ExternalNotificationsEvent.saveTopic(governorateId: $governorateId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SaveExternalNotificationDataImpl &&
+            other is _$SaveTopicImpl &&
             (identical(other.governorateId, governorateId) ||
                 other.governorateId == governorateId));
   }
@@ -166,35 +159,33 @@ class _$SaveExternalNotificationDataImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SaveExternalNotificationDataImplCopyWith<
-          _$SaveExternalNotificationDataImpl>
-      get copyWith => __$$SaveExternalNotificationDataImplCopyWithImpl<
-          _$SaveExternalNotificationDataImpl>(this, _$identity);
+  _$$SaveTopicImplCopyWith<_$SaveTopicImpl> get copyWith =>
+      __$$SaveTopicImplCopyWithImpl<_$SaveTopicImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int governorateId) saveExternalNotificationData,
+    required TResult Function(int governorateId) saveTopic,
   }) {
-    return saveExternalNotificationData(governorateId);
+    return saveTopic(governorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int governorateId)? saveExternalNotificationData,
+    TResult? Function(int governorateId)? saveTopic,
   }) {
-    return saveExternalNotificationData?.call(governorateId);
+    return saveTopic?.call(governorateId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int governorateId)? saveExternalNotificationData,
+    TResult Function(int governorateId)? saveTopic,
     required TResult orElse(),
   }) {
-    if (saveExternalNotificationData != null) {
-      return saveExternalNotificationData(governorateId);
+    if (saveTopic != null) {
+      return saveTopic(governorateId);
     }
     return orElse();
   }
@@ -202,39 +193,35 @@ class _$SaveExternalNotificationDataImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SaveExternalNotificationData value)
-        saveExternalNotificationData,
+    required TResult Function(_SaveTopic value) saveTopic,
   }) {
-    return saveExternalNotificationData(this);
+    return saveTopic(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SaveExternalNotificationData value)?
-        saveExternalNotificationData,
+    TResult? Function(_SaveTopic value)? saveTopic,
   }) {
-    return saveExternalNotificationData?.call(this);
+    return saveTopic?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SaveExternalNotificationData value)?
-        saveExternalNotificationData,
+    TResult Function(_SaveTopic value)? saveTopic,
     required TResult orElse(),
   }) {
-    if (saveExternalNotificationData != null) {
-      return saveExternalNotificationData(this);
+    if (saveTopic != null) {
+      return saveTopic(this);
     }
     return orElse();
   }
 }
 
-abstract class _SaveExternalNotificationData
-    implements ExternalNotificationsEvent {
-  const factory _SaveExternalNotificationData(
-      {required final int governorateId}) = _$SaveExternalNotificationDataImpl;
+abstract class _SaveTopic implements ExternalNotificationsEvent {
+  const factory _SaveTopic({required final int governorateId}) =
+      _$SaveTopicImpl;
 
   @override
   int get governorateId;
@@ -243,7 +230,6 @@ abstract class _SaveExternalNotificationData
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SaveExternalNotificationDataImplCopyWith<
-          _$SaveExternalNotificationDataImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SaveTopicImplCopyWith<_$SaveTopicImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

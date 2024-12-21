@@ -1,7 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/deviceu_utils.dart';
-import '../../data/model/save_notifcations_data_req_body_model.dart';
+import '../../../../core/database/cache/shared_pref_helper.dart';
+import '../../../../core/database/cache/shared_pref_keys.dart';
 import '../../domain/use_cases/save_notifications_data_use_case.dart';
 import 'external_notifications_event.dart';
 import 'external_notifications_state.dart';
@@ -17,22 +17,27 @@ class ExternalNotificationsBloc
     on<ExternalNotificationsEvent>(
       (event, emit) async {
         await event.when(
-          saveExternalNotificationData: (cityId) async {
-            SaveNotifcationsDataReqBodyModel saveNotifcationsDataReqBodyModel =
-                SaveNotifcationsDataReqBodyModel();
-
-            final deviceUtils = DeviceUtils();
-            String? deviceId = await deviceUtils.getDeviceId();
-            String? fcmToken = await FirebaseMessaging.instance.getToken();
-            saveNotifcationsDataReqBodyModel =
-                saveNotifcationsDataReqBodyModel.copyWith(
-              deviceId: deviceId,
-              cityId: cityId,
-              fcmToken: fcmToken,
+          saveTopic: (
+            cityTopic,
+          ) async {
+            String? userTopic = await SharedPrefHelper.getString(
+              key: SharedPrefKeys.userTopic,
             );
-            await saveNotificationsDataUseCase.saveNotificationsData(
-              saveNotifcationsDataReqBodyModel:
-                  saveNotifcationsDataReqBodyModel,
+            //! اكتب هذه الدالة لتخزين الموضوع الحالي
+            if (userTopic != null && userTopic != cityTopic) {
+              //! إذا كان المستخدم مسجلاً في موضوع آخر، قم بإلغاء التسجيل أولاً
+              await FirebaseMessaging.instance.unsubscribeFromTopic(
+                userTopic,
+              );
+            }
+            //! الآن، قم بتسجيل المستخدم في الموضوع الجديد
+            await FirebaseMessaging.instance.subscribeToTopic(
+              cityTopic.toString(),
+            );
+            //! بعد التسجيل في الموضوع الجديد، يمكنك تخزين الموضوع الجديد في مكان ما
+            await SharedPrefHelper.setData(
+              key: SharedPrefKeys.userTopic,
+              value: cityTopic.toString(),
             );
           },
         );
