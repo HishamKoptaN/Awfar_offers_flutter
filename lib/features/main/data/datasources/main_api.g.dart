@@ -14,7 +14,7 @@ class _MainApi implements MainApi {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://api.awfar-offers.com/app/';
+    baseUrl ??= 'https://api.awfar-offers.com/auth/';
   }
 
   final Dio _dio;
@@ -24,7 +24,7 @@ class _MainApi implements MainApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<User>? check() async {
+  Future<User> check() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -1,21 +1,20 @@
-import '../../features/governorates/data/models/governorates_res_model.dart';
+import '../../features/cities/data/models/cities_res_model.dart';
 
-class GovernoratesSingleton {
-  List<Governorate> _governorates = [];
-  static final GovernoratesSingleton _instance =
-      GovernoratesSingleton._internal();
+class CitiesSingleton {
+  List<City> _cities = [];
+  static final CitiesSingleton _instance = CitiesSingleton._internal();
 
-  GovernoratesSingleton._internal();
+  CitiesSingleton._internal();
 
-  static GovernoratesSingleton get instance => _instance;
+  static CitiesSingleton get instance => _instance;
 
-  List<Governorate> get governorates => _governorates;
+  List<City> get cities => _cities;
 
-  set governorates(List<Governorate> governoratesList) {
-    _governorates = governoratesList;
+  set cities(List<City> citiesList) {
+    _cities = citiesList;
   }
 
   void clear() {
-    _governorates = [];
+    _cities = [];
   }
 }

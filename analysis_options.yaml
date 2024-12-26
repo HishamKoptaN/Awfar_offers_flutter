@@ -4,6 +4,8 @@ linter:
   rules:
 
 analyzer:
+  errors:
+    unused_import: ignore ignore
   exclude:
     - test/**
     - example/**

@@ -104,11 +104,11 @@ class ProfileViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                IconAndTextWidget(
-                  iconData: Icons.bookmark_outline_outlined,
-                  title: "الإشارات المرجعية",
-                  onTap: () {},
-                ),
+                // IconAndTextWidget(
+                //   iconData: Icons.bookmark_outline_outlined,
+                //   title: "الإشارات المرجعية",
+                //   onTap: () {},
+                // ),
                 IconAndTextWidget(
                   iconData: Icons.settings_outlined,
                   title: "الإعدادات",

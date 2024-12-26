@@ -1,4 +1,4 @@
-import '../../features/countries/data/models/countries_response_model.dart';
+import '../../features/countries/data/models/countries_res_model.dart';
 
 class CountriesSingleton {
   List<Country> _countries = [];

@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/database/cache/shared_pref_helper.dart';
 import '../../../../core/database/cache/shared_pref_keys.dart';
-import '../../../../core/singletons/favs_coupons_singleton.dart';
+import '../../../../core/singletons/coupons_singleton.dart';
+import '../../../../core/singletons/favs/fav_coupons_singleton.dart';
 import '../../domain/use_cases/get_coupons_use_case.dart';
 import 'coupons_event.dart';
 import 'coupons_state.dart';
@@ -20,16 +21,12 @@ class CouponsBloc extends Bloc<CouponsEvent, CouponsState> {
             final result = await getCouponsUseCase.getCoupons(
               governorateId: governorateId,
             );
-            List<int> favorites = await SharedPrefHelper.getIntList(
-              key: SharedPrefKeys.favoriteCoupons,
-            );
+
             await result.when(
-              success: (catgoryCoupons) async {
+              success: (coupons) async {
+                CouponsSingleton.instance.coupons = coupons!;
                 emit(
-                  CouponsState.loaded(
-                    catgoryCoupons: catgoryCoupons!,
-                    favorites: favorites,
-                  ),
+                  const CouponsState.loaded(),
                 );
               },
               failure: (error) async {
@@ -41,24 +38,27 @@ class CouponsBloc extends Bloc<CouponsEvent, CouponsState> {
               },
             );
           },
-          updateFavs: (id, add) async {
+          updateFavs: (
+            id,
+            add,
+          ) async {
             try {
               if (add) {
                 await SharedPrefHelper.updateList(
-                  key: SharedPrefKeys.favoriteCoupons,
+                  key: SharedPrefKeys.favCoupons,
                   value: id,
                   add: true,
                 );
               } else {
                 await SharedPrefHelper.updateList(
-                  key: SharedPrefKeys.favoriteCoupons,
+                  key: SharedPrefKeys.favCoupons,
                   value: id,
                   add: false,
                 );
               }
-              FavsCouponsSingleton.instance.favs =
+              FavCouponsSingleton.instance.favs =
                   await SharedPrefHelper.getIntList(
-                key: SharedPrefKeys.favoriteCoupons,
+                key: SharedPrefKeys.favCoupons,
               );
               // emit(
               //   CouponsState.loaded(),

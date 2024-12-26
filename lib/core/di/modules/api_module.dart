@@ -2,14 +2,15 @@ import '../../../features/Auth/login/data/data_sources/login_api.dart';
 import '../../../features/categories/data/data_sources/categories_api.dart';
 import '../../../features/countries/data/data_sources/countries_api.dart';
 import '../../../features/coupons/data/data_sources/coupons_api.dart';
-import '../../../features/governorates/data/data_sources/governorates_api.dart';
+import '../../../features/external_notifications/data/datasources/external_notifications_api.dart';
+import '../../../features/cities/data/data_sources/cities_api.dart';
 import '../../../features/main/data/datasources/main_api.dart';
 import '../../../features/notifications/data/datasources/notifications_api.dart';
 import '../../../features/offers/data/data_sources/offers_api.dart';
 import '../../../features/products/data/data_sources/products_api.dart';
 import '../../../features/stores/data/data_sources/stores_api.dart';
 import '../../../features/sub_categories/data/data_sources/sub_categories_api.dart';
-import '../../../features/sub_categories_items/data/data_sources/sub_categories_items_api.dart';
+import '../../../features/markas/data/data_sources/markas_api.dart';
 import '../../networking/dio_factory.dart';
 import '../dependency_injection.dart';
 
@@ -34,8 +35,8 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
-      ..registerLazySingleton<GovernoratesApi>(
-        () => GovernoratesApi(
+      ..registerLazySingleton<CitiesApi>(
+        () => CitiesApi(
           getIt(),
         ),
       )
@@ -59,8 +60,8 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
-      ..registerLazySingleton<SubCategoriesItemsApi>(
-        () => SubCategoriesItemsApi(
+      ..registerLazySingleton<MarkasApi>(
+        () => MarkasApi(
           getIt(),
         ),
       )
@@ -76,6 +77,11 @@ class ApiModule extends DIModule {
       )
       ..registerLazySingleton<NotificationsApi>(
         () => NotificationsApi(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<ExternalNotificationsApi>(
+        () => ExternalNotificationsApi(
           getIt(),
         ),
       );

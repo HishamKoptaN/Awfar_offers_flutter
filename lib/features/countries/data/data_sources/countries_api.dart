@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../../core/networking/api_constants.dart';
-import '../models/countries_response_model.dart';
+import '../models/countries_res_model.dart';
 part 'countries_api.g.dart';
 
 @RestApi(

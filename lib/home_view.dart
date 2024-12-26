@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/global_methods.dart';
 import 'core/utils/app_colors.dart';
-import 'features/categories/presentation/views/categories_view.dart';
+import 'features/categories/present/views/categories_view.dart';
 import 'features/coupons/present/view/coupons_view.dart';
-import 'features/main/presentation/bloc/main_bloc.dart';
-import 'features/main/presentation/bloc/main_state.dart';
-import 'features/search/presentation/views/search_view.dart';
+import 'features/main/present/bloc/main_bloc.dart';
+import 'features/main/present/bloc/main_state.dart';
 import 'features/stores/present/views/stores_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -29,10 +28,10 @@ class _HomeView extends State<HomeView> with WidgetsBindingObserver {
     const CategoriesView(
       brandName: '',
     ),
-    const SearchView(
-      isBack: false,
-      searchLabel: "بحث",
-    ),
+    // const SearchView(
+    //   isBack: false,
+    //   searchLabel: "بحث",
+    // ),
     const CouponsView(),
     const ProfileView(),
   ];
@@ -79,7 +78,9 @@ class _HomeView extends State<HomeView> with WidgetsBindingObserver {
               );
             },
             logedIn: () async {
-              await loadAppData(context);
+              await loadAppData(
+                context,
+              );
             },
           );
         },
@@ -104,7 +105,9 @@ class _HomeView extends State<HomeView> with WidgetsBindingObserver {
           items: const [
             BottomNavigationBarItem(
               backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.local_offer_outlined),
+              icon: Icon(
+                Icons.local_offer_outlined,
+              ),
               label: "عروض",
             ),
             BottomNavigationBarItem(
@@ -112,11 +115,11 @@ class _HomeView extends State<HomeView> with WidgetsBindingObserver {
               icon: Icon(Icons.category_outlined),
               label: "الفئات",
             ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.search_outlined),
-              label: 'بحث',
-            ),
+            // BottomNavigationBarItem(
+            //   backgroundColor: AppColors.primaryColor,
+            //   icon: Icon(Icons.search_outlined),
+            //   label: 'بحث',
+            // ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.primaryColor,
               icon: Icon(Icons.card_giftcard_outlined),

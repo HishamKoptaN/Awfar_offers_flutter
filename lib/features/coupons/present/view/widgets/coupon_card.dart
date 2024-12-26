@@ -58,7 +58,11 @@ class CouponCard extends StatelessWidget {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      Clipboard.setData(ClipboardData(text: coupon.code!));
+                      Clipboard.setData(
+                        ClipboardData(
+                          text: coupon.code!,
+                        ),
+                      );
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
@@ -80,7 +84,7 @@ class CouponCard extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 4),
+                            horizontal: 16, vertical: 4),
                         child: Row(
                           children: [
                             Text(

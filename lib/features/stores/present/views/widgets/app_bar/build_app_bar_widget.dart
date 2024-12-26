@@ -7,12 +7,12 @@ import '../../../../../../core/singletons/countries_singleton.dart';
 import '../../../../../../core/singletons/governorates_singleron.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/app_text_styles.dart';
-import '../../../../../countries/presentation/bloc/countries_bloc.dart';
-import '../../../../../countries/presentation/bloc/countries_state.dart';
-import '../../../../../governorates/present/bloc/governorates_bloc.dart';
-import '../../../../../governorates/present/bloc/governorates_state.dart';
-import '../../../../../offers/presentation/bloc/offers_bloc.dart';
-import '../../../../../offers/presentation/bloc/offers_state.dart';
+import '../../../../../countries/present/bloc/countries_bloc.dart';
+import '../../../../../countries/present/bloc/countries_state.dart';
+import '../../../../../cities/present/bloc/cities_bloc.dart';
+import '../../../../../cities/present/bloc/cities_state.dart';
+import '../../../../../offers/present/bloc/offers_bloc.dart';
+import '../../../../../offers/present/bloc/offers_state.dart';
 
 class BuildAppBarWidget extends StatefulWidget {
   const BuildAppBarWidget({
@@ -81,7 +81,7 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
     return BlocBuilder<CountriesBloc, CountriesState>(
       builder: (context, state) {
         return state.maybeWhen(
-          countriesloaded: (
+          loaded: (
             selectedCountryId,
           ) {
             return GestureDetector(
@@ -120,18 +120,18 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
   }
 
   Widget _buildGovernorateSelectorWidget() {
-    return BlocBuilder<GovernoratesBloc, GovernoratesState>(
+    return BlocBuilder<CitiesBloc, CitiesState>(
       builder: (context, state) {
         return state.maybeWhen(
-          governoratesloaded: (
+          loaded: (
             selectedGovernorateId,
           ) {
             return GestureDetector(
               onTap: () async {
                 await getCountry().then(
                   (id) {
-                    showGovernorateSelection(
-                      selectedCountryId: id,
+                    showCitiesSelection(
+                      selectedCountryId: id!,
                       context: context,
                     );
                   },
@@ -139,14 +139,14 @@ class _BuildAppBarWidgetState extends State<BuildAppBarWidget> {
               },
               child: Text(
                 selectedGovernorateId != null
-                    ? GovernoratesSingleton.instance.governorates
+                    ? CitiesSingleton.instance.cities
                         .where(
                           (governorate) =>
                               governorate.id == selectedGovernorateId,
                         )
                         .first
                         .name!
-                    : "اختر محافظة",
+                    : "اختر مدينة",
                 style: const TextStyle(
                   color: Colors.white,
                 ),

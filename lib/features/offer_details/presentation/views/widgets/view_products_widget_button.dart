@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../categories/presentation/views/categories_view.dart';
+import '../../../../categories/present/views/categories_view.dart';
 
 class ViewProductsWidgetButton extends StatelessWidget {
   const ViewProductsWidgetButton({

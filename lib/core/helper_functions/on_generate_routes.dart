@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/Auth/login/presentation/view/login_view.dart';
-import '../../features/categories/presentation/views/categories_view.dart';
-import '../../features/categories/presentation/views/sub_categories_items_view.dart';
+import '../../features/categories/present/views/categories_view.dart';
+import '../../features/categories/present/views/sub_categories_items_view.dart';
 import '../../features/coupons/present/bloc/coupons_bloc.dart';
 import '../../features/coupons/present/view/coupons_view.dart';
 import '../../features/notifications/present/view/notifications_view.dart';
-import '../../features/offer_details/presentation/views/store_deatails_view.dart';
+import '../../features/offer_details/presentation/views/store_details_view.dart';
 import '../../features/offer_details/presentation/views/widgets/full_screen_of_offer_image.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
@@ -49,9 +49,9 @@ Route<dynamic> onGenerateRoute(
         ),
       );
 
-    case SubCategoriesItemsView.routeName:
+    case MarkasView.routeName:
       return MaterialPageRoute(
-        builder: (context) => SubCategoriesItemsView(
+        builder: (context) => MarkasView(
           subCategory: settings.arguments as SubCategory,
         ),
       );
@@ -108,10 +108,10 @@ Route<dynamic> onGenerateRoute(
       return MaterialPageRoute(
         builder: (context) => const ProfileView(),
       );
-    case StoreDeatailsView.routeName:
+    case StoreDetailsView.routeName:
       final storeElement = settings.arguments as Store;
       return MaterialPageRoute(
-        builder: (context) => StoreDeatailsView(
+        builder: (context) => StoreDetailsView(
           store: storeElement,
         ),
       );

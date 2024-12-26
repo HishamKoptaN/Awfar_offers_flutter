@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:awfar_offer_app/core/services/local_notifications_services.dart';
 import 'package:awfar_offer_app/generated/intl/messages_ar.dart';
 import 'package:firebase_core/firebase_core.dart';

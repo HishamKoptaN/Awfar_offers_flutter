@@ -6,10 +6,7 @@ part 'coupons_state.freezed.dart';
 @freezed
 class CouponsState with _$CouponsState {
   const factory CouponsState.initial() = _Initial;
-  const factory CouponsState.loaded({
-    required List<Coupon> catgoryCoupons,
-    required List<int> favorites,
-  }) = _loaded;
+  const factory CouponsState.loaded() = _loaded;
   const factory CouponsState.loading() = _Loading;
   const factory CouponsState.success() = _Success;
   const factory CouponsState.failure({

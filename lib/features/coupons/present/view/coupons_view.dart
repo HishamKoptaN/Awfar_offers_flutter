@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/database/cache/shared_pref_helper.dart';
+import '../../../../core/database/cache/shared_pref_keys.dart';
+import '../../../../core/singletons/coupons_singleton.dart';
+import '../../../../core/singletons/favs/fav_coupons_singleton.dart';
 import '../../data/models/coupon.dart';
 import '../bloc/coupons_bloc.dart';
 import '../bloc/coupons_state.dart';
@@ -21,18 +25,6 @@ class CouponsView extends StatefulWidget {
 class _CouponsViewState extends State<CouponsView> {
   int _selectedCategoryIndex = -1;
   List<Coupon> filtersCoupons = [];
-  List<int> favorites = [];
-
-  void filterFavoriteCoupons(List<Coupon> coupons, List<int> favorites) {
-    filtersCoupons = coupons
-        .where(
-          (coupon) => favorites.contains(
-            coupon.id,
-          ),
-        )
-        .toList();
-  }
-
   @override
   Widget build(context) {
     return SafeArea(
@@ -45,9 +37,9 @@ class _CouponsViewState extends State<CouponsView> {
           },
           builder: (context, state) {
             return state.maybeWhen(
-              loaded: (coupons, favorites) {
+              loaded: () {
                 if (filtersCoupons.isEmpty) {
-                  filtersCoupons = coupons;
+                  filtersCoupons = CouponsSingleton.instance.coupons;
                 }
                 return Column(
                   children: [
@@ -56,16 +48,28 @@ class _CouponsViewState extends State<CouponsView> {
                     CategoriesSection(
                       onCategorySelected: (index) async {
                         print(index);
+                        List<int> favs = await SharedPrefHelper.getIntList(
+                          key: SharedPrefKeys.favCoupons,
+                        );
                         setState(
                           () {
                             _selectedCategoryIndex = index;
                             if (index == -1) {
-                              filtersCoupons = coupons;
+                              filtersCoupons =
+                                  CouponsSingleton.instance.coupons;
                             } else if (index == -2) {
-                              filterFavoriteCoupons(coupons, favorites);
+                              filtersCoupons = CouponsSingleton.instance.coupons
+                                  .where(
+                                    (coupon) => favs.contains(
+                                      coupon.id,
+                                    ),
+                                  )
+                                  .toList();
                             } else {
-                              filtersCoupons = coupons
-                                  .where((coupon) => coupon.categoryId == index)
+                              filtersCoupons = CouponsSingleton.instance.coupons
+                                  .where(
+                                    (coupon) => coupon.categoryId == index,
+                                  )
                                   .toList();
                             }
                           },
@@ -94,7 +98,10 @@ class _CouponsViewState extends State<CouponsView> {
                               showBottomSheet(
                                 context: context,
                                 coupon: coupon,
-                                isFav: favorites.contains(coupon.id),
+                                isFav:
+                                    FavCouponsSingleton.instance.favs!.contains(
+                                  coupon.id!,
+                                ),
                               );
                             },
                           );

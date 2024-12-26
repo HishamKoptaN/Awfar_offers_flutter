@@ -1,6 +1,7 @@
-import 'package:awfar_offer_app/features/admobe/banner_ad.dart';
+import 'package:awfar_offer_app/core/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
 import '../bloc/stores_bloc.dart';
 import '../bloc/stores_state.dart';
@@ -34,32 +35,34 @@ class _OfferViewState extends State<StoresView> {
                       child: Column(
                         children: [
                           const BuildAppBarWidget(),
-                          SizedBox(
-                            height: 6.h,
+                          Gap(
+                            8.h,
                           ),
                           const CustomSearchAndRefreshWidget(),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          const DefaultTabController(
-                            length: 4,
+                          DefaultTabController(
+                            length: 2,
                             child: Column(
                               children: [
-                                CustomTabBar(),
-                                SizedBox(
-                                  height: 16,
+                                const CustomTabBar(),
+                                Gap(
+                                  1.h,
                                 ),
-                                CustomTabBarView(),
+                                const CustomTabBarView(),
                               ],
                             ),
-                          ),
-                          const SizedBox(
-                            height: 8,
                           ),
                         ],
                       ),
                     ),
                   ],
+                );
+              },
+              failure: (error) {
+                return Center(
+                  child: CustomText(
+                    text: error,
+                    fontSize: 25.sp,
+                  ),
                 );
               },
               orElse: () {

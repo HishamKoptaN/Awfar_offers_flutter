@@ -1,15 +1,16 @@
 import '../../../features/Auth/login/presentation/bloc/login_bloc.dart';
-import '../../../features/categories/presentation/bloc/categories_bloc.dart';
-import '../../../features/countries/presentation/bloc/countries_bloc.dart';
+import '../../../features/categories/present/bloc/categories_bloc.dart';
+import '../../../features/countries/present/bloc/countries_bloc.dart';
 import '../../../features/coupons/present/bloc/coupons_bloc.dart';
-import '../../../features/governorates/present/bloc/governorates_bloc.dart';
-import '../../../features/main/presentation/bloc/main_bloc.dart';
+import '../../../features/external_notifications/present/bloc/external_notifications_bloc.dart';
+import '../../../features/cities/present/bloc/cities_bloc.dart';
+import '../../../features/main/present/bloc/main_bloc.dart';
 import '../../../features/notifications/present/bloc/notifications_bloc.dart';
-import '../../../features/offers/presentation/bloc/offers_bloc.dart';
+import '../../../features/offers/present/bloc/offers_bloc.dart';
 import '../../../features/products/presentation/bloc/products_bloc.dart';
 import '../../../features/stores/present/bloc/stores_bloc.dart';
 import '../../../features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
-import '../../../features/sub_categories_items/presentation/bloc/sub_categories_items_bloc.dart';
+import '../../../features/markas/presentation/bloc/markas_bloc.dart';
 import '../dependency_injection.dart';
 
 class BlocModule extends DIModule {
@@ -31,9 +32,9 @@ class BlocModule extends DIModule {
           getCountriesUseCase: getIt(),
         ),
       )
-      ..registerLazySingleton<GovernoratesBloc>(
-        () => GovernoratesBloc(
-          getGovernoratesUseCase: getIt(),
+      ..registerLazySingleton<CitiesBloc>(
+        () => CitiesBloc(
+          getCitiesUseCase: getIt(),
         ),
       )
       ..registerLazySingleton<OffersBloc>(
@@ -56,9 +57,9 @@ class BlocModule extends DIModule {
           getSubCategoriesUseCase: getIt(),
         ),
       )
-      ..registerLazySingleton<SubCategoriesItemsBloc>(
-        () => SubCategoriesItemsBloc(
-          getSubCategoriesItemsUseCase: getIt(),
+      ..registerLazySingleton<MarkasBloc>(
+        () => MarkasBloc(
+          getMarkasUseCase: getIt(),
         ),
       )
       ..registerLazySingleton<ProductsBloc>(
@@ -74,6 +75,11 @@ class BlocModule extends DIModule {
       ..registerLazySingleton<NotificationsBloc>(
         () => NotificationsBloc(
           getNotificationsUseCase: getIt(),
+        ),
+      )
+      ..registerLazySingleton<ExternalNotificationsBloc>(
+        () => ExternalNotificationsBloc(
+          saveNotificationsDataUseCase: getIt(),
         ),
       );
   }

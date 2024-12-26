@@ -17,24 +17,14 @@ class CustomTabBar extends StatelessWidget {
       indicatorColor: AppColors.lightPrimaryColor,
       tabs: [
         TapWidget(
-          titleTap: "أعلى اللقطات",
-          iconData: Icons.mic_rounded,
+          titleTap: "أحدث",
+          iconData: Icons.access_time_filled_outlined,
           index: 0,
         ),
         TapWidget(
           titleTap: "المفضلة",
           iconData: Icons.favorite_outlined,
           index: 1,
-        ),
-        TapWidget(
-          titleTap: "القريبة",
-          iconData: Icons.location_on_outlined,
-          index: 2,
-        ),
-        TapWidget(
-          titleTap: "أحدث",
-          iconData: Icons.access_time_filled_outlined,
-          index: 3,
         ),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/singletons/favs_offers_singleton.dart';
+import '../../../../../../core/singletons/favs/fav_stores_singleton.dart';
 import '../../../../../../core/singletons/stores_singleton.dart';
-import '../aroodi_view_body_details.dart';
+import '../stores_view_body_details.dart';
 
 class CustomTabBarView extends StatelessWidget {
   const CustomTabBarView({
@@ -9,33 +9,25 @@ class CustomTabBarView extends StatelessWidget {
   });
   @override
   Widget build(context) {
-    double screenHeight = MediaQuery.of(context).size.height - 240;
+    double screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
       height: screenHeight,
       child: TabBarView(
         children: [
-          // Top
-          AroodiViewBodyDetails(
+          // Recentley
+          StoresViewBodyDetails(
             stores: StoresSingleton.instance.stores,
           ),
           // Favorites
-          AroodiViewBodyDetails(
+          StoresViewBodyDetails(
             stores: StoresSingleton.instance.stores.where(
-              (offer) {
-                return offer.id != null &&
-                    FavsOffersSingleton.instance.favs!.contains(
-                      offer.id,
+              (store) {
+                return store.id != null &&
+                    FavsStoresSingleton.instance.favs!.contains(
+                      store.id,
                     );
               },
             ).toList(),
-          ),
-          // Nearer
-          AroodiViewBodyDetails(
-            stores: StoresSingleton.instance.stores,
-          ),
-          // Recentley
-          AroodiViewBodyDetails(
-            stores: StoresSingleton.instance.stores,
           ),
         ],
       ),

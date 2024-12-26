@@ -69,10 +69,14 @@ class SharedPrefHelper {
     final list = await getIntList(key: key);
     if (add && !list.contains(value)) {
       debugPrint('SharedPrefHelper : add ');
-      list.add(value,);
+      list.add(
+        value,
+      );
     } else if (!add && list.contains(value)) {
       debugPrint('SharedPrefHelper : remove ');
-      list.remove(value,);
+      list.remove(
+        value,
+      );
     }
     await prefs.setStringList(
       key,
@@ -99,14 +103,14 @@ class SharedPrefHelper {
   }
 
   //!Gets an int value from SharedPreferences with given [key].
-  static Future<int> getInt({
+  static Future<int?> getInt({
     required String key,
   }) async {
     debugPrint(
       'SharedPrefHelper : getInt with key : $key',
     );
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getInt(key) ?? 0;
+    return sharedPreferences.getInt(key);
   }
 
   //! Gets an String value from SharedPreferences with given [key].

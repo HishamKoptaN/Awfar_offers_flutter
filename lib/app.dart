@@ -7,13 +7,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/helper_functions/on_generate_routes.dart';
 import 'core/utils/app_colors.dart';
-import 'features/countries/presentation/bloc/countries_bloc.dart';
-import 'features/countries/presentation/bloc/countries_event.dart';
-import 'features/governorates/present/bloc/governorates_bloc.dart';
-import 'features/governorates/present/bloc/governorates_event.dart';
-import 'features/main/presentation/bloc/main_bloc.dart';
-import 'features/main/presentation/bloc/main_event.dart';
-import 'features/main/presentation/bloc/main_state.dart';
+import 'features/countries/present/bloc/countries_bloc.dart';
+import 'features/countries/present/bloc/countries_event.dart';
+import 'features/cities/present/bloc/cities_bloc.dart';
+import 'features/cities/present/bloc/cities_event.dart';
+import 'features/main/present/bloc/main_bloc.dart';
+import 'features/main/present/bloc/main_event.dart';
+import 'features/main/present/bloc/main_state.dart';
 import 'generated/l10n.dart';
 import 'home_view.dart';
 
@@ -51,8 +51,8 @@ class _AroodiAppState extends State<AroodiApp> {
         context.read<CountriesBloc>().add(
               const CountriesEvent.getCountries(),
             );
-        context.read<GovernoratesBloc>().add(
-              const GovernoratesEvent.getGvernorates(),
+        context.read<CitiesBloc>().add(
+              const CitiesEvent.getCities(),
             );
       },
     );
@@ -63,7 +63,6 @@ class _AroodiAppState extends State<AroodiApp> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        getToken();
         injectEvent();
       },
     );
