@@ -22,7 +22,6 @@ import '../models/sub_category.dart';
 
 Route<dynamic> onGenerateRoute(
   RouteSettings settings,
-  AppOpenAdManager appOpenAdManager,
 ) {
   switch (settings.name) {
     case LoginView.routeName:
@@ -33,9 +32,7 @@ Route<dynamic> onGenerateRoute(
       );
     case HomeView.routeName:
       return MaterialPageRoute(
-        builder: (context) => HomeView(
-          appOpenAdManager: appOpenAdManager,
-        ),
+        builder: (context) => const HomeView(),
       );
     case StoresView.routeName:
       return MaterialPageRoute(

@@ -90,9 +90,7 @@ Future<void> main() async {
           ),
         ),
       ],
-      child: AroodiApp(
-        appOpenAdManager: appOpenAdManager,
-      ),
+      child: const AroodiApp(),
     ),
   );
 }

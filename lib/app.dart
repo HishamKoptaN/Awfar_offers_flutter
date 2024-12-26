@@ -18,8 +18,7 @@ import 'generated/l10n.dart';
 import 'home_view.dart';
 
 class AroodiApp extends StatefulWidget {
-  const AroodiApp({super.key, required this.appOpenAdManager});
-  final AppOpenAdManager appOpenAdManager;
+  const AroodiApp({super.key});
 
   @override
   State<AroodiApp> createState() => _AroodiAppState();
@@ -98,10 +97,7 @@ class _AroodiAppState extends State<AroodiApp> {
               ],
               locale: const Locale('ar'),
               supportedLocales: S.delegate.supportedLocales,
-              onGenerateRoute: (settings) => onGenerateRoute(
-                settings,
-                widget.appOpenAdManager,
-              ),
+              onGenerateRoute: (settings) => onGenerateRoute(settings),
               initialRoute: HomeView.routeName,
             );
           },
