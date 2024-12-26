@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:awfar_offer_app/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,13 +12,17 @@ import 'features/search/presentation/views/search_view.dart';
 import 'features/stores/present/views/stores_view.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  const HomeView({
+    super.key,
+    required this.appOpenAdManager,
+  });
+  final AppOpenAdManager appOpenAdManager;
   static const routeName = 'home_screen';
   @override
   State<HomeView> createState() => _HomeView();
 }
 
-class _HomeView extends State<HomeView> {
+class _HomeView extends State<HomeView> with WidgetsBindingObserver {
   int currentIndex = 0;
   final List<Widget> screens = [
     const StoresView(),
@@ -35,7 +40,22 @@ class _HomeView extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    widget.appOpenAdManager.showAdIfAvailable();
   }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   if (state == AppLifecycleState.resumed) {
+  //     widget.appOpenAdManager.showAdIfAvailable();
+  //   }
+  // }
 
   @override
   Widget build(context) {

@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,8 @@ import 'generated/l10n.dart';
 import 'home_view.dart';
 
 class AroodiApp extends StatefulWidget {
-  const AroodiApp({super.key});
+  const AroodiApp({super.key, required this.appOpenAdManager});
+  final AppOpenAdManager appOpenAdManager;
 
   @override
   State<AroodiApp> createState() => _AroodiAppState();
@@ -26,12 +28,12 @@ class AroodiApp extends StatefulWidget {
 class _AroodiAppState extends State<AroodiApp> {
   getToken() async {
     String? myToken = await FirebaseMessaging.instance.getToken();
-    print("My token  ==================${myToken}");
+    print("My token  ==================$myToken");
   }
 
   //! allow notifactions permissions for ios and web
   requestPermissions() async {
-    FirebaseMessaging? firebaseMessaging = await FirebaseMessaging.instance;
+    FirebaseMessaging? firebaseMessaging = FirebaseMessaging.instance;
     NotificationSettings settings = await firebaseMessaging.requestPermission(
       alert: true,
       announcement: true,
@@ -97,7 +99,10 @@ class _AroodiAppState extends State<AroodiApp> {
               ],
               locale: const Locale('ar'),
               supportedLocales: S.delegate.supportedLocales,
-              onGenerateRoute: onGenerateRoute,
+              onGenerateRoute: (settings) => onGenerateRoute(
+                settings,
+                widget.appOpenAdManager,
+              ),
               initialRoute: HomeView.routeName,
             );
           },

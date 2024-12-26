@@ -14,21 +14,31 @@ class _BannerAdsState extends State<BannerAds> {
   bool isLoaded = false;
 
   void load() {
-    bannerAd = BannerAd(
+    bannerAd = createBannerAd();
+    bannerAd!.load();
+  }
+
+  BannerAd createBannerAd() {
+    return BannerAd(
+      adUnitId: AdManager.bannerAd,
       size: AdSize.banner,
-      adUnitId: AdManager.bannerHome,
+      request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (ad) {
+        onAdLoaded: (_) {
+          debugPrint('Banner Ad Loaded');
           setState(() {
             isLoaded = true;
           });
         },
         onAdFailedToLoad: (ad, error) {
           ad.dispose();
+          setState(() {
+            isLoaded = false;
+          });
+          debugPrint('Banner Ad Failed to Load: ${error.message}');
         },
       ),
-      request: const AdRequest(),
-    )..load();
+    );
   }
 
   @override
@@ -39,9 +49,7 @@ class _BannerAdsState extends State<BannerAds> {
 
   @override
   void dispose() {
-    if (isLoaded) {
-      bannerAd!.dispose();
-    }
+    bannerAd?.dispose();
     super.dispose();
   }
 
@@ -49,11 +57,12 @@ class _BannerAdsState extends State<BannerAds> {
   Widget build(BuildContext context) {
     return Center(
       child: isLoaded
-          ? SizedBox(
-              width: bannerAd!.size.width.toDouble(),
-              height: bannerAd!.size.height.toDouble(),
-              child: AdWidget(
-                ad: bannerAd!,
+          ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: SizedBox(
+                width: bannerAd!.size.width.toDouble(),
+                height: bannerAd!.size.height.toDouble(),
+                child: AdWidget(ad: bannerAd!),
               ),
             )
           : const SizedBox(),

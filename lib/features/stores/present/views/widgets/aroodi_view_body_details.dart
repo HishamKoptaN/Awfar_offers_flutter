@@ -63,26 +63,28 @@ class _AroodiViewBodyDetailsState extends State<AroodiViewBodyDetails> {
           const SizedBox(
             height: 8,
           ),
-          OffersItemsGridView(stores: widget.stores
-              // // widget.stores
-              // selectedCategoryId == -1
-              //     ? widget.stores
-              //     : widget.stores
-              //         .where(
-              //           (store) => store.offerGroups!.any(
-              //             (offerGroup) =>
-              //                 offerGroup.categoryId == selectedCategoryId,
-              //           ),
-              //         )
-              //         .toList(),
-              ),
+          const BannerAds(),
           const SizedBox(
-            height: 16,
+            height: 8,
+          ),
+          OffersItemsGridView(
+            stores: widget.stores,
+            // // widget.stores
+            // selectedCategoryId == -1
+            //     ? widget.stores
+            //     : widget.stores
+            //         .where(
+            //           (store) => store.offerGroups!.any(
+            //             (offerGroup) =>
+            //                 offerGroup.categoryId == selectedCategoryId,
+            //           ),
+            //         )
+            //         .toList(),
           ),
           const BannerAds(),
           const SizedBox(
-            height: 16,
-          ),
+            height: 50,
+          )
         ],
       ),
     );

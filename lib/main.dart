@@ -1,5 +1,6 @@
 import 'package:awfar_offer_app/core/services/local_notifications_services.dart';
 import 'package:awfar_offer_app/core/services/push_notifications_services.dart';
+import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,8 @@ Future<void> main() async {
       LocalNotificationsServices.init(),
     ],
   );
+  final AppOpenAdManager appOpenAdManager = AppOpenAdManager();
+  appOpenAdManager.loadAd();
   runApp(
     MultiBlocProvider(
       providers: [
@@ -79,7 +82,9 @@ Future<void> main() async {
           ),
         ),
       ],
-      child: const AroodiApp(),
+      child: AroodiApp(
+        appOpenAdManager: appOpenAdManager,
+      ),
     ),
   );
 }

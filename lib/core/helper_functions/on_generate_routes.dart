@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,7 @@ import '../models/sub_category.dart';
 
 Route<dynamic> onGenerateRoute(
   RouteSettings settings,
+  AppOpenAdManager appOpenAdManager,
 ) {
   switch (settings.name) {
     case LoginView.routeName:
@@ -31,7 +33,9 @@ Route<dynamic> onGenerateRoute(
       );
     case HomeView.routeName:
       return MaterialPageRoute(
-        builder: (context) => const HomeView(),
+        builder: (context) => HomeView(
+          appOpenAdManager: appOpenAdManager,
+        ),
       );
     case StoresView.routeName:
       return MaterialPageRoute(
