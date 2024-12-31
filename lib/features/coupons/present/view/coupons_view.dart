@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/layouts/adaptive_layout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/database/cache/shared_pref_helper.dart';
@@ -80,32 +81,91 @@ class _CouponsViewState extends State<CouponsView> {
                     const StoreAvatarSection(),
                     const SizedBox(height: 8),
                     Expanded(
-                      child: GridView.builder(
-                        padding: const EdgeInsets.all(8.0),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10.0,
-                          mainAxisSpacing: 10.0,
-                          childAspectRatio: 1,
+                      child: AdaptiveLayout(
+                        mobileLayout: (context) => GridView.builder(
+                          padding: const EdgeInsets.all(8.0),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            childAspectRatio: 1,
+                          ),
+                          itemCount: filtersCoupons.length,
+                          itemBuilder: (context, index) {
+                            final coupon = filtersCoupons[index];
+                            return CouponCard(
+                              crossAxisCount: 2,
+                              coupon: coupon,
+                              onTap: () {
+                                showBottomSheet(
+                                  context: context,
+                                  coupon: coupon,
+                                  isFav: FavCouponsSingleton.instance.favs!
+                                      .contains(
+                                    coupon.id!,
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
-                        itemCount: filtersCoupons.length,
-                        itemBuilder: (context, index) {
-                          final coupon = filtersCoupons[index];
-                          return CouponCard(
-                            coupon: coupon,
-                            onTap: () {
-                              showBottomSheet(
-                                context: context,
-                                coupon: coupon,
-                                isFav:
-                                    FavCouponsSingleton.instance.favs!.contains(
-                                  coupon.id!,
-                                ),
-                              );
-                            },
-                          );
-                        },
+                        tabletLayout: (context) => GridView.builder(
+                          padding: const EdgeInsets.all(8.0),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            childAspectRatio: 1,
+                          ),
+                          itemCount: filtersCoupons.length,
+                          itemBuilder: (context, index) {
+                            final coupon = filtersCoupons[index];
+                            return CouponCard(
+                              coupon: coupon,
+                              crossAxisCount: 3,
+                              onTap: () {
+                                showBottomSheet(
+                                  context: context,
+                                  coupon: coupon,
+                                  isFav: FavCouponsSingleton.instance.favs!
+                                      .contains(
+                                    coupon.id!,
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                        webLayout: (context) => GridView.builder(
+                          padding: const EdgeInsets.all(8.0),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 6,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            childAspectRatio: 1,
+                          ),
+                          itemCount: filtersCoupons.length,
+                          itemBuilder: (context, index) {
+                            final coupon = filtersCoupons[index];
+                            return CouponCard(
+                              crossAxisCount: 6,
+                              coupon: coupon,
+                              onTap: () {
+                                showBottomSheet(
+                                  context: context,
+                                  coupon: coupon,
+                                  isFav: FavCouponsSingleton.instance.favs!
+                                      .contains(
+                                    coupon.id!,
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],

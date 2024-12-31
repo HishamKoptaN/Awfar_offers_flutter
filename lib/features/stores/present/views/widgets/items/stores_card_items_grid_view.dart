@@ -9,21 +9,68 @@ class StoresItemsGridView extends StatelessWidget {
   const StoresItemsGridView({
     super.key,
     required this.stores,
+    required this.crossAxisCount,
+    required this.childAspectRatio,
+    required this.width,
   });
   final List<Store> stores;
+  final int crossAxisCount;
+  final double childAspectRatio;
+  final double width;
 
   @override
   Widget build(
     context,
   ) {
+    return GridViewItems(
+      width: width,
+      stores: stores,
+      crossAxisCount: crossAxisCount,
+      childAspectRatio: childAspectRatio,
+    );
+    // AdaptiveLayout(
+    //   mobileLayout: (context) => GridViewItems(
+    //     stores: stores,
+    //     crossAxisCount: 2,
+    //     childAspectRatio: 0.58,
+    //   ),
+    //   tabletLayout: (context) => GridViewItems(
+    //     stores: stores,
+    //     crossAxisCount: 3,
+    //     childAspectRatio: 0.58,
+    //   ),
+    //   webLayout: (context) => GridViewItems(
+    //     stores: stores,
+    //     crossAxisCount: 4,
+    //     childAspectRatio: 0.58,
+    //   ),
+    // );
+  }
+}
+
+class GridViewItems extends StatelessWidget {
+  const GridViewItems({
+    super.key,
+    required this.stores,
+    required this.crossAxisCount,
+    required this.childAspectRatio,
+    required this.width,
+  });
+  final List<Store> stores;
+  final int crossAxisCount;
+  final double childAspectRatio;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
         crossAxisSpacing: 6,
         mainAxisSpacing: 6,
-        childAspectRatio: 0.58,
+        childAspectRatio: childAspectRatio,
       ),
       itemCount: stores.length +
           (stores.length ~/ 4), // زيادة العدد لحساب الـ BannerAds
@@ -41,14 +88,20 @@ class StoresItemsGridView extends StatelessWidget {
             Navigator.pushNamed(
               context,
               StoreDetailsView.routeName,
-              arguments: store,
+              arguments: {
+                'storeElement': store,
+                'crossAxisCount': crossAxisCount
+              },
             );
           },
           child: CustomStoreCardItem(
+            width: width,
             store: store,
             isFav: FavsStoresSingleton.instance.favs!.contains(
               store.id!,
             ),
+            childAspectRatio: childAspectRatio,
+            crossAxisCount: crossAxisCount,
           ),
         );
       },

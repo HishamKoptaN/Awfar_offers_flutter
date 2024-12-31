@@ -1,5 +1,7 @@
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_view.dart';
+import 'package:awfar_offer_app/features/privacy_policy_and_terms_and_conditions/presentation/views/privacy_policy_view.dart';
+import 'package:awfar_offer_app/features/privacy_policy_and_terms_and_conditions/presentation/views/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,24 +52,9 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Row(
-                children: [
-                  widget.isBack ? const CustomBackButton() : const SizedBox(),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  const Text(
-                    "الإعدادات",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
+            CustomAppBar(
+              isBack: widget.isBack,
+              title: "الإعدادات",
             ),
             const SizedBox(
               height: 8,
@@ -161,17 +148,26 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
               },
             ),
             const CustomDividerWidget(),
-            // const CustomSettingWidget(
-            //   title: "اقتراحات",
-            // ),
-            // const CustomDividerWidget(),
-            // const CustomSettingWidget(
-            //   title: "الشروط والأحكام",
-            // ),
-            // const CustomDividerWidget(),
-            // const CustomSettingWidget(
-            //   title: "السياسة والخصوصية",
-            // ),
+
+            CustomSettingWidget(
+              title: "الشروط والأحكام",
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  TermsAndConditions.routeName,
+                );
+              },
+            ),
+            const CustomDividerWidget(),
+            CustomSettingWidget(
+              title: "سياسة الخصوصية",
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  PrivacyPolicyView.routeName,
+                );
+              },
+            ),
             const CustomDividerWidget(),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -187,7 +183,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                   ),
                   Spacer(),
                   Text(
-                    "v10.0.62",
+                    "v1.0.0",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -309,6 +305,40 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
     Share.share(
       'اكتشف عروضاً مذهلة للسوبر ماركت، الإلكترونيات، والأزياء مع تطبيق Awfar Offer! 🛒💻👗\n\nتوفير كبير بانتظارك! حمل الآن:\nhttps://play.google.com/store/apps/details?id=com.awfaroffers.app',
       subject: 'عروض مذهلة في انتظارك!',
+    );
+  }
+}
+
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({
+    super.key,
+    required this.isBack,
+    required this.title,
+  });
+
+  final bool isBack;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        children: [
+          isBack ? const CustomBackButton() : const SizedBox(),
+          const SizedBox(
+            width: 10,
+          ),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

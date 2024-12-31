@@ -7,18 +7,20 @@ class OffersGridView extends StatelessWidget {
   const OffersGridView({
     super.key,
     required this.store,
+    required this.crossAxisCount,
   });
   final Store store;
+  final int crossAxisCount;
   @override
   Widget build(context) {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-        childAspectRatio: 2 / 3,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: 6,
+        mainAxisSpacing: 6,
+        childAspectRatio: 0.8,
       ),
       itemCount: store.offerGroups!.length,
       itemBuilder: (context, index) {

@@ -8,9 +8,11 @@ class StoreDetailsView extends StatelessWidget {
   const StoreDetailsView({
     super.key,
     required this.store,
+    required this.crossAxisCount,
   });
   static const String routeName = 'store_details';
   final Store store;
+  final int crossAxisCount;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,6 +38,7 @@ class StoreDetailsView extends StatelessWidget {
               ),
               OffersGridView(
                 store: store,
+                crossAxisCount: crossAxisCount,
               ),
               const SizedBox(
                 height: 24,

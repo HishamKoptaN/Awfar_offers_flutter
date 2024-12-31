@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/layouts/adaptive_layout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widgets/custom_circular_progress.dart';
@@ -27,7 +28,19 @@ class CategoriesView extends StatelessWidget {
                     AppBarInCategory(
                       brandName: brandName,
                     ),
-                    const ListViewAndGridView(),
+                    Expanded(
+                      child: AdaptiveLayout(
+                        mobileLayout: (context) => const ListViewAndGridView(
+                          crossAxisCount: 3,
+                        ),
+                        tabletLayout: (context) => const ListViewAndGridView(
+                          crossAxisCount: 5,
+                        ),
+                        webLayout: (context) => const ListViewAndGridView(
+                          crossAxisCount: 7,
+                        ),
+                      ),
+                    ),
                   ],
                 );
               },

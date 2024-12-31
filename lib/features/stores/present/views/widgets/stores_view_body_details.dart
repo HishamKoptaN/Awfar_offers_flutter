@@ -16,8 +16,14 @@ class StoresViewBodyDetails extends StatefulWidget {
   const StoresViewBodyDetails({
     super.key,
     required this.stores,
+    required this.crossAxisCount,
+    required this.childAspectRatio,
+    required this.width,
   });
   final List<Store> stores;
+  final int crossAxisCount;
+  final double childAspectRatio;
+  final double width;
   @override
   State<StoresViewBodyDetails> createState() => _StoresViewBodyDetailsState();
 }
@@ -66,7 +72,10 @@ class _StoresViewBodyDetailsState extends State<StoresViewBodyDetails> {
             height: 8,
           ),
           StoresItemsGridView(
+            width: widget.width,
             stores: widget.stores,
+            childAspectRatio: widget.childAspectRatio,
+            crossAxisCount: widget.crossAxisCount,
             // // widget.stores
             // selectedCategoryId == -1
             //     ? widget.stores

@@ -8,9 +8,11 @@ class CouponCard extends StatelessWidget {
     super.key,
     required this.coupon,
     required this.onTap,
+    required this.crossAxisCount,
   });
   final Coupon coupon;
   final VoidCallback onTap;
+  final int crossAxisCount;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +111,10 @@ class CouponCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: ((MediaQuery.of(context).size.width / 2 - 34) / 1 / 2) + 45,
+            top: ((MediaQuery.of(context).size.width / crossAxisCount - 34) /
+                    1 /
+                    crossAxisCount) +
+                45,
             right: -8,
             child: const CircleAvatar(
               radius: 8,
@@ -117,7 +122,10 @@ class CouponCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: ((MediaQuery.of(context).size.width / 2 - 34) / 1 / 2) + 45,
+            top: ((MediaQuery.of(context).size.width / crossAxisCount - 34) /
+                    1 /
+                    crossAxisCount) +
+                45,
             left: -8,
             child: const CircleAvatar(
               radius: 8,

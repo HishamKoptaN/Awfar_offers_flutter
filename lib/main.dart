@@ -1,6 +1,7 @@
 import 'package:awfar_offer_app/core/services/local_notifications_services.dart';
 import 'package:awfar_offer_app/core/services/push_notifications_services.dart';
 import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
+import 'package:awfar_offer_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +20,13 @@ import 'features/notifications/present/bloc/notifications_bloc.dart';
 import 'features/offers/present/bloc/offers_bloc.dart';
 import 'features/stores/present/bloc/stores_bloc.dart';
 import 'features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
+import 'package:device_preview/device_preview.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   MobileAds.instance.initialize();
   await Injection.inject();
   SharedPrefHelper;
@@ -37,60 +41,63 @@ Future<void> main() async {
   final AppOpenAdManager appOpenAdManager = AppOpenAdManager();
   appOpenAdManager.loadAd();
   runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => MainBloc(
-            checkUseCase: getIt(),
+    DevicePreview(
+      enabled: false,
+      builder: (context) => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => MainBloc(
+              checkUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => CountriesBloc(
-            getCountriesUseCase: getIt(),
+          BlocProvider(
+            create: (context) => CountriesBloc(
+              getCountriesUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => CitiesBloc(
-            getCitiesUseCase: getIt(),
+          BlocProvider(
+            create: (context) => CitiesBloc(
+              getCitiesUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => OffersBloc(
-            getOffersUseCase: getIt(),
+          BlocProvider(
+            create: (context) => OffersBloc(
+              getOffersUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => StoresBloc(
-            getStoresUseCase: getIt(),
+          BlocProvider(
+            create: (context) => StoresBloc(
+              getStoresUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => CategoriesBloc(
-            getCategoriesUseCase: getIt(),
+          BlocProvider(
+            create: (context) => CategoriesBloc(
+              getCategoriesUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => SubCategoriesBloc(
-            getSubCategoriesUseCase: getIt(),
+          BlocProvider(
+            create: (context) => SubCategoriesBloc(
+              getSubCategoriesUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => CouponsBloc(
-            getCouponsUseCase: getIt(),
+          BlocProvider(
+            create: (context) => CouponsBloc(
+              getCouponsUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => NotificationsBloc(
-            getNotificationsUseCase: getIt(),
+          BlocProvider(
+            create: (context) => NotificationsBloc(
+              getNotificationsUseCase: getIt(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => ExternalNotificationsBloc(
-            saveNotificationsDataUseCase: getIt(),
+          BlocProvider(
+            create: (context) => ExternalNotificationsBloc(
+              saveNotificationsDataUseCase: getIt(),
+            ),
           ),
-        ),
-      ],
-      child: const AroodiApp(),
+        ],
+        child: const AroodiApp(),
+      ),
     ),
   );
 }

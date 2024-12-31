@@ -3,6 +3,9 @@ import 'package:awfar_offer_app/features/admobe/app_lifecycle_reactor.dart';
 import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:awfar_offer_app/features/admobe/constant_manager.dart';
 import 'package:awfar_offer_app/features/profile/presentation/views/profile_view.dart';
+import 'package:awfar_offer_app/layouts/adaptive_layout_widget.dart';
+import 'package:awfar_offer_app/layouts/widgets/drawer_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -19,6 +22,7 @@ class HomeView extends StatefulWidget {
     super.key,
   });
   static const routeName = 'home_screen';
+
   @override
   State<HomeView> createState() => _HomeView();
 }
@@ -82,70 +86,144 @@ class _HomeView extends State<HomeView> {
     }
 
     return Scaffold(
-      body: BlocConsumer<MainBloc, MainState>(
-        listener: (context, state) async {
-          state.whenOrNull(
-            firstTime: () async {
-              showCountrySelection(
-                context: context,
-              );
-            },
-            logedIn: () async {
-              await loadAppData(
-                context,
-              );
-            },
-          );
-        },
-        builder: (context, state) {
-          return IndexedStack(
-            index: currentIndex,
-            children: screens,
-          );
-        },
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 70,
-        child: BottomNavigationBar(
-          backgroundColor: AppColors.primaryColor,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentIndex,
-          onTap: onTapped,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-          showUnselectedLabels: true,
-          selectedFontSize: 16,
-          items: const [
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.primaryColor,
-              icon: Icon(
-                Icons.local_offer_outlined,
+      body: Row(
+        children: [
+          Expanded(
+            flex: 5,
+            child: HomeViewBlocConsumer(
+              currentIndex: currentIndex,
+              screens: screens,
+            ),
+          ),
+          const Visibility(
+            visible: kIsWeb,
+            child: SizedBox(
+              width: 16,
+            ),
+          ),
+          Visibility(
+            visible: kIsWeb,
+            child: Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: DrawerWidget(
+                  onTap: (index) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                ),
               ),
-              label: "عروض",
             ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.category_outlined),
-              label: "الفئات",
-            ),
-            // BottomNavigationBarItem(
-            //   backgroundColor: AppColors.primaryColor,
-            //   icon: Icon(Icons.search_outlined),
-            //   label: 'بحث',
-            // ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.card_giftcard_outlined),
-              label: 'كوبون',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.primaryColor,
-              icon: Icon(Icons.person_outlined),
-              label: 'حساب',
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
+
+      // AdaptiveLayout(
+      //   mobileLayout: (context) => BlocConsumer<MainBloc, MainState>(
+      //     listener: (context, state) async {
+      //       state.whenOrNull(
+      //         firstTime: () async {
+      //           showCountrySelection(
+      //             context: context,
+      //           );
+      //         },
+      //         logedIn: () async {
+      //           await loadAppData(
+      //             context,
+      //           );
+      //         },
+      //       );
+      //     },
+      //     builder: (context, state) {
+      //       return IndexedStack(
+      //         index: currentIndex,
+      //         children: screens,
+      //       );
+      //     },
+      //   ),
+      //   tabletLayout: (context) => BlocConsumer<MainBloc, MainState>(
+      //     listener: (context, state) async {
+      //       state.whenOrNull(
+      //         firstTime: () async {
+      //           showCountrySelection(
+      //             context: context,
+      //           );
+      //         },
+      //         logedIn: () async {
+      //           await loadAppData(
+      //             context,
+      //           );
+      //         },
+      //       );
+      //     },
+      //     builder: (context, state) {
+      //       return IndexedStack(
+      //         index: currentIndex,
+      //         children: screens,
+      //       );
+      //     },
+      //   ),
+      //   webLayout: (context) => Row(
+      //     children: [
+      //       Expanded(
+      //         flex: 5,
+      //         child: BlocConsumer<MainBloc, MainState>(
+      //           listener: (context, state) async {
+      //             state.whenOrNull(
+      //               firstTime: () async {
+      //                 showCountrySelection(
+      //                   context: context,
+      //                 );
+      //               },
+      //               logedIn: () async {
+      //                 await loadAppData(
+      //                   context,
+      //                 );
+      //               },
+      //             );
+      //           },
+      //           builder: (context, state) {
+      //             return IndexedStack(
+      //               index: currentIndex,
+      //               children: screens,
+      //             );
+      //           },
+      //         ),
+      //       ),
+      //       const SizedBox(
+      //         width: 16,
+      //       ),
+      //       Expanded(
+      //         flex: 1,
+      //         child: Padding(
+      //           padding: const EdgeInsets.only(top: 8.0),
+      //           child: DrawerWidget(
+      //             onTap: (index) {
+      //               setState(() {
+      //                 currentIndex = index;
+      //               });
+      //             },
+      //           ),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      bottomNavigationBar: kIsWeb
+          ? null
+          : AdaptiveLayout(
+              mobileLayout: (context) => BottomNavigationBarWidget(
+                currentIndex: currentIndex,
+                onTap: onTapped,
+              ),
+              tabletLayout: (context) => BottomNavigationBarWidget(
+                currentIndex: currentIndex,
+                onTap: onTapped,
+              ),
+              webLayout: (context) => const SizedBox(),
+            ),
     );
   }
 
@@ -208,5 +286,99 @@ class _HomeView extends State<HomeView> {
       // Load an ad.
       appOpenAdManager.loadAd();
     }
+  }
+}
+
+class HomeViewBlocConsumer extends StatelessWidget {
+  const HomeViewBlocConsumer({
+    super.key,
+    required this.currentIndex,
+    required this.screens,
+  });
+
+  final int currentIndex;
+  final List<Widget> screens;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<MainBloc, MainState>(
+      listener: (context, state) async {
+        state.whenOrNull(
+          firstTime: () async {
+            showCountrySelection(
+              context: context,
+            );
+          },
+          logedIn: () async {
+            await loadAppData(
+              context,
+            );
+          },
+        );
+      },
+      builder: (context, state) {
+        return IndexedStack(
+          index: currentIndex,
+          children: screens,
+        );
+      },
+    );
+  }
+}
+
+class BottomNavigationBarWidget extends StatelessWidget {
+  const BottomNavigationBarWidget({
+    super.key,
+    required this.currentIndex,
+    this.onTap,
+  });
+
+  final int currentIndex;
+  final void Function(int)? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 70,
+      child: BottomNavigationBar(
+        backgroundColor: AppColors.primaryColor,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: currentIndex,
+        onTap: onTap,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        selectedFontSize: 16,
+        items: const [
+          BottomNavigationBarItem(
+            backgroundColor: AppColors.primaryColor,
+            icon: Icon(
+              Icons.local_offer_outlined,
+            ),
+            label: "عروض",
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: AppColors.primaryColor,
+            icon: Icon(Icons.category_outlined),
+            label: "الفئات",
+          ),
+          // BottomNavigationBarItem(
+          //   backgroundColor: AppColors.primaryColor,
+          //   icon: Icon(Icons.search_outlined),
+          //   label: 'بحث',
+          // ),
+          BottomNavigationBarItem(
+            backgroundColor: AppColors.primaryColor,
+            icon: Icon(Icons.card_giftcard_outlined),
+            label: 'كوبون',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: AppColors.primaryColor,
+            icon: Icon(Icons.person_outlined),
+            label: 'حساب',
+          ),
+        ],
+      ),
+    );
   }
 }
