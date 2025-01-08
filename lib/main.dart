@@ -1,6 +1,7 @@
 import 'package:awfar_offer_app/core/services/local_notifications_services.dart';
 import 'package:awfar_offer_app/core/services/push_notifications_services.dart';
 import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
+import 'package:awfar_offer_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,9 @@ import 'features/sub_categories/presentation/bloc/sub_categories_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   MobileAds.instance.initialize();
   await Injection.inject();
   SharedPrefHelper;

@@ -25,8 +25,10 @@ class MarkasView extends StatefulWidget {
   const MarkasView({
     super.key,
     required this.subCategory,
+    required this.crossAxisCount,
   });
   final SubCategory subCategory;
+  final int crossAxisCount;
   static const String routeName = 'subCategoriesItemsView';
 
   @override
@@ -203,9 +205,6 @@ class _MarkasViewState extends State<MarkasView> {
             const SizedBox(
               height: 8,
             ),
-            const SizedBox(
-              height: 8,
-            ),
             Expanded(
               child: BlocProvider(
                 create: (context) => ProductsBloc(
@@ -222,8 +221,9 @@ class _MarkasViewState extends State<MarkasView> {
                         return GridView.builder(
                           shrinkWrap: true,
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, // Number of columns in the grid
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: widget
+                                .crossAxisCount, // Number of columns in the grid
                             crossAxisSpacing: 6,
                             mainAxisSpacing: 6,
                             childAspectRatio: 0.58,

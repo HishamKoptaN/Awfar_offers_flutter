@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +16,7 @@ import 'features/main/present/bloc/main_event.dart';
 import 'features/main/present/bloc/main_state.dart';
 import 'generated/l10n.dart';
 import 'home_view.dart';
+import 'package:device_preview/device_preview.dart';
 
 class AroodiApp extends StatefulWidget {
   const AroodiApp({super.key});
@@ -26,6 +28,7 @@ class AroodiApp extends StatefulWidget {
 class _AroodiAppState extends State<AroodiApp> {
   getToken() async {
     String? myToken = await FirebaseMessaging.instance.getToken();
+    print("My token  ==================$myToken");
   }
 
   //! allow notifactions permissions for ios and web
@@ -83,6 +86,8 @@ class _AroodiAppState extends State<AroodiApp> {
         child: BlocBuilder<MainBloc, MainState>(
           builder: (context, state) {
             return MaterialApp(
+              // locale: DevicePreview.locale(context),
+              builder: DevicePreview.appBuilder,
               theme: ThemeData(
                 scaffoldBackgroundColor: AppColors.darkPrimaryColor,
               ),

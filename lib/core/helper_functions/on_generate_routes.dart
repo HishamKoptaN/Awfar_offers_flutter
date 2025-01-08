@@ -1,8 +1,8 @@
-import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_settings_view.dart';
+import 'package:awfar_offer_app/features/privacy_policy_and_terms_and_conditions/presentation/views/privacy_policy_view.dart';
+import 'package:awfar_offer_app/features/privacy_policy_and_terms_and_conditions/presentation/views/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/Auth/login/presentation/view/login_view.dart';
 import '../../features/categories/present/views/categories_view.dart';
 import '../../features/categories/present/views/sub_categories_items_view.dart';
@@ -47,9 +47,11 @@ Route<dynamic> onGenerateRoute(
       );
 
     case MarkasView.routeName:
+      final data = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(
         builder: (context) => MarkasView(
-          subCategory: settings.arguments as SubCategory,
+          subCategory: data['subCategory'],
+          crossAxisCount: data['crossAxisCount'],
         ),
       );
 
@@ -57,7 +59,14 @@ Route<dynamic> onGenerateRoute(
       return MaterialPageRoute(
         builder: (context) => const NotificationsSettingsView(),
       );
-
+    case PrivacyPolicyView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const PrivacyPolicyView(),
+      );
+    case TermsAndConditions.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const TermsAndConditions(),
+      );
     case CouponsView.routeName:
       return MaterialPageRoute(
         builder: (context) => BlocProvider(
@@ -106,10 +115,11 @@ Route<dynamic> onGenerateRoute(
         builder: (context) => const ProfileView(),
       );
     case StoreDetailsView.routeName:
-      final storeElement = settings.arguments as Store;
+      final data = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(
         builder: (context) => StoreDetailsView(
-          store: storeElement,
+          store: data['storeElement'],
+          crossAxisCount: data['crossAxisCount'],
         ),
       );
     default:

@@ -51,19 +51,21 @@ class _HomeView extends State<HomeView> {
         AppLifecycleReactor(appOpenAdManager: appOpenAdManager);
     appLifecycleReactor.listenToAppStateChanges();
 
-    ConsentManager.instance.gatherConsent((consentGatheringError) {
-      if (consentGatheringError != null) {
-        // Consent not obtained in current session.
-        debugPrint(
-            "${consentGatheringError.errorCode}: ${consentGatheringError.message}");
-      }
+    ConsentManager.instance.gatherConsent(
+      (consentGatheringError) {
+        if (consentGatheringError != null) {
+          // Consent not obtained in current session.
+          debugPrint(
+              "${consentGatheringError.errorCode}: ${consentGatheringError.message}");
+        }
 
-      // Check if a privacy options entry point is required.
-      _getIsPrivacyOptionsRequired();
+        // Check if a privacy options entry point is required.
+        _getIsPrivacyOptionsRequired();
 
-      // Attempt to initialize the Mobile Ads SDK.
-      _initializeMobileAdsSDK();
-    });
+        // Attempt to initialize the Mobile Ads SDK.
+        _initializeMobileAdsSDK();
+      },
+    );
 
     // This sample attempts to load ads using consent obtained in the previous session.
     _initializeMobileAdsSDK();

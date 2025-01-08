@@ -1,3 +1,4 @@
+import 'package:awfar_offer_app/layouts/adaptive_layout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/models/category.dart';
@@ -14,7 +15,9 @@ import 'active_and_in_active_category.dart';
 class ListViewAndGridView extends StatefulWidget {
   const ListViewAndGridView({
     super.key,
+    required this.crossAxisCount,
   });
+  final int crossAxisCount;
 
   @override
   State<ListViewAndGridView> createState() => _ListViewAndGridViewState();
@@ -114,10 +117,11 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                             child: subCategories.isNotEmpty
                                 ? GridView.builder(
                                     gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount:
-                                          3, // عدد الأعمدة في الشبكة
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: widget.crossAxisCount,
                                       childAspectRatio: 0.70,
+                                      crossAxisSpacing: 6,
+                                      mainAxisSpacing: 6,
                                     ),
                                     itemCount: subCategories.length,
                                     itemBuilder: (context, index) {
@@ -126,10 +130,16 @@ class _ListViewAndGridViewState extends State<ListViewAndGridView> {
                                         children: [
                                           GestureDetector(
                                             onTap: () {
+                                              print(widget.crossAxisCount - 1);
                                               Navigator.pushNamed(
                                                 context,
                                                 MarkasView.routeName,
-                                                arguments: subCategory,
+                                                arguments: {
+                                                  'subCategory': subCategory,
+                                                  'crossAxisCount':
+                                                      (widget.crossAxisCount -
+                                                          1),
+                                                },
                                               );
                                             },
                                             child: Stack(
