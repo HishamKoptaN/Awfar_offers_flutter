@@ -16,7 +16,6 @@ import 'features/main/present/bloc/main_event.dart';
 import 'features/main/present/bloc/main_state.dart';
 import 'generated/l10n.dart';
 import 'home_view.dart';
-import 'package:device_preview/device_preview.dart';
 
 class AroodiApp extends StatefulWidget {
   const AroodiApp({super.key});
@@ -86,8 +85,6 @@ class _AroodiAppState extends State<AroodiApp> {
         child: BlocBuilder<MainBloc, MainState>(
           builder: (context, state) {
             return MaterialApp(
-              // locale: DevicePreview.locale(context),
-              builder: DevicePreview.appBuilder,
               theme: ThemeData(
                 scaffoldBackgroundColor: AppColors.darkPrimaryColor,
               ),
@@ -98,9 +95,12 @@ class _AroodiAppState extends State<AroodiApp> {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-              locale: const Locale('ar'),
+              locale: const Locale('ar',
+              ),
               supportedLocales: S.delegate.supportedLocales,
-              onGenerateRoute: (settings) => onGenerateRoute(settings),
+              onGenerateRoute: (settings) => onGenerateRoute(
+                settings,
+              ),
               initialRoute: HomeView.routeName,
             );
           },
