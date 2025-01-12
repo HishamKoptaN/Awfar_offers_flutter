@@ -1,4 +1,4 @@
-name: Build and Distribute Flutter APKs
+name: Build Flutter APKs
 on:
   push:
     branches:
@@ -34,7 +34,20 @@ jobs:
       - name: بناء نسخ الاندرويد
         run: flutter build apk --split-per-abi
 
-      #! 6. تحميل النسخ كـ Artifacts
+      #! 6. رفع النسخ إلى GitHub Releases
+      - name: رفع النسخ إلى GitHub Releases
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: v1.0.${{ github.run_number }}
+          release_name: "Stable APK Release"
+          files: |
+            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+            build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+            build/app/outputs/flutter-apk/app-x86_64-release.apk
+          overwrite: true
+
+      #! 7. تحميل النسخ كـ Artifacts
       - name: تحميل النسخ كـ Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -43,12 +56,3 @@ jobs:
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
             build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
             build/app/outputs/flutter-apk/app-x86_64-release.apk
-      #! 🚀 7. توزيع النسخ عبر Firebase
-      - name: 🚀 armeabi-v7a
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          groups: armeabi-v7a
-          file: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
-          releaseNotes: "armeabi-v7a"
