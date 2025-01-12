@@ -35,9 +35,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.0
-          release_name: "Stable APK Release"
+          allowUpdates: true
+          skipIfReleaseExists: false
           files: |
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
             build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
             build/app/outputs/flutter-apk/app-x86_64-release.apk
-          overwrite: true
