@@ -11,29 +11,24 @@ jobs:
       #! 1. التحقق من الكود
       - name: التحقق من الكود
         uses: actions/checkout@v2
-
       #! 2. إعداد JDK
       - name: إعداد JDK
         uses: actions/setup-java@v2
         with:
           java-version: '17'
           distribution: 'temurin'
-
       #! 3. إعداد فلاتر
       - name: إعداد فلاتر
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
           channel: stable
-
       #! 4. تحميل التبعيات
       - name: تحميل التبعيات
         run: flutter pub get
-
       #! 5. بناء نسخ الاندرويد
       - name: بناء نسخ الاندرويد
         run: flutter build apk --split-per-abi
-
       #! 6. رفع النسخ كـ Artifacts
       - name: رفع النسخ كـ Artifacts
         uses: actions/upload-artifact@v3
@@ -43,15 +38,19 @@ jobs:
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
             build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
             build/app/outputs/flutter-apk/app-x86_64-release.apk
-
       #! 7. رفع النسخ إلى GitHub Releases
       - name: رفع النسخ إلى GitHub Releases
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: v1.0.${{ github.run_number }}
+          tag: v1.0.40
           name: Flutter APK Release
-          artifacts: APKs
+          artifacts: |
+            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+            build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+            build/app/outputs/flutter-apk/app-x86_64-release.apk
           allowUpdates: true
           skipIfReleaseExists: false
           generateReleaseNotes: false
+          makeLatest: true
+    
