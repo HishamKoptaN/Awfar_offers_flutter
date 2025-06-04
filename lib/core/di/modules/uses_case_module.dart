@@ -1,4 +1,9 @@
-import '../../../features/Auth/login/domain/use_cases/login_use_case.dart';
+import '../../../features/auth/login/domain/use_cases/login_anonymously_use_case.dart';
+import '../../../features/auth/login/domain/use_cases/login_use_case.dart';
+import '../../../features/auth/login/domain/use_cases/login_with_facebook_use_case.dart';
+import '../../../features/auth/login/domain/use_cases/login_with_google_use_case.dart';
+import '../../../features/auth/login/domain/use_cases/login_with_phone_use_case.dart';
+import '../../../features/auth/sign_up/domain/use_cases/sign_up_use_case.dart';
 import '../../../features/categories/domain/use_cases/categories_use_case.dart';
 import '../../../features/countries/domain/use_cases/get_countries_use_case.dart';
 import '../../../features/coupons/domain/use_cases/get_coupons_use_case.dart';
@@ -24,6 +29,32 @@ class UseCaseModule extends DIModule {
       )
       ..registerLazySingleton(
         () => LoginUseCase(
+          loginRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => LoginAnonymouslyUseCase(
+          loginRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => LoginWithGoogleUseCase(
+          loginRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => LoginWithFacebookUseCase(
+          loginRepo: getIt(),
+        ),
+      )
+      ..registerLazySingleton(
+        () => LoginWithPhoneUseCase(
+          loginRepo: getIt(),
+        ),
+      )
+      //! test
+      ..registerLazySingleton(
+        () => SignUpUseCase(
           getIt(),
         ),
       )
@@ -32,6 +63,7 @@ class UseCaseModule extends DIModule {
           categoriesRepo: getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton(
         () => GetCitiesUseCase(
           citiesRepo: getIt(),
@@ -52,6 +84,7 @@ class UseCaseModule extends DIModule {
           categoriesRepo: getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton(
         () => GetSubCategoriesUseCase(
           subcategoriesRepo: getIt(),
@@ -72,6 +105,7 @@ class UseCaseModule extends DIModule {
           couponsRepo: getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton(
         () => GetNotificationsUseCase(
           notificationsRepoImp: getIt(),

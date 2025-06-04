@@ -1,5 +1,5 @@
-import '../../../features/Auth/login/data/repo_imp/login_repo_impl.dart';
-import '../../../features/Auth/login/domain/repo/login_repo.dart';
+import '../../../features/auth/login/data/repo_imp/login_repo_impl.dart';
+import '../../../features/auth/login/domain/repo/login_repo.dart';
 import '../../../features/categories/data/repo_impl/categories_repo_impl.dart';
 import '../../../features/categories/domain/repo/categories_repo.dart';
 import '../../../features/countries/data/repo_impl/countries_repo_impl.dart';
@@ -35,16 +35,22 @@ class RepositoryModule extends DIModule {
           mainApi: getIt(),
         ),
       )
+      //! Login
       ..registerLazySingleton<LoginRepo>(
         () => LoginRepoImpl(
-          getIt(),
+          networkInfo: getIt(),
+          loginRemDataSrc: getIt(),
+          firebaseAuth: getIt(),
         ),
       )
       ..registerLazySingleton<LoginRepoImpl>(
         () => LoginRepoImpl(
-          getIt(),
+          networkInfo: getIt(),
+          loginRemDataSrc: getIt(),
+          firebaseAuth: getIt(),
         ),
       )
+      //! Countries
       ..registerLazySingleton<CountriesRepo>(
         () => CountriesRepoImpl(
           countriesApi: getIt(),
@@ -55,6 +61,7 @@ class RepositoryModule extends DIModule {
           citiesApi: getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton<OffersRepo>(
         () => OffersRepoImpl(
           offersApi: getIt(),
@@ -75,6 +82,7 @@ class RepositoryModule extends DIModule {
           subcategoriesApi: getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton<MarkasRepo>(
         () => MarkasRepoImpl(
           markasApi: getIt(),
@@ -90,6 +98,7 @@ class RepositoryModule extends DIModule {
           couponsApi: getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton<NotificationsRepo>(
         () => NotificationsRepoImpl(
           notificationsApi: getIt(),

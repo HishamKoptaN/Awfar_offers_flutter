@@ -30,7 +30,6 @@ class _AppLayoutState extends State<AppLayout> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.lightPrimaryColor,
-        resizeToAvoidBottomInset: false,
         appBar: widget.showAppBar
             ? AppBar(
                 backgroundColor: AppColors.lightPrimaryColor,
@@ -53,8 +52,12 @@ class _AppLayoutState extends State<AppLayout> {
                 centerTitle: true,
               )
             : null,
-        body: widget.body,
-        floatingActionButton: widget.floatingActionButton,
+        body: Padding(
+          padding: EdgeInsets.all(
+            8.sp,
+          ),
+          child: widget.body,
+        ),
       ),
     );
   }

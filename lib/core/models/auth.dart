@@ -1,15 +1,8 @@
-// To parse this JSON data, do
-//
-//     final auth = authFromJson(jsonString);
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 import '../singletons/user_singleton.dart';
 part 'auth.freezed.dart';
 part 'auth.g.dart';
-
-Auth authFromJson(String str) => Auth.fromJson(json.decode(str));
-String authToJson(Auth data) => json.encode(data.toJson());
 
 @freezed
 class Auth with _$Auth {

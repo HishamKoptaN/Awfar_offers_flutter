@@ -1,9 +1,11 @@
+import 'dart:typed_data';
 import 'package:awfar_offer_app/features/admobe/app_bar_item.dart';
 import 'package:awfar_offer_app/features/admobe/app_lifecycle_reactor.dart';
 import 'package:awfar_offer_app/features/admobe/app_open_ad_manager.dart';
 import 'package:awfar_offer_app/features/admobe/constant_manager.dart';
 import 'package:awfar_offer_app/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'core/global_methods.dart';
@@ -25,6 +27,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeView extends State<HomeView> {
   int currentIndex = 0;
+  final GlobalKey screenShotKey = GlobalKey();
 
   final appOpenAdManager = AppOpenAdManager();
   var isMobileAdsInitializeCalled = false;
@@ -36,10 +39,6 @@ class _HomeView extends State<HomeView> {
     const CategoriesView(
       brandName: '',
     ),
-    // const SearchView(
-    //   isBack: false,
-    //   searchLabel: "بحث",
-    // ),
     const CouponsView(),
     const ProfileView(),
   ];
@@ -50,24 +49,16 @@ class _HomeView extends State<HomeView> {
     appLifecycleReactor =
         AppLifecycleReactor(appOpenAdManager: appOpenAdManager);
     appLifecycleReactor.listenToAppStateChanges();
-
     ConsentManager.instance.gatherConsent(
       (consentGatheringError) {
         if (consentGatheringError != null) {
-          // Consent not obtained in current session.
           debugPrint(
               "${consentGatheringError.errorCode}: ${consentGatheringError.message}");
         }
-
-        // Check if a privacy options entry point is required.
         _getIsPrivacyOptionsRequired();
-
-        // Attempt to initialize the Mobile Ads SDK.
         _initializeMobileAdsSDK();
       },
     );
-
-    // This sample attempts to load ads using consent obtained in the previous session.
     _initializeMobileAdsSDK();
   }
 
@@ -100,9 +91,12 @@ class _HomeView extends State<HomeView> {
           );
         },
         builder: (context, state) {
-          return IndexedStack(
-            index: currentIndex,
-            children: screens,
+          return RepaintBoundary(
+            key: screenShotKey,
+            child: IndexedStack(
+              index: currentIndex,
+              children: screens,
+            ),
           );
         },
       ),
@@ -200,13 +194,10 @@ class _HomeView extends State<HomeView> {
     if (isMobileAdsInitializeCalled) {
       return;
     }
-
     if (await ConsentManager.instance.canRequestAds()) {
       isMobileAdsInitializeCalled = true;
-
       // Initialize the Mobile Ads SDK.
       MobileAds.instance.initialize();
-
       // Load an ad.
       appOpenAdManager.loadAd();
     }

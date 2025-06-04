@@ -4,6 +4,7 @@ class ApiConstants {
 
   static const String check = "check";
   static const String login = "login";
+  static const String resetPasswordLink = "send-password-otp";
   static const String countries = "countries";
   static const String cities = "cities";
   static const String stores = "stores";

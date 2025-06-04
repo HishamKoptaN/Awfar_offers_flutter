@@ -5,9 +5,7 @@
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
-
 import '../../../../../core/singletons/user_singleton.dart';
-
 part 'sign_up_response_model.freezed.dart';
 part 'sign_up_response_model.g.dart';
 

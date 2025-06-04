@@ -11,17 +11,21 @@ class CustomTextButtonWidget extends StatelessWidget {
     this.buttonColor = AppColors.primaryColor,
     this.textColor = Colors.white,
     this.widget,
+    this.height,
+    this.width,
   });
   final void Function()? onPressed;
   final String? text;
   final Color buttonColor;
   final Color textColor;
   final Widget? widget;
+  final double? height;
+  final double? width;
   @override
   Widget build(context) {
     return SizedBox(
-      width: double.infinity,
-      height: 54,
+      height: height ?? 65.h,
+      width: width ?? 300.w,
       child: TextButton(
         style: TextButton.styleFrom(
           shape:

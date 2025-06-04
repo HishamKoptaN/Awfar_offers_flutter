@@ -1,4 +1,9 @@
-import '../../../features/Auth/login/data/data_sources/login_api.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+
+import '../../../features/auth/login/data/data_sources/login_api.dart';
+import '../../../features/auth/reset_password/data/data_sources/api/reset_pass_api.dart';
+import '../../../features/auth/sign_up/data/data_sources/sign_up_api.dart';
 import '../../../features/categories/data/data_sources/categories_api.dart';
 import '../../../features/countries/data/data_sources/countries_api.dart';
 import '../../../features/coupons/data/data_sources/coupons_api.dart';
@@ -12,6 +17,7 @@ import '../../../features/stores/data/data_sources/stores_api.dart';
 import '../../../features/sub_categories/data/data_sources/sub_categories_api.dart';
 import '../../../features/markas/data/data_sources/markas_api.dart';
 import '../../networking/dio_factory.dart';
+import '../../networking/network_info.dart';
 import '../dependency_injection.dart';
 
 class ApiModule extends DIModule {
@@ -19,17 +25,42 @@ class ApiModule extends DIModule {
   Future<void> provides() async {
     final dio = await DioFactory.setupDio();
     getIt
-      ..registerSingleton(dio)
+      //! dio
+      ..registerSingleton(
+        dio,
+      )
+      ..registerLazySingleton<FirebaseAuth>(
+        () => FirebaseAuth.instance,
+      )
+      //! MainApi
       ..registerLazySingleton<MainApi>(
         () => MainApi(
           getIt(),
         ),
       )
-      ..registerLazySingleton<LoginApi>(
-        () => LoginApi(
+      //! InternetConnection
+      ..registerLazySingleton<NetworkInfo>(
+        () => NetworkInfoImpl(
+          connectionChecker: getIt(),
+        ),
+      )
+      //! InternetConnection
+      ..registerLazySingleton(
+        () => InternetConnection(),
+      )
+      //! LoginRemDataSrc
+      ..registerLazySingleton<LoginRemDataSrc>(
+        () => LoginRemDataSrcImpl(
+          firebaseAuth: getIt(),
+        ),
+      )
+      //! SignUpApi
+      ..registerLazySingleton(
+        () => SignUpApi(
           getIt(),
         ),
       )
+      //! CountriesApi
       ..registerLazySingleton<CountriesApi>(
         () => CountriesApi(
           getIt(),
@@ -45,6 +76,7 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton<StoresApi>(
         () => StoresApi(
           getIt(),
@@ -65,6 +97,7 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton<ProductsApi>(
         () => ProductsApi(
           getIt(),
@@ -75,6 +108,7 @@ class ApiModule extends DIModule {
           getIt(),
         ),
       )
+      //! test
       ..registerLazySingleton<NotificationsApi>(
         () => NotificationsApi(
           getIt(),

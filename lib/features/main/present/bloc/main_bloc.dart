@@ -1,14 +1,13 @@
-import 'package:awfar_offer_app/core/global_methods.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/usecases/check_use_case.dart';
+import '../../../../core/errors/api_error_model.dart';
 import 'main_event.dart';
 import 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
-  final CheckUseCase checkUseCase;
-
+  FirebaseAuth auth;
   MainBloc({
-    required this.checkUseCase,
+    required this.auth,
   }) : super(
           const MainState.loading(),
         ) {
@@ -16,41 +15,32 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       (event, emit) async {
         await event.when(
           check: () async {
-            await getCity().then(
-              (id) async {
-                if (id == null) {
-                  emit(
-                    const MainState.firstTime(),
-                  );
-                } else {
-                  emit(
-                    const MainState.logedIn(),
-                  );
-                }
-              },
+            emit(
+              const MainState.loading(),
             );
+            try {
+              final user = auth.currentUser;
+              if (user != null) {
+                emit(
+                  const MainState.logedIn(),
+                );
+              } else {
+                emit(
+                  const MainState.logedOut(),
+                );
+              }
+            } catch (e) {
+              emit(
+                MainState.failure(
+                  apiErrorModel: ApiErrorModel(
+                    error: e.toString(),
+                  ),
+                ),
+              );
+            }
           },
         );
       },
     );
   }
 }
-  //  String? token = await SharedPrefHelper.getSecuredString(
-  //             key: SharedPrefKeys.userToken,
-  //           );
-  //           if (token == null || token.isEmpty) {
-  //           } else if (token.isNotEmpty) {
-  //             final result = await checkUseCase.check();
-  //             await result!.when(
-  //               success: (response) async {
-  //                 emit(
-  //                   const MainState.logedIn(),
-  //                 );
-  //               },
-  //               failure: (error) async {
-  //                 emit(
-  //                   const MainState.logedOut(),
-  //                 );
-  //               },
-  //             );
-  //           }

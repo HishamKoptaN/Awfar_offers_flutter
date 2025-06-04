@@ -3,7 +3,7 @@ import 'package:awfar_offer_app/features/privacy_policy_and_terms_and_conditions
 import 'package:awfar_offer_app/features/privacy_policy_and_terms_and_conditions/presentation/views/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../features/Auth/login/presentation/view/login_view.dart';
+import '../../features/Auth/login/present/view/login_view.dart';
 import '../../features/categories/present/views/categories_view.dart';
 import '../../features/categories/present/views/sub_categories_items_view.dart';
 import '../../features/coupons/present/bloc/coupons_bloc.dart';

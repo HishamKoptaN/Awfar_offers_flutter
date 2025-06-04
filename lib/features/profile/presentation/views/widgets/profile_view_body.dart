@@ -2,9 +2,9 @@ import 'package:awfar_offer_app/core/utils/app_colors.dart';
 import 'package:awfar_offer_app/features/notifications/present/view/notifications_view.dart';
 import 'package:awfar_offer_app/features/profile/presentation/views/widgets/icon_and_text_widget.dart';
 import 'package:awfar_offer_app/features/settings/presentation/views/settings_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../Auth/login/presentation/view/login_view.dart';
+import '../../../../Auth/login/present/view/login_view.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -66,8 +66,23 @@ class ProfileViewBody extends StatelessWidget {
               children: [
                 IconAndTextWidget(
                   iconData: Icons.login_outlined,
-                  title: "تسجيل الدخول",
-                  onTap: () {
+                  title: "تسجيل خروج",
+                  onTap: () async {
+                    try {
+                      await FirebaseAuth.instance.signOut();
+                      await Navigator.pushNamed(
+                        context,
+                        LoginView.routeName,
+                      );
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "حدث خطأ أثناء تسجيل الخروج: $e",
+                          ),
+                        ),
+                      );
+                    }
                     Navigator.pushNamed(
                       context,
                       LoginView.routeName,
